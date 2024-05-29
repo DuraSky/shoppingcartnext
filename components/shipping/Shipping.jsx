@@ -7,7 +7,7 @@ import ShippingPriceOptions from "./shippingComponents/ShippingPriceOptions";
 
 import Recap from "../recap/Recap";
 
-const Shipping = () => {
+const Shipping = ({ payment, setPayment }) => {
   const { state } = useContext(ShippingContext);
   const { shippingOptions } = state;
 
