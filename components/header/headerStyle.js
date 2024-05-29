@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledNav = styled.nav`
-  display: flex;
+  /* display: flex;
   flex-direction:column;
-  align-items:center;'
+  align-items:center;' */
 `;

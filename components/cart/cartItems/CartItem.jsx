@@ -20,7 +20,9 @@ const CartItem = ({ item, index }) => {
 
   return (
     <>
+      <img src={item.img} alt="test" />
       <p>{item.name}</p>
+
       {/* <p>{item.dostupnost}</p> */}
       <p>placeholder</p>
       <input

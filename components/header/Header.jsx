@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <StyledNav>
       <WrapperWithTopBar />
-      <NavLinks />
+      {/* <NavLinks /> */}
     </StyledNav>
   );
 };

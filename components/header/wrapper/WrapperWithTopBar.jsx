@@ -1,14 +1,16 @@
 import React from "react";
-import { StyledWrapper, TopBar } from "./wrapperStyle";
-import logo from "../../../public/assets/logoZanapo.svg";
+import { Wrapper, TopBar, InfoAndIcon } from "./wrapperStyle";
 
 export const WrapperWithTopBar = () => {
   return (
-    <StyledWrapper>
+    <Wrapper>
       <TopBar>
-        <img src={logo} width="300px" alt="" />
-        <p>info@zanapo.cz</p>
+        <img src="/assets/logoZanapo.svg" width="200px" alt="" />
+        <InfoAndIcon>
+          <img src="/assets/heart.png" width="20px" alt="" />
+          <p>info@zanapo.cz</p>
+        </InfoAndIcon>
       </TopBar>
-    </StyledWrapper>
+    </Wrapper>
   );
 };
