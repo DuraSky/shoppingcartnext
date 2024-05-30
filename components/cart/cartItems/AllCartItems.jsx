@@ -13,7 +13,6 @@ export const AllCartItems = ({ cart }) => {
     <CartContainer>
       <CartHeaders>
         <h2>Produkt</h2>
-        <h2></h2> {/*empty for css grid purposes */}
         <h2>Dostupnost</h2>
         <h2>Množství</h2>
         <h2>Cena za kus</h2>

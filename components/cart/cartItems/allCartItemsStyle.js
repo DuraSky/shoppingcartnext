@@ -1,29 +1,25 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
+  width: 100%;
+  overflow-x: auto;
   margin: 0 auto;
   max-width: 1200px;
-  width: 100%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 `;
 
 export const CartHeaders = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  align-items: center;
-  justify-items: center;
-  font-weight: bold;
-  background-color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  display: flex;
+  background-color: #f1f1f1;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
 
   h2 {
-    padding: 10px;
+    flex: 1;
     text-align: center;
-    color: gray;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    margin: 0;
   }
 
   @media (max-width: 768px) {
@@ -31,188 +27,127 @@ export const CartHeaders = styled.div`
   }
 `;
 
-export const AllItems = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-// export const CartItemRow = styled.div`
-//   background-color: white;
-//   padding: 10px;
-//   margin-bottom: 10px;
-//   background: #d3d3d3;
-
-//   .cart-item {
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     gap: 10px;
-
-//     .cart-item-header {
-//       display: grid;
-//       grid-template-columns: 1fr 4fr auto;
-//       align-items: center;
-
-//       .cart-item-image {
-//         width: 100%;
-//         max-width: 50px;
-//         height: auto;
-//       }
-
-//       p {
-//         text-align: left;
-//         margin: 0 10px;
-//       }
-
-//       .remove-button {
-//         background-color: red;
-//         color: white;
-//         border: none;
-//         padding: 5px 10px;
-//         cursor: pointer;
-//       }
-//     }
-
-//     .cart-item-body {
-//       display: grid;
-//       grid-template-columns: 1fr 1fr 1fr;
-//       gap: 10px;
-//       align-items: center;
-
-//       p,
-//       input {
-//         text-align: center;
-//       }
-
-//       input {
-//         width: 50px;
-//         height: 20px;
-//         align-items: center;
-//       }
-//     }
-//   }
-
-//   @media (max-width: 768px) {
-//     .cart-item {
-//       .cart-item-header {
-//         grid-template-columns: 1fr 4fr auto;
-
-//         .cart-item-image {
-//           max-width: 40px;
-//         }
-
-//         p {
-//           font-size: 14px;
-//         }
-//       }
-
-//       .cart-item-body {
-//         grid-template-columns: 1fr 1fr 1fr;
-//         gap: 5px;
-//         justify-items: start;
-
-//         p,
-//         input {
-//           font-size: 14px;
-//         }
-
-//         input {
-//           justify-self: center;
-//         }
-
-//         .priceCalc {
-//           justify-self: center;
-//         }
-//       }
-//     }
-//   }
-
-//   @media (max-width: 480px) {
-//     .cart-item {
-//       .cart-item-header {
-//         grid-template-columns: 1fr 4fr auto;
-
-//         p {
-//           font-size: 12px;
-//         }
-
-//         .remove-button {
-//           font-size: 12px;
-//           padding: 3px 5px;
-//         }
-//       }
-
-//       .cart-item-body {
-//         grid-template-columns: 1fr 1fr 1fr;
-//         gap: 5px;
-//         justify-items: center;
-
-//         p,
-//         input {
-//           font-size: 12px;
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export const CartItemRow = styled.div`
-  /* display: flex;
-  flex-grow: 1;
-  justify-content: space-between;
-  flex-wrap: wrap; */
-
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
 
-  background: #ededed;
-  padding: 20px;
+  .produktName,
+  .itemPrice,
+  .dostupnost,
+  .priceCalc,
+  .quantityControlWrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 
   .produktName {
-    display: flex;
-    //flex-grow: 1;
-    align-items: center;
-    gap: 20px;
-    order: 1;
-
-    padding: 10px 0;
-    p {
-      //white-space: nowrap;
-      max-width: 200px;
-      //overflow: hidden;
-      font-size: 12px;
-      //text-overflow: ellipsis;
+    flex-direction: column;
+    img {
+      max-width: 100px;
+      margin-bottom: 0.5rem;
     }
-  }
-
-  .wrapper {
-    display: flex;
-    flex-grow: 1;
-    order: 3;
-    justify-content: space-evenly;
-
-    input {
-      width: 40px;
-    }
-  }
-
-  .quantityAndPrice {
-    display: flex;
-    gap: 20px;
-    font-size: 12px;
-    //order: 4;
   }
 
   .dostupnost {
-    font-size: 12px;
-    //order: 3;
+    color: green;
   }
 
   .removeFromCart {
-    order: 2;
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      border: none;
+      padding: 2px;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+
+    .removeFromCart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .produktName,
+    .dostupnost,
+    .itemPrice,
+    .priceCalc,
+    .quantityControlWrapper {
+      align-items: center;
+      text-align: left;
+    }
+
+    .itemPrice::before {
+      content: "Cena za kus: ";
+      margin-right: 10px;
+      font-weight: bold;
+      display: block;
+    }
+
+    .priceCalc::before {
+      content: "Cena Vc. DPH: ";
+      margin-right: 10px;
+      font-weight: bold;
+      display: block;
+    }
+  }
+`;
+
+export const AllItems = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const QuantityControl = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-left: none;
+  }
+
+  button {
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+
+    &:first-of-type {
+      border-right: none;
+    }
+
+    &:last-of-type {
+      border-left: none;
+    }
+  }
+
+  .quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
   }
 `;
