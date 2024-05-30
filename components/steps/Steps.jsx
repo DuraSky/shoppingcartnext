@@ -1,12 +1,29 @@
-import React from "react";
-import { CartSteps } from "./stepsStyle";
+import React, { useState } from "react";
+import { CartSteps, StepContainer, Step, Line } from "./stepsStyle";
 
 export const Steps = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+
+  const steps = ["Nákupní košík", "Doprava a platba", "Objednávka odeslána"];
+
+  const handleStepClick = (step) => {
+    setCurrentStep(step);
+  };
+
   return (
     <CartSteps>
-      <p className="active">1. Nákupní košík</p>
-      <p>2. Doprava a platba</p>
-      <p>3. Kontaktní údaje</p>
+      {steps.map((label, index) => (
+        <StepContainer key={index}>
+          <Line active={currentStep > index} />
+          <Step
+            active={currentStep >= index + 1}
+            onClick={() => handleStepClick(index + 1)}
+          >
+            <span>{index + 1}</span>
+          </Step>
+          <p className={currentStep === index + 1 ? "active" : ""}>{label}</p>
+        </StepContainer>
+      ))}
     </CartSteps>
   );
 };

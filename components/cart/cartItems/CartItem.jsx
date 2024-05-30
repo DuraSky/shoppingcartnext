@@ -19,27 +19,53 @@ const CartItem = ({ item, index }) => {
   };
 
   return (
-    <>
-      <img src={item.img} alt="test" />
-      <p>{item.name}</p>
+    // <div className="cart-item">
+    //   <div className="cart-item-header">
+    //     <img src={item.img} alt={item.name} />
+    //     <p>{item.name}</p>
+    //     <button type="button" onClick={handleRemove} className="remove-button">
+    //       X
+    //     </button>
+    //   </div>
+    //   <div className="cart-item-body">
+    //     <p>{item.dostupnost}</p>
+    //     <input
+    //       type="number"
+    //       value={item.quantity}
+    //       onChange={handleQuantityChange}
+    //       className="quantity-input"
+    //     />
+    //     {/* <p>{item.price} Kč</p> */}
+    //     <p className="priceCalc">{item.quantity * item.price} Kč</p>
+    //   </div>
+    // </div>
+    //);
 
-      {/* <p>{item.dostupnost}</p> */}
-      <p>placeholder</p>
-      <input
-        type="number"
-        value={item.quantity}
-        onChange={handleQuantityChange}
-        className="w-12 text-center border border-gray-300 rounded"
-      />
-      <p>{item.quantity}</p>
-      <p>{item.quantity * item.price}</p>
-      <button
-        type="button"
-        onClick={handleRemove}
-        className="bg-red-500 hover:bg-red-700 text-white font-bold px-1 rounded"
-      >
-        X
-      </button>
+    <>
+      <div className="produktName">
+        <img src={item.img} alt={item.name} />
+        <p>{item.name}</p>
+      </div>
+      <div className="wrapper">
+        <div className="dostupnost">
+          <p>{item.dostupnost}</p>
+        </div>
+        <div className="quantityAndPrice">
+          <input
+            type="number"
+            value={item.quantity}
+            onChange={handleQuantityChange}
+            className="quantity-input"
+          />
+          <p className="priceCalc">{item.quantity * item.price} Kč</p>
+        </div>
+      </div>
+
+      <div className="removeFromCart">
+        <button type="button" onClick={handleRemove} className="remove-button">
+          X
+        </button>
+      </div>
     </>
   );
 };
