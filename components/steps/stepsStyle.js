@@ -1,15 +1,14 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export const CartSteps = styled.div`
-  //background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1px auto;
   margin-bottom: 0px;
   padding: 30px 0px;
-
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.maxWidth};
 `;
 
 export const StepContainer = styled.div`
@@ -23,16 +22,13 @@ export const StepContainer = styled.div`
   &:not(:last-child)::after {
     content: "";
     height: 2px;
-    background: #ddd;
+    background: ${({ active }) => (active ? "#000" : "#ddd")};
     position: absolute;
     width: calc(100% - 60px);
     top: 15px;
     left: calc(50% + 30px);
     z-index: -1;
-  }
-
-  &.active::after {
-    background: #000;
+    transition: background 0.3s ease;
   }
 
   @media (max-width: 480px) {
@@ -42,14 +38,15 @@ export const StepContainer = styled.div`
   }
 `;
 
-export const Step = styled.div`
-  width: 30px;
-  height: 30px;
-  border: 2px solid #ddd;
-  border-radius: 50%;
+export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none; /* Remove underline */
+  width: 30px;
+  height: 30px;
+  //border: 2px solid #ddd;
+  border-radius: 50%;
   cursor: pointer;
   background-color: white;
   z-index: 1;
@@ -58,21 +55,18 @@ export const Step = styled.div`
     active &&
     `
     border-color: #000;
-    background-color: #000;
-    color: white;
+    // background-color: gray;
+    //color: black;
   `}
 
-  span {
+  img {
+    width: 30px;
     display: block;
+    cursor: pointer;
   }
-`;
 
-export const Line = styled.div`
-  height: 2px;
-  background-color: ${({ active }) => (active ? "#000" : "#ddd")};
-  width: 100%;
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
+  span {
+    display: none;
+    color: inherit; // inherit color from parent
+  }
 `;

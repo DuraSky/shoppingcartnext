@@ -4,6 +4,10 @@ import { ProgressBar } from "./progressBar/ProgressBar";
 import { CartPriceCalc } from "./cartPriceCalc/CartPriceCalc";
 import { DiscountCodeBar } from "./discountCodeBar/DiscountCodeBar";
 import { AllCartItems } from "./cartItems/AllCartItems";
+import { StyledWrapper } from "./cartPriceCalc/cartPriceCalcStyle";
+
+import { StyledNextButton, StyledButtonWrapper } from "../Theme";
+import Link from "next/link";
 
 const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
   const { state } = useContext(CartContext);
@@ -28,20 +32,25 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
   return (
     <>
       <AllCartItems cart={cart} />
-
-      <CartPriceCalc cartTotal={cartTotal} />
-
-      <DiscountCodeBar
-        setShowDiscountForm={setShowDiscountForm}
-        showDiscountForm={showDiscountForm}
-        showDiscountField={showDiscountField}
-        setShowDiscountField={setShowDiscountField}
-        setDiscountCode={setDiscountCode}
-        discountCode={discountCode}
-        handleCheckDiscountCode={checkDiscountCode}
-      />
-
       <ProgressBar cart={cart} />
+
+      <StyledWrapper>
+        <DiscountCodeBar
+          setShowDiscountForm={setShowDiscountForm}
+          showDiscountForm={showDiscountForm}
+          showDiscountField={showDiscountField}
+          setShowDiscountField={setShowDiscountField}
+          setDiscountCode={setDiscountCode}
+          discountCode={discountCode}
+          handleCheckDiscountCode={checkDiscountCode}
+        />
+        <CartPriceCalc cartTotal={cartTotal} />
+      </StyledWrapper>
+      <StyledButtonWrapper>
+        <Link href="/?view=shipping" passHref>
+          <StyledNextButton>Přejít na dopravu a platbu ⇨</StyledNextButton>
+        </Link>
+      </StyledButtonWrapper>
     </>
   );
 };

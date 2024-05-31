@@ -4,7 +4,9 @@ export const Wrapper = styled.div`
   width: 100%;
 
   @media (min-width: 1200px) {
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    max-width: ${({ theme }) => theme.maxWidth};
+
     margin: 0 auto;
   }
 `;

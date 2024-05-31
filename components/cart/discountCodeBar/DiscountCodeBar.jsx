@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledDiscountBar } from "./discountCodeBarStyle";
 
 export const DiscountCodeBar = ({
   showDiscountForm,
@@ -11,7 +12,7 @@ export const DiscountCodeBar = ({
   return (
     <>
       {showDiscountForm && (
-        <div className="discount">
+        <StyledDiscountBar>
           <div>
             <input
               type="checkbox"
@@ -26,18 +27,18 @@ export const DiscountCodeBar = ({
             <div>
               <input
                 type="text"
-                placeholder="hi"
+                placeholder="Slevovy kod"
                 onChange={(e) => setDiscountCode(e.target.value)}
               />
               <button
                 type="button"
                 onClick={() => handleCheckDiscountCode(discountCode)} // Updated to use the renamed prop
               >
-                Pouzit slevu
+                ⇨
               </button>
             </div>
           )}
-        </div>
+        </StyledDiscountBar>
       )}
     </>
   );

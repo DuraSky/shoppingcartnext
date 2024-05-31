@@ -38,8 +38,8 @@ const CartItem = ({ item, index }) => {
   return (
     <>
       <div className="produktName">
-        <img src={item.img} alt={item.name} />
         <p>{item.name}</p>
+        <img src={item.img} alt={item.name} />
       </div>
       <div className="dostupnost">
         <p>{item.dostupnost}</p>

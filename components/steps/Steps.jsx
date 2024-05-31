@@ -1,27 +1,40 @@
-import React, { useState } from "react";
-import { CartSteps, StepContainer, Step, Line } from "./stepsStyle";
+import React from "react";
+import Link from "next/link";
+import { CartSteps, StepContainer, StyledLink } from "./stepsStyle";
 
-export const Steps = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-
-  const steps = ["Nákupní košík", "Doprava a platba", "Objednávka odeslána"];
-
-  const handleStepClick = (step) => {
-    setCurrentStep(step);
-  };
+export const Steps = ({ currentStep }) => {
+  const steps = [
+    {
+      label: "Nákupní košík",
+      view: "cart",
+      iconUrl: "/assets/shopping.png",
+    },
+    {
+      label: "Doprava a platba",
+      view: "shipping",
+      iconUrl: "/assets/truck.png",
+    },
+    {
+      label: "Objednávka odeslána",
+      view: "order",
+      iconUrl: "/assets/checkmark.png",
+    },
+  ];
+  const stepIndex =
+    currentStep === "shipping" ? 1 : currentStep === "order" ? 2 : 0;
 
   return (
     <CartSteps>
-      {steps.map((label, index) => (
-        <StepContainer key={index}>
-          <Line active={currentStep > index} />
-          <Step
-            active={currentStep >= index + 1}
-            onClick={() => handleStepClick(index + 1)}
+      {steps.map((step, index) => (
+        <StepContainer key={index} active={stepIndex > index}>
+          <StyledLink
+            href={`/?view=${step.view}`}
+            passHref
+            active={stepIndex >= index}
           >
-            <span>{index + 1}</span>
-          </Step>
-          <p className={currentStep === index + 1 ? "active" : ""}>{label}</p>
+            <img src={step.iconUrl} alt={step.label} />
+          </StyledLink>
+          <p className={stepIndex === index ? "active" : ""}>{step.label}</p>
         </StepContainer>
       ))}
     </CartSteps>

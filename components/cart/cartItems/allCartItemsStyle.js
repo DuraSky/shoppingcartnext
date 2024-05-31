@@ -4,14 +4,15 @@ export const CartContainer = styled.div`
   width: 100%;
   overflow-x: auto;
   margin: 0 auto;
-  max-width: 1200px;
+  //max-width: 1200px;
+  max-width: ${({ theme }) => theme.maxWidth};
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 `;
 
 export const CartHeaders = styled.div`
   display: flex;
-  background-color: #f1f1f1;
+  background-color: ${({ theme }) => theme.backgroundGrey};
   padding: 1rem;
   border-bottom: 1px solid #ddd;
 
@@ -20,6 +21,7 @@ export const CartHeaders = styled.div`
     text-align: center;
     font-size: 1rem;
     margin: 0;
+    color: ${({ theme }) => theme.fontGrey};
   }
 
   @media (max-width: 768px) {
@@ -30,7 +32,7 @@ export const CartHeaders = styled.div`
 export const CartItemRow = styled.div`
   display: flex;
   padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
 
   .produktName,
   .itemPrice,
@@ -91,15 +93,17 @@ export const CartItemRow = styled.div`
     .itemPrice::before {
       content: "Cena za kus: ";
       margin-right: 10px;
-      font-weight: bold;
+      //font-weight: bold;
       display: block;
+      color: ${({ theme }) => theme.fontGrey};
     }
 
     .priceCalc::before {
       content: "Cena Vc. DPH: ";
       margin-right: 10px;
-      font-weight: bold;
+      //font-weight: bold;
       display: block;
+      color: ${({ theme }) => theme.fontGrey};
     }
   }
 `;
@@ -126,8 +130,9 @@ export const QuantityControl = styled.div`
   button {
     width: 30px;
     height: 30px;
-    background-color: #ccc;
-    border: 1px solid #ccc;
+    background-color: ${({ theme }) => theme.backgroundGrey};
+    // border: 1px solid ${({ theme }) => theme.backgroundGrey};
+    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;

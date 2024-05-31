@@ -6,9 +6,11 @@ import {
   getProgressShipping,
 } from "../../../utils/cartUtil";
 
+import { StyledProgressBar } from "./progressBarStyle";
+
 export const ProgressBar = ({ cart }) => {
   return (
-    <div className="progressBar">
+    <StyledProgressBar>
       <h2>{getFreeShippingMessage(cart)}</h2>
       <div
         className="progress"
@@ -25,8 +27,10 @@ export const ProgressBar = ({ cart }) => {
             color: "white",
           }}
         ></div>
-        <p>{getCartPrice(cart)} / 4500</p>
+        <p style={{ textAlign: "center", marginTop: "3px" }}>
+          {getCartPrice(cart)} / 4500
+        </p>
       </div>
-    </div>
+    </StyledProgressBar>
   );
 };

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Shipping from "./Shipping";
+import PersonalInfo from "../personalInfo/PersonalInfo";
 
 export const ShippingWrapper = ({ payment, setPayment }) => {
   const [toggleShipping, setToggleShipping] = useState(false);
@@ -11,6 +12,8 @@ export const ShippingWrapper = ({ payment, setPayment }) => {
     <>
       <h2 onClick={handleToggleShipping}>Doprava</h2>
       {toggleShipping && <Shipping payment={payment} setPayment={setPayment} />}
+
+      <PersonalInfo />
     </>
   );
 };
