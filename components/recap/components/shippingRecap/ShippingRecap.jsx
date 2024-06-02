@@ -7,7 +7,6 @@ export const ShippingRecap = ({
 }) => {
   return (
     <StyledShippingRecap>
-      <h3>Doprava:</h3>
       {selectedShippingOption}
       {selectedShippingPrice}
     </StyledShippingRecap>

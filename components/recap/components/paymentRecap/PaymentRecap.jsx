@@ -7,7 +7,6 @@ export const PaymentRecap = ({
 }) => {
   return (
     <StyledPaymentRecap>
-      <h3>Platba:</h3>
       {selectedPaymentOption}
       {selectedPaymentOptionPrice}
     </StyledPaymentRecap>

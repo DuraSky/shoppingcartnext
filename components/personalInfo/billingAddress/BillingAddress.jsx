@@ -3,7 +3,7 @@ import React from "react";
 export const BillingAddress = ({ register, errors }) => {
   return (
     <div>
-      <h2>Fakturační a dodací adresa</h2>
+      {/* <h2>Fakturační a dodací adresa</h2> */}
       <div>
         <label>Jméno</label>
         <input

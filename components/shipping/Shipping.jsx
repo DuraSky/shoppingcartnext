@@ -26,7 +26,7 @@ const Shipping = ({ payment, setPayment }) => {
         <ShippingPriceOptions />
       </div>
 
-      <Recap />
+      {/* <Recap /> */}
     </>
   );
 };

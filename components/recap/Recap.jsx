@@ -27,23 +27,37 @@ const Recap = () => {
       cartTotal + selectedPaymentOptionPrice + selectedShippingPrice;
     return result;
   };
+
   return (
     <StyledRecap>
       <h2>Rekaputilace objednavky</h2>
+      <div className="borderRecap"></div>
 
       <ItemListing cart={cart} />
+      <div className="borderRecap"></div>
 
-      <ShippingRecap
-        selectedShippingOption={selectedShippingOption}
-        selectedShippingPrice={selectedShippingPrice}
-      />
+      <div className="recapOption">
+        <h3>Doprava </h3>
+        <ShippingRecap
+          selectedShippingOption={selectedShippingOption}
+          selectedShippingPrice={selectedShippingPrice}
+        />
+      </div>
+      <div className="borderRecap"></div>
 
-      <PaymentRecap
-        selectedPaymentOption={selectedPaymentOption}
-        selectedPaymentOptionPrice={selectedPaymentOptionPrice}
-      />
+      <div className="recapOption">
+        <h3>Platba</h3>
+        <PaymentRecap
+          selectedPaymentOption={selectedPaymentOption}
+          selectedPaymentOptionPrice={selectedPaymentOptionPrice}
+        />
+      </div>
+      <div className="borderRecap"></div>
 
-      <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
+      <div className="recapOption">
+        <h3>Celkem</h3>
+        <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
+      </div>
     </StyledRecap>
   );
 };

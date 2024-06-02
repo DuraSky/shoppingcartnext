@@ -105,7 +105,7 @@ const PersonalInfo = () => {
 
       {showComment && <Comment register={register} errors={errors} />}
 
-      <Recap />
+      {/* <Recap /> */}
 
       <button type="submit">Odeslat</button>
     </form>
