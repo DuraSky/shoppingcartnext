@@ -1,11 +1,19 @@
+// shippingWrapperStyle.js
 import styled from "styled-components";
 
 export const ShippingPageLayout = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
 
+  .recapWrapper {
+    order: 1;
+    width: 100%;
+    max-width: 600px;
+  }
+
   .allContent {
+    order: 2;
     width: 100%;
     max-width: 600px;
     display: flex;
@@ -21,22 +29,44 @@ export const ShippingPageLayout = styled.div`
     }
   }
 
+  .odeslatObjednavku {
+    order: 3;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: minmax(auto, 600px) 1fr;
+    //grid-template-columns: minmax(auto, 600px) 1fr;
+    grid-template-columns: 1fr 1fr; /* Define two equal columns */
+
     gap: 20px;
     justify-content: center;
     margin: 0 auto;
     max-width: 1200px;
     align-items: flex-start;
 
-    .allContent {
-      margin: 0; /* Remove any auto margin */
-      max-width: 600px; /* Ensure the max-width for allContent */
+    .recapWrapper {
+      order: 2;
     }
 
-    .recapWrapper {
-      max-width: 300px; /* Ensure the max-width for RecapWrapper */
+    .allContent {
+      margin: 0;
+      max-width: 600px;
+      order: 1;
+    }
+
+    .odeslatObjednavku {
+      order: 3;
+      margin-top: 0;
+      grid-column: 2/3; /* Span the entire row */
+      display: flex;
+      justify-content: flex-end;
+
+      padding: 50px;
     }
   }
 `;

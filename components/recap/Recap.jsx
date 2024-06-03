@@ -7,6 +7,9 @@ import { PaymentRecap } from "./components/paymentRecap/PaymentRecap";
 import { CartAndShippingTotal } from "./components/cartAndShippingTotal/CartAndShippingTotal";
 import { StyledRecap } from "./recapStyle";
 
+import { StyledNextButton, StyledButtonWrapper } from "../Theme";
+import Link from "next/link";
+
 const Recap = () => {
   const { state: cartState } = useContext(CartContext);
   const { state: shippingState } = useContext(ShippingContext);

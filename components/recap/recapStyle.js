@@ -26,13 +26,19 @@ export const StyledRecap = styled.div`
     display: flex;
     gap: 10px;
   }
+
+  /* .odeslatObjednavku {
+    display: flex;
+    justify-content: flex-end;
+    
+  } */
 `;
 
 export const StyledRecapMobile = styled.div`
   //display: flex;
 
   h2 {
-    font-size: 16px;
-    font-weight: lighter;
+    //font-size: 16px;
+    //font-weight: lighter;
   }
 `;

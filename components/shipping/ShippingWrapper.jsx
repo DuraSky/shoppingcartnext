@@ -4,6 +4,9 @@ import Shipping from "./Shipping";
 import PersonalInfo from "../personalInfo/PersonalInfo";
 import { ShippingPageLayout } from "./shippingWrapperStyle";
 import RecapWrapper from "../recap/RecapWrapper";
+import { StyledNextButton } from "../Theme";
+import Link from "next/link";
+
 export const ShippingWrapper = ({ payment, setPayment }) => {
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
@@ -18,6 +21,9 @@ export const ShippingWrapper = ({ payment, setPayment }) => {
 
   return (
     <ShippingPageLayout>
+      <div className="recapWrapper">
+        <RecapWrapper />
+      </div>
       <div className="allContent">
         <div className="shippingContent">
           <h2 onClick={handleToggleShipping}>Doprava</h2>
@@ -30,7 +36,11 @@ export const ShippingWrapper = ({ payment, setPayment }) => {
           {toggleInfo && <PersonalInfo />}
         </div>
       </div>
-      <RecapWrapper />
+      <div className="odeslatObjednavku">
+        <Link href="#" passHref>
+          <StyledNextButton>Odeslat Objednavku ⇨</StyledNextButton>
+        </Link>
+      </div>
     </ShippingPageLayout>
   );
 };
