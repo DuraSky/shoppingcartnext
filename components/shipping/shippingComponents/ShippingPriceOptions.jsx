@@ -2,6 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 
+import { StyledPriceOption } from "./shippingPriceOptionStyle";
+
 const ShippingPriceOptions = () => {
   const { state, dispatch } = useContext(ShippingContext);
   const { selectedShippingOptions, selectedPaymentOption } = state;
@@ -17,7 +19,7 @@ const ShippingPriceOptions = () => {
   return (
     <>
       {selectedShippingOptions.map((option, index) => (
-        <div key={index} className="payOption">
+        <StyledPriceOption key={index} className="payOption">
           <label>
             <input
               type="radio"
@@ -29,9 +31,9 @@ const ShippingPriceOptions = () => {
               checked={selectedPaymentOption === option.method}
             />
             <p>{option.method}</p>
-            <p>{option.price}</p>
+            <p>{option.price} Kč</p>
           </label>
-        </div>
+        </StyledPriceOption>
       ))}
     </>
   );

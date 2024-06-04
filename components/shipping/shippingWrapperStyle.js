@@ -5,6 +5,7 @@ export const ShippingPageLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 
   .recapWrapper {
     order: 1;
@@ -20,12 +21,34 @@ export const ShippingPageLayout = styled.div`
     flex-direction: column;
     gap: 10px;
 
+    h2 {
+      //color: ${({ theme }) => theme.fontGrey};
+      font-weight: lighter;
+      font-size: 20px;
+    }
+
+    .arrow {
+      border-bottom: 2px solid #000;
+      border-right: 2px solid #000;
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg) translateY(-50%);
+      transform-origin: right;
+    }
+
     .shippingContent,
+    .priceContent,
     .formContent {
+      position: relative;
       box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-      border-radius: 20px;
-      padding: 10px;
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px inset;
+      border-radius: 50px;
+      padding: 20px;
+
+      cursor: pointer;
     }
   }
 
@@ -41,7 +64,8 @@ export const ShippingPageLayout = styled.div`
   @media (min-width: 768px) {
     display: grid;
     //grid-template-columns: minmax(auto, 600px) 1fr;
-    grid-template-columns: 1fr 1fr; /* Define two equal columns */
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
 
     gap: 20px;
     justify-content: center;
@@ -62,7 +86,7 @@ export const ShippingPageLayout = styled.div`
     .odeslatObjednavku {
       order: 3;
       margin-top: 0;
-      grid-column: 2/3; /* Span the entire row */
+      grid-column: 2/3;
       display: flex;
       justify-content: flex-end;
 

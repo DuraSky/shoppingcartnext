@@ -17,7 +17,7 @@ const RecapMobile = () => {
 
   return (
     <StyledRecapMobile onClick={handleToggleMobileRecap}>
-      <h2>Kosik {cartTotal}</h2>
+      <h2>Košík {cartTotal} Kč</h2>
       {toggleMobileRecap && <ItemListing cart={cart} />}
     </StyledRecapMobile>
   );

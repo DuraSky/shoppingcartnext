@@ -49,17 +49,19 @@ export const shippingLoader = async () => {
 export const apiLoader = async () => {
   console.log("before");
   const response = await fetch(
-    "https://bc22-2001-1ae9-0-3d00-4bee-885-c3a7-9c21.ngrok-free.app/frontapi/v1/cart/products",
+    "https://crappie-enormous-noticeably.ngrok-free.app/frontapi/v1/cart/products",
     {
       method: "GET",
       headers: {
         "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
         //prettier-ignore
-        "Cart": "$2y$10$z1T683Io4eDo0XvaktXsjuX.Rar8BiOXh7ytQ8EJw8jurOd4xLeNK",
+        "Cart": "$2y$10$5DEM8nkRegzpTjjW.sumAOKNLnO3vJlwcFXgmhsEjaMKYD1nz5Ktu",
+        accept: "*/*",
       },
       mode: "cors",
     }
   );
+  // console.log("in apiloader", response.json());
 
   if (!response.ok) {
     const errorText = await response.text();
@@ -68,5 +70,6 @@ export const apiLoader = async () => {
   }
 
   const data = await response.json();
+  //console.log("in apiloader", response.json());
   return data;
 };

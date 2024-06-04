@@ -12,10 +12,10 @@ export const ItemListing = ({ cart }) => {
               <p>{item.name}</p>
               <div className="itemListingQuantity">
                 <p>{item.quantity}x</p>
-                <p>{item.price * item.quantity} Kč</p>
+                <p>{item.price} Kč </p>
               </div>
             </div>
-            <p className="listingPrice">{item.price} Kč</p>
+            <p className="listingPrice"> {item.price * item.quantity} Kč</p>
           </StyledProductRecap>
         );
       })}

@@ -2,13 +2,15 @@ import React from "react";
 import { ShippingContext } from "../ShippingProvider";
 import { useContext } from "react";
 
+import { StyledShippingMethod } from "./shippingOptionMethodStyle";
+
 export const ShippingOptionMethod = ({ methods, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
   const { selectedShippingOption } = state;
   return (
     <>
       {methods.map((method, index) => (
-        <div key={index} className="shippingMethod">
+        <StyledShippingMethod key={index}>
           <label>
             <input
               type="radio"
@@ -18,10 +20,12 @@ export const ShippingOptionMethod = ({ methods, onSelectMethod }) => {
               checked={selectedShippingOption === method.name}
             />
             <p>{method.name}</p>
-            <p>{method.price}</p>
-            <p>{method.canShipDate}</p>
+            <p>
+              <span>{method.canShipDate}</span>
+            </p>
+            <p>{method.price} Kč</p>
           </label>
-        </div>
+        </StyledShippingMethod>
       ))}
     </>
   );

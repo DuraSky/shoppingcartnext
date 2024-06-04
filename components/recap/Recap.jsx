@@ -57,7 +57,7 @@ const Recap = () => {
       </div>
       <div className="borderRecap"></div>
 
-      <div className="recapOption">
+      <div className="recapOption final">
         <h3>Celkem</h3>
         <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
       </div>

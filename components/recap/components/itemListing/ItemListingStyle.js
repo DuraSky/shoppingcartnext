@@ -5,7 +5,8 @@ export const StyledProductRecap = styled.div`
   align-items: center;
   gap: 15px;
 
-  padding: 15px;
+  padding: 15px 0;
+  //padding: 15px;
 
   .itemListingQuantity {
     display: flex;

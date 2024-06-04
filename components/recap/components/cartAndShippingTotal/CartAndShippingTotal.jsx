@@ -3,6 +3,8 @@ import { StyledCartAndShippingTotal } from "./cartAndShippingTotalStyle";
 
 export const CartAndShippingTotal = ({ cartTotalCalc }) => {
   return (
-    <StyledCartAndShippingTotal>{cartTotalCalc()}</StyledCartAndShippingTotal>
+    <StyledCartAndShippingTotal>
+      {cartTotalCalc()} Kč
+    </StyledCartAndShippingTotal>
   );
 };

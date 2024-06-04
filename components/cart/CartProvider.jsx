@@ -10,8 +10,9 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const initialCart = await cartLoader();
-        // const initialCart = await apiLoader();
+        //const initialCart = await cartLoader();
+        const initialCart = await apiLoader();
+        console.log("inProvider", initialCart);
         if (initialCart) {
           dispatch({ type: actionTypes.SET_CART, payload: initialCart });
         } else {

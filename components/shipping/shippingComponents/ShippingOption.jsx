@@ -51,17 +51,17 @@ const ShippingOption = () => {
   return (
     <>
       {deliveryOptions.map((option, index) => (
-        <div key={index} className="shippingTypes">
-          <h2 onClick={() => toggleOption(index)} style={{ cursor: "pointer" }}>
-            {option.type}
-          </h2>
-          {openOptionIndex === index && (
-            <ShippingOptionMethod
-              methods={option.methods}
-              onSelectMethod={handleMethodSelection}
-            />
-          )}
-        </div>
+        // <div key={index} className="shippingTypes">
+        //   <h2 onClick={() => toggleOption(index)} style={{ cursor: "pointer" }}>
+        //     {option.type}
+        //   </h2>
+        //   {openOptionIndex === index && (
+        <ShippingOptionMethod
+          methods={option.methods}
+          onSelectMethod={handleMethodSelection}
+        />
+        //   )}
+        // </div>
       ))}
     </>
   );

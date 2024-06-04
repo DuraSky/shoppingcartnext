@@ -7,8 +7,8 @@ export const ShippingRecap = ({
 }) => {
   return (
     <StyledShippingRecap>
-      {selectedShippingOption}
-      {selectedShippingPrice}
+      <p>{selectedShippingOption}</p>
+      <p>{selectedShippingPrice} Kč</p>
     </StyledShippingRecap>
   );
 };
