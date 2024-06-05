@@ -52,24 +52,45 @@ export const StyledNextButton = styled.button`
     background: ${({ theme }) => theme.fontGrey};
   }
 
-  /* &::after {
-    right: -10px;
-    background: #5a189a;
-  } */
-
   &:hover::before,
   &:hover::after {
     width: 58%;
   }
+`;
 
-  &:hover span {
-    color: #e0aaff;
-    transition: 0.3s;
+export const StyledBackButton = styled.button`
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid #4caf50;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  z-index: 1;
+  color: #4caf50;
+  background-color: white;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transform: skew(15deg);
+    transition: all 0.5s;
+    overflow: hidden;
+    z-index: -1;
   }
 
-  span {
-    color: #03045e;
-    font-size: 18px;
-    transition: all 0.3s ease-in;
+  &::after {
+    right: -10px;
+    background: ${({ theme }) => theme.fontGrey};
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 58%;
   }
 `;

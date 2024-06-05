@@ -1,50 +1,51 @@
 import React from "react";
+import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
 export const DeliveryAddress = ({ register, errors }) => {
   return (
-    <div>
-      <h2>Dodací adresa</h2>
-      <div>
-        <label>Dodací společnost</label>
-        <input
+    <FormContainer>
+      {/* <h2>Dodací adresa</h2> */}
+      <FormGroup>
+        <Label>Dodací společnost</Label>
+        <Input
           {...register("company", {
             required: "Dodací společnost nesmí být prázdná",
           })}
           type="text"
           placeholder="Dodací společnost"
         />
-        {errors.company && <div>{errors.company.message}</div>}
-      </div>
-      <div>
-        <label>Jméno</label>
-        <input
+        {errors.company && <Error>{errors.company.message}</Error>}
+      </FormGroup>
+      <FormGroup>
+        <Label>Jméno</Label>
+        <Input
           {...register("name", { required: "Jméno nesmí být prázdné" })}
           type="text"
           placeholder="Jméno"
         />
-        {errors.name && <div>{errors.name.message}</div>}
-      </div>
-      <div>
-        <label>Příjmení</label>
-        <input
+        {errors.name && <Error>{errors.name.message}</Error>}
+      </FormGroup>
+      <FormGroup>
+        <Label>Příjmení</Label>
+        <Input
           {...register("surname", { required: "Příjmení nesmí být prázdné" })}
           type="text"
           placeholder="Příjmení"
         />
-        {errors.surname && <div>{errors.surname.message}</div>}
-      </div>
-      <div>
-        <label>Ulice a číslo popisné</label>
-        <input
+        {errors.surname && <Error>{errors.surname.message}</Error>}
+      </FormGroup>
+      <FormGroup>
+        <Label>Ulice a číslo popisné</Label>
+        <Input
           {...register("street", { required: "Ulice nesmí být prázdná" })}
           type="text"
           placeholder="Ulice a číslo popisné"
         />
-        {errors.street && <div>{errors.street.message}</div>}
-      </div>
-      <div>
-        <label>PSČ</label>
-        <input
+        {errors.street && <Error>{errors.street.message}</Error>}
+      </FormGroup>
+      <FormGroup>
+        <Label>PSČ</Label>
+        <Input
           {...register("psc", {
             required: "PSČ nesmí být prázdné",
             pattern: {
@@ -55,27 +56,27 @@ export const DeliveryAddress = ({ register, errors }) => {
           type="text"
           placeholder="PSČ"
         />
-        {errors.psc && <div>{errors.psc.message}</div>}
-      </div>
-      <div>
-        <label>Město</label>
-        <input
+        {errors.psc && <Error>{errors.psc.message}</Error>}
+      </FormGroup>
+      <FormGroup>
+        <Label>Město</Label>
+        <Input
           {...register("town", { required: "Město nesmí být prázdné" })}
           type="text"
           placeholder="Město"
         />
-        {errors.town && <div>{errors.town.message}</div>}
-      </div>
-      <div>
-        <label>Země</label>
-        <input
+        {errors.town && <Error>{errors.town.message}</Error>}
+      </FormGroup>
+      <FormGroup>
+        <Label>Země</Label>
+        <Input
           {...register("country")}
           type="text"
           placeholder="Země"
           value="Česká republika"
           readOnly
         />
-      </div>
-    </div>
+      </FormGroup>
+    </FormContainer>
   );
 };

@@ -61,7 +61,7 @@ const CartItem = ({ item, index }) => {
         </QuantityControl>
       </div>
       <div className="itemPrice">
-        <p>{item.price}</p>
+        <p>{item.price} Kč</p>
       </div>
       <div className="priceCalc">
         <p>{item.quantity * item.price} Kč</p>

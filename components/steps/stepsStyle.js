@@ -19,6 +19,12 @@ export const StepContainer = styled.div`
   flex-grow: 1;
   text-align: center;
 
+  img {
+    width: 30px;
+    display: block;
+    cursor: pointer;
+  }
+
   &:not(:last-child)::after {
     content: "";
     height: 2px;
@@ -58,12 +64,6 @@ export const StyledLink = styled(Link)`
     // background-color: gray;
     //color: black;
   `}
-
-  img {
-    width: 30px;
-    display: block;
-    cursor: pointer;
-  }
 
   span {
     display: none;

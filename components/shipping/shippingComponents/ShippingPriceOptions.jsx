@@ -30,8 +30,9 @@ const ShippingPriceOptions = () => {
               }}
               checked={selectedPaymentOption === option.method}
             />
+            <img src={option.imgUrl} alt="Obrazek platby" />
             <p>{option.method}</p>
-            <p>{option.price} Kč</p>
+            <p className="price">{option.price} Kč</p>
           </label>
         </StyledPriceOption>
       ))}

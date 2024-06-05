@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import Recap from "../recap/Recap";
 import { BillingAddress } from "./billingAddress/BillingAddress";
 import { CompanyAddress } from "./companyAddress/CompanyAddress";
 import { DeliveryAddress } from "./deliveryAddress/DeliveryAddress";
 import { Comment } from "./comment/Comment";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  CheckboxGroup,
+  SubmitButton,
+} from "./personalInfoStyle";
 
-const PersonalInfo = () => {
+const PersonalInfo = React.forwardRef(({ onFormSubmitSuccess }, ref) => {
   const [showDeliveryAddress, setShowDeliveryAddress] = useState(false);
   const [showCompanyAddress, setShowCompanyAddress] = useState(false);
   const [showComment, setShowComment] = useState(false);
@@ -22,7 +30,7 @@ const PersonalInfo = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    return alert("form has been successfully submitted");
+    onFormSubmitSuccess();
   };
 
   const formValues = watch();
@@ -61,55 +69,46 @@ const PersonalInfo = () => {
   }, [showDeliveryAddress, showCompanyAddress, showComment, unregister]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} ref={ref}>
       <BillingAddress register={register} errors={errors} />
-
-      <div>
-        <input
+      <CheckboxGroup>
+        <Input
           type="checkbox"
           id="deliveryAddressCheckbox"
           onChange={(e) => setShowDeliveryAddress(e.target.checked)}
         />
-        <label htmlFor="deliveryAddressCheckbox">
+        <Label htmlFor="deliveryAddressCheckbox">
           Chci zadat dodací adresu
-        </label>
-      </div>
-
+        </Label>
+      </CheckboxGroup>
       {showDeliveryAddress && (
         <DeliveryAddress register={register} errors={errors} />
       )}
-
-      <div>
-        <input
+      <CheckboxGroup>
+        <Input
           type="checkbox"
           id="companyAddressCheckbox"
           onChange={(e) => setShowCompanyAddress(e.target.checked)}
         />
-        <label htmlFor="companyAddressCheckbox">
+        <Label htmlFor="companyAddressCheckbox">
           Chci zadat údaje pro firmu
-        </label>
-      </div>
-
+        </Label>
+      </CheckboxGroup>
       {showCompanyAddress && (
         <CompanyAddress register={register} errors={errors} />
       )}
-
-      <div>
-        <input
+      <CheckboxGroup>
+        <Input
           type="checkbox"
           id="commentCheckbox"
           onChange={(e) => setShowComment(e.target.checked)}
         />
-        <label htmlFor="commentCheckbox">Chci přidat komentář</label>
-      </div>
-
+        <Label htmlFor="commentCheckbox">Chci přidat komentář</Label>
+      </CheckboxGroup>
       {showComment && <Comment register={register} errors={errors} />}
-
-      {/* <Recap /> */}
-
-      <button type="submit">Odeslat</button>
-    </form>
+      {/* //<SubmitButton type="submit">Odeslat</SubmitButton> */}
+    </Form>
   );
-};
+});
 
 export default PersonalInfo;

@@ -19,11 +19,14 @@ export const ShippingOptionMethod = ({ methods, onSelectMethod }) => {
               onChange={() => onSelectMethod(method)}
               checked={selectedShippingOption === method.name}
             />
-            <p>{method.name}</p>
-            <p>
-              <span>{method.canShipDate}</span>
-            </p>
-            <p>{method.price} Kč</p>
+            <img src={method.imgUrl} alt={method.name} />
+            <div>
+              <p>{method.name}</p>
+              <p>
+                <span>{method.canShipDate}</span>
+              </p>
+            </div>
+            <p className="price">{method.price} Kč</p>
           </label>
         </StyledShippingMethod>
       ))}

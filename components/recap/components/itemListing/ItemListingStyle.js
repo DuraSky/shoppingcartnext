@@ -11,6 +11,7 @@ export const StyledProductRecap = styled.div`
   .itemListingQuantity {
     display: flex;
     gap: 10px;
+    font-size: 14px;
 
     color: ${({ theme }) => theme.fontGrey};
   }

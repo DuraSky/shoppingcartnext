@@ -16,24 +16,29 @@ export const Steps = ({ currentStep }) => {
     },
     {
       label: "Objednávka odeslána",
-      view: "order",
+      view: "thankyou",
       iconUrl: "/assets/checkmark.png",
     },
   ];
+
   const stepIndex =
-    currentStep === "shipping" ? 1 : currentStep === "order" ? 2 : 0;
+    currentStep === "shipping" ? 1 : currentStep === "thankyou" ? 2 : 0;
 
   return (
     <CartSteps>
       {steps.map((step, index) => (
         <StepContainer key={index} active={stepIndex > index}>
-          <StyledLink
-            href={`/?view=${step.view}`}
-            passHref
-            active={stepIndex >= index}
-          >
+          {step.view !== "thankyou" ? (
+            <StyledLink
+              href={`/?view=${step.view}`}
+              passHref
+              active={stepIndex >= index}
+            >
+              <img src={step.iconUrl} alt={step.label} />
+            </StyledLink>
+          ) : (
             <img src={step.iconUrl} alt={step.label} />
-          </StyledLink>
+          )}
           <p className={stepIndex === index ? "active" : ""}>{step.label}</p>
         </StepContainer>
       ))}

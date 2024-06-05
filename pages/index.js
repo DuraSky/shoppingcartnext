@@ -11,8 +11,10 @@ import { theme } from "../components/Theme";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+import { ThankYou } from "../components/thankyouPage/ThankYou";
+
 const App = () => {
-  const [payment, setPayment] = useState("");
+  // const [payment, setPayment] = useState("");
   const [showDiscountForm, setShowDiscountForm] = useState(true);
   const router = useRouter();
   const { view } = router.query;
@@ -30,13 +32,15 @@ const App = () => {
           <GlobalStyle />
           <Header currentStep={view} />
           {view === "shipping" ? (
-            <ShippingWrapper payment={payment} setPayment={setPayment} />
+            <ShippingWrapper />
+          ) : view === "thankyou" ? (
+            <ThankYou />
           ) : (
             <ShoppingCart
               showDiscountForm={showDiscountForm}
               setShowDiscountForm={setShowDiscountForm}
-              payment={payment}
-              setPayment={setPayment}
+              // payment={payment}
+              // setPayment={setPayment}
             />
           )}
           {/* <PersonalInfo /> */}

@@ -1,10 +1,16 @@
 import React from "react";
+import { TextArea, FormGroup, Label } from "../formStyles";
 
-export const Comment = () => {
+export const Comment = ({ register }) => {
   return (
-    <textarea
-      name="comment"
-      placeholder="Komentar nebo doplneni zdroju"
-    ></textarea>
+    <FormGroup>
+      <Label htmlFor="comment">Komentar nebo doplneni zdroju</Label>
+      <TextArea
+        id="comment"
+        name="comment"
+        placeholder="Komentar nebo doplneni zdroju"
+        {...register("comment")}
+      ></TextArea>
+    </FormGroup>
   );
 };

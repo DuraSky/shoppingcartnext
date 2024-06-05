@@ -6,6 +6,7 @@ export const ShippingPageLayout = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  //position: relative;
 
   .recapWrapper {
     order: 1;
@@ -21,22 +22,27 @@ export const ShippingPageLayout = styled.div`
     flex-direction: column;
     gap: 10px;
 
-    h2 {
-      //color: ${({ theme }) => theme.fontGrey};
-      font-weight: lighter;
-      font-size: 20px;
-    }
+    .header {
+      //background-color: red;
+      padding: 20px;
 
-    .arrow {
-      border-bottom: 2px solid #000;
-      border-right: 2px solid #000;
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      width: 10px;
-      height: 10px;
-      transform: rotate(45deg) translateY(-50%);
-      transform-origin: right;
+      h2 {
+        //color: ${({ theme }) => theme.fontGrey};
+        font-weight: lighter;
+        font-size: 20px;
+      }
+
+      .arrow {
+        border-bottom: 2px solid #000;
+        border-right: 2px solid #000;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg) translateY(-50%);
+        transform-origin: right;
+      }
     }
 
     .shippingContent,
@@ -46,19 +52,20 @@ export const ShippingPageLayout = styled.div`
       box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
         rgba(60, 64, 67, 0.15) 0px 1px 3px 1px inset;
       border-radius: 50px;
-      padding: 20px;
+      //padding: 20px;
 
       cursor: pointer;
     }
   }
 
-  .odeslatObjednavku {
+  .pageControl {
     order: 3;
     width: 100%;
     max-width: 600px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
+    //gap: 10px;
   }
 
   @media (min-width: 768px) {
@@ -83,14 +90,18 @@ export const ShippingPageLayout = styled.div`
       order: 1;
     }
 
-    .odeslatObjednavku {
+    .pageControl {
       order: 3;
       margin-top: 0;
       grid-column: 2/3;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      padding: 30px;
 
-      padding: 50px;
+      //position: absolute;
+      //top: 400px;
+
+      //padding: 50px;
     }
   }
 `;

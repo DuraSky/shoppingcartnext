@@ -7,8 +7,17 @@ export const PaymentRecap = ({
 }) => {
   return (
     <StyledPaymentRecap>
-      <p>{selectedPaymentOption} </p>
-      <p>{selectedPaymentOptionPrice} Kč</p>
+      <p>
+        {selectedPaymentOption
+          ? selectedPaymentOption
+          : "Platba nebyla vybrana"}
+      </p>
+      <p>
+        {selectedPaymentOptionPrice !== undefined &&
+        selectedPaymentOptionPrice !== null
+          ? `${selectedPaymentOptionPrice} Kč`
+          : ""}
+      </p>
     </StyledPaymentRecap>
   );
 };
