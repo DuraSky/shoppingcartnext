@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
+import Image from "next/image";
 
 import { StyledPriceOption } from "./shippingPriceOptionStyle";
 
@@ -30,7 +31,13 @@ const ShippingPriceOptions = () => {
               }}
               checked={selectedPaymentOption === option.method}
             />
-            <img src={option.imgUrl} alt="Obrazek platby" />
+            <Image
+              src={option.imgUrl}
+              alt="Obrazek platby"
+              width={100}
+              height={100}
+              layout="intrinsic"
+            />
             <p>{option.method}</p>
             <p className="price">{option.price} Kč</p>
           </label>

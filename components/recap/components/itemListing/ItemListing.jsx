@@ -1,5 +1,6 @@
 import React from "react";
 import { StyledProductRecap } from "./ItemListingStyle";
+import Image from "next/image";
 
 export const ItemListing = ({ cart }) => {
   return (
@@ -7,7 +8,13 @@ export const ItemListing = ({ cart }) => {
       {cart.map((item, index) => {
         return (
           <StyledProductRecap key={index}>
-            <img src={item.img} alt={item.name} />
+            <Image
+              src={item.img}
+              alt={item.name}
+              width={100}
+              height={100}
+              layout="intrinsic"
+            />
             <div>
               <p>{item.name}</p>
               <div className="itemListingQuantity">

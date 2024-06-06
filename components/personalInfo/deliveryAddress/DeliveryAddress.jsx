@@ -1,7 +1,7 @@
 import React from "react";
 import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
-export const DeliveryAddress = ({ register, errors }) => {
+export const DeliveryAddress = ({ register, errors, trigger }) => {
   return (
     <FormContainer>
       {/* <h2>Dodací adresa</h2> */}
@@ -10,6 +10,7 @@ export const DeliveryAddress = ({ register, errors }) => {
         <Input
           {...register("company", {
             required: "Dodací společnost nesmí být prázdná",
+            onChange: () => trigger("name"), // Trigger validation on change
           })}
           type="text"
           placeholder="Dodací společnost"
@@ -19,7 +20,10 @@ export const DeliveryAddress = ({ register, errors }) => {
       <FormGroup>
         <Label>Jméno</Label>
         <Input
-          {...register("name", { required: "Jméno nesmí být prázdné" })}
+          {...register("name", {
+            required: "Jméno nesmí být prázdné",
+            onChange: () => trigger("name"), // Trigger validation on change
+          })}
           type="text"
           placeholder="Jméno"
         />
@@ -28,7 +32,10 @@ export const DeliveryAddress = ({ register, errors }) => {
       <FormGroup>
         <Label>Příjmení</Label>
         <Input
-          {...register("surname", { required: "Příjmení nesmí být prázdné" })}
+          {...register("surname", {
+            required: "Příjmení nesmí být prázdné",
+            onChange: () => trigger("name"), // Trigger validation on change
+          })}
           type="text"
           placeholder="Příjmení"
         />
@@ -37,7 +44,10 @@ export const DeliveryAddress = ({ register, errors }) => {
       <FormGroup>
         <Label>Ulice a číslo popisné</Label>
         <Input
-          {...register("street", { required: "Ulice nesmí být prázdná" })}
+          {...register("street", {
+            required: "Ulice nesmí být prázdná",
+            onChange: () => trigger("name"), // Trigger validation on change
+          })}
           type="text"
           placeholder="Ulice a číslo popisné"
         />
@@ -48,6 +58,8 @@ export const DeliveryAddress = ({ register, errors }) => {
         <Input
           {...register("psc", {
             required: "PSČ nesmí být prázdné",
+            onChange: () => trigger("name"), // Trigger validation on change
+
             pattern: {
               value: /^[0-9]{5}$/,
               message: "PSČ musí být pětimístné číslo",
@@ -61,7 +73,10 @@ export const DeliveryAddress = ({ register, errors }) => {
       <FormGroup>
         <Label>Město</Label>
         <Input
-          {...register("town", { required: "Město nesmí být prázdné" })}
+          {...register("town", {
+            required: "Město nesmí být prázdné",
+            onChange: () => trigger("name"), // Trigger validation on change
+          })}
           type="text"
           placeholder="Město"
         />

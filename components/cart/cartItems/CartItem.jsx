@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext, actionTypes } from "../CartProvider";
 import { QuantityControl } from "./allCartItemsStyle";
+import Image from "next/image";
 
 const CartItem = ({ item, index }) => {
   const { dispatch } = useContext(CartContext);
@@ -39,24 +40,31 @@ const CartItem = ({ item, index }) => {
     <>
       <div className="produktName">
         <p>{item.name}</p>
-        <img src={item.img} alt={item.name} />
+        <Image
+          src={item.img}
+          alt={item.name}
+          width={100}
+          height={100}
+          layout="responsive"
+        />
       </div>
       <div className="dostupnost">
         <p>{item.dostupnost}</p>
       </div>
       <div className="quantityControlWrapper">
         <QuantityControl>
-          <button type="button" onClick={handleIncrement}>
-            +
-          </button>{" "}
+          <button type="button" onClick={handleDecrement}>
+            -
+          </button>
           <input
             type="text"
             value={item.quantity}
             onChange={handleQuantityChange}
             className="quantity-input"
           />
-          <button type="button" onClick={handleDecrement}>
-            -
+
+          <button type="button" onClick={handleIncrement}>
+            +
           </button>
         </QuantityControl>
       </div>

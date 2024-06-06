@@ -1,6 +1,7 @@
 import React from "react";
 import { ShippingContext } from "../ShippingProvider";
 import { useContext } from "react";
+import Image from "next/image";
 
 import { StyledShippingMethod } from "./shippingOptionMethodStyle";
 
@@ -19,7 +20,13 @@ export const ShippingOptionMethod = ({ methods, onSelectMethod }) => {
               onChange={() => onSelectMethod(method)}
               checked={selectedShippingOption === method.name}
             />
-            <img src={method.imgUrl} alt={method.name} />
+            <Image
+              src={method.imgUrl}
+              alt={method.name}
+              layout="intrinsic"
+              width={100}
+              height={100}
+            />
             <div>
               <p>{method.name}</p>
               <p>

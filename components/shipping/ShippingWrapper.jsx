@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { ShippingContext } from "./ShippingProvider";
 import { useRouter } from "next/router";
 import PersonalInfo from "../personalInfo/PersonalInfo";
@@ -8,12 +8,14 @@ import { StyledNextButton, StyledBackButton } from "../Theme";
 import ShippingOption from "./shippingComponents/ShippingOption";
 import ShippingPriceOptions from "./shippingComponents/ShippingPriceOptions";
 
-export const ShippingWrapper = () => {
+export const ShippingWrapper = ({ formErrors, setFormErrors }) => {
   const { state, dispatch } = useContext(ShippingContext);
   const { selectedPaymentOption } = state;
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
   const [togglePriceOption, setTogglePriceOption] = useState(false);
+  const [enableButton, setEnableButton] = useState(true);
+  const [buttonText, setButtonText] = useState("Odeslat objednavku");
 
   const formRef = useRef(null);
   const router = useRouter();
@@ -31,7 +33,11 @@ export const ShippingWrapper = () => {
   };
 
   const handleSubmit = () => {
-    console.log("in handleSubmit", selectedPaymentOption === null);
+    if (selectedPaymentOption === null) {
+      setTogglePriceOption(true);
+      return;
+    }
+
     if (formRef.current) {
       formRef.current.dispatchEvent(
         new Event("submit", { cancelable: true, bubbles: true })
@@ -39,11 +45,32 @@ export const ShippingWrapper = () => {
     }
   };
 
+  useEffect(() => {
+    console.log("in useEffect", formErrors);
+  }, [formErrors]);
+
+  useEffect(() => {
+    if (selectedPaymentOption === null) {
+      setButtonText("Prosim zvolte platbu");
+    } else if (Object.keys(formErrors).length > 0) {
+      const firstErrorKey = Object.keys(formErrors)[0];
+      setButtonText(formErrors[firstErrorKey].message);
+    } else {
+      setButtonText("Odeslat objednavku");
+    }
+  }, [selectedPaymentOption, formErrors]);
+
   const handleFormSubmitSuccess = () => {
+    setFormErrors({}); // Clear errors on successful submission
+
     router.push({
       pathname: router.pathname,
       query: { view: "thankyou" },
     });
+  };
+
+  const handleFormError = (errors) => {
+    setFormErrors(errors);
   };
 
   const handleGoBack = () => {
@@ -98,6 +125,7 @@ export const ShippingWrapper = () => {
             <PersonalInfo
               ref={formRef}
               onFormSubmitSuccess={handleFormSubmitSuccess}
+              onError={handleFormError}
             />
           </div>
         </div>
@@ -107,9 +135,7 @@ export const ShippingWrapper = () => {
         <StyledBackButton onClick={handleGoBack}>
           ⇦ Zpet do kosiku
         </StyledBackButton>
-        <StyledNextButton onClick={handleSubmit}>
-          Odeslat Objednavku ⇨
-        </StyledNextButton>
+        <StyledNextButton onClick={handleSubmit}>{buttonText}</StyledNextButton>
       </div>
     </ShippingPageLayout>
   );

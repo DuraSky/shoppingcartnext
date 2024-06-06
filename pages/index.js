@@ -16,6 +16,8 @@ import { ThankYou } from "../components/thankyouPage/ThankYou";
 const App = () => {
   // const [payment, setPayment] = useState("");
   const [showDiscountForm, setShowDiscountForm] = useState(true);
+  const [formErrors, setFormErrors] = useState({});
+
   const router = useRouter();
   const { view } = router.query;
 
@@ -32,7 +34,10 @@ const App = () => {
           <GlobalStyle />
           <Header currentStep={view} />
           {view === "shipping" ? (
-            <ShippingWrapper />
+            <ShippingWrapper
+              formErrors={formErrors}
+              setFormErrors={setFormErrors}
+            />
           ) : view === "thankyou" ? (
             <ThankYou />
           ) : (
