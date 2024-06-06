@@ -4,13 +4,12 @@ import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 export const DeliveryAddress = ({ register, errors, trigger }) => {
   return (
     <FormContainer>
-      {/* <h2>Dodací adresa</h2> */}
       <FormGroup>
         <Label>Dodací společnost</Label>
         <Input
           {...register("company", {
             required: "Dodací společnost nesmí být prázdná",
-            onChange: () => trigger("name"), // Trigger validation on change
+            onBlur: () => trigger("company"), // Trigger validation on blur
           })}
           type="text"
           placeholder="Dodací společnost"
@@ -22,7 +21,7 @@ export const DeliveryAddress = ({ register, errors, trigger }) => {
         <Input
           {...register("name", {
             required: "Jméno nesmí být prázdné",
-            onChange: () => trigger("name"), // Trigger validation on change
+            onBlur: () => trigger("name"), // Trigger validation on blur
           })}
           type="text"
           placeholder="Jméno"
@@ -34,7 +33,7 @@ export const DeliveryAddress = ({ register, errors, trigger }) => {
         <Input
           {...register("surname", {
             required: "Příjmení nesmí být prázdné",
-            onChange: () => trigger("name"), // Trigger validation on change
+            onBlur: () => trigger("surname"), // Trigger validation on blur
           })}
           type="text"
           placeholder="Příjmení"
@@ -46,7 +45,7 @@ export const DeliveryAddress = ({ register, errors, trigger }) => {
         <Input
           {...register("street", {
             required: "Ulice nesmí být prázdná",
-            onChange: () => trigger("name"), // Trigger validation on change
+            onBlur: () => trigger("street"), // Trigger validation on blur
           })}
           type="text"
           placeholder="Ulice a číslo popisné"
@@ -58,8 +57,7 @@ export const DeliveryAddress = ({ register, errors, trigger }) => {
         <Input
           {...register("psc", {
             required: "PSČ nesmí být prázdné",
-            onChange: () => trigger("name"), // Trigger validation on change
-
+            onBlur: () => trigger("psc"), // Trigger validation on blur
             pattern: {
               value: /^[0-9]{5}$/,
               message: "PSČ musí být pětimístné číslo",
@@ -75,7 +73,7 @@ export const DeliveryAddress = ({ register, errors, trigger }) => {
         <Input
           {...register("town", {
             required: "Město nesmí být prázdné",
-            onChange: () => trigger("name"), // Trigger validation on change
+            onBlur: () => trigger("town"), // Trigger validation on blur
           })}
           type="text"
           placeholder="Město"

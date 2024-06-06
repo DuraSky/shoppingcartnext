@@ -29,25 +29,32 @@ const PersonalInfo = React.forwardRef(
     };
 
     useEffect(() => {
+      //console.log("in personalInfo", { errors });
       onError(errors);
-    }, [errors, onError]);
+    }, [onError, errors]);
 
-    const formValues = watch();
+    // Function to handle blur event and update parent with current errors
+    const handleBlur = async (fieldName) => {
+      await trigger(fieldName);
+      onError(errors);
+    };
 
-    useEffect(() => {
-      const savedFormData = localStorage.getItem("formData");
-      if (savedFormData) {
-        const parsedFormData = JSON.parse(savedFormData);
-        Object.keys(parsedFormData).forEach((key) => {
-          setValue(key, parsedFormData[key]);
-        });
-      }
-      trigger(); // Trigger validation after setting values
-    }, [setValue, trigger]);
+    //const formValues = watch();
 
-    useEffect(() => {
-      localStorage.setItem("formData", JSON.stringify(formValues));
-    }, [formValues]);
+    // useEffect(() => {
+    //   const savedFormData = localStorage.getItem("formData");
+    //   if (savedFormData) {
+    //     const parsedFormData = JSON.parse(savedFormData);
+    //     Object.keys(parsedFormData).forEach((key) => {
+    //       setValue(key, parsedFormData[key]);
+    //     });
+    //   }
+    //   trigger(); // Trigger validation after setting values
+    // }, [setValue, trigger]);
+
+    // useEffect(() => {
+    //   localStorage.setItem("formData", JSON.stringify(formValues));
+    // }, [formValues]);
 
     useEffect(() => {
       if (!showDeliveryAddress) {
@@ -70,7 +77,12 @@ const PersonalInfo = React.forwardRef(
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)} ref={ref}>
-        <BillingAddress register={register} errors={errors} trigger={trigger} />
+        <BillingAddress
+          register={register}
+          errors={errors}
+          trigger={trigger}
+          onBlur={handleBlur}
+        />
         <CheckboxGroup>
           <Input
             type="checkbox"

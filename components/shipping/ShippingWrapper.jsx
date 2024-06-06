@@ -7,16 +7,17 @@ import RecapWrapper from "../recap/RecapWrapper";
 import { StyledNextButton, StyledBackButton } from "../Theme";
 import ShippingOption from "./shippingComponents/ShippingOption";
 import ShippingPriceOptions from "./shippingComponents/ShippingPriceOptions";
+import useFormErrors from "./FormErrors"; // Import the custom hook
 
-export const ShippingWrapper = ({ formErrors, setFormErrors }) => {
-  const { state, dispatch } = useContext(ShippingContext);
+export const ShippingWrapper = () => {
+  const { state } = useContext(ShippingContext);
   const { selectedPaymentOption } = state;
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
   const [togglePriceOption, setTogglePriceOption] = useState(false);
-  const [enableButton, setEnableButton] = useState(true);
   const [buttonText, setButtonText] = useState("Odeslat objednavku");
 
+  const [formErrors, updateFormErrors] = useFormErrors();
   const formRef = useRef(null);
   const router = useRouter();
 
@@ -45,32 +46,31 @@ export const ShippingWrapper = ({ formErrors, setFormErrors }) => {
     }
   };
 
-  useEffect(() => {
-    console.log("in useEffect", formErrors);
-  }, [formErrors]);
+  const handleFormError = (errors) => {
+    console.log("Incoming errors from PersonalInfo: ", errors);
+    updateFormErrors(errors);
+  };
 
   useEffect(() => {
     if (selectedPaymentOption === null) {
       setButtonText("Prosim zvolte platbu");
     } else if (Object.keys(formErrors).length > 0) {
-      const firstErrorKey = Object.keys(formErrors)[0];
-      setButtonText(formErrors[firstErrorKey].message);
+      const firstErrorKey = Object.keys(formErrors).find(
+        (key) => formErrors[key]
+      );
+      if (firstErrorKey) {
+        setButtonText(formErrors[firstErrorKey].message);
+      }
     } else {
       setButtonText("Odeslat objednavku");
     }
   }, [selectedPaymentOption, formErrors]);
 
   const handleFormSubmitSuccess = () => {
-    setFormErrors({}); // Clear errors on successful submission
-
     router.push({
       pathname: router.pathname,
       query: { view: "thankyou" },
     });
-  };
-
-  const handleFormError = (errors) => {
-    setFormErrors(errors);
   };
 
   const handleGoBack = () => {
