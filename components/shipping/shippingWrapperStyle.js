@@ -6,7 +6,7 @@ export const ShippingPageLayout = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  //position: relative;
+  position: relative;
 
   .recapWrapper {
     order: 1;
@@ -94,12 +94,13 @@ export const ShippingPageLayout = styled.div`
       order: 3;
       margin-top: 0;
       grid-column: 2/3;
+
       display: flex;
       justify-content: space-between;
       padding: 30px;
 
-      //position: absolute;
-      //top: 400px;
+      position: absolute;
+      top: 500px;
 
       //padding: 50px;
     }

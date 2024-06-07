@@ -1,15 +1,15 @@
 import React from "react";
 import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
-export const CompanyAddress = ({ register, errors }) => {
+export const CompanyAddress = ({ register, errors, onBlur }) => {
   return (
     <FormContainer>
-      {/* <h2>Dodací adresa pro firmu</h2> */}
       <FormGroup>
         <Label>Společnost</Label>
         <Input
           {...register("companyName", {
             required: "Společnost nesmí být prázdná",
+            onBlur: () => onBlur("companyName"),
           })}
           type="text"
           placeholder="Společnost"
@@ -25,6 +25,7 @@ export const CompanyAddress = ({ register, errors }) => {
               value: /^[0-9]{8}$/,
               message: "IČ musí být osmiciferné číslo",
             },
+            onBlur: () => onBlur("ic"),
           })}
           type="text"
           placeholder="IČ"
@@ -40,6 +41,7 @@ export const CompanyAddress = ({ register, errors }) => {
               value: /^[A-Z]{2}[0-9]{8,10}$/,
               message: "DIČ musí být platné",
             },
+            onBlur: () => onBlur("dic"),
           })}
           type="text"
           placeholder="DIČ"

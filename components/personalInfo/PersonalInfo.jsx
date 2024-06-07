@@ -7,6 +7,17 @@ import { DeliveryAddress } from "./deliveryAddress/DeliveryAddress";
 import { Comment } from "./comment/Comment";
 import { Form, CheckboxGroup, Input, Label } from "./personalInfoStyle";
 
+const FORM_STORAGE_KEY = "personalInfoForm";
+
+const saveFormState = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
+
+const getFormState = (key) => {
+  const savedState = localStorage.getItem(key);
+  return savedState ? JSON.parse(savedState) : {};
+};
+
 const PersonalInfo = React.forwardRef(
   ({ onFormSubmitSuccess, onError }, ref) => {
     const [showDeliveryAddress, setShowDeliveryAddress] = useState(false);
@@ -17,11 +28,13 @@ const PersonalInfo = React.forwardRef(
       register,
       handleSubmit,
       setValue,
-      unregister,
       watch,
       formState: { errors },
       trigger,
-    } = useForm();
+      clearErrors,
+    } = useForm({
+      defaultValues: getFormState(FORM_STORAGE_KEY),
+    });
 
     const onSubmit = (data) => {
       console.log(data);
@@ -29,9 +42,15 @@ const PersonalInfo = React.forwardRef(
     };
 
     useEffect(() => {
-      //console.log("in personalInfo", { errors });
       onError(errors);
     }, [onError, errors]);
+
+    useEffect(() => {
+      const subscription = watch((value) => {
+        saveFormState(FORM_STORAGE_KEY, value);
+      });
+      return () => subscription.unsubscribe();
+    }, [watch]);
 
     // Function to handle blur event and update parent with current errors
     const handleBlur = async (fieldName) => {
@@ -39,26 +58,11 @@ const PersonalInfo = React.forwardRef(
       onError(errors);
     };
 
-    //const formValues = watch();
-
-    // useEffect(() => {
-    //   const savedFormData = localStorage.getItem("formData");
-    //   if (savedFormData) {
-    //     const parsedFormData = JSON.parse(savedFormData);
-    //     Object.keys(parsedFormData).forEach((key) => {
-    //       setValue(key, parsedFormData[key]);
-    //     });
-    //   }
-    //   trigger(); // Trigger validation after setting values
-    // }, [setValue, trigger]);
-
-    // useEffect(() => {
-    //   localStorage.setItem("formData", JSON.stringify(formValues));
-    // }, [formValues]);
-
-    useEffect(() => {
-      if (!showDeliveryAddress) {
-        unregister([
+    // Handlers for toggling sections
+    const handleDeliveryAddressToggle = (e) => {
+      setShowDeliveryAddress(e.target.checked);
+      if (!e.target.checked) {
+        clearErrors([
           "company",
           "deliveryName",
           "deliverySurname",
@@ -67,27 +71,34 @@ const PersonalInfo = React.forwardRef(
           "deliveryTown",
         ]);
       }
-      if (!showCompanyAddress) {
-        unregister(["companyName", "ic", "dic"]);
+    };
+
+    const handleCompanyAddressToggle = (e) => {
+      setShowCompanyAddress(e.target.checked);
+      if (!e.target.checked) {
+        clearErrors(["companyName", "ic", "dic"]);
       }
-      if (!showComment) {
-        unregister("comment");
+    };
+
+    const handleCommentToggle = (e) => {
+      setShowComment(e.target.checked);
+      if (!e.target.checked) {
+        clearErrors(["comment"]);
       }
-    }, [showDeliveryAddress, showCompanyAddress, showComment, unregister]);
+    };
 
     return (
       <Form onSubmit={handleSubmit(onSubmit)} ref={ref}>
         <BillingAddress
           register={register}
           errors={errors}
-          trigger={trigger}
           onBlur={handleBlur}
         />
         <CheckboxGroup>
           <Input
             type="checkbox"
             id="deliveryAddressCheckbox"
-            onChange={(e) => setShowDeliveryAddress(e.target.checked)}
+            onChange={handleDeliveryAddressToggle}
           />
           <Label htmlFor="deliveryAddressCheckbox">
             Chci zadat dodací adresu
@@ -97,14 +108,14 @@ const PersonalInfo = React.forwardRef(
           <DeliveryAddress
             register={register}
             errors={errors}
-            trigger={trigger}
+            onBlur={handleBlur}
           />
         )}
         <CheckboxGroup>
           <Input
             type="checkbox"
             id="companyAddressCheckbox"
-            onChange={(e) => setShowCompanyAddress(e.target.checked)}
+            onChange={handleCompanyAddressToggle}
           />
           <Label htmlFor="companyAddressCheckbox">
             Chci zadat údaje pro firmu
@@ -114,19 +125,19 @@ const PersonalInfo = React.forwardRef(
           <CompanyAddress
             register={register}
             errors={errors}
-            trigger={trigger}
+            onBlur={handleBlur}
           />
         )}
         <CheckboxGroup>
           <Input
             type="checkbox"
             id="commentCheckbox"
-            onChange={(e) => setShowComment(e.target.checked)}
+            onChange={handleCommentToggle}
           />
           <Label htmlFor="commentCheckbox">Chci přidat komentář</Label>
         </CheckboxGroup>
         {showComment && (
-          <Comment register={register} errors={errors} trigger={trigger} />
+          <Comment register={register} errors={errors} onBlur={handleBlur} />
         )}
       </Form>
     );

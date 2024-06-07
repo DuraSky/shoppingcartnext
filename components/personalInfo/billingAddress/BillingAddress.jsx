@@ -1,7 +1,7 @@
 import React from "react";
 import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
-export const BillingAddress = ({ register, errors, trigger, onBlur }) => {
+export const BillingAddress = ({ register, errors, onBlur }) => {
   return (
     <FormContainer>
       <FormGroup>

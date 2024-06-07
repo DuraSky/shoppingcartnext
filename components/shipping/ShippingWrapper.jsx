@@ -46,6 +46,13 @@ export const ShippingWrapper = () => {
     }
   };
 
+  useEffect(() => {
+    if (selectedPaymentOption !== null) {
+      setTogglePriceOption(false);
+      setToggleInfo(true);
+    }
+  }, [selectedPaymentOption]);
+
   const handleFormError = (errors) => {
     console.log("Incoming errors from PersonalInfo: ", errors);
     updateFormErrors(errors);
@@ -53,7 +60,7 @@ export const ShippingWrapper = () => {
 
   useEffect(() => {
     if (selectedPaymentOption === null) {
-      setButtonText("Prosim zvolte platbu");
+      setButtonText("Prosim zvolte typ platby");
     } else if (Object.keys(formErrors).length > 0) {
       const firstErrorKey = Object.keys(formErrors).find(
         (key) => formErrors[key]
@@ -62,7 +69,7 @@ export const ShippingWrapper = () => {
         setButtonText(formErrors[firstErrorKey].message);
       }
     } else {
-      setButtonText("Odeslat objednavku");
+      setButtonText("Odeslat objednavku ➡");
     }
   }, [selectedPaymentOption, formErrors]);
 
@@ -87,9 +94,9 @@ export const ShippingWrapper = () => {
       </div>
 
       <div className="allContent">
+        <h2>Doprava</h2>
         <div className="shippingContent">
           <div className="header" onClick={handleToggleShipping}>
-            <h2>Doprava</h2>
             <div className="arrow"></div>
           </div>
 
