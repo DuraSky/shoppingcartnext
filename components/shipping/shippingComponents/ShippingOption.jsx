@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 import { ShippingOptionMethod } from "./ShippingOptionMethod";
+import { paymentText } from "../../../utils/shippingUtil";
 
 const ShippingOption = () => {
   const { state, dispatch } = useContext(ShippingContext);
@@ -32,6 +33,10 @@ const ShippingOption = () => {
       payload: method.name,
     });
     dispatch({
+      type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
+      payload: method.imgUrl,
+    });
+    dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_PRICE,
       payload: method.price,
     });
@@ -58,6 +63,7 @@ const ShippingOption = () => {
         //   {openOptionIndex === index && (
         <ShippingOptionMethod
           methods={option.methods}
+          key={index}
           onSelectMethod={handleMethodSelection}
         />
         //   )}

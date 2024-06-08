@@ -9,8 +9,12 @@ const ShippingPriceOptions = () => {
   const { state, dispatch } = useContext(ShippingContext);
   const { selectedShippingOptions, selectedPaymentOption } = state;
 
-  const handlePriceMethodChange = (name, price) => {
+  const handlePriceMethodChange = (name, price, imgUrl) => {
     dispatch({ type: actionTypes.SET_SELECTED_PAYMENT_OPTION, payload: name });
+    dispatch({
+      type: actionTypes.SET_SELECTED_PAYMENT_OPTION_IMG,
+      payload: imgUrl,
+    });
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_PRICE,
       payload: price,
@@ -27,7 +31,11 @@ const ShippingPriceOptions = () => {
               name="shippingPriceMethod"
               value={option.method}
               onChange={() => {
-                handlePriceMethodChange(option.method, option.price);
+                handlePriceMethodChange(
+                  option.method,
+                  option.price,
+                  option.imgUrl
+                );
               }}
               checked={selectedPaymentOption === option.method}
             />

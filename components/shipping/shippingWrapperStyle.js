@@ -106,3 +106,16 @@ export const ShippingPageLayout = styled.div`
     }
   }
 `;
+
+export const StyledPreview = styled.div`
+  //background-color: red;
+  background: ${({ theme }) => theme.backgroundGrey};
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  img {
+    width: 50px;
+  }
+`;
