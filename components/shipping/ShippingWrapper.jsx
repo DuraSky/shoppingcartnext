@@ -123,7 +123,7 @@ export const ShippingWrapper = () => {
   const handleGoBack = () => {
     router.push({
       pathname: router.pathname,
-      query: { view: "kosik" },
+      query: { view: "cart" },
     });
   };
 

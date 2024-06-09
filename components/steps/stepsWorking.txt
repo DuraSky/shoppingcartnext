@@ -1,0 +1,122 @@
+import React from "react";
+import Link from "next/link";
+import { CartSteps, StepContainer, StyledLink } from "./stepsStyle";
+
+export const Steps = ({ currentStep }) => {
+  const steps = [
+    {
+      label: "Nákupní košík",
+      view: "cart",
+      iconUrl: "/assets/shopping.png",
+    },
+    {
+      label: "Doprava a platba",
+      view: "shipping",
+      iconUrl: "/assets/truck.png",
+    },
+    {
+      label: "Objednávka odeslána",
+      view: "thankyou",
+      iconUrl: "/assets/checkmark.png",
+    },
+  ];
+
+  const stepIndex =
+    currentStep === "shipping" ? 1 : currentStep === "thankyou" ? 2 : 0;
+
+  return (
+    <CartSteps>
+      {steps.map((step, index) => (
+        <StepContainer key={index} active={stepIndex > index}>
+          {step.view !== "thankyou" ? (
+            <StyledLink
+              href={`/?view=${step.view}`}
+              passHref
+              active={stepIndex >= index}
+            >
+              <img src={step.iconUrl} alt={step.label} />
+            </StyledLink>
+          ) : (
+            <img src={step.iconUrl} alt={step.label} />
+          )}
+          <p className={stepIndex === index ? "active" : ""}>{step.label}</p>
+        </StepContainer>
+      ))}
+    </CartSteps>
+  );
+};
+
+
+
+import styled from "styled-components";
+import Link from "next/link";
+
+export const CartSteps = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1px auto;
+  margin-bottom: 0px;
+  padding: 30px 0px;
+  max-width: ${({ theme }) => theme.maxWidth};
+`;
+
+export const StepContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  text-align: center;
+
+  img {
+    width: 30px;
+    display: block;
+    cursor: pointer;
+  }
+
+  &:not(:last-child)::after {
+    content: "";
+    height: 2px;
+    background: ${({ active }) => (active ? "#000" : "#ddd")};
+    position: absolute;
+    width: calc(100% - 60px);
+    top: 15px;
+    left: calc(50% + 30px);
+    z-index: -1;
+    transition: background 0.3s ease;
+  }
+
+  @media (max-width: 480px) {
+    p {
+      font-size: 0.7rem;
+    }
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Remove underline */
+  width: 30px;
+  height: 30px;
+  //border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
+  z-index: 1;
+
+  ${({ active }) =>
+    active &&
+    `
+    border-color: #000;
+    // background-color: gray;
+    //color: black;
+  `}
+
+  span {
+    display: none;
+    color: inherit; // inherit color from parent
+  }
+`;

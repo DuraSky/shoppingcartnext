@@ -8,7 +8,7 @@ export const CartContainer = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  border-radius: 10px;
+  //border-radius: 10px;
 `;
 
 export const CartHeaders = styled.div`
@@ -156,4 +156,13 @@ export const QuantityControl = styled.div`
     text-align: center;
     border: 1px solid #ccc;
   }
+`;
+
+export const BoxShadowWrapper = styled.div`
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+  padding: 10px;
 `;

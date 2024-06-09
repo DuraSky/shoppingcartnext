@@ -5,6 +5,7 @@ import { CartPriceCalc } from "./cartPriceCalc/CartPriceCalc";
 import { DiscountCodeBar } from "./discountCodeBar/DiscountCodeBar";
 import { AllCartItems } from "./cartItems/AllCartItems";
 import { StyledWrapper } from "./cartPriceCalc/cartPriceCalcStyle";
+import { BoxShadowWrapper } from "./cartItems/allCartItemsStyle";
 
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
@@ -32,6 +33,7 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
   return (
     <>
       <AllCartItems cart={cart} />
+      {/* <BoxShadowWrapper> */}
       <ProgressBar cart={cart} />
 
       <StyledWrapper>
@@ -51,6 +53,7 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
           <StyledNextButton>Přejít na dopravu a platbu ⇨</StyledNextButton>
         </Link>
       </StyledButtonWrapper>
+      {/* </BoxShadowWrapper> */}
     </>
   );
 };
