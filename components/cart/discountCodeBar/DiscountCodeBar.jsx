@@ -13,7 +13,7 @@ export const DiscountCodeBar = ({
     <>
       {showDiscountForm && (
         <StyledDiscountBar>
-          <div>
+          {/* <div>
             <input
               type="checkbox"
               id="displayForm"
@@ -22,22 +22,23 @@ export const DiscountCodeBar = ({
             <label htmlFor="displayForm">
               Mám dárkový poukaz, slevový kupón nebo kód na dárek
             </label>
+          </div> */}
+          {/* {showDiscountField && ( */}
+          <div>
+            <p>Zadejte slevový kupón</p>
+            <input
+              type="text"
+              placeholder="Slevovy kod"
+              onChange={(e) => setDiscountCode(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => handleCheckDiscountCode(discountCode)} // Updated to use the renamed prop
+            >
+              ⇨
+            </button>
           </div>
-          {showDiscountField && (
-            <div>
-              <input
-                type="text"
-                placeholder="Slevovy kod"
-                onChange={(e) => setDiscountCode(e.target.value)}
-              />
-              <button
-                type="button"
-                onClick={() => handleCheckDiscountCode(discountCode)} // Updated to use the renamed prop
-              >
-                ⇨
-              </button>
-            </div>
-          )}
+          {/* )} */}
         </StyledDiscountBar>
       )}
     </>

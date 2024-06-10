@@ -3,6 +3,20 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
 
+  .textAndIcon {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    p {
+      color: ${({ theme }) => theme.backgroundBrown};
+      font-weight: bold;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  }
+
   @media (min-width: 1200px) {
     /* max-width: 1200px; */
     max-width: ${({ theme }) => theme.maxWidth};
@@ -19,6 +33,7 @@ export const TopBar = styled.div`
   position: relative;
   background: white;
   padding: 25px;
+  gap: 10px;
 
   &::before {
     background: white;
@@ -30,26 +45,15 @@ export const TopBar = styled.div`
     transform: translateX(-50%);
     width: 100vw;
     height: 100%;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: ${({ theme }) => theme.myLightBoxShadow};
     z-index: -1;
   }
 
   @media (min-width: 530px) {
     flex-direction: row;
     justify-content: space-between;
+    gap: 0px;
   }
 `;
 
-export const InfoAndIcon = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  p {
-    color: green;
-    font-weight: bold;
-  }
-`;
-
-export default { Wrapper, TopBar, InfoAndIcon };
+export default { Wrapper, TopBar };

@@ -50,7 +50,7 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
       </StyledWrapper>
       <StyledButtonWrapper>
         <Link href="/?view=shipping" passHref>
-          <StyledNextButton>Přejít na dopravu a platbu ⇨</StyledNextButton>
+          <StyledNextButton>Přejít na dopravu a platbu ➡</StyledNextButton>
         </Link>
       </StyledButtonWrapper>
       {/* </BoxShadowWrapper> */}

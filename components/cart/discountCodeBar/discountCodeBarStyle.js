@@ -9,9 +9,9 @@ export const StyledDiscountBar = styled.div`
     padding: 10px;
     border: 1px solid #ccc;
     //border-right: none;
-    border-radius: 4px 0 0 4px;
+    //border-radius: 4px 0 0 4px;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   label {
@@ -23,14 +23,15 @@ export const StyledDiscountBar = styled.div`
 
   button {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-    background-color: #4caf50;
+
+    background-color: ${({ theme }) => theme.fontOrange};
     color: white;
     font-size: 13px;
     cursor: pointer;
     outline: none;
+    //border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-bottom-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border: none;
   }
 
   button:hover {

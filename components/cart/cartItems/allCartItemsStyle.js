@@ -6,23 +6,25 @@ export const CartContainer = styled.div`
   margin: 0 auto;
   //max-width: 1200px;
   max-width: ${({ theme }) => theme.maxWidth};
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  //border-radius: 10px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+  border-radius: ${({ theme }) => theme.myBorderRadius};
 `;
 
 export const CartHeaders = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.backgroundGrey};
   padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
+  box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
 
   h2 {
     flex: 1;
     text-align: center;
-    font-size: 1rem;
+    font-size: 14px;
     margin: 0;
-    color: ${({ theme }) => theme.fontGrey};
+    //color: ${({ theme }) => theme.fontGrey};
+    font-weight: 400;
   }
 
   @media (max-width: 768px) {
@@ -33,7 +35,11 @@ export const CartHeaders = styled.div`
 export const CartItemRow = styled.div`
   display: flex;
   padding: 1rem;
-  border-bottom: 2px solid #ddd;
+  //border-bottom: 2px solid #ddd;
+  box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+  margin-bottom: 20px;
+
+  font-weight: 200;
 
   .produktName,
   .itemPrice,
@@ -48,7 +54,8 @@ export const CartItemRow = styled.div`
   }
 
   .produktName {
-    flex-direction: column;
+    //flex-direction: column;
+
     img {
       max-width: 100px;
       margin-bottom: 0.5rem;
@@ -56,7 +63,8 @@ export const CartItemRow = styled.div`
   }
 
   .dostupnost {
-    color: green;
+    //color: green;
+    color: ${({ theme }) => theme.backgroundBrown};
   }
 
   .removeFromCart {
@@ -68,6 +76,12 @@ export const CartItemRow = styled.div`
       border: none;
       padding: 2px;
       cursor: pointer;
+      background: none;
+      color: ${({ theme }) => theme.fontGrey};
+    }
+
+    button:hover {
+      color: red;
     }
   }
 
@@ -80,6 +94,10 @@ export const CartItemRow = styled.div`
       position: absolute;
       top: 10px;
       right: 10px;
+    }
+
+    .produktName {
+      flex-direction: column;
     }
 
     .produktName,
@@ -123,15 +141,15 @@ export const QuantityControl = styled.div`
     width: 50px;
     height: 30px;
     text-align: center;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-left: none;
+    border: none;
   }
 
   button {
     width: 30px;
     height: 30px;
-    background-color: ${({ theme }) => theme.backgroundGrey};
+    //background-color: ${({ theme }) => theme.fontOrange};
+    //background-color: ${({ theme }) => theme.backgroundBrown};
+    color: white;
     // border: 1px solid ${({ theme }) => theme.backgroundGrey};
     border: none;
     cursor: pointer;
@@ -141,20 +159,29 @@ export const QuantityControl = styled.div`
     padding: 0;
     font-size: 18px;
     line-height: 1;
+    //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
 
     &:first-of-type {
       border-right: none;
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
     }
 
     &:last-of-type {
       border-left: none;
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
     }
   }
 
+  button:hover {
+    color: black;
+  }
+
   .quantity-input {
-    width: 50px;
+    width: 30px;
     text-align: center;
-    border: 1px solid #ccc;
+    //border: 1px solid #ccc;
   }
 `;
 

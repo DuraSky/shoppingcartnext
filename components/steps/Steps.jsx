@@ -21,7 +21,7 @@ export const Steps = ({ currentStep }) => {
       {steps.map((step, index) => {
         const isActive = stepIndex === index;
         return (
-          <StepContainer key={index}>
+          <StepContainer key={index} isActive={isActive}>
             {step.view !== "thankyou" ? (
               <StyledLink href={`/?view=${step.view}`} isActive={isActive}>
                 {step.label}

@@ -6,88 +6,73 @@ export const CartSteps = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 20px auto;
-  padding: 10px 0;
   max-width: ${({ theme }) => theme.maxWidth};
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  //padding: 10px 0;
+  //box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  //rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: ${({ theme }) => theme.myBorderRadius};
+  background: #f9f9f9;
 `;
 
 export const StepContainer = styled.div`
-  display: flex;
   flex-grow: 1;
-  align-items: center;
-  flex-direction: column;
   text-align: center;
-  padding: 10px;
   position: relative;
+  background-color: ${({ isActive }) => (isActive ? "#f1f1f1" : "white")};
 
-  &:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid #f9f9f9;
-    z-index: 1;
+  padding: 15px 0;
+  //transition: background-color 0.3s ease;
+  //color: ${({ isActive }) => (isActive ? "#fff" : "black")};
+  padding: 20px;
+  font-size: 14px;
+  border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
+  border-bottom-left-radius: ${({ theme }) => theme.myBorderRadius};
+  /* box-shadow: ${({ isActive }) =>
+    isActive
+      ? "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
+      : "none"}; */
+
+  &:nth-child(2) {
+    border-radius: 0;
+  }
+  &:last-child {
+    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-bottom-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
 
-  &:not(:last-child)::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -30px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid #ddd;
-    z-index: 0;
+  @media (min-width: 580px) {
+    &:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -28px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 28px solid transparent;
+      border-bottom: 28px solid transparent;
+      border-left: 28px solid
+        ${({ isActive }) => (isActive ? "#f1f1f1" : "white")};
+      z-index: 1;
+    }
   }
+`;
 
-  p {
-    color: ${({ isActive }) => (isActive ? "#000" : "#ddd")};
-    font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-  }
+export const StepLabel = styled.span`
+  display: block;
+  padding: 15px;
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
 `;
 
 export const StyledLink = styled(({ isActive, ...props }) => (
   <Link {...props} />
 ))`
   text-decoration: none;
-  color: ${({ isActive }) => (isActive ? "#000" : "#ddd")};
-  cursor: pointer;
-  padding: 10px;
-  transition: color 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    color: #000;
-    transform: scale(1.1);
-  }
-
-  &.active {
-    color: #000;
-    font-weight: bold;
-    border-bottom: 2px solid #000;
-  }
-
-  span {
-    display: flex;
-    align-items: center;
-  }
+  color: inherit;
 `;
 
-export const NonClickableStep = styled(({ isActive, ...props }) => (
-  <span {...props} />
-))`
-  color: ${({ isActive }) => (isActive ? "#000" : "#ddd")};
-  padding: 10px;
-  cursor: default;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-  border-bottom: ${({ isActive }) => (isActive ? "2px solid #000" : "none")};
+export const NonClickableStep = styled.div`
+  color: inherit;
 `;

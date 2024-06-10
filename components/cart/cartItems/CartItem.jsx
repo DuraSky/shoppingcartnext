@@ -39,7 +39,6 @@ const CartItem = ({ item, index }) => {
   return (
     <>
       <div className="produktName">
-        <p>{item.name}</p>
         <Image
           src={item.img}
           alt={item.name}
@@ -47,6 +46,7 @@ const CartItem = ({ item, index }) => {
           height={100}
           layout="responsive"
         />
+        <p>{item.name}</p>
       </div>
       <div className="dostupnost">
         <p>{item.dostupnost}</p>
