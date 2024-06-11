@@ -4,27 +4,43 @@ export const CartContainer = styled.div`
   width: 100%;
   overflow-x: auto;
   margin: 0 auto;
-  //max-width: 1200px;
   max-width: ${({ theme }) => theme.maxWidth};
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
   border-radius: ${({ theme }) => theme.myBorderRadius};
 `;
 
 export const CartHeaders = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.backgroundGrey};
+  //background-color: ${({ theme }) => theme.fontOrangeTint};
   padding: 1rem;
-  /* border-bottom: 1px solid #ddd; */
   box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+  color: ${({ theme }) => theme.backgroundGreyTint};
 
   h2 {
-    flex: 1;
     text-align: center;
     font-size: 14px;
     margin: 0;
-    //color: ${({ theme }) => theme.fontGrey};
     font-weight: 400;
+  }
+
+  .produktName {
+    flex: 3;
+    display: flex;
+    align-content: flex-start;
+
+    //margin-left: 20px;
+    //gap: 20px;
+  }
+
+  .dostupnost,
+  .quantityControlWrapper,
+  .itemPrice,
+  .priceCalc {
+    flex: 0.8;
+  }
+
+  .removeFromCart {
+    flex: 0.3;
   }
 
   @media (max-width: 768px) {
@@ -35,26 +51,17 @@ export const CartHeaders = styled.div`
 export const CartItemRow = styled.div`
   display: flex;
   padding: 1rem;
-  //border-bottom: 2px solid #ddd;
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
   margin-bottom: 20px;
-
   font-weight: 200;
 
-  .produktName,
-  .itemPrice,
-  .dostupnost,
-  .priceCalc,
-  .quantityControlWrapper {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
   .produktName {
-    //flex-direction: column;
+    flex: 3;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 400;
 
     img {
       max-width: 100px;
@@ -62,12 +69,23 @@ export const CartItemRow = styled.div`
     }
   }
 
+  .dostupnost,
+  .quantityControlWrapper,
+  .itemPrice,
+  .priceCalc {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
   .dostupnost {
-    //color: green;
-    color: ${({ theme }) => theme.backgroundBrown};
+    color: green;
   }
 
   .removeFromCart {
+    flex: 0.3;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +99,7 @@ export const CartItemRow = styled.div`
     }
 
     button:hover {
-      color: red;
+      color: ${({ theme }) => theme.fontOrange};
     }
   }
 
@@ -102,9 +120,9 @@ export const CartItemRow = styled.div`
 
     .produktName,
     .dostupnost,
+    .quantityControlWrapper,
     .itemPrice,
-    .priceCalc,
-    .quantityControlWrapper {
+    .priceCalc {
       align-items: center;
       text-align: left;
     }
@@ -112,7 +130,6 @@ export const CartItemRow = styled.div`
     .itemPrice::before {
       content: "Cena za kus: ";
       margin-right: 10px;
-      //font-weight: bold;
       display: block;
       color: ${({ theme }) => theme.fontGrey};
     }
@@ -120,7 +137,6 @@ export const CartItemRow = styled.div`
     .priceCalc::before {
       content: "Cena Vc. DPH: ";
       margin-right: 10px;
-      //font-weight: bold;
       display: block;
       color: ${({ theme }) => theme.fontGrey};
     }
@@ -147,30 +163,27 @@ export const QuantityControl = styled.div`
   button {
     width: 30px;
     height: 30px;
-    //background-color: ${({ theme }) => theme.fontOrange};
-    //background-color: ${({ theme }) => theme.backgroundBrown};
-    color: white;
-    // border: 1px solid ${({ theme }) => theme.backgroundGrey};
+    color: ${({ theme }) => theme.fontOrangeTint};
+    //color: ${({ theme }) => theme.backgroundGreyTint};
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    font-size: 18px;
-    line-height: 1;
-    //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+    font-size: 20px;
+    box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
 
     &:first-of-type {
       border-right: none;
-      border-top-left-radius: 50%;
-      border-bottom-left-radius: 50%;
+      border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
+      border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
     }
 
     &:last-of-type {
       border-left: none;
-      border-top-right-radius: 50%;
-      border-bottom-right-radius: 50%;
+      border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
+      border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
     }
   }
 
@@ -181,15 +194,5 @@ export const QuantityControl = styled.div`
   .quantity-input {
     width: 30px;
     text-align: center;
-    //border: 1px solid #ccc;
   }
-`;
-
-export const BoxShadowWrapper = styled.div`
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
-  max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0 auto;
-  padding: 10px;
 `;

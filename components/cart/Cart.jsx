@@ -5,7 +5,6 @@ import { CartPriceCalc } from "./cartPriceCalc/CartPriceCalc";
 import { DiscountCodeBar } from "./discountCodeBar/DiscountCodeBar";
 import { AllCartItems } from "./cartItems/AllCartItems";
 import { StyledWrapper } from "./cartPriceCalc/cartPriceCalcStyle";
-import { BoxShadowWrapper } from "./cartItems/allCartItemsStyle";
 
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
@@ -34,8 +33,6 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
     <>
       <AllCartItems cart={cart} />
       {/* <BoxShadowWrapper> */}
-      <ProgressBar cart={cart} />
-
       <StyledWrapper>
         <DiscountCodeBar
           setShowDiscountForm={setShowDiscountForm}
@@ -46,11 +43,12 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
           discountCode={discountCode}
           handleCheckDiscountCode={checkDiscountCode}
         />
+        <ProgressBar cart={cart} />
         <CartPriceCalc cartTotal={cartTotal} />
       </StyledWrapper>
       <StyledButtonWrapper>
         <Link href="/?view=shipping" passHref>
-          <StyledNextButton>Přejít na dopravu a platbu ➡</StyledNextButton>
+          <StyledNextButton>Přejít na dopravu a platbu →</StyledNextButton>
         </Link>
       </StyledButtonWrapper>
       {/* </BoxShadowWrapper> */}

@@ -4,18 +4,22 @@ export const StyledRecap = styled.div`
   //background: gray;
   display: flex;
   flex-direction: column;
-  padding: 0px 30px;
-  max-width: 600px;
+  //padding: 0px 30px;
+  //max-width: 600px;
 
   h2 {
-    font-size: 20px;
-    font-weight: 500;
-    padding: 10px;
-    color: ${({ theme }) => theme.fontGrey};
-  }
+    background-color: ${({ theme }) => theme.backgroundGrey};
+    padding: 1rem;
+    /* border-bottom: 1px solid #ddd; */
+    box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
 
-  .borderRecap {
-    border-bottom: 1px solid #b8b4b4;
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    //color: ${({ theme }) => theme.fontGrey};
+    font-weight: 400;
   }
 
   h3 {
@@ -26,6 +30,9 @@ export const StyledRecap = styled.div`
   }
   .recapOption {
     display: flex;
+    box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+    font-weight: 200;
+
     //gap: 10px;
   }
   .final {

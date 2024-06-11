@@ -9,15 +9,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
-    //background: #f0ece2;
+    //font-family: 'Roboto', sans-serif;
+    font-family: "Nunito", sans-serif;
 
-;
-    //line-height: 1.6;
-    //background-color: #f0f0f0; /* Optional: set a default background color */
   }
-
-  /* Additional global styles can go here */
 `;
 
 export default GlobalStyle;

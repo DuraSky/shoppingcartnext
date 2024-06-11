@@ -34,28 +34,24 @@ const Recap = () => {
   return (
     <StyledRecap>
       <h2>Rekaputilace objednavky</h2>
-      <div className="borderRecap"></div>
 
       <ItemListing cart={cart} />
-      <div className="borderRecap"></div>
 
       <div className="recapOption">
-        <h3>Doprava </h3>
+        <img src="/assets/truck.png" width="30px" alt="" />
         <ShippingRecap
           selectedShippingOption={selectedShippingOption}
           selectedShippingPrice={selectedShippingPrice}
         />
       </div>
-      <div className="borderRecap"></div>
 
       <div className="recapOption">
-        <h3>Platba</h3>
+        <img src="/assets/card.png" width="30px" alt="" />
         <PaymentRecap
           selectedPaymentOption={selectedPaymentOption}
           selectedPaymentOptionPrice={selectedPaymentOptionPrice}
         />
       </div>
-      <div className="borderRecap"></div>
 
       <div className="recapOption final">
         <h3>Celkem</h3>

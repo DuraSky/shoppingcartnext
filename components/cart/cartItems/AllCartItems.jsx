@@ -6,17 +6,18 @@ import {
   CartItemRow,
   AllItems,
 } from "./allCartItemsStyle";
-import { Steps } from "../../steps/Steps";
 
 export const AllCartItems = ({ cart }) => {
   return (
     <CartContainer>
       <CartHeaders>
-        <h2>Produkt</h2>
-        <h2>Dostupnost</h2>
-        <h2>Množství</h2>
-        <h2>Cena za kus</h2>
-        <h2>Cena vc. DPH</h2>
+        <h2 className="produktName" aria-hidden="true"></h2>
+        <h2 className="dostupnost">Dostupnost</h2>
+        <h2 className="quantityControlWrapper">Množství</h2>
+        <h2 className="itemPrice">Cena za kus</h2>
+        <h2 className="priceCalc">Cena vc. DPH</h2>
+        <h2 className="removeFromCart" aria-hidden="true"></h2>
+        {/* Placeholder for alignment */}
       </CartHeaders>
       <AllItems>
         {cart.map((item, index) => (

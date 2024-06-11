@@ -9,7 +9,10 @@ export const WrapperWithTopBar = () => {
 
         <div className="textAndIcon">
           <img src="/assets/phone2.png" alt="ss" />
-          <p>+420 703 694 133</p>
+          <div>
+            <p>Volejte:</p>
+            <p>+420 703 694 133</p>
+          </div>
         </div>
 
         <div className="textAndIcon">

@@ -9,40 +9,45 @@ export const CartSteps = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
 
   border-radius: ${({ theme }) => theme.myBorderRadius};
-  //background: #f9f9f9;
+  background: #f9f9f9;
 `;
 
 export const StepContainer = styled.div`
   flex-grow: 1;
   text-align: center;
   position: relative;
-  background-color: ${({ isActive }) => (isActive ? "#ffdacc" : "white")};
-  //background-color: ${({ isActive }) => (isActive ? "#f1f1f1" : "white")};
-  padding: 10px;
+  background-color: ${({ isActive }) => (isActive ? "#f1f1f1" : "white")};
+  padding: 20px;
   font-size: 14px;
-  border-radius: ${({ theme }) => theme.myBorderRadius};
-  border: ${({ isActive }) => (isActive ? "2px solid #ff6a33" : "none")};
-  box-shadow: ${({ isActive }) =>
-    isActive
-      ? "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
-      : "none"};
+  border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
+  border-bottom-left-radius: ${({ theme }) => theme.myBorderRadius};
 
-  ${({ isActive }) =>
-    isActive &&
-    `
-    &::after {
+  &:nth-child(2) {
+    border-radius: 0;
+  }
+  &:last-child {
+    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-bottom-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  @media (min-width: 580px) {
+    &:not(:last-child)::before {
       content: "";
       position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      right: -28px;
+      transform: translateY(-50%);
       width: 0;
       height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 10px solid #ff6a33;
+      border-top: 29px solid transparent;
+      border-bottom: 29px solid transparent;
+      border-left: 28px solid
+        ${({ isActive }) => (isActive ? "#f1f1f1" : "white")};
+      z-index: 1;
     }
-  `}
+  }
 `;
 
 export const StepLabel = styled.span`

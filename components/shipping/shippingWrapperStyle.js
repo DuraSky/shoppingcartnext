@@ -5,7 +5,7 @@ export const ShippingPageLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  //padding: 10px;
   position: relative;
 
   .recapWrapper {
@@ -17,7 +17,7 @@ export const ShippingPageLayout = styled.div`
   .allContent {
     order: 2;
     width: 100%;
-    max-width: 600px;
+    //max-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -61,7 +61,7 @@ export const ShippingPageLayout = styled.div`
   .pageControl {
     order: 3;
     width: 100%;
-    max-width: 600px;
+    //max-width: 600px;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -71,13 +71,13 @@ export const ShippingPageLayout = styled.div`
   @media (min-width: 768px) {
     display: grid;
     //grid-template-columns: minmax(auto, 600px) 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.6fr;
     padding: 10px;
 
     gap: 20px;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: ${({ theme }) => theme.maxWidth};
     align-items: flex-start;
 
     .recapWrapper {
@@ -86,7 +86,7 @@ export const ShippingPageLayout = styled.div`
 
     .allContent {
       margin: 0;
-      max-width: 600px;
+      //max-width: 800px;
       order: 1;
     }
 
@@ -100,7 +100,7 @@ export const ShippingPageLayout = styled.div`
       padding: 30px;
 
       position: absolute;
-      top: 500px;
+      top: 600px;
 
       //padding: 50px;
     }

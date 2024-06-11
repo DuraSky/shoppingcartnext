@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ShippingProvider } from "../components/shipping/ShippingProvider";
 import { CartProvider } from "../components/cart/CartProvider";
 import ShoppingCart from "../components/cart/Cart";
@@ -14,12 +14,17 @@ import Head from "next/head";
 import { ThankYou } from "../components/thankyouPage/ThankYou";
 
 const App = () => {
-  // const [payment, setPayment] = useState("");
   const [showDiscountForm, setShowDiscountForm] = useState(true);
   const [formErrors, setFormErrors] = useState({});
 
   const router = useRouter();
   const { view } = router.query;
+
+  useEffect(() => {
+    if (!view) {
+      router.replace("/?view=cart", undefined, { shallow: true });
+    }
+  }, [view, router]);
 
   return (
     <CartProvider>
@@ -30,6 +35,10 @@ const App = () => {
               href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
               rel="stylesheet"
             />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+              rel="stylesheet"
+            ></link>
           </Head>
           <GlobalStyle />
           <Header currentStep={view} />
@@ -44,11 +53,8 @@ const App = () => {
             <ShoppingCart
               showDiscountForm={showDiscountForm}
               setShowDiscountForm={setShowDiscountForm}
-              // payment={payment}
-              // setPayment={setPayment}
             />
           )}
-          {/* <PersonalInfo /> */}
         </ThemeProvider>
       </ShippingProvider>
     </CartProvider>
