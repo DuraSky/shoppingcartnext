@@ -1,89 +1,95 @@
 import React from "react";
 import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
-export const DeliveryAddress = ({ register, errors, onBlur }) => {
+export const DeliveryAddress = ({ register, errors, onChange }) => {
   return (
     <FormContainer>
       <FormGroup>
         <Label>Dodací společnost</Label>
         <Input
-          {...register("company", {
+          {...register("deliveryCompany", {
             required: "Dodací společnost nesmí být prázdná",
-            onBlur: () => onBlur("company"),
+            onChange: () => onChange("deliveryCompany"),
           })}
           type="text"
           placeholder="Dodací společnost"
         />
-        {errors.company && <Error>{errors.company.message}</Error>}
+        {errors.deliveryCompany && (
+          <Error>{errors.deliveryCompany.message}</Error>
+        )}
       </FormGroup>
       <FormGroup>
         <Label>Jméno</Label>
         <Input
-          {...register("name", {
+          {...register("deliveryName", {
             required: "Jméno nesmí být prázdné",
-            onBlur: () => onBlur("name"),
+            onChange: () => onChange("deliveryName"),
           })}
           type="text"
           placeholder="Jméno"
         />
-        {errors.name && <Error>{errors.name.message}</Error>}
+        {errors.deliveryName && <Error>{errors.deliveryName.message}</Error>}
       </FormGroup>
       <FormGroup>
         <Label>Příjmení</Label>
         <Input
-          {...register("surname", {
+          {...register("deliverySurname", {
             required: "Příjmení nesmí být prázdné",
-            onBlur: () => onBlur("surname"),
+            onChange: () => onChange("deliverySurname"),
           })}
           type="text"
           placeholder="Příjmení"
         />
-        {errors.surname && <Error>{errors.surname.message}</Error>}
+        {errors.deliverySurname && (
+          <Error>{errors.deliverySurname.message}</Error>
+        )}
       </FormGroup>
       <FormGroup>
         <Label>Ulice a číslo popisné</Label>
         <Input
-          {...register("street", {
+          {...register("deliveryStreet", {
             required: "Ulice nesmí být prázdná",
-            onBlur: () => onBlur("street"),
+            onChange: () => onChange("deliveryStreet"),
           })}
           type="text"
           placeholder="Ulice a číslo popisné"
         />
-        {errors.street && <Error>{errors.street.message}</Error>}
+        {errors.deliveryStreet && (
+          <Error>{errors.deliveryStreet.message}</Error>
+        )}
       </FormGroup>
       <FormGroup>
         <Label>PSČ</Label>
         <Input
-          {...register("psc", {
+          {...register("deliveryPsc", {
             required: "PSČ nesmí být prázdné",
             pattern: {
               value: /^[0-9]{5}$/,
               message: "PSČ musí být pětimístné číslo",
             },
-            onBlur: () => onBlur("psc"),
+            onChange: () => onChange("deliveryPsc"),
           })}
           type="text"
           placeholder="PSČ"
         />
-        {errors.psc && <Error>{errors.psc.message}</Error>}
+        {errors.deliveryPsc && <Error>{errors.deliveryPsc.message}</Error>}
       </FormGroup>
       <FormGroup>
         <Label>Město</Label>
         <Input
-          {...register("town", {
+          {...register("deliveryTown", {
             required: "Město nesmí být prázdné",
-            onBlur: () => onBlur("town"),
+            onChange: () => onChange("deliveryTown"),
           })}
           type="text"
           placeholder="Město"
         />
-        {errors.town && <Error>{errors.town.message}</Error>}
+        {errors.deliveryTown && <Error>{errors.deliveryTown.message}</Error>}
       </FormGroup>
       <FormGroup>
         <Label>Země</Label>
         <Input
-          {...register("country")}
+          {...register("deliveryCountry")}
           type="text"
           placeholder="Země"
           value="Česká republika"

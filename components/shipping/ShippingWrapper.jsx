@@ -7,7 +7,12 @@ import RecapWrapper from "../recap/RecapWrapper";
 import { StyledNextButton, StyledBackButton } from "../Theme";
 import ShippingOption from "./shippingComponents/ShippingOption";
 import ShippingPriceOptions from "./shippingComponents/ShippingPriceOptions";
-import useFormErrors from "./FormErrors"; // Import the custom hook
+import useFormErrors from "./FormErrors";
+import {
+  SelectedShippingPreview,
+  SelectedPaymentPreview,
+  PersonalInfoPreview,
+} from "./shippingComponents/SelectedPreview";
 
 export const ShippingWrapper = () => {
   const { state } = useContext(ShippingContext);
@@ -20,6 +25,7 @@ export const ShippingWrapper = () => {
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
   const [togglePriceOption, setTogglePriceOption] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const [buttonText, setButtonText] = useState("Odeslat objednavku");
 
@@ -29,7 +35,7 @@ export const ShippingWrapper = () => {
   });
   const [previewSelectedPayment, setPreviewSelectedPayment] = useState({
     option: "Prosim zvolte typ platby",
-    img: null,
+    img: "/assets/card.png",
   });
 
   const [formErrors, updateFormErrors] = useFormErrors();
@@ -49,9 +55,16 @@ export const ShippingWrapper = () => {
   };
 
   const handleSubmit = () => {
+    setSubmitted(true);
+    const hasErrors = Object.keys(formErrors).length > 0;
+
     if (selectedPaymentOption === null) {
       setTogglePriceOption(true);
       return;
+    }
+
+    if (hasErrors) {
+      setToggleInfo(true);
     }
 
     if (formRef.current) {
@@ -86,7 +99,7 @@ export const ShippingWrapper = () => {
         setButtonText(formErrors[firstErrorKey].message);
       }
     } else {
-      setButtonText("Odeslat objednavku ➡");
+      setButtonText("Odeslat objednavku →");
     }
   }, [selectedPaymentOption, formErrors]);
 
@@ -103,7 +116,7 @@ export const ShippingWrapper = () => {
     if (selectedPaymentOption === null) {
       setPreviewSelectedPayment({
         option: "Prosim zvolte typ platby",
-        img: null,
+        img: "/assets/card.png",
       });
     } else {
       setPreviewSelectedPayment({
@@ -137,71 +150,63 @@ export const ShippingWrapper = () => {
         <h2>Doprava</h2>
         <div className="shippingContent">
           <div className="header" onClick={handleToggleShipping}>
-            <StyledPreview>
-              {previewSelectedShipping.img && (
-                <img src={previewSelectedShipping.img} alt="Shipping option" />
-              )}
-              {previewSelectedShipping.option}
-            </StyledPreview>
-            <div className="arrow"></div>
+            <SelectedShippingPreview
+              previewSelectedShipping={previewSelectedShipping}
+            />
+            <div className={`arrow ${toggleShipping ? "rotated" : ""}`}></div>
           </div>
-
-          {toggleShipping && (
+          <div
+            className={`collapsible-content ${toggleShipping ? "open" : ""}`}
+          >
             <div onClick={(e) => e.stopPropagation()}>
               <ShippingOption />
             </div>
-          )}
+          </div>
         </div>
 
         <h2>Platba</h2>
         <div className="priceContent">
           <div className="header" onClick={handleTogglePriceOption}>
-            <StyledPreview>
-              {selectedPaymentOption ? (
-                <>
-                  {previewSelectedPayment.img && (
-                    <img
-                      src={previewSelectedPayment.img}
-                      alt="Payment option"
-                    />
-                  )}
-                  {previewSelectedPayment.option}
-                </>
-              ) : (
-                previewSelectedPayment.option
-              )}
-            </StyledPreview>
-            <div className="arrow"></div>
+            <SelectedPaymentPreview
+              previewSelectedPayment={previewSelectedPayment}
+            />
+            <div
+              className={`arrow ${togglePriceOption ? "rotated" : ""}`}
+            ></div>
           </div>
-
-          {togglePriceOption && (
+          <div
+            className={`collapsible-content ${togglePriceOption ? "open" : ""}`}
+          >
             <div onClick={(e) => e.stopPropagation()}>
               <ShippingPriceOptions />
             </div>
-          )}
+          </div>
         </div>
 
         <h2>Fakturační a dodací adresa</h2>
         <div className="formContent">
           <div className="header" onClick={handleToggleInfo}>
-            <div className="arrow"></div>
-          </div>
-          <div
-            style={{ display: toggleInfo ? "block" : "none" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <PersonalInfo
-              ref={formRef}
-              onFormSubmitSuccess={handleFormSubmitSuccess}
-              onError={handleFormError}
+            <PersonalInfoPreview
+              formErrors={formErrors}
+              submitted={submitted}
             />
+            <div className={`arrow ${toggleInfo ? "rotated" : ""}`}></div>
+          </div>
+          <div className={`collapsible-content ${toggleInfo ? "open" : ""}`}>
+            <div onClick={(e) => e.stopPropagation()}>
+              <PersonalInfo
+                ref={formRef}
+                onFormSubmitSuccess={handleFormSubmitSuccess}
+                onError={handleFormError}
+              />
+            </div>
           </div>
         </div>
       </div>
 
       <div className="pageControl">
         <StyledBackButton onClick={handleGoBack}>
-          ⇦ Zpet do kosiku
+          ← Zpet do kosiku
         </StyledBackButton>
         <StyledNextButton onClick={handleSubmit}>{buttonText}</StyledNextButton>
       </div>

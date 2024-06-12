@@ -7,10 +7,11 @@ export const StyledShippingMethod = styled.div`
     //justify-content: space-between;
     gap: 10px;
     padding: 10px 20px;
+    font-weight: 200;
 
     span {
       color: green;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     img {

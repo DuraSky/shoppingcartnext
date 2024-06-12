@@ -1,7 +1,7 @@
 import React from "react";
 import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
-export const CompanyAddress = ({ register, errors, onBlur }) => {
+export const CompanyAddress = ({ register, errors, onChange }) => {
   return (
     <FormContainer>
       <FormGroup>
@@ -9,7 +9,7 @@ export const CompanyAddress = ({ register, errors, onBlur }) => {
         <Input
           {...register("companyName", {
             required: "Společnost nesmí být prázdná",
-            onBlur: () => onBlur("companyName"),
+            onChange: () => onChange("companyName"),
           })}
           type="text"
           placeholder="Společnost"
@@ -25,7 +25,7 @@ export const CompanyAddress = ({ register, errors, onBlur }) => {
               value: /^[0-9]{8}$/,
               message: "IČ musí být osmiciferné číslo",
             },
-            onBlur: () => onBlur("ic"),
+            onChange: () => onChange("ic"),
           })}
           type="text"
           placeholder="IČ"
@@ -41,7 +41,7 @@ export const CompanyAddress = ({ register, errors, onBlur }) => {
               value: /^[A-Z]{2}[0-9]{8,10}$/,
               message: "DIČ musí být platné",
             },
-            onBlur: () => onBlur("dic"),
+            onChange: () => onChange("dic"),
           })}
           type="text"
           placeholder="DIČ"

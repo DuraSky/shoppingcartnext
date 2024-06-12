@@ -74,7 +74,9 @@ export const StyledBackButton = styled.button`
   display: inline-block;
   width: 150px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: ${({ theme }) => theme.myBorderRadius};
+  /* box-shadow: ${({ theme }) => theme.myHeavyBoxShadow}; */
+
   border: 2px solid #cb9540;
   position: relative;
   overflow: hidden;
@@ -98,7 +100,7 @@ export const StyledBackButton = styled.button`
 
   &::after {
     right: -10px;
-    background: ${({ theme }) => theme.fontGrey};
+    background: ${({ theme }) => theme.backgroundGrey};
   }
 
   &:hover::before,

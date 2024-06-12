@@ -34,16 +34,46 @@ const PersonalInfo = React.forwardRef(
       clearErrors,
     } = useForm({
       defaultValues: getFormState(FORM_STORAGE_KEY),
+      mode: "onBlur", // Validate on blur
     });
 
-    const onSubmit = (data) => {
-      console.log(data);
-      onFormSubmitSuccess();
+    const onSubmit = async (data) => {
+      const fieldsToValidate = [
+        "name",
+        "surname",
+        "street",
+        "psc",
+        "town",
+        "email",
+        "phone",
+      ];
+      if (showDeliveryAddress) {
+        fieldsToValidate.push(
+          "deliveryCompany",
+          "deliveryName",
+          "deliverySurname",
+          "deliveryStreet",
+          "deliveryPsc",
+          "deliveryTown"
+        );
+      }
+      if (showCompanyAddress) {
+        fieldsToValidate.push("companyName", "ic", "dic");
+      }
+      if (showComment) {
+        fieldsToValidate.push("comment");
+      }
+      const valid = await trigger(fieldsToValidate);
+      onError(errors);
+      if (valid) {
+        console.log(data);
+        onFormSubmitSuccess();
+      }
     };
 
     useEffect(() => {
       onError(errors);
-    }, [onError, errors]);
+    }, [errors, onError]);
 
     useEffect(() => {
       const subscription = watch((value) => {
@@ -52,38 +82,68 @@ const PersonalInfo = React.forwardRef(
       return () => subscription.unsubscribe();
     }, [watch]);
 
-    // Function to handle blur event and update parent with current errors
-    const handleBlur = async (fieldName) => {
+    const handleChange = async (fieldName) => {
       await trigger(fieldName);
       onError(errors);
     };
 
-    // Handlers for toggling sections
-    const handleDeliveryAddressToggle = (e) => {
-      setShowDeliveryAddress(e.target.checked);
-      if (!e.target.checked) {
+    const handleDeliveryAddressToggle = async (e) => {
+      const checked = e.target.checked;
+      setShowDeliveryAddress(checked);
+      if (!checked) {
         clearErrors([
-          "company",
+          "deliveryCompany",
           "deliveryName",
           "deliverySurname",
           "deliveryStreet",
           "deliveryPsc",
           "deliveryTown",
         ]);
+        setValue("deliveryCompany", "");
+        setValue("deliveryName", "");
+        setValue("deliverySurname", "");
+        setValue("deliveryStreet", "");
+        setValue("deliveryPsc", "");
+        setValue("deliveryTown", "");
+        onError({});
+      } else {
+        await trigger([
+          "deliveryCompany",
+          "deliveryName",
+          "deliverySurname",
+          "deliveryStreet",
+          "deliveryPsc",
+          "deliveryTown",
+        ]);
+        onError(errors);
       }
     };
 
-    const handleCompanyAddressToggle = (e) => {
-      setShowCompanyAddress(e.target.checked);
-      if (!e.target.checked) {
+    const handleCompanyAddressToggle = async (e) => {
+      const checked = e.target.checked;
+      setShowCompanyAddress(checked);
+      if (!checked) {
         clearErrors(["companyName", "ic", "dic"]);
+        setValue("companyName", "");
+        setValue("ic", "");
+        setValue("dic", "");
+        onError({});
+      } else {
+        await trigger(["companyName", "ic", "dic"]);
+        onError(errors);
       }
     };
 
-    const handleCommentToggle = (e) => {
-      setShowComment(e.target.checked);
-      if (!e.target.checked) {
+    const handleCommentToggle = async (e) => {
+      const checked = e.target.checked;
+      setShowComment(checked);
+      if (!checked) {
         clearErrors(["comment"]);
+        setValue("comment", "");
+        onError({});
+      } else {
+        await trigger(["comment"]);
+        onError(errors);
       }
     };
 
@@ -92,7 +152,7 @@ const PersonalInfo = React.forwardRef(
         <BillingAddress
           register={register}
           errors={errors}
-          onBlur={handleBlur}
+          onChange={handleChange}
         />
         <CheckboxGroup>
           <Input
@@ -108,7 +168,7 @@ const PersonalInfo = React.forwardRef(
           <DeliveryAddress
             register={register}
             errors={errors}
-            onBlur={handleBlur}
+            onChange={handleChange}
           />
         )}
         <CheckboxGroup>
@@ -125,7 +185,7 @@ const PersonalInfo = React.forwardRef(
           <CompanyAddress
             register={register}
             errors={errors}
-            onBlur={handleBlur}
+            onChange={handleChange}
           />
         )}
         <CheckboxGroup>
@@ -137,7 +197,11 @@ const PersonalInfo = React.forwardRef(
           <Label htmlFor="commentCheckbox">Chci přidat komentář</Label>
         </CheckboxGroup>
         {showComment && (
-          <Comment register={register} errors={errors} onBlur={handleBlur} />
+          <Comment
+            register={register}
+            errors={errors}
+            onChange={handleChange}
+          />
         )}
       </Form>
     );

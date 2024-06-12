@@ -38,7 +38,7 @@ const Recap = () => {
       <ItemListing cart={cart} />
 
       <div className="recapOption">
-        <img src="/assets/truck.png" width="30px" alt="" />
+        <img src="/assets/truck5.svg" width="30px" alt="" />
         <ShippingRecap
           selectedShippingOption={selectedShippingOption}
           selectedShippingPrice={selectedShippingPrice}

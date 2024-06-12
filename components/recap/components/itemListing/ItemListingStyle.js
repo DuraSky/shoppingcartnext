@@ -5,7 +5,7 @@ export const StyledProductRecap = styled.div`
   align-items: center;
   gap: 15px;
 
-  padding: 30px 0;
+  padding: 16px;
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
   font-weight: 200;
 
@@ -17,7 +17,7 @@ export const StyledProductRecap = styled.div`
 
   .itemDetails {
     flex-grow: 1;
-    min-width: 0; /* Allows text to wrap inside flex container */
+    //min-width: 300px; /* Allows text to wrap inside flex container */
   }
 
   .itemName {
@@ -42,6 +42,6 @@ export const StyledProductRecap = styled.div`
     flex-grow: 1;
     justify-content: flex-end;
 
-    color: green;
+    color: ${({ theme }) => theme.fontOrange};
   }
 `;

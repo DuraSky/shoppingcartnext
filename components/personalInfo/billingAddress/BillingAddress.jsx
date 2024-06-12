@@ -1,7 +1,7 @@
 import React from "react";
 import { FormGroup, Label, Input, Error, FormContainer } from "../formStyles";
 
-export const BillingAddress = ({ register, errors, onBlur }) => {
+export const BillingAddress = ({ register, errors, onChange }) => {
   return (
     <FormContainer>
       <FormGroup>
@@ -9,7 +9,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
         <Input
           {...register("name", {
             required: "Jméno nesmí být prázdné",
-            onBlur: () => onBlur("name"),
+            onChange: () => onChange("name"),
           })}
           type="text"
           placeholder="Jméno"
@@ -21,7 +21,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
         <Input
           {...register("surname", {
             required: "Příjmení nesmí být prázdné",
-            onBlur: () => onBlur("surname"),
+            onChange: () => onChange("surname"),
           })}
           type="text"
           placeholder="Příjmení"
@@ -33,7 +33,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
         <Input
           {...register("street", {
             required: "Ulice nesmí být prázdná",
-            onBlur: () => onBlur("street"),
+            onChange: () => onChange("street"),
           })}
           type="text"
           placeholder="Ulice a číslo popisné"
@@ -49,7 +49,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
               value: /^[0-9]{5}$/,
               message: "PSČ musí být pětimístné číslo",
             },
-            onBlur: () => onBlur("psc"),
+            onChange: () => onChange("psc"),
           })}
           type="text"
           placeholder="PSČ"
@@ -61,7 +61,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
         <Input
           {...register("town", {
             required: "Město nesmí být prázdné",
-            onBlur: () => onBlur("town"),
+            onChange: () => onChange("town"),
           })}
           type="text"
           placeholder="Město"
@@ -87,7 +87,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
               value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
               message: "Email musí být platná emailová adresa",
             },
-            onBlur: () => onBlur("email"),
+            onChange: () => onChange("email"),
           })}
           type="text"
           placeholder="Email"
@@ -103,7 +103,7 @@ export const BillingAddress = ({ register, errors, onBlur }) => {
               value: /^[0-9]{9}$/,
               message: "Telefon musí obsahovat pouze devítimístné číslo",
             },
-            onBlur: () => onBlur("phone"),
+            onChange: () => onChange("phone"),
           })}
           type="text"
           placeholder="Telefon"

@@ -25,18 +25,26 @@ export const StyledRecap = styled.div`
   h3 {
     font-size: 16px;
     font-weight: 300;
-    padding: 10px;
-    color: ${({ theme }) => theme.fontGrey};
+    //padding: 10px;
+    //color: ${({ theme }) => theme.fontGrey};
   }
   .recapOption {
     display: flex;
+    gap: 10px;
     box-shadow: ${({ theme }) => theme.myLightBoxShadow};
     font-weight: 200;
+    padding: 10px;
+
+    p {
+      &:last-child {
+        color: ${({ theme }) => theme.fontOrange};
+      }
+    }
 
     //gap: 10px;
   }
   .final {
-    font-weight: bold;
+    font-weight: 600;
   }
 
   /* .odeslatObjednavku {

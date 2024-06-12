@@ -7,6 +7,7 @@ export const StyledPriceOption = styled.div`
     //justify-content: space-between;
     gap: 10px;
     padding: 10px 20px;
+    font-weight: 200;
 
     img {
       width: 60px;
