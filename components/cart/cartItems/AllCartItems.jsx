@@ -4,8 +4,10 @@ import {
   CartContainer,
   CartHeaders,
   CartItemRow,
+  CartVariantRow,
   AllItems,
 } from "./allCartItemsStyle";
+import { CartItemChargeGroups } from "./cartItemVariants/CartItemChargeGroups";
 
 export const AllCartItems = ({ cart }) => {
   return (
@@ -21,9 +23,18 @@ export const AllCartItems = ({ cart }) => {
       </CartHeaders>
       <AllItems>
         {cart.map((item, index) => (
-          <CartItemRow key={item.bp_id}>
-            <CartItem item={item} index={index} />
-          </CartItemRow>
+          <React.Fragment key={item.bp_id}>
+            <CartItemRow hasVariants={item.surcharge_groups.length > 0}>
+              <CartItem item={item} index={index} />
+            </CartItemRow>
+            {item.surcharge_groups.length > 0 && (
+              <CartVariantRow>
+                <CartItemChargeGroups
+                  surcharge_groups={item.surcharge_groups}
+                />
+              </CartVariantRow>
+            )}
+          </React.Fragment>
         ))}
       </AllItems>
     </CartContainer>

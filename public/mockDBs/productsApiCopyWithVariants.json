@@ -1,0 +1,220 @@
+{
+  "cart_products": [
+    {
+      "bp_id": 49153,
+      "name": "Fialový silikonový obal k Albi tužce",
+      "img": "https://www.zanapo.cz/files/thumbs/53f8a6e370c5354d448b35562d87a147/turnajove-sachy-velikost94-4-110x110.jpg",
+
+      "price": 134.1,
+      "quantity": 1,
+      "product_id": 11809,
+      "surcharge_groups": []
+    },
+    {
+      "bp_id": 49154,
+      "name": "Kouzelné čtení sada - ALBI tužka 2.0 + kniha Pohádkové učení",
+      "img": "https://www.zanapo.cz/files/thumbs/53f8a6e370c5354d448b35562d87a147/turnajove-sachy-velikost94-4-110x110.jpg",
+
+      "price": 1529.1,
+      "quantity": 1,
+      "product_id": 11824,
+      "surcharge_groups": [
+        {
+          "": {
+            "id": null,
+            "image": null,
+            "name": null,
+            "surcharge_products": [
+              {
+                "id": 7,
+                "name": "Přívěšek1",
+                "type": 1,
+                "price": 65,
+                "percent": null,
+                "image": "https://placehold.jp/150x150.png",
+                "help_text": null
+              },
+              {
+                "id": 7,
+                "name": "Přívěšek2",
+                "type": 1,
+                "price": 45,
+                "percent": null,
+                "image": "https://placehold.jp/150x150.png",
+                "help_text": null
+              },
+              {
+                "id": 10,
+                "name": "Výměna produktu",
+                "type": 0,
+                "price": 100.0,
+                "percent": null,
+                "image": "https://placehold.jp/150x150.png",
+                "help_text": null
+              }
+            ]
+          }
+        },
+        {
+          "4": {
+            "id": 4,
+            "image": "https://placehold.jp/150x150.png",
+            "name": "Pojištění",
+            "surcharge_products": [
+              {
+                "id": 6,
+                "name": "Pojištění zásilky",
+                "type": 0,
+                "price": 19.0,
+                "percent": null,
+                "image": null,
+                "help_text": "<p>V případě poškození či ztráty zásilky nečekáte na vyřešení situace v zákonné lhůtě. Bude stači, když nám ztracenou nebo poškozenou zásilku nahlásíte a zdokumentujete, ihnedVám &nbsp;pošleme úplně nové zboží.</p>\n"
+              }
+            ]
+          }
+        },
+        {
+          "2": {
+            "id": 2,
+            "image": "https://placehold.jp/150x150.png",
+            "name": "Záruky",
+            "surcharge_products": [
+              {
+                "id": 8,
+                "name": "Záruka 1 rok",
+                "type": 0,
+                "price": 33,
+                "percent": 10.0,
+                "image": null,
+                "help_text": null
+              },
+              {
+                "id": 9,
+                "name": "Záruka 2 roky",
+                "type": 0,
+                "price": 44,
+                "percent": 12.0,
+                "image": null,
+                "help_text": null
+              }
+            ]
+          }
+        },
+        {
+          "5": {
+            "id": 5,
+            "image": "https://placehold.jp/150x150.png",
+            "name": "Levné produkty",
+            "surcharge_products": [
+              {
+                "id": 11,
+                "name": "Nějaká hovadina",
+                "type": 1,
+                "price": 34,
+                "percent": 250.0,
+                "image": null,
+                "help_text": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bp_id": 49155,
+      "name": "Kouzelné čtení - Minikniha - Krtkovy příběhy",
+      "img": "https://www.zanapo.cz/files/thumbs/53f8a6e370c5354d448b35562d87a147/turnajove-sachy-velikost94-4-110x110.jpg",
+
+      "price": 251.1,
+      "quantity": 1,
+      "product_id": 11830,
+      "surcharge_groups": []
+    },
+    {
+      "bp_id": 49156,
+      "name": "Kouzelné čtení - Básničky z moře",
+      "img": "https://www.zanapo.cz/files/thumbs/53f8a6e370c5354d448b35562d87a147/turnajove-sachy-velikost94-4-110x110.jpg",
+
+      "price": 206.1,
+      "quantity": 1,
+      "product_id": 11938,
+      "surcharge_groups": [
+        {
+          "2": {
+            "id": 2,
+            "image": "https://placehold.jp/150x150.png",
+            "name": "Záruky",
+            "surcharge_products": [
+              {
+                "id": 8,
+                "name": "Záruka 1 rok",
+                "type": 0,
+                "price": 663,
+                "percent": 10.0,
+                "image": null,
+                "help_text": null
+              },
+              {
+                "id": 9,
+                "name": "Záruka 2 roky",
+                "type": 0,
+                "price": 884,
+                "percent": 12.0,
+                "image": null,
+                "help_text": null
+              }
+            ]
+          }
+        },
+        {
+          "5": {
+            "id": 5,
+            "image": "https://placehold.jp/150x150.png",
+            "name": "Levné produkty",
+            "surcharge_products": [
+              {
+                "id": 11,
+                "name": "Nějaká hovadina",
+                "type": 1,
+                "price": 25,
+                "percent": 250.0,
+                "image": null,
+                "help_text": null
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bp_id": 49157,
+      "name": "Kouzelné čtení - Básničky z lesa",
+      "img": "https://www.zanapo.cz/files/thumbs/53f8a6e370c5354d448b35562d87a147/turnajove-sachy-velikost94-4-110x110.jpg",
+
+      "price": 206.1,
+      "quantity": 1,
+      "product_id": 11580,
+      "surcharge_groups": [
+        {
+          "4": {
+            "id": 4,
+            "image": "/files/surcharge_products/groups/twemojibed.png",
+            "name": "Pojištění",
+            "surcharge_products": [
+              {
+                "id": 6,
+                "name": "Pojištění zásilky",
+                "type": 0,
+                "price": 19.0,
+                "percent": null,
+                "image": null,
+                "help_text": "<p>V případě poškození či ztráty zásilky nečekáte na vyřešení situace v zákonné lhůtě. Bude stači, když nám ztracenou nebo poškozenou zásilku nahlásíte a zdokumentujete, ihnedVám &nbsp;pošleme úplně nové zboží.</p>\n"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "voucher": null
+}

@@ -13,6 +13,7 @@ export const DeliveryAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Dodací společnost"
+          error={!!errors.deliveryCompany}
         />
         {errors.deliveryCompany && (
           <Error>{errors.deliveryCompany.message}</Error>
@@ -27,6 +28,7 @@ export const DeliveryAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Jméno"
+          error={!!errors.deliveryName}
         />
         {errors.deliveryName && <Error>{errors.deliveryName.message}</Error>}
       </FormGroup>
@@ -39,6 +41,7 @@ export const DeliveryAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Příjmení"
+          error={!!errors.deliverySurname}
         />
         {errors.deliverySurname && (
           <Error>{errors.deliverySurname.message}</Error>
@@ -53,6 +56,7 @@ export const DeliveryAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Ulice a číslo popisné"
+          error={!!errors.deliveryStreet}
         />
         {errors.deliveryStreet && (
           <Error>{errors.deliveryStreet.message}</Error>
@@ -71,6 +75,7 @@ export const DeliveryAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="PSČ"
+          error={!!errors.deliveryPsc}
         />
         {errors.deliveryPsc && <Error>{errors.deliveryPsc.message}</Error>}
       </FormGroup>
@@ -83,6 +88,7 @@ export const DeliveryAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Město"
+          error={!!errors.deliveryTown}
         />
         {errors.deliveryTown && <Error>{errors.deliveryTown.message}</Error>}
       </FormGroup>

@@ -11,7 +11,6 @@ export const CartContainer = styled.div`
 export const CartHeaders = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.backgroundGrey};
-  //background-color: ${({ theme }) => theme.fontOrangeTint};
   padding: 1rem;
   box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
   color: ${({ theme }) => theme.backgroundGreyTint};
@@ -27,9 +26,6 @@ export const CartHeaders = styled.div`
     flex: 3;
     display: flex;
     align-content: flex-start;
-
-    //margin-left: 20px;
-    //gap: 20px;
   }
 
   .dostupnost,
@@ -51,7 +47,8 @@ export const CartHeaders = styled.div`
 export const CartItemRow = styled.div`
   display: flex;
   padding: 1rem;
-  box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+  box-shadow: ${({ theme, hasVariants }) =>
+    hasVariants ? "none" : theme.myLightBoxShadow};
   margin-bottom: 20px;
   font-weight: 200;
 
@@ -143,6 +140,14 @@ export const CartItemRow = styled.div`
   }
 `;
 
+export const CartVariantRow = styled.div`
+  display: flex;
+  margin: 10px;
+  flex-grow: 1;
+  justify-content: flex-end;
+  box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+`;
+
 export const AllItems = styled.div`
   display: flex;
   flex-direction: column;
@@ -164,7 +169,6 @@ export const QuantityControl = styled.div`
     width: 30px;
     height: 30px;
     color: ${({ theme }) => theme.fontOrangeTint};
-    //color: ${({ theme }) => theme.backgroundGreyTint};
     border: none;
     cursor: pointer;
     display: flex;
@@ -177,12 +181,10 @@ export const QuantityControl = styled.div`
     &:first-of-type {
       border-right: none;
       border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
-      border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
     }
 
     &:last-of-type {
       border-left: none;
-      border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
       border-top-left-radius: ${({ theme }) => theme.myBorderRadius}%;
     }
   }

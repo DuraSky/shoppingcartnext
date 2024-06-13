@@ -13,6 +13,7 @@ export const CompanyAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Společnost"
+          error={!!errors.companyName}
         />
         {errors.companyName && <Error>{errors.companyName.message}</Error>}
       </FormGroup>
@@ -29,6 +30,7 @@ export const CompanyAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="IČ"
+          error={!!errors.ic}
         />
         {errors.ic && <Error>{errors.ic.message}</Error>}
       </FormGroup>
@@ -45,6 +47,7 @@ export const CompanyAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="DIČ"
+          error={!!errors.dic}
         />
         {errors.dic && <Error>{errors.dic.message}</Error>}
       </FormGroup>

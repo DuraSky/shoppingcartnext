@@ -13,6 +13,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Jméno"
+          error={!!errors.name}
         />
         {errors.name && <Error>{errors.name.message}</Error>}
       </FormGroup>
@@ -25,6 +26,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Příjmení"
+          error={!!errors.surname}
         />
         {errors.surname && <Error>{errors.surname.message}</Error>}
       </FormGroup>
@@ -37,6 +39,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Ulice a číslo popisné"
+          error={!!errors.street}
         />
         {errors.street && <Error>{errors.street.message}</Error>}
       </FormGroup>
@@ -53,6 +56,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="PSČ"
+          error={!!errors.psc}
         />
         {errors.psc && <Error>{errors.psc.message}</Error>}
       </FormGroup>
@@ -65,6 +69,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Město"
+          error={!!errors.town}
         />
         {errors.town && <Error>{errors.town.message}</Error>}
       </FormGroup>
@@ -91,6 +96,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Email"
+          error={!!errors.email}
         />
         {errors.email && <Error>{errors.email.message}</Error>}
       </FormGroup>
@@ -107,6 +113,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           })}
           type="text"
           placeholder="Telefon"
+          error={!!errors.phone}
         />
         {errors.phone && <Error>{errors.phone.message}</Error>}
       </FormGroup>

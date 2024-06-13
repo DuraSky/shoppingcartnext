@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const FormGroup = styled.div`
   display: flex;
@@ -19,9 +19,19 @@ export const Input = styled.input`
   border-radius: 4px;
   font-size: 14px;
   color: #333;
+  ${(props) =>
+    props.error &&
+    css`
+      border-color: red;
+    `}
   &:focus {
     outline: none !important;
     border: 2px solid #b8b4b4;
+    ${(props) =>
+      props.error &&
+      css`
+        border-color: red;
+      `}
   }
 `;
 

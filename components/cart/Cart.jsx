@@ -9,12 +9,12 @@ import { StyledWrapper } from "./cartPriceCalc/cartPriceCalcStyle";
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
 
-const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
+const ShoppingCart = () => {
   const { state } = useContext(CartContext);
   const { cart, cartTotal } = state;
 
   const [discountCode, setDiscountCode] = useState("");
-  const [showDiscountField, setShowDiscountField] = useState(false);
+  // const [showDiscountField, setShowDiscountField] = useState(false);
 
   useEffect(() => {
     console.log("Current state of the cart", cart);
@@ -23,7 +23,7 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
   const checkDiscountCode = (code) => {
     if (code === "sleva100") {
       console.log("spravny kod");
-      setShowDiscountForm(false);
+      // setShowDiscountForm(false);
     } else {
       console.log("spatny kod");
     }
@@ -35,10 +35,6 @@ const ShoppingCart = ({ showDiscountForm, setShowDiscountForm }) => {
       {/* <BoxShadowWrapper> */}
       <StyledWrapper>
         <DiscountCodeBar
-          setShowDiscountForm={setShowDiscountForm}
-          showDiscountForm={showDiscountForm}
-          showDiscountField={showDiscountField}
-          setShowDiscountField={setShowDiscountField}
           setDiscountCode={setDiscountCode}
           discountCode={discountCode}
           handleCheckDiscountCode={checkDiscountCode}

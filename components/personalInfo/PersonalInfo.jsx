@@ -34,7 +34,7 @@ const PersonalInfo = React.forwardRef(
       clearErrors,
     } = useForm({
       defaultValues: getFormState(FORM_STORAGE_KEY),
-      mode: "onBlur", // Validate on blur
+      mode: "onBlur",
     });
 
     const onSubmit = async (data) => {
@@ -64,10 +64,13 @@ const PersonalInfo = React.forwardRef(
         fieldsToValidate.push("comment");
       }
       const valid = await trigger(fieldsToValidate);
-      onError(errors);
       if (valid) {
-        console.log(data);
-        onFormSubmitSuccess();
+        const transformedData = Object.keys(data).reduce((acc, key) => {
+          acc[key] = data[key] === "" ? null : data[key];
+          return acc;
+        }, {});
+        console.log(transformedData);
+        onFormSubmitSuccess(transformedData);
       }
     };
 
@@ -87,10 +90,30 @@ const PersonalInfo = React.forwardRef(
       onError(errors);
     };
 
+    const clearDeliveryAddressFields = () => {
+      setValue("deliveryCompany", "");
+      setValue("deliveryName", "");
+      setValue("deliverySurname", "");
+      setValue("deliveryStreet", "");
+      setValue("deliveryPsc", "");
+      setValue("deliveryTown", "");
+    };
+
+    const clearCompanyAddressFields = () => {
+      setValue("companyName", "");
+      setValue("ic", "");
+      setValue("dic", "");
+    };
+
+    const clearCommentField = () => {
+      setValue("comment", "");
+    };
+
     const handleDeliveryAddressToggle = async (e) => {
       const checked = e.target.checked;
       setShowDeliveryAddress(checked);
       if (!checked) {
+        clearDeliveryAddressFields();
         clearErrors([
           "deliveryCompany",
           "deliveryName",
@@ -99,12 +122,6 @@ const PersonalInfo = React.forwardRef(
           "deliveryPsc",
           "deliveryTown",
         ]);
-        setValue("deliveryCompany", "");
-        setValue("deliveryName", "");
-        setValue("deliverySurname", "");
-        setValue("deliveryStreet", "");
-        setValue("deliveryPsc", "");
-        setValue("deliveryTown", "");
         onError({});
       } else {
         await trigger([
@@ -123,10 +140,8 @@ const PersonalInfo = React.forwardRef(
       const checked = e.target.checked;
       setShowCompanyAddress(checked);
       if (!checked) {
+        clearCompanyAddressFields();
         clearErrors(["companyName", "ic", "dic"]);
-        setValue("companyName", "");
-        setValue("ic", "");
-        setValue("dic", "");
         onError({});
       } else {
         await trigger(["companyName", "ic", "dic"]);
@@ -138,8 +153,8 @@ const PersonalInfo = React.forwardRef(
       const checked = e.target.checked;
       setShowComment(checked);
       if (!checked) {
+        clearCommentField();
         clearErrors(["comment"]);
-        setValue("comment", "");
         onError({});
       } else {
         await trigger(["comment"]);
