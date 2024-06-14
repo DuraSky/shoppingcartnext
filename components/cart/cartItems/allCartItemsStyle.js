@@ -141,11 +141,49 @@ export const CartItemRow = styled.div`
 `;
 
 export const CartVariantRow = styled.div`
-  display: flex;
-  margin: 10px;
-  flex-grow: 1;
-  justify-content: flex-end;
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+  /* display: flex; */
+  //flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+
+  //padding-left: 50px;
+  /* justify-content: center; */
+  /* flex-grow: 1; */
+
+  img {
+    width: 40px;
+  }
+
+  &:last-child {
+    margin-bottom: 1px;
+  }
+
+  .productGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    //flex-grow: 1;
+    /* margin: 0 auto; */
+    /* padding: 20px 0; */
+    .productVariant {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      width: 500px;
+      padding: 0 40px;
+    }
+  }
+  @media (min-width: 768px) {
+    padding-left: 150px;
+    display: block;
+  }
+
+  .checkboxAndName {
+    display: flex;
+    gap: 5px;
+  }
 `;
 
 export const AllItems = styled.div`

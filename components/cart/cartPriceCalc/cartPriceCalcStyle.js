@@ -12,6 +12,13 @@ export const StyledWrapper = styled.div`
     padding: 10px;
   }
 
+  @media (max-width: 921px) {
+    flex-direction: column;
+    gap: 40px;
+    margin: 30px auto;
+    padding: 10px;
+  }
+
   @media (max-width: 370px) {
     //margin: 30px auto;
     padding: 10px;
@@ -28,7 +35,12 @@ export const StyledPriceCalc = styled.div`
 
   @media (max-width: 370px) {
     align-items: center;
+    align-self: center;
   }
+
+  /* @media (max-width: 921px) {
+    align-self: flex-end;
+  } */
 
   h3 {
     //color: ${({ theme }) => theme.fontGrey};

@@ -35,7 +35,7 @@
                 "help_text": null
               },
               {
-                "id": 7,
+                "id": 444,
                 "name": "Přívěšek2",
                 "type": 1,
                 "price": 45,
@@ -56,63 +56,72 @@
           }
         },
         {
-          "4": {
-            "id": 4,
+          "4555": {
+            "id": 4555,
             "image": "https://placehold.jp/150x150.png",
             "name": "Pojištění",
             "surcharge_products": [
               {
-                "id": 6,
+                "id": 66,
                 "name": "Pojištění zásilky",
                 "type": 0,
                 "price": 19.0,
                 "percent": null,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": "<p>V případě poškození či ztráty zásilky nečekáte na vyřešení situace v zákonné lhůtě. Bude stači, když nám ztracenou nebo poškozenou zásilku nahlásíte a zdokumentujete, ihnedVám &nbsp;pošleme úplně nové zboží.</p>\n"
               }
             ]
           }
         },
         {
-          "2": {
-            "id": 2,
+          "2444": {
+            "id": 2444,
             "image": "https://placehold.jp/150x150.png",
             "name": "Záruky",
             "surcharge_products": [
               {
-                "id": 8,
+                "id": 88,
                 "name": "Záruka 1 rok",
                 "type": 0,
                 "price": 33,
                 "percent": 10.0,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": null
               },
               {
-                "id": 9,
+                "id": 99,
                 "name": "Záruka 2 roky",
                 "type": 0,
                 "price": 44,
                 "percent": 12.0,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
+                "help_text": null
+              },
+              {
+                "id": 994534,
+                "name": "Záruka 3 roky",
+                "type": 0,
+                "price": 444,
+                "percent": 12.0,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": null
               }
             ]
           }
         },
         {
-          "5": {
-            "id": 5,
+          "57777": {
+            "id": 57777,
             "image": "https://placehold.jp/150x150.png",
             "name": "Levné produkty",
             "surcharge_products": [
               {
-                "id": 11,
+                "id": 111,
                 "name": "Nějaká hovadina",
                 "type": 1,
                 "price": 34,
                 "percent": 250.0,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": null
               }
             ]
@@ -140,8 +149,8 @@
       "product_id": 11938,
       "surcharge_groups": [
         {
-          "2": {
-            "id": 2,
+          "221111": {
+            "id": 221111,
             "image": "https://placehold.jp/150x150.png",
             "name": "Záruky",
             "surcharge_products": [
@@ -151,7 +160,7 @@
                 "type": 0,
                 "price": 663,
                 "percent": 10.0,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": null
               },
               {
@@ -160,15 +169,15 @@
                 "type": 0,
                 "price": 884,
                 "percent": 12.0,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": null
               }
             ]
           }
         },
         {
-          "5": {
-            "id": 5,
+          "53434": {
+            "id": 53434,
             "image": "https://placehold.jp/150x150.png",
             "name": "Levné produkty",
             "surcharge_products": [
@@ -178,7 +187,7 @@
                 "type": 1,
                 "price": 25,
                 "percent": 250.0,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": null
               }
             ]
@@ -196,8 +205,8 @@
       "product_id": 11580,
       "surcharge_groups": [
         {
-          "4": {
-            "id": 4,
+          "467676": {
+            "id": 467676,
             "image": "/files/surcharge_products/groups/twemojibed.png",
             "name": "Pojištění",
             "surcharge_products": [
@@ -207,7 +216,7 @@
                 "type": 0,
                 "price": 19.0,
                 "percent": null,
-                "image": null,
+                "image": "https://placehold.jp/150x150.png",
                 "help_text": "<p>V případě poškození či ztráty zásilky nečekáte na vyřešení situace v zákonné lhůtě. Bude stači, když nám ztracenou nebo poškozenou zásilku nahlásíte a zdokumentujete, ihnedVám &nbsp;pošleme úplně nové zboží.</p>\n"
               }
             ]

@@ -2,19 +2,19 @@ import React from "react";
 import { CartItemChargeProducts } from "./CartItemChargeProducts";
 
 export const CartItemChargeGroups = ({ surcharge_groups }) => {
-  console.log("inside groups", surcharge_groups);
-
   return (
     <>
       {surcharge_groups.map((group, index) => {
-        console.log("inside groups map", group);
+        // Extract the single group object
+        const groupKey = Object.keys(group)[0];
+        const groupDetails = group[groupKey];
+
         return (
-          <div key={index}>
-            {Object.values(group).map((g, gIndex) => (
-              <div key={g.id || gIndex}>
-                <CartItemChargeProducts products={g.surcharge_products} />
-              </div>
-            ))}
+          <div key={groupKey || index} className="productGroup">
+            <h3>{groupDetails.name || "Surcharge Group"}</h3>
+            <CartItemChargeProducts
+              products={groupDetails.surcharge_products}
+            />
           </div>
         );
       })}
