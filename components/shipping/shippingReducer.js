@@ -1,22 +1,22 @@
 const initialState = {
   shippingOptions: [],
   selectedShippingOption: null,
-  selectedShippingOptionImg: null, // Add this line
+  selectedShippingOptionImg: null,
   selectedShippingPrice: null,
   selectedShippingOptions: [],
   selectedPaymentOption: null,
-  selectedPaymentOptionImg: null, // Add this line
+  selectedPaymentOptionImg: null,
   selectedPaymentOptionPrice: null,
 };
 
 const actionTypes = {
   SET_SHIPPING_OPTIONS: "SET_SHIPPING_OPTIONS",
   SET_SELECTED_SHIPPING_OPTION: "SET_SELECTED_SHIPPING_OPTION",
-  SET_SELECTED_SHIPPING_OPTION_IMG: "SET_SELECTED_SHIPPING_OPTION_IMG", // Add this line
+  SET_SELECTED_SHIPPING_OPTION_IMG: "SET_SELECTED_SHIPPING_OPTION_IMG",
   SET_SELECTED_SHIPPING_PRICE: "SET_SELECTED_SHIPPING_PRICE",
   SET_SELECTED_SHIPPING_OPTIONS: "SET_SELECTED_SHIPPING_OPTIONS",
   SET_SELECTED_PAYMENT_OPTION: "SET_SELECTED_PAYMENT_OPTION",
-  SET_SELECTED_PAYMENT_OPTION_IMG: "SET_SELECTED_PAYMENT_OPTION_IMG", // Add this line
+  SET_SELECTED_PAYMENT_OPTION_IMG: "SET_SELECTED_PAYMENT_OPTION_IMG",
   SET_SELECTED_PAYMENT_OPTION_PRICE: "SET_SELECTED_PAYMENT_OPTION_PRICE",
 };
 
@@ -26,7 +26,7 @@ const shippingReducer = (state, action) => {
       return { ...state, shippingOptions: action.payload };
     case actionTypes.SET_SELECTED_SHIPPING_OPTION:
       return { ...state, selectedShippingOption: action.payload };
-    case actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG: // Add this case
+    case actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG:
       return { ...state, selectedShippingOptionImg: action.payload };
     case actionTypes.SET_SELECTED_SHIPPING_PRICE:
       return { ...state, selectedShippingPrice: action.payload };
@@ -34,7 +34,7 @@ const shippingReducer = (state, action) => {
       return { ...state, selectedShippingOptions: action.payload };
     case actionTypes.SET_SELECTED_PAYMENT_OPTION:
       return { ...state, selectedPaymentOption: action.payload };
-    case actionTypes.SET_SELECTED_PAYMENT_OPTION_IMG: // Add this case
+    case actionTypes.SET_SELECTED_PAYMENT_OPTION_IMG:
       return { ...state, selectedPaymentOptionImg: action.payload };
     case actionTypes.SET_SELECTED_PAYMENT_OPTION_PRICE:
       return { ...state, selectedPaymentOptionPrice: action.payload };

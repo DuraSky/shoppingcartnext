@@ -1,44 +1,77 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CartContext } from "./CartProvider";
+import { CartContext, actionTypes } from "./CartProvider";
 import { ProgressBar } from "./progressBar/ProgressBar";
 import { CartPriceCalc } from "./cartPriceCalc/CartPriceCalc";
 import { DiscountCodeBar } from "./discountCodeBar/DiscountCodeBar";
 import { AllCartItems } from "./cartItems/AllCartItems";
 import { StyledWrapper } from "./cartPriceCalc/cartPriceCalcStyle";
-
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
+import { AppliedVoucher } from "./discountCodeBar/AppliedVoucher";
+import { StyledDiscountErrorMessage } from "./discountCodeBar/discountCodeBarStyle";
 
 const ShoppingCart = () => {
-  const { state } = useContext(CartContext);
-  const { cart, cartTotal } = state;
+  const { state, dispatch } = useContext(CartContext);
+  const { cart, cartTotal, vouchers, appliedVouchers } = state;
 
   const [discountCode, setDiscountCode] = useState("");
-  // const [showDiscountField, setShowDiscountField] = useState(false);
+  const [discountError, setDiscountError] = useState(false);
+  const [discountErrorMessage, setDiscountErrorMessage] =
+    useState("Neplatný kód");
 
   useEffect(() => {
     console.log("Current state of the cart", cart);
-  }, [cart]);
+    console.log("Received vouchers", vouchers);
+    console.log("Applied vouchers", appliedVouchers);
+  }, [cart, vouchers, appliedVouchers]);
 
   const checkDiscountCode = (code) => {
-    if (code === "sleva100") {
-      console.log("spravny kod");
-      // setShowDiscountForm(false);
+    const voucher = vouchers.find((voucher) => voucher.code === code);
+    if (voucher && !appliedVouchers.some((v) => v.code === code)) {
+      dispatch({ type: actionTypes.APPLY_VOUCHER, payload: code });
+      setDiscountError(false);
     } else {
-      console.log("spatny kod");
+      // Temporarily set error to false to reset the animation
+      setDiscountError(false);
+      setTimeout(() => setDiscountError(true), 0);
     }
+    setDiscountCode(""); // Reset the discount code input
+  };
+
+  const removeVoucher = (code) => {
+    dispatch({ type: actionTypes.REMOVE_VOUCHER, payload: code });
+    setDiscountError(false);
   };
 
   return (
     <>
       <AllCartItems cart={cart} />
-      {/* <BoxShadowWrapper> */}
       <StyledWrapper>
-        <DiscountCodeBar
-          setDiscountCode={setDiscountCode}
-          discountCode={discountCode}
-          handleCheckDiscountCode={checkDiscountCode}
-        />
+        <div>
+          <DiscountCodeBar
+            setDiscountCode={setDiscountCode}
+            discountCode={discountCode}
+            handleCheckDiscountCode={checkDiscountCode}
+            discountError={discountError}
+          />
+          {discountError && (
+            <StyledDiscountErrorMessage>
+              {discountErrorMessage}
+            </StyledDiscountErrorMessage>
+          )}
+          {appliedVouchers.length > 0 && (
+            <div>
+              {appliedVouchers.map((voucher) => (
+                <AppliedVoucher
+                  key={voucher.code}
+                  voucher={voucher}
+                  removeVoucher={removeVoucher}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
         <ProgressBar cart={cart} />
         <CartPriceCalc cartTotal={cartTotal} />
       </StyledWrapper>
@@ -47,7 +80,6 @@ const ShoppingCart = () => {
           <StyledNextButton>Přejít na dopravu a platbu →</StyledNextButton>
         </Link>
       </StyledButtonWrapper>
-      {/* </BoxShadowWrapper> */}
     </>
   );
 };

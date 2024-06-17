@@ -7,8 +7,9 @@ import {
 const initialState = {
   cart: [],
   cartTotal: 0,
-  voucher: null,
-  selectedSurchargeProducts: {}, // Add this to handle selected surcharge products
+  appliedVouchers: [], // Changed from a single voucher to an array of applied vouchers
+  selectedSurchargeProducts: {},
+  vouchers: [], // Add this to hold available vouchers
 };
 
 const actionTypes = {
@@ -17,7 +18,9 @@ const actionTypes = {
   REMOVE_FROM_CART: "REMOVE_FROM_CART",
   CHANGE_QUANTITY: "CHANGE_QUANTITY",
   UPDATE_CART_TOTAL: "UPDATE_CART_TOTAL",
-  SET_SELECTED_SURCHARGE_PRODUCT: "SET_SELECTED_SURCHARGE_PRODUCT", // Add this action type
+  SET_SELECTED_SURCHARGE_PRODUCT: "SET_SELECTED_SURCHARGE_PRODUCT",
+  APPLY_VOUCHER: "APPLY_VOUCHER", // Add this action type for applying vouchers
+  REMOVE_VOUCHER: "REMOVE_VOUCHER", // Add this action type for removing vouchers
 };
 
 const getSurchargeProductPrice = (surchargeProducts, selectedProduct) => {
@@ -26,7 +29,11 @@ const getSurchargeProductPrice = (surchargeProducts, selectedProduct) => {
   return product ? product.price : 0;
 };
 
-const calculateCartTotal = (cart, selectedSurchargeProducts) => {
+const calculateCartTotal = (
+  cart,
+  selectedSurchargeProducts,
+  appliedVouchers = []
+) => {
   const cartTotal = getCartPrice(cart);
   const surchargeTotal = Object.values(selectedSurchargeProducts).reduce(
     (total, productId) => {
@@ -44,21 +51,30 @@ const calculateCartTotal = (cart, selectedSurchargeProducts) => {
     },
     0
   );
-  return cartTotal + surchargeTotal;
+
+  const total = cartTotal + surchargeTotal;
+
+  const totalDiscount = appliedVouchers.reduce(
+    (discount, voucher) => discount + voucher.value,
+    0
+  );
+
+  return total - totalDiscount;
 };
 
 const cartReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_CART:
-      const { cart_products, voucher } = action.payload;
+      const { cart_products, vouchers } = action.payload;
       return {
         ...state,
         cart: cart_products,
+        vouchers: vouchers,
         cartTotal: calculateCartTotal(
           cart_products,
-          state.selectedSurchargeProducts
+          state.selectedSurchargeProducts,
+          state.appliedVouchers
         ),
-        voucher: voucher,
       };
 
     case actionTypes.REMOVE_FROM_CART:
@@ -68,7 +84,8 @@ const cartReducer = (state, action) => {
         cart: updatedCartRemove,
         cartTotal: calculateCartTotal(
           updatedCartRemove,
-          state.selectedSurchargeProducts
+          state.selectedSurchargeProducts,
+          state.appliedVouchers
         ),
       };
 
@@ -83,7 +100,8 @@ const cartReducer = (state, action) => {
         cart: updatedCartQuantity,
         cartTotal: calculateCartTotal(
           updatedCartQuantity,
-          state.selectedSurchargeProducts
+          state.selectedSurchargeProducts,
+          state.appliedVouchers
         ),
       };
 
@@ -100,7 +118,55 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selectedSurchargeProducts: newSelectedSurchargeProducts,
-        cartTotal: calculateCartTotal(state.cart, newSelectedSurchargeProducts),
+        cartTotal: calculateCartTotal(
+          state.cart,
+          newSelectedSurchargeProducts,
+          state.appliedVouchers
+        ),
+      };
+
+    case actionTypes.APPLY_VOUCHER:
+      const voucherToApply = state.vouchers.find(
+        (v) => v.code === action.payload
+      );
+      if (
+        !voucherToApply ||
+        voucherToApply.used ||
+        state.appliedVouchers.includes(voucherToApply)
+      )
+        return state;
+
+      // Mark the voucher as used
+      voucherToApply.used = true;
+
+      return {
+        ...state,
+        appliedVouchers: [...state.appliedVouchers, voucherToApply],
+        cartTotal: calculateCartTotal(
+          state.cart,
+          state.selectedSurchargeProducts,
+          [...state.appliedVouchers, voucherToApply]
+        ),
+      };
+
+    case actionTypes.REMOVE_VOUCHER:
+      const updatedAppliedVouchers = state.appliedVouchers.filter(
+        (v) => v.code !== action.payload
+      );
+      const voucherToRemove = state.vouchers.find(
+        (v) => v.code === action.payload
+      );
+      if (voucherToRemove) {
+        voucherToRemove.used = false; // Mark the voucher as unused
+      }
+      return {
+        ...state,
+        appliedVouchers: updatedAppliedVouchers,
+        cartTotal: calculateCartTotal(
+          state.cart,
+          state.selectedSurchargeProducts,
+          updatedAppliedVouchers
+        ),
       };
 
     default:

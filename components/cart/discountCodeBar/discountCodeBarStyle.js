@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+
+const shake = keyframes`
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+`;
 
 export const StyledDiscountBar = styled.div`
   display: flex;
@@ -7,11 +15,15 @@ export const StyledDiscountBar = styled.div`
 
   input {
     padding: 10px;
-    border: 1px solid #ccc;
-    //border-right: none;
-    //border-radius: 4px 0 0 4px;
+    border: 1px solid ${(props) => (props.discountError ? "red" : "#b8b4b4")};
+    ${(props) =>
+      props.discountError &&
+      css`
+        animation: ${shake} 0.2s;
+      `};
     outline: none;
     font-size: 14px;
+    //margin-right: 10px;
   }
 
   p {
@@ -36,6 +48,11 @@ export const StyledDiscountBar = styled.div`
   }
 
   button:hover {
-    background-color: #45a049;
+    background-color: ${({ theme }) => theme.fontOrange};
   }
+`;
+
+export const StyledDiscountErrorMessage = styled.p`
+  color: red;
+  font-size: 14px;
 `;

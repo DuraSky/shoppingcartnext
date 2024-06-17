@@ -2,33 +2,31 @@ import React from "react";
 import { StyledDiscountBar } from "./discountCodeBarStyle";
 
 export const DiscountCodeBar = ({
-  showDiscountForm,
-  showDiscountField,
-  setShowDiscountField,
   setDiscountCode,
   discountCode,
-  handleCheckDiscountCode, // Renamed the prop to avoid conflict
+  handleCheckDiscountCode,
+  discountError,
 }) => {
+  const handleChange = (e) => {
+    setDiscountCode(e.target.value);
+  };
+
+  const handleApply = () => {
+    handleCheckDiscountCode(discountCode);
+  };
+
   return (
-    <>
-      {/* {showDiscountForm && ( */}
-      <StyledDiscountBar>
-        <div>
-          <p>Zadejte slevový kupón</p>
-          <input
-            type="text"
-            placeholder="Slevovy kod"
-            onChange={(e) => setDiscountCode(e.target.value)}
-          />
-          <button
-            type="button"
-            onClick={() => handleCheckDiscountCode(discountCode)} // Updated to use the renamed prop
-          >
-            ⇨
-          </button>
-        </div>
-      </StyledDiscountBar>
-      {/* )} */}
-    </>
+    <StyledDiscountBar discountError={discountError}>
+      <div>
+        <p>Zadejte slevový kupón</p>
+        <input
+          type="text"
+          value={discountCode}
+          onChange={handleChange}
+          placeholder="Slevový kód"
+        />
+        <button onClick={handleApply}> ⇨</button>
+      </div>
+    </StyledDiscountBar>
   );
 };

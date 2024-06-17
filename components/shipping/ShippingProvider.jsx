@@ -25,7 +25,7 @@ export const ShippingProvider = ({ children }) => {
           payload: firstOption.name,
         });
         dispatch({
-          type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG, // Add this dispatch
+          type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
           payload: firstOption.imgUrl,
         });
         dispatch({

@@ -156,6 +156,13 @@ export const CartVariantRow = styled.div`
     width: 40px;
   }
 
+  input {
+    accent-color: ${({ theme }) =>
+      theme.backgroundBrown}; /* Change color here */
+    margin-right: 5px;
+    width: 18px;
+  }
+
   &:last-child {
     margin-bottom: 1px;
   }

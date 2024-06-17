@@ -44,4 +44,14 @@ export const StyledProductRecap = styled.div`
 
     color: ${({ theme }) => theme.fontOrange};
   }
+
+  .surchargeItem {
+    padding-top: 20px;
+    .surchargeDetails {
+      display: flex;
+      .itemName {
+        font-weight: 200;
+      }
+    }
+  }
 `;

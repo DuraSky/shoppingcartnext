@@ -28,8 +28,13 @@ export const StyledRecap = styled.div`
     //padding: 10px;
     //color: ${({ theme }) => theme.fontGrey};
   }
+
+  .flexWrapper {
+    display: flex;
+  }
   .recapOption {
     display: flex;
+
     gap: 10px;
     box-shadow: ${({ theme }) => theme.myLightBoxShadow};
     font-weight: 200;
@@ -40,9 +45,24 @@ export const StyledRecap = styled.div`
         color: ${({ theme }) => theme.fontOrange};
       }
     }
-
-    //gap: 10px;
   }
+
+  .voucher {
+    justify-content: space-between;
+    align-items: center;
+
+    .voucherHeader {
+      display: flex;
+      align-items: center;
+
+      font-weight: 200;
+      p {
+        color: black;
+      }
+      gap: 10px;
+    }
+  }
+
   .final {
     font-weight: 600;
   }

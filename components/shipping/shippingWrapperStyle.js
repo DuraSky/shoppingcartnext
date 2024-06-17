@@ -119,7 +119,7 @@ export const ShippingPageLayout = styled.div`
       padding: 30px;
 
       position: absolute;
-      top: 600px;
+      bottom: -100px;
 
       //padding: 50px;
     }

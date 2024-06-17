@@ -225,5 +225,27 @@
       ]
     }
   ],
-  "voucher": null
+  "vouchers": [
+    {
+      "code": "voucher1",
+      "used": false,
+      "value": 300,
+      "minValue": 0,
+      "type": 0
+    },
+    {
+      "code": "voucher2",
+      "used": false,
+      "value": 100,
+      "minValue": 0,
+      "type": 0
+    },
+    {
+      "code": "voucher3",
+      "used": false,
+      "value": 500,
+      "minValue": 0,
+      "type": 0
+    }
+  ]
 }

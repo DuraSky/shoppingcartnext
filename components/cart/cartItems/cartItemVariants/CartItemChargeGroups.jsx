@@ -22,7 +22,7 @@ export const CartItemChargeGroups = ({ surcharge_groups }) => {
 
         return (
           <div key={groupKey || index} className="productGroup">
-            <h3>{groupDetails.name || "Surcharge Group"}</h3>
+            <h3>{groupDetails.name || "Doplňkové produkty"}</h3>
             <CartItemChargeProducts
               groupId={groupKey}
               products={groupDetails.surcharge_products}

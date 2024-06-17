@@ -9,12 +9,14 @@ import { StyledRecap } from "./recapStyle";
 
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
+import { VoucherRecap } from "./voucherRecap/VoucherRecap";
 
 const Recap = () => {
   const { state: cartState } = useContext(CartContext);
   const { state: shippingState } = useContext(ShippingContext);
 
-  const { cart, cartTotal } = cartState;
+  const { cart, cartTotal, selectedSurchargeProducts, appliedVouchers } =
+    cartState;
   const {
     selectedShippingOption,
     selectedShippingPrice,
@@ -35,7 +37,16 @@ const Recap = () => {
     <StyledRecap>
       <h2>Rekaputilace objednavky</h2>
 
-      <ItemListing cart={cart} />
+      <ItemListing
+        cart={cart}
+        selectedSurchargeProducts={selectedSurchargeProducts}
+      />
+
+      {appliedVouchers.length > 0 && (
+        <div className="recapVoucher">
+          <VoucherRecap appliedVouchers={appliedVouchers} />
+        </div>
+      )}
 
       <div className="recapOption">
         <img src="/assets/truck5.svg" width="30px" alt="" />
@@ -54,6 +65,15 @@ const Recap = () => {
       </div>
 
       <div className="recapOption final">
+        {/* {appliedVouchers.length > 0 && (
+          <>
+            {appliedVouchers.map((voucher) => (
+              <p key={voucher.code}>
+                {voucher.code} - {voucher.value} Kč
+              </p>
+            ))}
+          </>
+        )} */}
         <h3>Celkem</h3>
         <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
       </div>
