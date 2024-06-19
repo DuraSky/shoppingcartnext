@@ -1,29 +1,29 @@
-import React, { createContext, useEffect, useMemo, useReducer } from "react";
-import { cartLoader, apiLoader } from "../../utils/loader";
+import React, { createContext, useReducer, useEffect, useMemo } from "react";
 import { initialState, actionTypes, cartReducer } from "./cartReducer";
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
+export const CartProvider = ({
+  children,
+  initialCart = { cart_products: [], vouchers: [] },
+}) => {
+  const [state, dispatch] = useReducer(cartReducer, {
+    ...initialState,
+    cart: initialCart.cart_products || [],
+    vouchers: initialCart.vouchers || [],
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const initialCart = await cartLoader();
-        //const initialCart = await apiLoader();
-        console.log("inProvider", initialCart);
-        if (initialCart) {
-          dispatch({ type: actionTypes.SET_CART, payload: initialCart });
-        } else {
-          console.error("Failed to load cart data");
-        }
-      } catch (error) {
-        console.error("Fetch data error:", error);
-      }
-    };
-    fetchData();
-  }, []);
+    if (initialCart && initialCart.cart_products && initialCart.vouchers) {
+      dispatch({
+        type: actionTypes.SET_CART,
+        payload: {
+          cart_products: initialCart.cart_products,
+          vouchers: initialCart.vouchers,
+        },
+      });
+    }
+  }, [initialCart]);
 
   const value = useMemo(() => ({ state, dispatch }), [state]);
 

@@ -1,37 +1,33 @@
 import React, { useContext } from "react";
 import { CartItemChargeProducts } from "./CartItemChargeProducts";
-import { CartContext, actionTypes } from "../../CartProvider"; // Import the context and action types
+import { CartContext, actionTypes } from "../../CartProvider";
 
-export const CartItemChargeGroups = ({ surcharge_groups }) => {
+export const CartItemChargeGroups = ({ bpId, surcharge_groups }) => {
   const { state, dispatch } = useContext(CartContext); // Use the context
 
-  const handleSelectProduct = (groupId, productId) => {
+  const handleSelectProduct = (bpId, groupId, productId) => {
     dispatch({
       type: actionTypes.SET_SELECTED_SURCHARGE_PRODUCT,
-      payload: { groupId, productId },
+      payload: { bpId, groupId, productId },
     });
   };
 
-  const selectedProducts = state.selectedSurchargeProducts; // Get the selected products from state
+  const selectedProducts = state.selectedSurchargeProducts[bpId] || {};
 
   return (
     <>
-      {surcharge_groups.map((group, index) => {
-        const groupKey = Object.keys(group)[0];
-        const groupDetails = group[groupKey];
-
-        return (
-          <div key={groupKey || index} className="productGroup">
-            <h3>{groupDetails.name || "Doplňkové produkty"}</h3>
-            <CartItemChargeProducts
-              groupId={groupKey}
-              products={groupDetails.surcharge_products}
-              selectedProduct={selectedProducts[groupKey]}
-              onSelectProduct={handleSelectProduct}
-            />
-          </div>
-        );
-      })}
+      {surcharge_groups.map((group, index) => (
+        <div key={group.id || index} className="productGroup">
+          <h3>{group.name || "Doplňkové služby"}</h3>
+          <CartItemChargeProducts
+            bpId={bpId}
+            groupId={group.id}
+            products={group.surcharge_products}
+            selectedProduct={selectedProducts[group.id]}
+            onSelectProduct={handleSelectProduct}
+          />
+        </div>
+      ))}
     </>
   );
 };

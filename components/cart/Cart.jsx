@@ -35,7 +35,7 @@ const ShoppingCart = () => {
       setDiscountError(false);
       setTimeout(() => setDiscountError(true), 0);
     }
-    setDiscountCode(""); // Reset the discount code input
+    setDiscountCode("");
   };
 
   const removeVoucher = (code) => {

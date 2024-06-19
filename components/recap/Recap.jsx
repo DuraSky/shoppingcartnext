@@ -65,15 +65,6 @@ const Recap = () => {
       </div>
 
       <div className="recapOption final">
-        {/* {appliedVouchers.length > 0 && (
-          <>
-            {appliedVouchers.map((voucher) => (
-              <p key={voucher.code}>
-                {voucher.code} - {voucher.value} Kč
-              </p>
-            ))}
-          </>
-        )} */}
         <h3>Celkem</h3>
         <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
       </div>

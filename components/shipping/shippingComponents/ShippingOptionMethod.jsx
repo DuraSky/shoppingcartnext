@@ -1,42 +1,43 @@
 import React from "react";
-import { ShippingContext } from "../ShippingProvider";
 import { useContext } from "react";
+import { ShippingContext } from "../ShippingProvider";
 import Image from "next/image";
-
 import { StyledShippingMethod } from "./shippingOptionMethodStyle";
 
-export const ShippingOptionMethod = ({ methods, onSelectMethod }) => {
+export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
   const { selectedShippingOption } = state;
+
+  // Safeguard to ensure delivery object is defined
+  if (!delivery || !delivery.name) {
+    return null;
+  }
+
   return (
-    <>
-      {methods.map((method, index) => (
-        <StyledShippingMethod key={index}>
-          <label>
-            <input
-              type="radio"
-              name="shippingMethod"
-              value={method.name}
-              onChange={() => onSelectMethod(method)}
-              checked={selectedShippingOption === method.name}
-            />
-            <Image
-              src={method.imgUrl}
-              alt={method.name}
-              layout="intrinsic"
-              width={100}
-              height={100}
-            />
-            <div>
-              <p>{method.name}</p>
-              <p>
-                <span>{method.canShipDate}</span>
-              </p>
-            </div>
-            <p className="price">{method.price} Kč</p>
-          </label>
-        </StyledShippingMethod>
-      ))}
-    </>
+    <StyledShippingMethod>
+      <label>
+        <input
+          type="radio"
+          name="shippingMethod"
+          value={delivery.name}
+          onChange={() => onSelectMethod(delivery)}
+          checked={selectedShippingOption === delivery.name}
+        />
+        <Image
+          src={delivery.imgUrl}
+          alt={delivery.name}
+          layout="intrinsic"
+          width={100}
+          height={100}
+        />
+        <div>
+          <p>{delivery.name}</p>
+          <p>
+            <span>{delivery.canShipDate}</span>
+          </p>
+        </div>
+        <p className="price">{delivery.price} Kč</p>
+      </label>
+    </StyledShippingMethod>
   );
 };

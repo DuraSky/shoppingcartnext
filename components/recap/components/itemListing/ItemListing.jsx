@@ -8,11 +8,11 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
       {cart.map((item, index) => {
         const surchargeGroups = item.surcharge_groups || [];
         const selectedSurchargeItems = surchargeGroups.flatMap((group) => {
-          const groupId = Object.keys(group)[0];
-          const groupDetails = group[groupId];
-          const selectedProductId = selectedSurchargeProducts[groupId];
+          const groupId = group.id; // Access group ID directly
+          const selectedProductId =
+            selectedSurchargeProducts?.[item.bp_id]?.[groupId];
           if (selectedProductId) {
-            const selectedProduct = groupDetails.surcharge_products.find(
+            const selectedProduct = group.surcharge_products.find(
               (p) => p.id === selectedProductId
             );
             return selectedProduct ? [selectedProduct] : [];
@@ -24,7 +24,7 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
           <StyledProductRecap key={index}>
             <div className="itemImage">
               <Image
-                src={item.img}
+                src={item.image}
                 alt={item.name}
                 width={100}
                 height={100}
@@ -43,7 +43,7 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
               {selectedSurchargeItems.map((surchargeItem, idx) => (
                 <div key={idx} className="surchargeItem">
                   <Image
-                    src={surchargeItem.image}
+                    src={surchargeItem.image || "/placeholder.png"}
                     alt={surchargeItem.name}
                     width={50}
                     height={50}

@@ -19,8 +19,10 @@ export const ShippingWrapper = () => {
   const {
     selectedPaymentOption,
     selectedPaymentOptionImg,
+    selectedPaymentOptionPrice,
     selectedShippingOption,
     selectedShippingOptionImg,
+    selectedShippingPrice,
   } = state;
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
@@ -32,10 +34,12 @@ export const ShippingWrapper = () => {
   const [previewSelectedShipping, setPreviewSelectedShipping] = useState({
     option: "Select a shipping option",
     img: null,
+    price: null,
   });
   const [previewSelectedPayment, setPreviewSelectedPayment] = useState({
     option: "Prosim zvolte typ platby",
     img: "/assets/card.png",
+    price: null,
   });
 
   const [formErrors, updateFormErrors] = useFormErrors();
@@ -108,8 +112,13 @@ export const ShippingWrapper = () => {
     setPreviewSelectedShipping({
       option: selectedShippingOption || "Select a shipping option",
       img: selectedShippingOptionImg,
+      price: selectedShippingPrice,
     });
-  }, [selectedShippingOption, selectedShippingOptionImg]);
+  }, [
+    selectedShippingOption,
+    selectedShippingOptionImg,
+    selectedShippingPrice,
+  ]);
 
   // Effect to update previewSelectedPayment when selectedPaymentOption changes
   useEffect(() => {
@@ -117,11 +126,13 @@ export const ShippingWrapper = () => {
       setPreviewSelectedPayment({
         option: "Prosim zvolte typ platby",
         img: "/assets/card.png",
+        price: null,
       });
     } else {
       setPreviewSelectedPayment({
         option: selectedPaymentOption,
         img: selectedPaymentOptionImg,
+        price: selectedPaymentOptionPrice,
       });
     }
   }, [selectedPaymentOption, selectedPaymentOptionImg]);

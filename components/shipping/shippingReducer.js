@@ -1,5 +1,5 @@
 const initialState = {
-  shippingOptions: [],
+  shippingOptions: { countries: [] },
   selectedShippingOption: null,
   selectedShippingOptionImg: null,
   selectedShippingPrice: null,

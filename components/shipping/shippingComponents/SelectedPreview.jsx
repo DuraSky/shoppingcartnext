@@ -5,7 +5,10 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
   return (
     <StyledPreview>
       <img src={previewSelectedShipping.img} alt="Shipping option" />
-      <p> {previewSelectedShipping.option}</p>
+      <div className="optionAndPrice">
+        <p> {previewSelectedShipping.option}</p>
+        <p className="price">{previewSelectedShipping.price} Kč</p>
+      </div>
     </StyledPreview>
   );
 };
@@ -16,13 +19,18 @@ export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
       {previewSelectedPayment.img && (
         <img src={previewSelectedPayment.img} alt="Payment option" />
       )}
-      <p> {previewSelectedPayment.option}</p>
+      <div className="optionAndPrice">
+        <p>{previewSelectedPayment.option}</p>
+        {previewSelectedPayment.price !== undefined &&
+          previewSelectedPayment.price !== null && (
+            <p className="price">{previewSelectedPayment.price} Kč</p>
+          )}
+      </div>
     </StyledPreview>
   );
 };
 
 export const PersonalInfoPreview = ({ formErrors }) => {
-  console.log("inside preview", formErrors);
   const hasErrors = Object.keys(formErrors).length > 0;
   return (
     <StyledPreview>

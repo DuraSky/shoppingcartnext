@@ -40,7 +40,7 @@ const CartItem = ({ item, index }) => {
     <>
       <div className="produktName">
         <Image
-          src={item.img}
+          src={item.image}
           alt={item.name}
           width={100}
           height={100}

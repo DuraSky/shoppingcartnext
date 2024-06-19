@@ -1,6 +1,7 @@
 import React from "react";
 
 export const CartItemChargeProducts = ({
+  bpId,
   groupId,
   products,
   selectedProduct,
@@ -10,12 +11,12 @@ export const CartItemChargeProducts = ({
     <>
       {products.map((product) => (
         <div key={product.id} className="productVariant">
-          <img src={product.image} alt="" />
+          <img src={product.image} alt={product.name} />
           <div className="checkboxAndName">
             <input
               type="checkbox"
               checked={selectedProduct === product.id}
-              onChange={() => onSelectProduct(groupId, product.id)}
+              onChange={() => onSelectProduct(bpId, groupId, product.id)}
             />
             <p>{product.name}</p>
           </div>

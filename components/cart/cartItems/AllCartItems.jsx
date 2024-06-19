@@ -30,6 +30,7 @@ export const AllCartItems = ({ cart }) => {
             {item.surcharge_groups.length > 0 && (
               <CartVariantRow>
                 <CartItemChargeGroups
+                  bpId={item.bp_id}
                   surcharge_groups={item.surcharge_groups}
                 />
               </CartVariantRow>

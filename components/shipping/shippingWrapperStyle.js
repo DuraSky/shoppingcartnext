@@ -137,8 +137,17 @@ export const StyledPreview = styled.div`
   align-items: center;
   gap: 20px;
 
-  p {
-    font-weight: 300;
+  .optionAndPrice {
+    display: flex;
+    flex-grow: 0.8;
+    justify-content: space-between;
+    p {
+      font-weight: 300;
+    }
+
+    .price {
+      color: ${({ theme }) => theme.backgroundBrown};
+    }
   }
 
   img {

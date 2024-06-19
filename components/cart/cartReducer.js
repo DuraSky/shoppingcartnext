@@ -7,9 +7,9 @@ import {
 const initialState = {
   cart: [],
   cartTotal: 0,
-  appliedVouchers: [], // Changed from a single voucher to an array of applied vouchers
-  selectedSurchargeProducts: {},
-  vouchers: [], // Add this to hold available vouchers
+  appliedVouchers: [],
+  selectedSurchargeProducts: {}, // { bpId: { groupId: selectedProductId } }
+  vouchers: [],
 };
 
 const actionTypes = {
@@ -19,8 +19,8 @@ const actionTypes = {
   CHANGE_QUANTITY: "CHANGE_QUANTITY",
   UPDATE_CART_TOTAL: "UPDATE_CART_TOTAL",
   SET_SELECTED_SURCHARGE_PRODUCT: "SET_SELECTED_SURCHARGE_PRODUCT",
-  APPLY_VOUCHER: "APPLY_VOUCHER", // Add this action type for applying vouchers
-  REMOVE_VOUCHER: "REMOVE_VOUCHER", // Add this action type for removing vouchers
+  APPLY_VOUCHER: "APPLY_VOUCHER",
+  REMOVE_VOUCHER: "REMOVE_VOUCHER",
 };
 
 const getSurchargeProductPrice = (surchargeProducts, selectedProduct) => {
@@ -35,17 +35,21 @@ const calculateCartTotal = (
   appliedVouchers = []
 ) => {
   const cartTotal = getCartPrice(cart);
-  const surchargeTotal = Object.values(selectedSurchargeProducts).reduce(
-    (total, productId) => {
+  const surchargeTotal = Object.entries(selectedSurchargeProducts).reduce(
+    (total, [bpId, groups]) => {
       cart.forEach((item) => {
-        item.surcharge_groups.forEach((group) => {
-          const groupKey = Object.keys(group)[0];
-          const groupDetails = group[groupKey];
-          total += getSurchargeProductPrice(
-            groupDetails.surcharge_products,
-            productId
-          );
-        });
+        if (item.bp_id.toString() === bpId) {
+          Object.entries(groups).forEach(([groupId, productId]) => {
+            item.surcharge_groups.forEach((group) => {
+              if (group.id.toString() === groupId) {
+                total += getSurchargeProductPrice(
+                  group.surcharge_products,
+                  productId
+                );
+              }
+            });
+          });
+        }
       });
       return total;
     },
@@ -106,14 +110,15 @@ const cartReducer = (state, action) => {
       };
 
     case actionTypes.SET_SELECTED_SURCHARGE_PRODUCT:
+      const { bpId, groupId, productId } = action.payload;
       const currentSelectedProduct =
-        state.selectedSurchargeProducts[action.payload.groupId];
+        state.selectedSurchargeProducts[bpId]?.[groupId];
       const newSelectedSurchargeProducts = {
         ...state.selectedSurchargeProducts,
-        [action.payload.groupId]:
-          currentSelectedProduct === action.payload.productId
-            ? null
-            : action.payload.productId,
+        [bpId]: {
+          ...state.selectedSurchargeProducts[bpId],
+          [groupId]: currentSelectedProduct === productId ? null : productId,
+        },
       };
       return {
         ...state,
@@ -136,7 +141,6 @@ const cartReducer = (state, action) => {
       )
         return state;
 
-      // Mark the voucher as used
       voucherToApply.used = true;
 
       return {
@@ -157,7 +161,7 @@ const cartReducer = (state, action) => {
         (v) => v.code === action.payload
       );
       if (voucherToRemove) {
-        voucherToRemove.used = false; // Mark the voucher as unused
+        voucherToRemove.used = false;
       }
       return {
         ...state,

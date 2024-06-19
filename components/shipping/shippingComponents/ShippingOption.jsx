@@ -1,48 +1,27 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 import { ShippingOptionMethod } from "./ShippingOptionMethod";
-import { paymentText } from "../../../utils/shippingUtil";
 
 const ShippingOption = () => {
   const { state, dispatch } = useContext(ShippingContext);
-  const { shippingOptions, selectedShippingOption } = state;
+  const { shippingOptions } = state;
 
-  const [openOptionIndex, setOpenOptionIndex] = useState(null);
-
-  useEffect(() => {
-    if (shippingOptions && shippingOptions.deliveryOptions) {
-      let foundIndex = null;
-      shippingOptions.deliveryOptions.forEach((option, index) => {
-        option.methods.forEach((method) => {
-          if (method.name === selectedShippingOption) {
-            foundIndex = index;
-          }
-        });
-      });
-      setOpenOptionIndex(foundIndex);
-    }
-  }, [shippingOptions, selectedShippingOption]);
-
-  const toggleOption = (index) => {
-    setOpenOptionIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
-
-  const handleMethodSelection = (method) => {
+  const handleMethodSelection = (delivery) => {
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION,
-      payload: method.name,
+      payload: delivery.name,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
-      payload: method.imgUrl,
+      payload: delivery.imgUrl,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_PRICE,
-      payload: method.price,
+      payload: delivery.price,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTIONS,
-      payload: method.options,
+      payload: delivery.payments,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION,
@@ -51,23 +30,17 @@ const ShippingOption = () => {
   };
 
   // Ensure shippingOptions is defined to avoid errors
-  const deliveryOptions = shippingOptions?.deliveryOptions || [];
+  const firstCountry = shippingOptions?.countries[0];
+  const deliveryOptions = firstCountry ? firstCountry.deliveries : [];
 
   return (
     <>
-      {deliveryOptions.map((option, index) => (
-        // <div key={index} className="shippingTypes">
-        //   <h2 onClick={() => toggleOption(index)} style={{ cursor: "pointer" }}>
-        //     {option.type}
-        //   </h2>
-        //   {openOptionIndex === index && (
+      {deliveryOptions.map((delivery, index) => (
         <ShippingOptionMethod
-          methods={option.methods}
+          delivery={delivery}
           key={index}
           onSelectMethod={handleMethodSelection}
         />
-        //   )}
-        // </div>
       ))}
     </>
   );

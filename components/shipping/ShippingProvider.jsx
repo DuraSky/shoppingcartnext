@@ -1,53 +1,60 @@
 import React, { createContext, useReducer, useEffect, useMemo } from "react";
-import { shippingLoader } from "../../utils/loader";
 import { initialState, actionTypes, shippingReducer } from "./shippingReducer";
 
 export const ShippingContext = createContext();
 
-export const ShippingProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(shippingReducer, initialState);
+export const ShippingProvider = ({
+  children,
+  initialShipping = [{ countries: [] }],
+}) => {
+  console.log("Initial Shipping Data:", initialShipping); // Debugging line
+
+  const shippingData = initialShipping[0] || { countries: [] };
+  const countries = shippingData.countries;
+  console.log("Extracted countries:", countries); // Debugging line
+
+  const [state, dispatch] = useReducer(shippingReducer, {
+    ...initialState,
+    shippingOptions: { countries },
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
-      const initialShipping = await shippingLoader();
+    if (countries.length > 0) {
+      console.log(
+        "Dispatching SET_SHIPPING_OPTIONS with countries:",
+        countries
+      ); // Debugging line
       dispatch({
         type: actionTypes.SET_SHIPPING_OPTIONS,
-        payload: initialShipping,
+        payload: { countries },
       });
 
-      if (
-        initialShipping.deliveryOptions &&
-        initialShipping.deliveryOptions.length > 0
-      ) {
-        const firstOption = initialShipping.deliveryOptions[0].methods[0];
+      const firstCountry = countries[0];
+      if (firstCountry.deliveries && firstCountry.deliveries.length > 0) {
+        const firstDelivery = firstCountry.deliveries[0];
+        console.log("Dispatching default delivery:", firstDelivery); // Debugging line
+
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTION,
-          payload: firstOption.name,
+          payload: firstDelivery.name,
         });
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
-          payload: firstOption.imgUrl,
+          payload: firstDelivery.imgUrl,
         });
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_PRICE,
-          payload: firstOption.price,
+          payload: firstDelivery.price,
         });
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTIONS,
-          payload: firstOption.options,
+          payload: firstDelivery.payments,
         });
       }
-    };
-    fetchData();
-  }, []);
+    }
+  }, [countries]);
 
-  const value = useMemo(
-    () => ({
-      state,
-      dispatch,
-    }),
-    [state]
-  );
+  const value = useMemo(() => ({ state, dispatch }), [state]);
 
   return (
     <ShippingContext.Provider value={value}>
