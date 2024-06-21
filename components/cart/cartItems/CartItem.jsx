@@ -6,29 +6,34 @@ import Image from "next/image";
 const CartItem = ({ item, index }) => {
   const { dispatch, onCartUpdate } = useContext(CartContext);
 
-  const updateCart = async (quantity) => {
-    console.log("updateCart called with quantity:", quantity);
+  const updateCart = async (quantity, action) => {
+    console.log(
+      "updateCart called with quantity:",
+      quantity,
+      "action:",
+      action
+    );
     const updatedItem = { bpId: item.bp_id, quantity };
-    await onCartUpdate(updatedItem);
+    await onCartUpdate(action, updatedItem);
   };
 
   const handleQuantityChange = async (event) => {
     const value = Number(event.target.value);
     if (value > 0) {
       console.log("handleQuantityChange called with value:", value);
-      await updateCart(value);
+      await updateCart(value, "UPDATE");
     }
   };
 
   const handleIncrement = async () => {
     console.log("handleIncrement called");
-    await updateCart(item.quantity + 1);
+    await updateCart(item.quantity + 1, "UPDATE");
   };
 
   const handleDecrement = async () => {
     if (item.quantity > 1) {
       console.log("handleDecrement called");
-      await updateCart(item.quantity - 1);
+      await updateCart(item.quantity - 1, "UPDATE");
     }
   };
 
@@ -36,9 +41,9 @@ const CartItem = ({ item, index }) => {
     console.log("handleRemove called");
     // Dispatch the action to remove the item locally
     dispatch({ type: actionTypes.REMOVE_FROM_CART, payload: index });
-    // Send only bpId to the API
+    // Send only bpId to the API with DELETE method
     const updatedItem = { bpId: item.bp_id };
-    await onCartUpdate(updatedItem);
+    await onCartUpdate("DELETE", updatedItem);
   };
 
   return (

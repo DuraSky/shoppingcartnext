@@ -48,45 +48,59 @@ export const apiLoader = async () => {
   return data;
 };
 
-export const apiLoaderShippingUpdate = async ({ cartChanged, cart }) => {
-  if (cartChanged) {
-    try {
-      const response = await fetch(baseUrl + endPoint, {
-        method: "POST",
-        headers: {
-          "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
-          Cart: cartKey,
-          accept: "*/*",
-        },
-        mode: "cors",
+// export const apiLoaderShippingUpdate = async ({ cartChanged, cart }) => {
+//   if (cartChanged) {
+//     try {
+//       const response = await fetch(baseUrl + endPoint, {
+//         method: "POST",
+//         headers: {
+//           "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+//           Cart: cartKey,
+//           accept: "*/*",
+//         },
+//         mode: "cors",
 
-        body: JSON.stringify(cart),
-      });
+//         body: JSON.stringify(cart),
+//       });
 
-      if (!response.ok) {
-        throw new Error("Failed to update shipping options");
-      }
+//       if (!response.ok) {
+//         throw new Error("Failed to update shipping options");
+//       }
 
-      const updatedShipping = await response.json();
-      return updatedShipping;
-    } catch (error) {
-      console.error("Error updating shipping options:", error);
-      throw error;
-    }
+//       const updatedShipping = await response.json();
+//       return updatedShipping;
+//     } catch (error) {
+//       console.error("Error updating shipping options:", error);
+//       throw error;
+//     }
+//   }
+// };
+
+export const apiLoaderUpdateCartItem = async (action, updatedItem) => {
+  let method;
+  let body = JSON.stringify(updatedItem);
+
+  switch (action) {
+    case "UPDATE":
+      method = "POST";
+      break;
+    case "DELETE":
+      method = "DELETE";
+      body = JSON.stringify({ bpId: updatedItem.bpId });
+      break;
+    default:
+      throw new Error("Unsupported action type");
   }
-};
 
-export const apiLoaderUpdateCartItem = async (updatedItem) => {
   const response = await fetch(baseUrl + endPoint, {
-    method: "PUT",
+    method: method,
     headers: {
       "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
       Cart: cartKey,
       accept: "*/*",
     },
     mode: "cors",
-
-    body: JSON.stringify(updatedItem),
+    body: body,
   });
 
   if (!response.ok) {
