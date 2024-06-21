@@ -6,6 +6,7 @@ export const CartContext = createContext();
 export const CartProvider = ({
   children,
   initialCart = { cart_products: [], vouchers: [] },
+  onCartUpdate,
 }) => {
   const [state, dispatch] = useReducer(cartReducer, {
     ...initialState,
@@ -25,7 +26,10 @@ export const CartProvider = ({
     }
   }, [initialCart]);
 
-  const value = useMemo(() => ({ state, dispatch }), [state]);
+  const value = useMemo(
+    () => ({ state, dispatch, onCartUpdate }),
+    [state, onCartUpdate]
+  );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

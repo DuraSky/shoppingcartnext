@@ -3,15 +3,11 @@ import { initialState, actionTypes, shippingReducer } from "./shippingReducer";
 
 export const ShippingContext = createContext();
 
-export const ShippingProvider = ({
-  children,
-  initialShipping = [{ countries: [] }],
-}) => {
-  console.log("Initial Shipping Data:", initialShipping); // Debugging line
+export const ShippingProvider = ({ children, initialShipping = [] }) => {
+  console.log("Initial Shipping Data:", initialShipping);
 
-  const shippingData = initialShipping[0] || { countries: [] };
-  const countries = shippingData.countries;
-  console.log("Extracted countries:", countries); // Debugging line
+  const countries = initialShipping.length > 0 ? initialShipping : [];
+  console.log("Extracted countries:", countries);
 
   const [state, dispatch] = useReducer(shippingReducer, {
     ...initialState,
@@ -23,7 +19,7 @@ export const ShippingProvider = ({
       console.log(
         "Dispatching SET_SHIPPING_OPTIONS with countries:",
         countries
-      ); // Debugging line
+      );
       dispatch({
         type: actionTypes.SET_SHIPPING_OPTIONS,
         payload: { countries },
@@ -32,7 +28,7 @@ export const ShippingProvider = ({
       const firstCountry = countries[0];
       if (firstCountry.deliveries && firstCountry.deliveries.length > 0) {
         const firstDelivery = firstCountry.deliveries[0];
-        console.log("Dispatching default delivery:", firstDelivery); // Debugging line
+        console.log("Dispatching default delivery:", firstDelivery);
 
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTION,

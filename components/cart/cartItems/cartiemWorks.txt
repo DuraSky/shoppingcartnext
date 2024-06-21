@@ -6,6 +6,15 @@ import Image from "next/image";
 const CartItem = ({ item, index }) => {
   const { dispatch, onCartUpdate } = useContext(CartContext);
 
+  // const updateCart = async (type, payload) => {
+  //   console.log("updateCart called with type:", type, "payload:", payload);
+  //   dispatch({ type, payload });
+  //   const updatedItem = {
+  //     bpId: item.bp_id,
+  //     quantity: payload.value || item.quantity,
+  //   };
+  //   await onCartUpdate(updatedItem);
+  // };
   const updateCart = async (quantity) => {
     console.log("updateCart called with quantity:", quantity);
     const updatedItem = { bpId: item.bp_id, quantity };
@@ -16,29 +25,37 @@ const CartItem = ({ item, index }) => {
     const value = Number(event.target.value);
     if (value > 0) {
       console.log("handleQuantityChange called with value:", value);
+      //await updateCart(actionTypes.CHANGE_QUANTITY, { index, value });
       await updateCart(value);
+
     }
   };
 
   const handleIncrement = async () => {
     console.log("handleIncrement called");
+    // await updateCart(actionTypes.CHANGE_QUANTITY, {
+    //   index,
+    //   value: item.quantity + 1,
+    // });
     await updateCart(item.quantity + 1);
+
   };
 
   const handleDecrement = async () => {
     if (item.quantity > 1) {
       console.log("handleDecrement called");
+      // await updateCart(actionTypes.CHANGE_QUANTITY, {
+      //   index,
+      //   value: item.quantity - 1,
+      // });
       await updateCart(item.quantity - 1);
+
     }
   };
 
   const handleRemove = async () => {
     console.log("handleRemove called");
-    // Dispatch the action to remove the item locally
-    dispatch({ type: actionTypes.REMOVE_FROM_CART, payload: index });
-    // Send only bpId to the API
-    const updatedItem = { bpId: item.bp_id };
-    await onCartUpdate(updatedItem);
+    await updateCart(actionTypes.REMOVE_FROM_CART, index);
   };
 
   return (
@@ -67,6 +84,7 @@ const CartItem = ({ item, index }) => {
             onChange={handleQuantityChange}
             className="quantity-input"
           />
+
           <button type="button" onClick={handleIncrement}>
             +
           </button>

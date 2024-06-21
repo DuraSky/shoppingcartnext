@@ -1,23 +1,36 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CartContext, actionTypes } from "./CartProvider";
+import { CartContext, actionTypes as cartActionTypes } from "./CartProvider";
+import {
+  ShippingContext,
+  actionTypes as shippingActionTypes,
+} from "../shipping/ShippingProvider";
 import { ProgressBar } from "./progressBar/ProgressBar";
 import { CartPriceCalc } from "./cartPriceCalc/CartPriceCalc";
 import { DiscountCodeBar } from "./discountCodeBar/DiscountCodeBar";
 import { AllCartItems } from "./cartItems/AllCartItems";
 import { StyledWrapper } from "./cartPriceCalc/cartPriceCalcStyle";
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
-import Link from "next/link";
 import { AppliedVoucher } from "./discountCodeBar/AppliedVoucher";
 import { StyledDiscountErrorMessage } from "./discountCodeBar/discountCodeBarStyle";
+import { apiLoaderShippingUpdate } from "../../utils/loader";
+import { useRouter } from "next/router";
 
 const ShoppingCart = () => {
-  const { state, dispatch } = useContext(CartContext);
-  const { cart, cartTotal, vouchers, appliedVouchers } = state;
+  const { state: cartState, dispatch: cartDispatch } = useContext(CartContext);
+  const { state: shippingState, dispatch: shippingDispatch } =
+    useContext(ShippingContext);
+  const { cart, cartTotal, vouchers, appliedVouchers } = cartState;
+  const [initialCart, setInitialCart] = useState(cart);
+  const [initialSurchargeProducts, setInitialSurchargeProducts] = useState(
+    cartState.selectedSurchargeProducts
+  );
 
   const [discountCode, setDiscountCode] = useState("");
   const [discountError, setDiscountError] = useState(false);
   const [discountErrorMessage, setDiscountErrorMessage] =
     useState("Neplatný kód");
+
+  const router = useRouter();
 
   useEffect(() => {
     console.log("Current state of the cart", cart);
@@ -28,10 +41,9 @@ const ShoppingCart = () => {
   const checkDiscountCode = (code) => {
     const voucher = vouchers.find((voucher) => voucher.code === code);
     if (voucher && !appliedVouchers.some((v) => v.code === code)) {
-      dispatch({ type: actionTypes.APPLY_VOUCHER, payload: code });
+      cartDispatch({ type: cartActionTypes.APPLY_VOUCHER, payload: code });
       setDiscountError(false);
     } else {
-      // Temporarily set error to false to reset the animation
       setDiscountError(false);
       setTimeout(() => setDiscountError(true), 0);
     }
@@ -39,8 +51,36 @@ const ShoppingCart = () => {
   };
 
   const removeVoucher = (code) => {
-    dispatch({ type: actionTypes.REMOVE_VOUCHER, payload: code });
+    cartDispatch({ type: cartActionTypes.REMOVE_VOUCHER, payload: code });
     setDiscountError(false);
+  };
+
+  const handleNextButtonClick = async () => {
+    const cartChanged = JSON.stringify(initialCart) !== JSON.stringify(cart);
+    const surchargeProductsChanged =
+      JSON.stringify(initialSurchargeProducts) !==
+      JSON.stringify(cartState.selectedSurchargeProducts);
+
+    if (cartChanged || surchargeProductsChanged) {
+      console.log("refetching shipping because the content has changed");
+      try {
+        const updatedShipping = await apiLoaderShippingUpdate({
+          cartChanged,
+          cart,
+        });
+        if (updatedShipping) {
+          shippingDispatch({
+            type: shippingActionTypes.SET_SHIPPING_OPTIONS,
+            payload: updatedShipping[0] || { countries: [] },
+          });
+        }
+      } catch (error) {
+        console.error("Failed to update shipping options:", error);
+      }
+    }
+
+    // Navigate to shipping view
+    router.push("/?view=shipping");
   };
 
   return (
@@ -76,9 +116,9 @@ const ShoppingCart = () => {
         <CartPriceCalc cartTotal={cartTotal} />
       </StyledWrapper>
       <StyledButtonWrapper>
-        <Link href="/?view=shipping" passHref>
-          <StyledNextButton>Přejít na dopravu a platbu →</StyledNextButton>
-        </Link>
+        <StyledNextButton onClick={handleNextButtonClick}>
+          Přejít na dopravu a platbu →
+        </StyledNextButton>
       </StyledButtonWrapper>
     </>
   );
