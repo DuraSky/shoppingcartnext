@@ -1,109 +1,33 @@
 {
   "cart_products": [
     {
-      "bp_id": 49153,
-      "name": "Fialový silikonový obal k Albi tužce",
+      "bp_id": 49304,
+      "name": "Magnetické šachy Oracle",
+      "price": 3380,
+      "quantity": 2,
       "image": "https://placehold.jp/150x150.png",
-      "price": 134.1,
-      "quantity": 1,
-      "product_id": 11809,
-      "surcharge_groups": []
-    },
-    {
-      "bp_id": 49154,
-      "name": "Kouzelné čtení sada - ALBI tužka 2.0 + kniha Pohádkové učení",
-      "image": "https://placehold.jp/150x150.png",
-      "price": 1529.1,
-      "quantity": 1,
-      "product_id": 11824,
+      "product_id": 336,
       "surcharge_groups": [
         {
-          "id": 9456,
+          "id": 0,
           "image": null,
           "name": null,
           "surcharge_products": [
             {
-              "id": 777,
-              "name": "Přívěšek",
+              "id": 4,
+              "name": "Dřevěná dáma",
               "type": 1,
-              "price": 0,
+              "price": 490,
               "percent": null,
               "image": "https://placehold.jp/150x150.png",
               "help_text": null
             },
             {
-              "id": 7,
-              "name": "Přívěšek",
-              "type": 1,
-              "price": 0,
+              "id": 5,
+              "name": "Možnost vrátit zboží do 30 dnů",
+              "type": 0,
+              "price": 39,
               "percent": null,
-              "image": "https://placehold.jp/150x150.png",
-              "help_text": null
-            },
-            {
-              "id": 10,
-              "name": "Výměna produktu",
-              "type": 0,
-              "price": 100,
-              "percent": null,
-              "image": "https://placehold.jp/150x150.png",
-              "help_text": null
-            }
-          ]
-        },
-        {
-          "id": 4,
-          "image": "https://placehold.jp/150x150.png",
-          "name": "Pojištění",
-          "surcharge_products": [
-            {
-              "id": 6,
-              "name": "Pojištění zásilky",
-              "type": 0,
-              "price": 19,
-              "percent": null,
-              "image": "https://placehold.jp/150x150.png",
-              "help_text": "<p>V případě poškození či ztráty zásilky nečekáte na vyřešení situace v zákonné lhůtě. Bude stači, když nám ztracenou nebo poškozenou zásilku nahlásíte a zdokumentujete, ihnedVám &nbsp;pošleme úplně nové zboží.</p>\n"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "image": "https://placehold.jp/150x150.png",
-          "name": "Záruky",
-
-          "surcharge_products": [
-            {
-              "id": 8,
-              "name": "Záruka 1 rok",
-              "type": 0,
-              "price": 22,
-              "percent": 22,
-              "image": "https://placehold.jp/150x150.png",
-              "help_text": null
-            },
-            {
-              "id": 9,
-              "name": "Záruka 2 roky",
-              "type": 0,
-              "price": 55,
-              "percent": 12,
-              "image": "https://placehold.jp/150x150.png",
-              "help_text": null
-            }
-          ]
-        },
-        {
-          "id": 5,
-          "image": "https://placehold.jp/150x150.png",
-          "name": "Levné produkty",
-          "surcharge_products": [
-            {
-              "id": 11,
-              "name": "Nějaká hovadina",
-              "type": 1,
-              "price": 0,
-              "percent": 250,
               "image": "https://placehold.jp/150x150.png",
               "help_text": null
             }
@@ -112,446 +36,528 @@
       ]
     },
     {
-      "bp_id": 49155,
-      "name": "Kouzelné čtení - Minikniha - Krtkovy příběhy",
+      "bp_id": 49305,
+      "name": "Magnetické šachy Oracle",
       "image": "https://placehold.jp/150x150.png",
-      "price": 251.1,
+      "price": 1690,
       "quantity": 1,
-      "product_id": 11830,
-      "surcharge_groups": []
+      "product_id": 336,
+      "surcharge_groups": [
+        {
+          "id": 0,
+          "image": null,
+          "name": null,
+          "surcharge_products": [
+            {
+              "id": 4,
+              "name": "Dřevěná dáma",
+              "type": 1,
+              "price": 490,
+              "percent": null,
+              "image": "https://placehold.jp/150x150.png",
+              "help_text": null
+            },
+            {
+              "id": 5,
+              "name": "Možnost vrátit zboží do 30 dnů",
+              "type": 0,
+              "price": 39,
+              "percent": null,
+              "image": "https://placehold.jp/150x150.png",
+              "help_text": null
+            }
+          ]
+        }
+      ]
     },
     {
-      "bp_id": 49156,
-      "name": "Kouzelné čtení - Básničky z moře",
+      "bp_id": 49308,
+      "name": "Magnetické šachy Oracle",
       "image": "https://placehold.jp/150x150.png",
-      "price": 206.1,
+      "price": 1690,
       "quantity": 1,
-      "product_id": 11938,
-      "surcharge_groups": []
+      "product_id": 336,
+      "surcharge_groups": [
+        {
+          "id": 0,
+          "image": null,
+          "name": null,
+          "surcharge_products": [
+            {
+              "id": 4,
+              "name": "Dřevěná dáma",
+              "type": 1,
+              "price": 490,
+              "percent": null,
+              "image": "https://placehold.jp/150x150.png",
+              "help_text": null
+            },
+            {
+              "id": 5,
+              "name": "Možnost vrátit zboží do 30 dnů",
+              "type": 0,
+              "price": 39,
+              "percent": null,
+              "image": "https://placehold.jp/150x150.png",
+              "help_text": null
+            }
+          ]
+        }
+      ]
     },
     {
-      "bp_id": 49157,
-      "name": "Kouzelné čtení - Básničky z lesa",
+      "bp_id": 49300,
+      "name": "Magnetické šachy Oracle",
       "image": "https://placehold.jp/150x150.png",
-      "price": 206.1,
+      "price": 1690,
       "quantity": 1,
-      "product_id": 11580,
-      "surcharge_groups": []
+      "product_id": 336,
+      "surcharge_groups": [
+        {
+          "id": 0,
+          "image": null,
+          "name": null,
+          "surcharge_products": [
+            {
+              "id": 4,
+              "name": "Dřevěná dáma",
+              "type": 1,
+              "price": 490,
+              "percent": null,
+              "image": "https://placehold.jp/150x150.png",
+              "help_text": null
+            },
+            {
+              "id": 5,
+              "name": "Možnost vrátit zboží do 30 dnů",
+              "type": 0,
+              "price": 39,
+              "percent": null,
+              "image": "https://placehold.jp/150x150.png",
+              "help_text": null
+            }
+          ]
+        }
+      ]
     }
   ],
   "vouchers": [
     {
-      "code": "voucher1",
-      "used": false,
-      "value": 300,
-      "minValue": 0,
-      "type": 0
-    },
-    {
-      "code": "voucher2",
-      "used": false,
-      "value": 100,
-      "minValue": 0,
-      "type": 0
-    },
-    {
-      "code": "voucher3",
-      "used": false,
-      "value": 500,
-      "minValue": 0,
+      "code": "10sachy",
+      "used": true,
+      "value": 10,
+      "min_value": 0,
       "type": 0
     }
   ],
   "shipping": [
     {
-      "countries": [
+      "id": 1,
+      "name": "Česká republika",
+      "deliveries": [
         {
-          "id": 0,
-          "name": "Česká republika",
-          "deliveries": [
-            {
-              "id": 0,
-              "name": "Balík Do ruky",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 119,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "price": 0,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 0
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "price": 0,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 0
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "price": 49,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 0
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "price": 0,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 0
-                }
-              ]
-            },
-            {
-              "id": 1,
-              "name": "PPL doručení na adresu",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 119,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "price": 0,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 1
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "price": 0,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 1
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "price": 49,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 1
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "price": 0,
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "deliveryPaymentId": 1
-                }
-              ]
-            },
+          "id": 1,
+          "name": "Balík Do ruky",
+          "price": 119,
+          "driver": "cp",
+          "package_id": 1,
+          "payments": [
             {
               "id": 2,
-              "name": "Nejvýhodnější doručení na adresu",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 115,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 2
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 2
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 49,
-                  "deliveryPaymentId": 2
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 2
-                }
-              ]
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 1
             },
             {
               "id": 3,
-              "name": "Zásilkovna",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 79,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 3
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 3
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 49,
-                  "deliveryPaymentId": 3
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 3
-                }
-              ]
-            },
-            {
-              "id": 4,
-              "name": "Balík Na poštu",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 79,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 4
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 4
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 49,
-                  "deliveryPaymentId": 4
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 4
-                }
-              ]
-            },
-            {
-              "id": 5,
-              "name": "Balíkovna",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 69,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 5
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 5
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 49,
-                  "deliveryPaymentId": 5
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 5
-                }
-              ]
-            },
-            {
-              "id": 6,
-              "name": "PPL ParceShop",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 79,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Platební kartou online",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 6
-                },
-                {
-                  "id": 1,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 6
-                },
-                {
-                  "id": 2,
-                  "name": "Dobírka",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 49,
-                  "deliveryPaymentId": 6
-                },
-                {
-                  "id": 3,
-                  "name": "Na splátky - Home Credit",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 6
-                }
-              ]
-            },
-            {
-              "id": 7,
-              "name": "Výdejní místo Bohumín",
-              "imgUrl": "https://placehold.jp/150x150.png",
+              "name": "Bankovní převod",
               "price": 0,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 7
-                },
-                {
-                  "id": 1,
-                  "name": "Hotově na místě",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 7
-                },
-                {
-                  "id": 2,
-                  "name": "Comage kartou",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 7
-                }
-              ]
-            },
-            {
-              "id": 8,
-              "name": "Výdejní místo Ostrava",
-              "imgUrl": "https://placehold.jp/150x150.png",
-              "price": 0,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 8
-                },
-                {
-                  "id": 1,
-                  "name": "Hotově na místě",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 8
-                },
-                {
-                  "id": 2,
-                  "name": "Comage kartou",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 8
-                }
-              ]
+              "delivery_payment_id": 2
             },
             {
               "id": 9,
-              "name": "Výdejní místo Karviná",
-              "imgUrl": "https://placehold.jp/150x150.png",
+              "name": "Platební kartou online",
               "price": 0,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "Bankovní převod",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 9
-                },
-                {
-                  "id": 1,
-                  "name": "Hotově na místě",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 9
-                },
-                {
-                  "id": 2,
-                  "name": "Comage kartou",
-                  "imgUrl": "https://placehold.jp/150x150.png",
-                  "price": 0,
-                  "deliveryPaymentId": 9
-                }
-              ]
+              "delivery_payment_id": 21
             }
           ]
         },
         {
-          "id": 1,
-          "name": "Slovenská republika",
-          "deliveries": [
+          "id": 10,
+          "name": "Zásilkovna",
+          "price": 79,
+          "driver": "zasilkovna",
+          "package_id": 12,
+          "payments": [
             {
-              "id": 0,
-              "name": "",
+              "id": 2,
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 32
+            },
+            {
+              "id": 3,
+              "name": "Bankovním převod",
               "price": 0,
-              "driver": null,
-              "packageId": null,
-              "payments": [
-                {
-                  "id": 0,
-                  "name": "",
-                  "price": 0,
-                  "deliveryPaymentId": 0
-                }
-              ]
+              "delivery_payment_id": 33
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 34
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "PPL doručení na adresu",
+          "price": 119,
+          "driver": "ppl",
+          "package_id": 5,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 63
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 64
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 65
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Balík Na poštu",
+          "price": 79,
+          "driver": "cp",
+          "package_id": 3,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 3
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 4
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 20
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Balíkovna",
+          "price": 69,
+          "driver": "cp",
+          "package_id": 9,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 24
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 25
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 26
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "PPL ParcelShop",
+          "price": 79,
+          "driver": "ppl",
+          "package_id": 8,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 66
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 67
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 68
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Doručení na e-mail",
+          "price": 0,
+          "driver": null,
+          "package_id": 0,
+          "payments": [
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 53
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 54
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Nejvýhodnější doručení na adresu",
+          "price": 115,
+          "driver": "zasilkovna",
+          "package_id": 13,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 49,
+              "delivery_payment_id": 61
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 62
+            },
+            {
+              "id": 9,
+              "name": "Platební kartou online",
+              "price": 0,
+              "delivery_payment_id": 74
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Výdejní místo",
+          "price": 0,
+          "driver": null,
+          "package_id": 0,
+          "payments": [
+            {
+              "id": 1,
+              "name": "Hotově na místě",
+              "price": 0,
+              "delivery_payment_id": 35
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 91
+            },
+            {
+              "id": 9,
+              "name": "Comgate kartou",
+              "price": 0,
+              "delivery_payment_id": 92
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Výdejní místo",
+          "price": 0,
+          "driver": null,
+          "package_id": 0,
+          "payments": [
+            {
+              "id": 1,
+              "name": "Hotově",
+              "price": 0,
+              "delivery_payment_id": 47
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "Výdejní místo",
+          "price": 0,
+          "driver": null,
+          "package_id": 0,
+          "payments": [
+            {
+              "id": 1,
+              "name": "Hotově",
+              "price": 0,
+              "delivery_payment_id": 50
+            },
+            {
+              "id": 3,
+              "name": "Bankovní převod",
+              "price": 0,
+              "delivery_payment_id": 95
+            },
+            {
+              "id": 9,
+              "name": "Comgate kartou",
+              "price": 0,
+              "delivery_payment_id": 96
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Slovensko",
+      "deliveries": [
+        {
+          "id": 11,
+          "name": "Packeta",
+          "price": 79,
+          "driver": "zasilkovna",
+          "package_id": 12,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 39,
+              "delivery_payment_id": 38
+            },
+            {
+              "id": 3,
+              "name": "Prevodom na bankový účet",
+              "price": 0,
+              "delivery_payment_id": 39
+            },
+            {
+              "id": 9,
+              "name": "Platobná karta (online cez internet)",
+              "price": 0,
+              "delivery_payment_id": 88
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "SPS doručenie na adresu",
+          "price": 139,
+          "driver": "ppl",
+          "package_id": 5,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobierka",
+              "price": 49,
+              "delivery_payment_id": 69
+            },
+            {
+              "id": 3,
+              "name": "Bankový prevod",
+              "price": 0,
+              "delivery_payment_id": 70
+            },
+            {
+              "id": 9,
+              "name": "Platobná karta (online cez internet)",
+              "price": 0,
+              "delivery_payment_id": 86
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "SPS ParcelShop",
+          "price": 79,
+          "driver": "ppl",
+          "package_id": 8,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobierka",
+              "price": 49,
+              "delivery_payment_id": 71
+            },
+            {
+              "id": 3,
+              "name": "Bankový prevod",
+              "price": 0,
+              "delivery_payment_id": 72
+            },
+            {
+              "id": 9,
+              "name": "Platobná karta (online cez internet)",
+              "price": 0,
+              "delivery_payment_id": 87
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Najvýhodnejšie doručenie na adresu",
+          "price": 99,
+          "driver": "zasilkovna",
+          "package_id": 13,
+          "payments": [
+            {
+              "id": 2,
+              "name": "Dobírka",
+              "price": 39,
+              "delivery_payment_id": 41
+            },
+            {
+              "id": 3,
+              "name": "Prevodom na bankový účet",
+              "price": 0,
+              "delivery_payment_id": 42
+            },
+            {
+              "id": 9,
+              "name": "Platobná karta (online cez internet)",
+              "price": 0,
+              "delivery_payment_id": 89
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "currency": {
+    "conversion_ratio": 1,
+    "label": "Kč",
+    "label_position": 0,
+    "rounding_numbers": 0,
+    "rounding_dir": 1,
+    "dec_point": ",",
+    "separator": " "
+  }
 }

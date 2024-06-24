@@ -83,6 +83,10 @@ const ShoppingCart = () => {
     router.push("/?view=shipping");
   };
 
+  // const handleNextButtonClick = () => {
+  //   router.push("/?view=shipping");
+  // };
+
   return (
     <>
       <AllCartItems cart={cart} />

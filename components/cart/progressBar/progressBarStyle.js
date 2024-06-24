@@ -31,11 +31,11 @@ export const ProgressContainer = styled.div`
   background-color: #ccc;
   border-radius: ${({ theme }) => theme.myBorderRadius};
   position: relative;
-  width: 50%;
+  width: 110%;
   box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
 
-  @media (max-width: 768px) {
-    width: 70%;
+  @media (min-width: 922px) {
+    width: 50%;
   }
 `;
 

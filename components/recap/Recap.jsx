@@ -6,12 +6,13 @@ import { ShippingRecap } from "./components/shippingRecap/ShippingRecap";
 import { PaymentRecap } from "./components/paymentRecap/PaymentRecap";
 import { CartAndShippingTotal } from "./components/cartAndShippingTotal/CartAndShippingTotal";
 import { StyledRecap } from "./recapStyle";
+import { PageControl } from "../pageControl/PageControl";
 
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
 import { VoucherRecap } from "./voucherRecap/VoucherRecap";
 
-const Recap = () => {
+const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
   const { state: cartState } = useContext(CartContext);
   const { state: shippingState } = useContext(ShippingContext);
 
@@ -32,6 +33,8 @@ const Recap = () => {
       cartTotal + selectedPaymentOptionPrice + selectedShippingPrice;
     return result;
   };
+
+  console.log("inside recap", cart);
 
   return (
     <StyledRecap>
@@ -68,6 +71,12 @@ const Recap = () => {
         <h3>Celkem</h3>
         <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
       </div>
+
+      <PageControl
+        handleGoBack={handleGoBack}
+        handleSubmit={handleSubmit}
+        buttonText={buttonText}
+      />
     </StyledRecap>
   );
 };

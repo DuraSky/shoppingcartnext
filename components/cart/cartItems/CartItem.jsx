@@ -43,7 +43,7 @@ const CartItem = ({ item, index }) => {
     dispatch({ type: actionTypes.REMOVE_FROM_CART, payload: index });
     // Send only bpId to the API with DELETE method
     const updatedItem = { bpId: item.bp_id };
-    await onCartUpdate("DELETE", updatedItem);
+    //await onCartUpdate("DELETE", updatedItem);
   };
 
   return (
@@ -51,6 +51,7 @@ const CartItem = ({ item, index }) => {
       <div className="produktName">
         <Image
           src={item.image}
+          //src="https://placehold.jp/150x150.png"
           alt={item.name}
           width={100}
           height={100}

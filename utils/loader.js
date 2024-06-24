@@ -1,4 +1,4 @@
-export const cartLoader = async () => {
+export const dbLoader = async () => {
   //const response = await fetch("/mockDBs/productsApiCopy.json");
   const response = await fetch("/mockDBs/productsApiCopyWithVariants.json");
   console.log("in response", response);

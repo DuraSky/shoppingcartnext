@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import RecapMobile from "./RecapMobile";
 import Recap from "./Recap";
 
-const RecapWrapper = () => {
+const RecapWrapper = ({ handleGoBack, handleSubmit, buttonText }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const handleResize = () => {
@@ -15,7 +15,15 @@ const RecapWrapper = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return isMobile ? <RecapMobile /> : <Recap />;
+  return isMobile ? (
+    <RecapMobile />
+  ) : (
+    <Recap
+      handleGoBack={handleGoBack}
+      handleSubmit={handleSubmit}
+      buttonText={buttonText}
+    />
+  );
 };
 
 export default RecapWrapper;

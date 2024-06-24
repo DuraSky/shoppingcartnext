@@ -142,23 +142,22 @@ export const CartItemRow = styled.div`
 
 export const CartVariantRow = styled.div`
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-  /* display: flex; */
-  //flex-direction: column;
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 15px;
+  gap: 10px;
+  flex-grow: 1;
 
-  //padding-left: 50px;
-  /* justify-content: center; */
-  /* flex-grow: 1; */
+  justify-content: flex-start;
+  padding-left: 50px;
+
+  padding-bottom: 15px;
 
   img {
     width: 40px;
   }
 
   input {
-    accent-color: ${({ theme }) =>
-      theme.backgroundBrown}; /* Change color here */
+    accent-color: ${({ theme }) => theme.backgroundBrown};
     margin-right: 5px;
     width: 18px;
   }
@@ -171,6 +170,7 @@ export const CartVariantRow = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    //width: 300px;
     //flex-grow: 1;
     /* margin: 0 auto; */
     /* padding: 20px 0; */
@@ -178,13 +178,16 @@ export const CartVariantRow = styled.div`
       display: flex;
       gap: 5px;
       align-items: center;
-      width: 500px;
-      padding: 0 40px;
+      //width: 500px;
+      //padding: 0 40px;
     }
   }
   @media (min-width: 768px) {
     padding-left: 150px;
-    display: block;
+    justify-content: flex-start;
+
+    //flex-direction: column;
+    //display: block;
   }
 
   .checkboxAndName {

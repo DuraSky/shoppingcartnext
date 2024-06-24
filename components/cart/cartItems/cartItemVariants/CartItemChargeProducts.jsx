@@ -12,6 +12,7 @@ export const CartItemChargeProducts = ({
       {products.map((product) => (
         <div key={product.id} className="productVariant">
           <img src={product.image} alt={product.name} />
+          {/* <img src="https://placehold.jp/150x150.png" alt="placeholder" /> */}
           <div className="checkboxAndName">
             <input
               type="checkbox"

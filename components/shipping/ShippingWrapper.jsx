@@ -1,10 +1,10 @@
+// src/components/ShippingWrapper.js
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ShippingContext } from "./ShippingProvider";
 import { useRouter } from "next/router";
 import PersonalInfo from "../personalInfo/PersonalInfo";
 import { ShippingPageLayout, StyledPreview } from "./shippingWrapperStyle";
 import RecapWrapper from "../recap/RecapWrapper";
-import { StyledNextButton, StyledBackButton } from "../Theme";
 import ShippingOption from "./shippingComponents/ShippingOption";
 import ShippingPriceOptions from "./shippingComponents/ShippingPriceOptions";
 import useFormErrors from "./FormErrors";
@@ -13,6 +13,7 @@ import {
   SelectedPaymentPreview,
   PersonalInfoPreview,
 } from "./shippingComponents/SelectedPreview";
+import { PageControl } from "../pageControl/PageControl";
 
 export const ShippingWrapper = () => {
   const { state } = useContext(ShippingContext);
@@ -28,6 +29,7 @@ export const ShippingWrapper = () => {
   const [toggleInfo, setToggleInfo] = useState(false);
   const [togglePriceOption, setTogglePriceOption] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const [buttonText, setButtonText] = useState("Odeslat objednavku");
 
@@ -45,6 +47,15 @@ export const ShippingWrapper = () => {
   const [formErrors, updateFormErrors] = useFormErrors();
   const formRef = useRef(null);
   const router = useRouter();
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleToggleShipping = () => {
     setToggleShipping(!toggleShipping);
@@ -78,7 +89,6 @@ export const ShippingWrapper = () => {
     }
   };
 
-  // Effect to handle toggle state based on selectedPaymentOption
   useEffect(() => {
     if (selectedPaymentOption !== null) {
       setTogglePriceOption(false);
@@ -91,7 +101,6 @@ export const ShippingWrapper = () => {
     updateFormErrors(errors);
   };
 
-  // Effect to update button text based on selectedPaymentOption and formErrors
   useEffect(() => {
     if (selectedPaymentOption === null) {
       setButtonText("Prosim zvolte typ platby");
@@ -107,7 +116,6 @@ export const ShippingWrapper = () => {
     }
   }, [selectedPaymentOption, formErrors]);
 
-  // Effect to update previewSelectedShipping when selectedShippingOption changes
   useEffect(() => {
     setPreviewSelectedShipping({
       option: selectedShippingOption || "Select a shipping option",
@@ -120,7 +128,6 @@ export const ShippingWrapper = () => {
     selectedShippingPrice,
   ]);
 
-  // Effect to update previewSelectedPayment when selectedPaymentOption changes
   useEffect(() => {
     if (selectedPaymentOption === null) {
       setPreviewSelectedPayment({
@@ -154,7 +161,11 @@ export const ShippingWrapper = () => {
   return (
     <ShippingPageLayout>
       <div className="recapWrapper">
-        <RecapWrapper />
+        <RecapWrapper
+          handleGoBack={handleGoBack}
+          handleSubmit={handleSubmit}
+          buttonText={buttonText}
+        />
       </div>
 
       <div className="allContent">
@@ -215,12 +226,15 @@ export const ShippingWrapper = () => {
         </div>
       </div>
 
-      <div className="pageControl">
-        <StyledBackButton onClick={handleGoBack}>
-          ← Zpet do kosiku
-        </StyledBackButton>
-        <StyledNextButton onClick={handleSubmit}>{buttonText}</StyledNextButton>
-      </div>
+      {isMobile && (
+        <div className="pageControl">
+          <PageControl
+            handleGoBack={handleGoBack}
+            handleSubmit={handleSubmit}
+            buttonText={buttonText}
+          />
+        </div>
+      )}
     </ShippingPageLayout>
   );
 };

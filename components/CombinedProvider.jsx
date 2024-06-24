@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { CartProvider } from "./cart/CartProvider";
 import { ShippingProvider } from "./shipping/ShippingProvider";
-import { apiLoader, apiLoaderUpdateCartItem } from "../utils/loader";
+import { apiLoader, apiLoaderUpdateCartItem, dbLoader } from "../utils/loader";
+import { LoadingSpinner } from "./loadingSpinner/LoadingSpinner";
+import { FetchError } from "./errorPages/FetchError";
 
 const CombinedProvider = ({ children }) => {
   const [combinedData, setCombinedData] = useState(null);
@@ -10,7 +12,8 @@ const CombinedProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const data = await apiLoader();
+      //const data = await apiLoader();
+      const data = await dbLoader();
       console.log("inside combined loader", data);
       setCombinedData(data);
       setLoading(false);
@@ -24,10 +27,10 @@ const CombinedProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const handleCartUpdate = async (updatedItem) => {
-    console.log("sending this to the API", updatedItem);
+  const handleCartUpdate = async (method, updatedItem) => {
+    console.log("sending this to the API", method, updatedItem);
     try {
-      const updatedData = await apiLoaderUpdateCartItem(updatedItem);
+      const updatedData = await apiLoaderUpdateCartItem(method, updatedItem);
       setCombinedData(updatedData);
       console.log("this is the data to update from API ", updatedData);
     } catch (error) {
@@ -36,11 +39,11 @@ const CombinedProvider = ({ children }) => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // or a spinner
+    return <LoadingSpinner />;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <FetchError error={error.message} />;
   }
 
   const { cart_products, vouchers, shipping } = combinedData;
