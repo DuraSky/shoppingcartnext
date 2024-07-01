@@ -85,7 +85,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
       </FormGroup>
       <FormGroup>
         <Label>Email</Label>
-        <Input
+        <Input 
           {...register("email", {
             required: "Email nesmí být prázdný",
             pattern: {
@@ -94,7 +94,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
             },
             onChange: () => onChange("email"),
           })}
-          type="text"
+          type="email"
           placeholder="Email"
           error={!!errors.email}
         />
