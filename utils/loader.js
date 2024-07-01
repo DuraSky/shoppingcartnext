@@ -82,7 +82,7 @@ export const apiLoaderUpdateCartItem = async (action, updatedItem) => {
 
   switch (action) {
     case "UPDATE":
-      method = "POST";
+      method = "PUT";
       break;
     case "DELETE":
       method = "DELETE";

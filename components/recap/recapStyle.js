@@ -77,15 +77,13 @@ export const StyledRecap = styled.div`
 export const StyledRecapMobile = styled.div`
   //display: flex;
 
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px inset;
-  border-radius: 30px;
-  padding: 20px;
-  margin-bottom: 10px;
-  color: ${({ theme }) => theme.fontGrey};
-
   h2 {
-    //font-size: 16px;
-    //font-weight: lighter;
+    background: ${({ theme }) => theme.backgroundGrey};
+    font-size: 14px;
+    font-weight: 400;
+    padding: 1rem;
+    box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
   }
 `;

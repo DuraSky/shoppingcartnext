@@ -25,7 +25,7 @@ export const ShippingPageLayout = styled.div`
       transition: max-height 0.5s ease-out;
     }
     .collapsible-content.open {
-      max-height: 1500px; /* Adjust based on content */
+      max-height: 2000px; /* Adjust based on content */
     }
 
     h2 {
@@ -83,7 +83,7 @@ export const ShippingPageLayout = styled.div`
     align-items: flex-start;
 
     img {
-      width: 40px;
+      width: 60px;
     }
   }
 

@@ -12,8 +12,8 @@ const CombinedProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      //const data = await apiLoader();
-      const data = await dbLoader();
+      const data = await apiLoader();
+      //const data = await dbLoader();
       console.log("inside combined loader", data);
       setCombinedData(data);
       setLoading(false);
