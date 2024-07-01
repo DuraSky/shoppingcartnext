@@ -80,7 +80,8 @@ const ShoppingCart = () => {
     }
 
     // Navigate to shipping view
-    router.push("/?view=shipping");
+    // router.push("/?view=shipping");
+    router.push("/doprava-a-platba");
   };
 
   // const handleNextButtonClick = () => {
