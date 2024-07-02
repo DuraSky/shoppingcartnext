@@ -1,4 +1,4 @@
-// pages/index.js
+// pages/[slug].js
 import React, { useState, useEffect } from "react";
 import CombinedProvider from "../components/CombinedProvider";
 import ShoppingCart from "../components/cart/Cart";
@@ -14,17 +14,22 @@ import { ThankYou } from "../components/thankyouPage/ThankYou";
 const App = () => {
   const [formErrors, setFormErrors] = useState({});
   const router = useRouter();
-  const { asPath } = router;
+  const { slug } = router.query;
 
   let view;
-  if (asPath === "/vas-kosik") {
-    view = "cart";
-  } else if (asPath === "/doprava-a-platba") {
-    view = "shipping";
-  } else if (asPath === "/dekujeme") {
-    view = "thankyou";
-  } else {
-    view = "cart"; // Default view
+  switch (slug) {
+    case "vas-kosik":
+      view = "cart";
+      break;
+    case "doprava-a-platba":
+      view = "shipping";
+      break;
+    case "dekujeme":
+      view = "thankyou";
+      break;
+    default:
+      view = "cart";
+      break;
   }
 
   return (

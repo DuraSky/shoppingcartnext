@@ -56,31 +56,32 @@ const ShoppingCart = () => {
   };
 
   const handleNextButtonClick = async () => {
-    const cartChanged = JSON.stringify(initialCart) !== JSON.stringify(cart);
-    const surchargeProductsChanged =
-      JSON.stringify(initialSurchargeProducts) !==
-      JSON.stringify(cartState.selectedSurchargeProducts);
+    // const cartChanged = JSON.stringify(initialCart) !== JSON.stringify(cart);
+    // const surchargeProductsChanged =
+    //   JSON.stringify(initialSurchargeProducts) !==
+    //   JSON.stringify(cartState.selectedSurchargeProducts);
 
-    if (cartChanged || surchargeProductsChanged) {
-      console.log("refetching shipping because the content has changed");
-      try {
-        const updatedShipping = await apiLoaderShippingUpdate({
-          cartChanged,
-          cart,
-        });
-        if (updatedShipping) {
-          shippingDispatch({
-            type: shippingActionTypes.SET_SHIPPING_OPTIONS,
-            payload: updatedShipping[0] || { countries: [] },
-          });
-        }
-      } catch (error) {
-        console.error("Failed to update shipping options:", error);
-      }
-    }
+    // if (cartChanged || surchargeProductsChanged) {
+    //   console.log("refetching shipping because the content has changed");
+    //   try {
+    //     const updatedShipping = await apiLoaderShippingUpdate({
+    //       cartChanged,
+    //       cart,
+    //     });
+    //     if (updatedShipping) {
+    //       shippingDispatch({
+    //         type: shippingActionTypes.SET_SHIPPING_OPTIONS,
+    //         payload: updatedShipping[0] || { countries: [] },
+    //       });
+    //     }
+    //   } catch (error) {
+    //     console.error("Failed to update shipping options:", error);
+    //   }
+    // }
 
     // Navigate to shipping view
-    router.push("/?view=shipping");
+    //router.push("/?view=shipping");
+    router.push("/doprava-a-platba");
   };
 
   // const handleNextButtonClick = () => {

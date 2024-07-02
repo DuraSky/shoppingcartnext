@@ -4,16 +4,23 @@ import { ShippingProvider } from "./shipping/ShippingProvider";
 import { apiLoader, apiLoaderUpdateCartItem, dbLoader } from "../utils/loader";
 import { LoadingSpinner } from "./loadingSpinner/LoadingSpinner";
 import { FetchError } from "./errorPages/FetchError";
+import { YourCartIsEmpty } from "./cart/emptyCart/EmptyCart";
 
 const CombinedProvider = ({ children }) => {
   const [combinedData, setCombinedData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartKey, setCartKey] = useState(null);
 
   const fetchData = async () => {
     try {
-      const data = await apiLoader();
-      //const data = await dbLoader();
+      const storedCartKey = localStorage.getItem("cart_key");
+      if (!storedCartKey) {
+        setLoading(false);
+        return;
+      }
+      setCartKey(storedCartKey);
+      const data = await apiLoader(storedCartKey);
       console.log("inside combined loader", data);
       setCombinedData(data);
       setLoading(false);
@@ -30,7 +37,11 @@ const CombinedProvider = ({ children }) => {
   const handleCartUpdate = async (method, updatedItem) => {
     console.log("sending this to the API", method, updatedItem);
     try {
-      const updatedData = await apiLoaderUpdateCartItem(method, updatedItem);
+      const updatedData = await apiLoaderUpdateCartItem(
+        method,
+        updatedItem,
+        cartKey
+      );
       setCombinedData(updatedData);
       console.log("this is the data to update from API ", updatedData);
     } catch (error) {
@@ -44,6 +55,10 @@ const CombinedProvider = ({ children }) => {
 
   if (error) {
     return <FetchError error={error.message} />;
+  }
+
+  if (!combinedData) {
+    return <YourCartIsEmpty />;
   }
 
   const { cart_products, vouchers, shipping } = combinedData;

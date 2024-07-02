@@ -94,7 +94,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
             },
             onChange: () => onChange("email"),
           })}
-          type="text"
+          type="email"
           placeholder="Email"
           error={!!errors.email}
         />

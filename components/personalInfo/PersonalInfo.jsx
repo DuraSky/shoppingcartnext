@@ -223,4 +223,6 @@ const PersonalInfo = React.forwardRef(
   }
 );
 
+PersonalInfo.displayName = "test";
+
 export default PersonalInfo;

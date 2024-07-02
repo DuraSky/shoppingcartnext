@@ -1,3 +1,5 @@
+import apiConfig from "../apiConfig";
+
 export const dbLoader = async () => {
   //const response = await fetch("/mockDBs/productsApiCopy.json");
   const response = await fetch("/mockDBs/productsApiCopyWithVariants.json");
@@ -17,25 +19,22 @@ export const shippingLoader = async () => {
 };
 
 //const baseUrl = "https://crappie-enormous-noticeably.ngrok-free.app";
-const baseUrl = "http://878-api-pro-kosik-11960.test.zanapo.cz";
 const endPoint = "/frontapi/v1/cart/products";
 //const cartKey = "$2y$10$5DEM8nkRegzpTjjW.sumAOKNLnO3vJlwcFXgmhsEjaMKYD1nz5Ktu";
 const cartKey = "$2y$10$6Xh/.SPE4jO.bmKlPb5UiOjiRtIkccnSV41V6i3C/NSmz.1xm8U8O";
 
-export const apiLoader = async () => {
+export const apiLoader = async (cartKey) => {
   console.log("before");
 
-  const response = await fetch(baseUrl + endPoint, {
+  const response = await fetch(apiConfig.baseUrl + endPoint, {
     method: "GET",
     headers: {
       "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
-      //prettier-ignore
-      "Cart": cartKey,
+      Cart: cartKey,
       accept: "*/*",
     },
     mode: "cors",
   });
-  // console.log("in apiloader", response.json());
 
   if (!response.ok) {
     const errorText = await response.text();
@@ -44,14 +43,13 @@ export const apiLoader = async () => {
   }
 
   const data = await response.json();
-  //console.log("in apiloader", response.json());
   return data;
 };
 
 // export const apiLoaderShippingUpdate = async ({ cartChanged, cart }) => {
 //   if (cartChanged) {
 //     try {
-//       const response = await fetch(baseUrl + endPoint, {
+//       const response = await fetch(apiConfig.baseUrl + endPoint, {
 //         method: "POST",
 //         headers: {
 //           "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
@@ -76,7 +74,7 @@ export const apiLoader = async () => {
 //   }
 // };
 
-export const apiLoaderUpdateCartItem = async (action, updatedItem) => {
+export const apiLoaderUpdateCartItem = async (action, updatedItem, cartKey) => {
   let method;
   let body = JSON.stringify(updatedItem);
 
@@ -92,7 +90,7 @@ export const apiLoaderUpdateCartItem = async (action, updatedItem) => {
       throw new Error("Unsupported action type");
   }
 
-  const response = await fetch(baseUrl + endPoint, {
+  const response = await fetch(apiConfig.baseUrl + endPoint, {
     method: method,
     headers: {
       "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
