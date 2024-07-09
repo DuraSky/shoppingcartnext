@@ -8,7 +8,7 @@ const ShippingPriceOptions = () => {
   const { state, dispatch } = useContext(ShippingContext);
   const { selectedShippingOptions, selectedPaymentOption } = state;
 
-  const handlePriceMethodChange = (name, price, imgUrl) => {
+  const handlePriceMethodChange = (name, price, imgUrl, price_f) => {
     dispatch({ type: actionTypes.SET_SELECTED_PAYMENT_OPTION, payload: name });
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_IMG,
@@ -17,6 +17,10 @@ const ShippingPriceOptions = () => {
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_PRICE,
       payload: price,
+    });
+    dispatch({
+      type: actionTypes.SET_SELECTED_PAYMENT_OPTION_PRICE_CURRENCY,
+      payload: price_f,
     });
   };
 
@@ -34,7 +38,8 @@ const ShippingPriceOptions = () => {
                   handlePriceMethodChange(
                     option.name,
                     option.price,
-                    option.imgUrl
+                    option.imgUrl,
+                    option.price_f
                   );
                 }}
                 checked={selectedPaymentOption === option.name}
@@ -47,7 +52,7 @@ const ShippingPriceOptions = () => {
                 layout="intrinsic"
               />
               <p>{option.name}</p>
-              <p className="price">{option.price} Kč</p>
+              <p className="price">{option.price_f}</p>
             </label>
           </StyledPriceOption>
         ))}

@@ -1,6 +1,7 @@
 const apiConfig = {
-  baseUrl:
-    process.env.BASE_URL || "http://878-api-pro-kosik-11960.test.zanapo.cz",
+  baseUrl: process.env.BASE_URL || "https://api.test.zanapo.cz",
+  // process.env.BASE_URL ||
+  // "https://crappie-enormous-noticeably.ngrok-free.app",
 };
 
 export default apiConfig;

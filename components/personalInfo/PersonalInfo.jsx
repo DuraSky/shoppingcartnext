@@ -42,7 +42,7 @@ const PersonalInfo = React.forwardRef(
         "name",
         "surname",
         "street",
-        "psc",
+        "zip",
         "town",
         "email",
         "phone",

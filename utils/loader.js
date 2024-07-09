@@ -19,11 +19,13 @@ export const shippingLoader = async () => {
 };
 
 //const baseUrl = "https://crappie-enormous-noticeably.ngrok-free.app";
-const endPoint = "/frontapi/v1/cart/products";
-//const cartKey = "$2y$10$5DEM8nkRegzpTjjW.sumAOKNLnO3vJlwcFXgmhsEjaMKYD1nz5Ktu";
-const cartKey = "$2y$10$6Xh/.SPE4jO.bmKlPb5UiOjiRtIkccnSV41V6i3C/NSmz.1xm8U8O";
+const endPoint = "/api/v1/cart/products";
+//const endPoint = "/api/v1/cart/products";
+const cartKey = "$2y$10$5DEM8nkRegzpTjjW.sumAOKNLnO3vJlwcFXgmhsEjaMKYD1nz5Ktu";
+//const cartKey = "$2y$10$6Xh/.SPE4jO.bmKlPb5UiOjiRtIkccnSV41V6i3C/NSmz.1xm8U8O";
 
 export const apiLoader = async (cartKey) => {
+  //export const apiLoader = async () => {
   console.log("before");
 
   const response = await fetch(apiConfig.baseUrl + endPoint, {

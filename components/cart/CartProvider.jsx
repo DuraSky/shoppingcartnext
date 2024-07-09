@@ -5,7 +5,12 @@ export const CartContext = createContext();
 
 export const CartProvider = ({
   children,
-  initialCart = { cart_products: [], vouchers: [] },
+  initialCart = {
+    cart_products: [],
+    vouchers: [],
+    total_price: 0,
+    total_f: "",
+  },
   onCartUpdate,
   updateLoading,
 }) => {
@@ -13,6 +18,8 @@ export const CartProvider = ({
     ...initialState,
     cart: initialCart.cart_products || [],
     vouchers: initialCart.vouchers || [],
+    cart_total: initialCart.total_price || 0,
+    cart_total_f: initialCart.total_f || "",
   });
 
   useEffect(() => {
@@ -22,6 +29,8 @@ export const CartProvider = ({
         payload: {
           cart_products: initialCart.cart_products,
           vouchers: initialCart.vouchers,
+          total_price: initialCart.total_price,
+          total_f: initialCart.total_f,
         },
       });
     }

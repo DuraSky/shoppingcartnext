@@ -24,7 +24,7 @@ export const AllCartItems = ({ cart }) => {
       <AllItems>
         {cart.map((item, index) => (
           <React.Fragment key={item.bp_id}>
-            <CartItemRow hasVariants={item.surcharge_groups.length > 0}>
+            <CartItemRow $hasVariants={item.surcharge_groups.length > 0}>
               <CartItem item={item} index={index} />
             </CartItemRow>
             {item.surcharge_groups.length > 0 && (

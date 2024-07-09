@@ -46,13 +46,13 @@ export const BillingAddress = ({ register, errors, onChange }) => {
       <FormGroup>
         <Label>PSČ</Label>
         <Input
-          {...register("psc", {
+          {...register("zip", {
             required: "PSČ nesmí být prázdné",
             pattern: {
               value: /^[0-9]{5}$/,
               message: "PSČ musí být pětimístné číslo",
             },
-            onChange: () => onChange("psc"),
+            onChange: () => onChange("zip"),
           })}
           type="text"
           placeholder="PSČ"

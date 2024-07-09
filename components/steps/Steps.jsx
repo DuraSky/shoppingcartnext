@@ -36,16 +36,16 @@ export const Steps = ({ currentStep }) => {
             break;
         }
         return (
-          <StepContainer key={index} isActive={isActive}>
+          <StepContainer key={index} $isActive={isActive}>
             {step.view !== "thankyou" ? (
               // <StyledLink href={`/?view=${step.view}`} isActive={isActive}>
               //   {step.label}
               // </StyledLink>
-              <StyledLink href={`/${url}`} isActive={isActive}>
+              <StyledLink href={`/${url}`} $isActive={isActive}>
                 {step.label}
               </StyledLink>
             ) : (
-              <NonClickableStep isActive={isActive}>
+              <NonClickableStep $isActive={isActive}>
                 {step.label}
               </NonClickableStep>
             )}

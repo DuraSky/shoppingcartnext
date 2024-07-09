@@ -7,7 +7,7 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
       <img src={previewSelectedShipping.img} alt="Shipping option" />
       <div className="optionAndPrice">
         <p> {previewSelectedShipping.option}</p>
-        <p className="price">{previewSelectedShipping.price} Kč</p>
+        <p className="price">{previewSelectedShipping.price_f}</p>
       </div>
     </StyledPreview>
   );
@@ -23,7 +23,7 @@ export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
         <p>{previewSelectedPayment.option}</p>
         {previewSelectedPayment.price !== undefined &&
           previewSelectedPayment.price !== null && (
-            <p className="price">{previewSelectedPayment.price} Kč</p>
+            <p className="price">{previewSelectedPayment.price_f}</p>
           )}
       </div>
     </StyledPreview>

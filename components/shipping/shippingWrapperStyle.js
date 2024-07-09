@@ -9,7 +9,7 @@ export const ShippingPageLayout = styled.div`
 
   .recapWrapper {
     width: 100%;
-    max-width: 600px;
+    //max-width: 600px;
     order: 2; /* Always on the right side for non-mobile views */
   }
 
@@ -83,7 +83,7 @@ export const ShippingPageLayout = styled.div`
     align-items: flex-start;
 
     img {
-      width: 60px;
+      width: 30px;
     }
   }
 
@@ -131,6 +131,6 @@ export const StyledPreview = styled.div`
   }
 
   img {
-    width: 60px;
+    width: 50px;
   }
 `;

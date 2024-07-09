@@ -6,10 +6,12 @@ import {
 
 const initialState = {
   cart: [],
-  cartTotal: 0,
+  //cartTotal: 0, // This can be removed if not used elsewhere
   appliedVouchers: [],
   selectedSurchargeProducts: {}, // { bpId: { groupId: selectedProductId } }
   vouchers: [],
+  cart_total: 0,
+  cart_total_f: "",
 };
 
 const actionTypes = {
@@ -69,16 +71,19 @@ const calculateCartTotal = (
 const cartReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_CART:
-      const { cart_products, vouchers } = action.payload;
+      const { cart_products, vouchers, total_price, total_f } = action.payload;
       return {
         ...state,
         cart: cart_products,
         vouchers: vouchers,
-        cartTotal: calculateCartTotal(
-          cart_products,
-          state.selectedSurchargeProducts,
-          state.appliedVouchers
-        ),
+        // Comment out local calculation and use the provided total price
+        // cartTotal: calculateCartTotal(
+        //   cart_products,
+        //   state.selectedSurchargeProducts,
+        //   state.appliedVouchers
+        // ),
+        cart_total: total_price,
+        cart_total_f: total_f,
       };
 
     case actionTypes.REMOVE_FROM_CART:
@@ -86,11 +91,11 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: updatedCartRemove,
-        cartTotal: calculateCartTotal(
-          updatedCartRemove,
-          state.selectedSurchargeProducts,
-          state.appliedVouchers
-        ),
+        // cartTotal: calculateCartTotal(
+        //   updatedCartRemove,
+        //   state.selectedSurchargeProducts,
+        //   state.appliedVouchers
+        // ),
       };
 
     case actionTypes.CHANGE_QUANTITY:
@@ -102,11 +107,11 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: updatedCartQuantity,
-        cartTotal: calculateCartTotal(
-          updatedCartQuantity,
-          state.selectedSurchargeProducts,
-          state.appliedVouchers
-        ),
+        // cartTotal: calculateCartTotal(
+        //   updatedCartQuantity,
+        //   state.selectedSurchargeProducts,
+        //   state.appliedVouchers
+        // ),
       };
 
     case actionTypes.SET_SELECTED_SURCHARGE_PRODUCT:
@@ -123,11 +128,11 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selectedSurchargeProducts: newSelectedSurchargeProducts,
-        cartTotal: calculateCartTotal(
-          state.cart,
-          newSelectedSurchargeProducts,
-          state.appliedVouchers
-        ),
+        // cartTotal: calculateCartTotal(
+        //   state.cart,
+        //   newSelectedSurchargeProducts,
+        //   state.appliedVouchers
+        // ),
       };
 
     case actionTypes.APPLY_VOUCHER:
@@ -146,11 +151,11 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         appliedVouchers: [...state.appliedVouchers, voucherToApply],
-        cartTotal: calculateCartTotal(
-          state.cart,
-          state.selectedSurchargeProducts,
-          [...state.appliedVouchers, voucherToApply]
-        ),
+        // cartTotal: calculateCartTotal(
+        //   state.cart,
+        //   state.selectedSurchargeProducts,
+        //   [...state.appliedVouchers, voucherToApply]
+        // ),
       };
 
     case actionTypes.REMOVE_VOUCHER:
@@ -166,11 +171,11 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         appliedVouchers: updatedAppliedVouchers,
-        cartTotal: calculateCartTotal(
-          state.cart,
-          state.selectedSurchargeProducts,
-          updatedAppliedVouchers
-        ),
+        // cartTotal: calculateCartTotal(
+        //   state.cart,
+        //   state.selectedSurchargeProducts,
+        //   updatedAppliedVouchers
+        // ),
       };
 
     default:

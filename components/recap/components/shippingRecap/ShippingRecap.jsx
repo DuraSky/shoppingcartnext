@@ -3,12 +3,12 @@ import { StyledShippingRecap } from "./shippingRecapStyle";
 
 export const ShippingRecap = ({
   selectedShippingOption,
-  selectedShippingPrice,
+  selectedShippingPriceCurrency,
 }) => {
   return (
     <StyledShippingRecap>
       <p>{selectedShippingOption}</p>
-      <p>{selectedShippingPrice} Kč</p>
+      <p>{selectedShippingPriceCurrency}</p>
     </StyledShippingRecap>
   );
 };

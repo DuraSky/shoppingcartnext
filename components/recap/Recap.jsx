@@ -16,21 +16,26 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
   const { state: cartState } = useContext(CartContext);
   const { state: shippingState } = useContext(ShippingContext);
 
-  const { cart, cartTotal, selectedSurchargeProducts, appliedVouchers } =
+  const { cart, cart_total, selectedSurchargeProducts, appliedVouchers } =
     cartState;
   const {
     selectedShippingOption,
     selectedShippingPrice,
+    selectedShippingPriceCurrency,
     selectedPaymentOption,
     selectedPaymentOptionPrice,
+    selectedPaymentOptionPriceCurrency,
   } = shippingState;
 
   const cartTotalCalc = () => {
     console.log(
-      "in calc" + cartTotal + selectedPaymentOptionPrice + selectedShippingPrice
+      "in calc" +
+        cart_total +
+        selectedPaymentOptionPrice +
+        selectedShippingPrice
     );
     const result =
-      cartTotal + selectedPaymentOptionPrice + selectedShippingPrice;
+      cart_total + selectedPaymentOptionPrice + selectedShippingPrice;
     return result;
   };
 
@@ -55,7 +60,7 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
         <img src="/assets/truck5.svg" width="30px" alt="" />
         <ShippingRecap
           selectedShippingOption={selectedShippingOption}
-          selectedShippingPrice={selectedShippingPrice}
+          selectedShippingPriceCurrency={selectedShippingPriceCurrency}
         />
       </div>
 
@@ -63,7 +68,9 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
         <img src="/assets/card.png" width="30px" alt="" />
         <PaymentRecap
           selectedPaymentOption={selectedPaymentOption}
-          selectedPaymentOptionPrice={selectedPaymentOptionPrice}
+          selectedPaymentOptionPriceCurrency={
+            selectedPaymentOptionPriceCurrency
+          }
         />
       </div>
 

@@ -47,8 +47,8 @@ export const CartHeaders = styled.div`
 export const CartItemRow = styled.div`
   display: flex;
   padding: 1rem;
-  box-shadow: ${({ theme, hasVariants }) =>
-    hasVariants ? "none" : theme.myLightBoxShadow};
+  box-shadow: ${({ theme, $hasVariants }) =>
+    $hasVariants ? "none" : theme.myLightBoxShadow};
   margin-bottom: 20px;
   font-weight: 200;
 
@@ -174,10 +174,17 @@ export const CartVariantRow = styled.div`
     //flex-grow: 1;
     /* margin: 0 auto; */
     /* padding: 20px 0; */
+    h3 {
+      font-size: 16px;
+      font-weight: 400;
+    }
     .productVariant {
       display: flex;
       gap: 5px;
       align-items: center;
+
+      font-weight: 300;
+      font-size: 14px;
       //width: 500px;
       //padding: 0 40px;
     }

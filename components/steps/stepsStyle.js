@@ -7,28 +7,25 @@ export const CartSteps = styled.div`
   align-items: center;
   margin: 20px auto;
   max-width: ${({ theme }) => theme.maxWidth};
-
   border-radius: ${({ theme }) => theme.myBorderRadius};
-  //background: #f9f9f9;
 `;
 
 export const StepContainer = styled.div`
   flex-grow: 1;
   text-align: center;
   position: relative;
-  background-color: ${({ isActive }) => (isActive ? "#ffdacc" : "white")};
-  //background-color: ${({ isActive }) => (isActive ? "#f1f1f1" : "white")};
+  background-color: ${({ $isActive }) => ($isActive ? "#ffdacc" : "white")};
   padding: 10px;
   font-size: 14px;
   border-radius: ${({ theme }) => theme.myBorderRadius};
-  border: ${({ isActive }) => (isActive ? "2px solid #ff6a33" : "none")};
-  box-shadow: ${({ isActive }) =>
-    isActive
+  border: ${({ $isActive }) => ($isActive ? "2px solid #ff6a33" : "none")};
+  box-shadow: ${({ $isActive }) =>
+    $isActive
       ? "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
       : "none"};
 
-  ${({ isActive }) =>
-    isActive &&
+  ${({ $isActive }) =>
+    $isActive &&
     `
     &::after {
       content: "";
@@ -48,10 +45,10 @@ export const StepContainer = styled.div`
 export const StepLabel = styled.span`
   display: block;
   padding: 15px;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
 `;
 
-export const StyledLink = styled(({ isActive, ...props }) => (
+export const StyledLink = styled(({ $isActive, ...props }) => (
   <Link {...props} />
 ))`
   text-decoration: none;

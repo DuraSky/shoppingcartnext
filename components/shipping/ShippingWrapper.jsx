@@ -21,9 +21,11 @@ export const ShippingWrapper = () => {
     selectedPaymentOption,
     selectedPaymentOptionImg,
     selectedPaymentOptionPrice,
+    selectedPaymentOptionPriceCurrency,
     selectedShippingOption,
     selectedShippingOptionImg,
     selectedShippingPrice,
+    selectedShippingPriceCurrency,
   } = state;
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
@@ -121,11 +123,13 @@ export const ShippingWrapper = () => {
       option: selectedShippingOption || "Select a shipping option",
       img: selectedShippingOptionImg,
       price: selectedShippingPrice,
+      price_f: selectedShippingPriceCurrency,
     });
   }, [
     selectedShippingOption,
     selectedShippingOptionImg,
     selectedShippingPrice,
+    selectedShippingPriceCurrency,
   ]);
 
   useEffect(() => {
@@ -134,12 +138,14 @@ export const ShippingWrapper = () => {
         option: "Prosim zvolte typ platby",
         img: "/assets/card.png",
         price: null,
+        price_f: null,
       });
     } else {
       setPreviewSelectedPayment({
         option: selectedPaymentOption,
         img: selectedPaymentOptionImg,
         price: selectedPaymentOptionPrice,
+        price_f: selectedPaymentOptionPriceCurrency,
       });
     }
   }, [selectedPaymentOption, selectedPaymentOptionImg]);

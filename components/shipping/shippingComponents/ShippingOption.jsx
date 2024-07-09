@@ -20,6 +20,10 @@ const ShippingOption = () => {
       payload: delivery.price,
     });
     dispatch({
+      type: actionTypes.SET_SELECTED_SHIPPING_PRICE_CURRENCY,
+      payload: delivery.price_f,
+    });
+    dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTIONS,
       payload: delivery.payments,
     });

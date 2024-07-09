@@ -118,7 +118,8 @@ const ShoppingCart = () => {
         </div>
 
         <ProgressBar cart={cart} />
-        <CartPriceCalc cartTotal={cartTotal} />
+        {/* <CartPriceCalc cartTotal={cartTotal} /> */}
+        <CartPriceCalc />
       </StyledWrapper>
       <StyledButtonWrapper>
         <StyledNextButton onClick={handleNextButtonClick}>

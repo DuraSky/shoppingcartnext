@@ -16,9 +16,12 @@ const CombinedProvider = ({ children }) => {
     try {
       const storedCartKey = localStorage.getItem("cart_key");
       if (!storedCartKey) {
+        //console.log("apiLoader waiting");
+
         setLoading(false);
         return;
       }
+      //console.log("apiLoader waiting");
       setCartKey(storedCartKey);
       const data = await apiLoader(storedCartKey);
       console.log("inside combined loader", data);
@@ -31,6 +34,7 @@ const CombinedProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    //console.log("calling fetch");
     fetchData();
   }, []);
 
@@ -61,11 +65,12 @@ const CombinedProvider = ({ children }) => {
     return <YourCartIsEmpty />;
   }
 
-  const { cart_products, vouchers, shipping } = combinedData;
+  const { cart_products, vouchers, shipping, total_price, total_f } =
+    combinedData;
 
   return (
     <CartProvider
-      initialCart={{ cart_products, vouchers }}
+      initialCart={{ cart_products, vouchers, total_price, total_f }}
       onCartUpdate={handleCartUpdate}
     >
       <ShippingProvider initialShipping={shipping}>{children}</ShippingProvider>

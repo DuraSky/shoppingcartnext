@@ -10,9 +10,9 @@ export const Wrapper = styled.div`
 
     p {
       color: ${({ theme }) => theme.backgroundBrown};
-      font-weight: bold;
-      font-weight: 300;
-      font-size: 13px;
+      //font-weight: bold;
+      //font-weight: 400;
+      font-size: 14px;
       letter-spacing: 1px;
     }
   }

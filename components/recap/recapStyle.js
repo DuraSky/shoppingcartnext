@@ -79,6 +79,7 @@ export const StyledRecapMobile = styled.div`
 
   h2 {
     background: ${({ theme }) => theme.backgroundGrey};
+
     font-size: 14px;
     font-weight: 400;
     padding: 1rem;

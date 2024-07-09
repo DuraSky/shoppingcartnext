@@ -36,9 +36,10 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
               <div className="flexWrapper">
                 <div className="itemListingQuantity">
                   <p>{item.quantity}x</p>
-                  <p>{item.price} Kč </p>
+                  <p>{item.price_f} </p>
                 </div>
-                <p className="listingPrice"> {item.price * item.quantity} Kč</p>
+                {/* <p className="listingPrice"> {item.price * item.quantity} Kč</p> */}
+                <p className="listingPrice"> {item.total_price_f}</p>
               </div>
               {selectedSurchargeItems.map((surchargeItem, idx) => (
                 <div key={idx} className="surchargeItem">
@@ -51,7 +52,7 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
                   />
                   <div className="surchargeDetails">
                     <p className="itemName">{surchargeItem.name}</p>
-                    <p className="listingPrice"> {surchargeItem.price} Kč</p>
+                    <p className="listingPrice"> {surchargeItem.price_f}</p>
                   </div>
                 </div>
               ))}

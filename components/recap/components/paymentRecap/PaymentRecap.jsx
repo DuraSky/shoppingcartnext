@@ -3,7 +3,7 @@ import { StyledPaymentRecap } from "./paymentRecapStyle";
 
 export const PaymentRecap = ({
   selectedPaymentOption,
-  selectedPaymentOptionPrice,
+  selectedPaymentOptionPriceCurrency,
 }) => {
   return (
     <StyledPaymentRecap>
@@ -13,9 +13,9 @@ export const PaymentRecap = ({
           : "Platba nebyla vybrana"}
       </p>
       <p>
-        {selectedPaymentOptionPrice !== undefined &&
-        selectedPaymentOptionPrice !== null
-          ? `${selectedPaymentOptionPrice} Kč`
+        {selectedPaymentOptionPriceCurrency !== undefined &&
+        selectedPaymentOptionPriceCurrency !== null
+          ? `${selectedPaymentOptionPriceCurrency}`
           : ""}
       </p>
     </StyledPaymentRecap>

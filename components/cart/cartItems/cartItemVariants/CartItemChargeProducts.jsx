@@ -21,7 +21,7 @@ export const CartItemChargeProducts = ({
             />
             <p>{product.name}</p>
           </div>
-          <p>{product.price} Kč</p>
+          <p>{product.price_f}</p>
         </div>
       ))}
     </>

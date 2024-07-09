@@ -43,6 +43,10 @@ export const ShippingProvider = ({ children, initialShipping = [] }) => {
           payload: firstDelivery.price,
         });
         dispatch({
+          type: actionTypes.SET_SELECTED_SHIPPING_PRICE_CURRENCY,
+          payload: firstDelivery.price_f,
+        });
+        dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTIONS,
           payload: firstDelivery.payments,
         });

@@ -6,7 +6,7 @@ import { StyledRecapMobile } from "./recapStyle";
 
 const RecapMobile = () => {
   const { state: cartState } = useContext(CartContext);
-  const { cart, cartTotal, selectedSurchargeProducts } = cartState;
+  const { cart, cart_total_f, selectedSurchargeProducts } = cartState;
 
   const [toggleMobileRecap, setToggleMobileRecap] = useState(false);
 
@@ -16,7 +16,7 @@ const RecapMobile = () => {
 
   return (
     <StyledRecapMobile onClick={handleToggleMobileRecap}>
-      <h2>Košík {cartTotal} Kč</h2>
+      <h2>Košík {cart_total_f}</h2>
       {toggleMobileRecap && (
         <ItemListing
           cart={cart}

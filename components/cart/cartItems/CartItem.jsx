@@ -11,6 +11,7 @@ import Image from "next/image";
 
 const CartItem = ({ item, index }) => {
   const { dispatch, onCartUpdate } = useContext(CartContext);
+
   const debounceRef = useRef(null);
 
   const updateCart = async (quantity) => {
@@ -24,7 +25,7 @@ const CartItem = ({ item, index }) => {
     }
     debounceRef.current = setTimeout(() => {
       updateCart(quantity);
-    }, 300);
+    }, 400);
   }, []);
 
   const handleQuantityChange = (event) => {
@@ -105,11 +106,11 @@ const CartItem = ({ item, index }) => {
         </QuantityControl>
       </div>
       <div className="itemPrice">
-        <p>{item.price} Kč</p>
+        <p>{item.price_f}</p>
       </div>
       <div className="priceCalc">
         {/* <p>{item.quantity * item.price} Kč</p> */}
-        {item.total_price}
+        {item.total_price_f}
       </div>
       <div className="removeFromCart">
         <button type="button" onClick={handleRemove} className="remove-button">

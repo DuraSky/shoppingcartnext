@@ -23,16 +23,9 @@ export const changeQuantity = (cart, value, itemIndex) => {
   });
 };
 
-export const getCartPrice = (cart_products) => {
-  return cart_products.reduce(
-    (total, item) => total + item.quantity * item.price,
-    0
-  );
-};
-
-export const getFreeShippingMessage = (cart) => {
+export const getFreeShippingMessage = (cart_total) => {
   const freeShipping = 4500;
-  const remainingForFreeShipping = freeShipping - getCartPrice(cart);
+  const remainingForFreeShipping = freeShipping - cart_total;
 
   if (remainingForFreeShipping <= 0) {
     return "Dopravu mate zdarma";
@@ -42,12 +35,9 @@ export const getFreeShippingMessage = (cart) => {
   }
 };
 
-export const getProgressShipping = (cart) => {
+export const getProgressShipping = (cart_total) => {
   const freeShipping = 4500;
-  const remainingForFreeShipping = Math.min(
-    (getCartPrice(cart) / freeShipping) * 100,
-    100
-  );
+  const progress = Math.min((cart_total / freeShipping) * 100, 100);
 
-  return remainingForFreeShipping.toFixed(1);
+  return progress.toFixed(1);
 };
