@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import { imageLoader } from "../../../imageLoader/imageLoader";
 
 export const CartItemChargeProducts = ({
   bpId,
@@ -11,7 +13,16 @@ export const CartItemChargeProducts = ({
     <>
       {products.map((product) => (
         <div key={product.id} className="productVariant">
-          <img src={product.image} alt={product.name} />
+          {/* <img src={product.image} alt={product.name} /> */}
+          <Image
+            loader={imageLoader}
+            src={product.image}
+            alt={product.name}
+            width={100}
+            height={100}
+            layout="intrinsic"
+          />
+
           {/* <img src="https://placehold.jp/150x150.png" alt="placeholder" /> */}
           <div className="checkboxAndName">
             <input

@@ -8,6 +8,7 @@ import React, {
 import { CartContext, actionTypes } from "../CartProvider";
 import { QuantityControl } from "./allCartItemsStyle";
 import Image from "next/image";
+import { imageLoader } from "../../imageLoader/imageLoader";
 
 const CartItem = ({ item, index }) => {
   const { dispatch, onCartUpdate } = useContext(CartContext);
@@ -77,16 +78,17 @@ const CartItem = ({ item, index }) => {
     <>
       <div className="produktName">
         <Image
+          loader={imageLoader}
           src={item.image}
           alt={item.name}
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           layout="responsive"
         />
         <p>{item.name}</p>
       </div>
-      <div className="dostupnost">
-        <p>{item.dostupnost}</p>
+      <div className="dostupnost" style={{ color: item.availability_color }}>
+        <p>{item.availability_name}</p>
       </div>
 
       <div className="quantityControlWrapper">

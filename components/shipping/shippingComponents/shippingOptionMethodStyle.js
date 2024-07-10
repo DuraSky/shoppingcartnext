@@ -45,7 +45,10 @@ export const StyledShippingMethod = styled.div`
 
     img {
       width: 60px;
-      height: auto;
+      max-height: 40px;
+      //max-width: 60px;
+
+      //height: auto;
     }
 
     .price {

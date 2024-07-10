@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ShippingContext } from "../ShippingProvider";
 import Image from "next/image";
 import { StyledShippingMethod } from "./shippingOptionMethodStyle";
+import { imageLoader } from "../../imageLoader/imageLoader";
 
 export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
@@ -24,7 +25,8 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
           checked={selectedShippingOption === delivery.name}
         />
         <Image
-          src={delivery.imgUrl}
+          loader={imageLoader}
+          src={delivery.image}
           alt={delivery.name}
           layout="intrinsic"
           width={100}
@@ -33,7 +35,7 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
         <div>
           <p>{delivery.name}</p>
           <p>
-            <span>{delivery.canShipDate}</span>
+            <span>{delivery.delivery_date}</span>
           </p>
         </div>
         <p className="price">{delivery.price} Kč</p>

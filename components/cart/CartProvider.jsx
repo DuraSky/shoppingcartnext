@@ -12,6 +12,7 @@ export const CartProvider = ({
     total_f: "",
   },
   onCartUpdate,
+  onDiscountCode,
   updateLoading,
 }) => {
   const [state, dispatch] = useReducer(cartReducer, {
@@ -37,8 +38,8 @@ export const CartProvider = ({
   }, [initialCart]);
 
   const value = useMemo(
-    () => ({ state, dispatch, onCartUpdate, updateLoading }),
-    [state, onCartUpdate, updateLoading]
+    () => ({ state, dispatch, onCartUpdate, onDiscountCode, updateLoading }),
+    [state, onCartUpdate, onDiscountCode, updateLoading]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

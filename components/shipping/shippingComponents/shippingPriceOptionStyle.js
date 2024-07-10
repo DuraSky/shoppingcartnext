@@ -45,7 +45,7 @@ export const StyledPriceOption = styled.div`
 
     img {
       width: 60px;
-      height: auto;
+      max-height: 40px;
     }
 
     .price {

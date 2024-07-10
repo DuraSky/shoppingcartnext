@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledProductRecap } from "./ItemListingStyle";
 import Image from "next/image";
+import { imageLoader } from "../../../imageLoader/imageLoader";
 
 export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
   return (
@@ -24,6 +25,7 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
           <StyledProductRecap key={index}>
             <div className="itemImage">
               <Image
+                loader={imageLoader}
                 src={item.image}
                 alt={item.name}
                 width={100}
@@ -44,6 +46,7 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
               {selectedSurchargeItems.map((surchargeItem, idx) => (
                 <div key={idx} className="surchargeItem">
                   <Image
+                    loader={imageLoader}
                     src={surchargeItem.image || "/placeholder.png"}
                     alt={surchargeItem.name}
                     width={50}

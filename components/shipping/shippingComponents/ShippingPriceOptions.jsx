@@ -3,16 +3,17 @@ import { useContext } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 import Image from "next/image";
 import { StyledPriceOption } from "./shippingPriceOptionStyle";
+import { imageLoader } from "../../imageLoader/imageLoader";
 
 const ShippingPriceOptions = () => {
   const { state, dispatch } = useContext(ShippingContext);
   const { selectedShippingOptions, selectedPaymentOption } = state;
 
-  const handlePriceMethodChange = (name, price, imgUrl, price_f) => {
+  const handlePriceMethodChange = (name, price, image, price_f) => {
     dispatch({ type: actionTypes.SET_SELECTED_PAYMENT_OPTION, payload: name });
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_IMG,
-      payload: imgUrl,
+      payload: image,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_PRICE,
@@ -38,14 +39,15 @@ const ShippingPriceOptions = () => {
                   handlePriceMethodChange(
                     option.name,
                     option.price,
-                    option.imgUrl,
+                    option.image,
                     option.price_f
                   );
                 }}
                 checked={selectedPaymentOption === option.name}
               />
               <Image
-                src={option.imgUrl}
+                loader={imageLoader}
+                src={option.image}
                 alt="Obrazek platby"
                 width={100}
                 height={100}

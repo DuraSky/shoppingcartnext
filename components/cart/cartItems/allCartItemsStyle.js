@@ -61,8 +61,8 @@ export const CartItemRow = styled.div`
     font-weight: 400;
 
     img {
-      max-width: 100px;
-      margin-bottom: 0.5rem;
+      max-width: 130px;
+      //margin-bottom: 0.5rem;
     }
   }
 
@@ -78,7 +78,7 @@ export const CartItemRow = styled.div`
   }
 
   .dostupnost {
-    color: green;
+    //color: green;
   }
 
   .removeFromCart {
@@ -153,7 +153,7 @@ export const CartVariantRow = styled.div`
   padding-bottom: 15px;
 
   img {
-    width: 40px;
+    width: 60px;
   }
 
   input {

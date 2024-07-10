@@ -13,7 +13,7 @@ const ShippingOption = () => {
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
-      payload: delivery.imgUrl,
+      payload: delivery.image,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_PRICE,

@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { CartProvider } from "./cart/CartProvider";
 import { ShippingProvider } from "./shipping/ShippingProvider";
-import { apiLoader, apiLoaderUpdateCartItem, dbLoader } from "../utils/loader";
+import {
+  apiLoader,
+  apiLoaderUpdateCartItem,
+  dbLoader,
+  checkDiscountCode,
+} from "../utils/loader";
 import { LoadingSpinner } from "./loadingSpinner/LoadingSpinner";
 import { FetchError } from "./errorPages/FetchError";
 import { YourCartIsEmpty } from "./cart/emptyCart/EmptyCart";
@@ -53,6 +58,17 @@ const CombinedProvider = ({ children }) => {
     }
   };
 
+  const handleDiscountCode = async (code) => {
+    try {
+      const updatedData = await checkDiscountCode(code, cartKey);
+      setCombinedData(updatedData);
+      return { success: true, updatedData };
+    } catch (error) {
+      console.error("Failed to apply discount code:", error);
+      return { success: false, error };
+    }
+  };
+
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -72,6 +88,7 @@ const CombinedProvider = ({ children }) => {
     <CartProvider
       initialCart={{ cart_products, vouchers, total_price, total_f }}
       onCartUpdate={handleCartUpdate}
+      onDiscountCode={handleDiscountCode}
     >
       <ShippingProvider initialShipping={shipping}>{children}</ShippingProvider>
     </CartProvider>

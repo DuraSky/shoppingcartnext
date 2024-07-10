@@ -13,6 +13,9 @@ export const StyledProductRecap = styled.div`
 
   .itemImage {
     flex-shrink: 0;
+    img {
+      width: 100px;
+    }
   }
 
   .itemDetails {
@@ -46,7 +49,10 @@ export const StyledProductRecap = styled.div`
   }
 
   .surchargeItem {
-    padding-top: 20px;
+    padding-top: 40px;
+    img {
+      width: 40px;
+    }
     .surchargeDetails {
       display: flex;
       .itemName {

@@ -1,10 +1,20 @@
 import React from "react";
 import { StyledPreview } from "../shippingWrapperStyle";
+import Image from "next/image";
+import { imageLoader } from "../../imageLoader/imageLoader";
 
 export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
   return (
     <StyledPreview>
-      <img src={previewSelectedShipping.img} alt="Shipping option" />
+      {/* <img src={previewSelectedShipping.img} alt="Shipping option" /> */}
+      <Image
+        loader={imageLoader}
+        src={previewSelectedShipping.img}
+        alt={previewSelectedShipping.option}
+        width={100}
+        height={100}
+        layout="intrinsic"
+      />
       <div className="optionAndPrice">
         <p> {previewSelectedShipping.option}</p>
         <p className="price">{previewSelectedShipping.price_f}</p>
@@ -16,8 +26,25 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
 export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
   return (
     <StyledPreview>
-      {previewSelectedPayment.img && (
-        <img src={previewSelectedPayment.img} alt="Payment option" />
+      {previewSelectedPayment.img === "assets/card.png" ? (
+        <Image
+          src="/assets/card.png"
+          alt={previewSelectedPayment.option}
+          width={100}
+          height={100}
+          layout="intrinsic"
+        />
+      ) : (
+        previewSelectedPayment.img && (
+          <Image
+            loader={imageLoader}
+            src={previewSelectedPayment.img}
+            alt={previewSelectedPayment.option}
+            width={100}
+            height={100}
+            layout="intrinsic"
+          />
+        )
       )}
       <div className="optionAndPrice">
         <p>{previewSelectedPayment.option}</p>

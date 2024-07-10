@@ -35,25 +35,25 @@ const ShoppingCart = () => {
   useEffect(() => {
     console.log("Current state of the cart", cart);
     console.log("Received vouchers", vouchers);
-    console.log("Applied vouchers", appliedVouchers);
-  }, [cart, vouchers, appliedVouchers]);
+    //console.log("Applied vouchers", appliedVouchers);
+  }, [cart, vouchers]);
 
-  const checkDiscountCode = (code) => {
-    const voucher = vouchers.find((voucher) => voucher.code === code);
-    if (voucher && !appliedVouchers.some((v) => v.code === code)) {
-      cartDispatch({ type: cartActionTypes.APPLY_VOUCHER, payload: code });
-      setDiscountError(false);
-    } else {
-      setDiscountError(false);
-      setTimeout(() => setDiscountError(true), 0);
-    }
-    setDiscountCode("");
-  };
+  // const checkDiscountCode = (code) => {
+  //   const voucher = vouchers.find((voucher) => voucher.code === code);
+  //   if (voucher && !appliedVouchers.some((v) => v.code === code)) {
+  //     cartDispatch({ type: cartActionTypes.APPLY_VOUCHER, payload: code });
+  //     setDiscountError(false);
+  //   } else {
+  //     setDiscountError(false);
+  //     setTimeout(() => setDiscountError(true), 0);
+  //   }
+  //   setDiscountCode("");
+  // };
 
-  const removeVoucher = (code) => {
-    cartDispatch({ type: cartActionTypes.REMOVE_VOUCHER, payload: code });
-    setDiscountError(false);
-  };
+  // const removeVoucher = (code) => {
+  //   cartDispatch({ type: cartActionTypes.REMOVE_VOUCHER, payload: code });
+  //   setDiscountError(false);
+  // };
 
   const handleNextButtonClick = async () => {
     // const cartChanged = JSON.stringify(initialCart) !== JSON.stringify(cart);
@@ -96,7 +96,7 @@ const ShoppingCart = () => {
           <DiscountCodeBar
             setDiscountCode={setDiscountCode}
             discountCode={discountCode}
-            handleCheckDiscountCode={checkDiscountCode}
+            //handleCheckDiscountCode={checkDiscountCode}
             discountError={discountError}
           />
           {discountError && (
@@ -104,7 +104,7 @@ const ShoppingCart = () => {
               {discountErrorMessage}
             </StyledDiscountErrorMessage>
           )}
-          {appliedVouchers.length > 0 && (
+          {/* {appliedVouchers.length > 0 && (
             <div>
               {appliedVouchers.map((voucher) => (
                 <AppliedVoucher
@@ -112,6 +112,13 @@ const ShoppingCart = () => {
                   voucher={voucher}
                   removeVoucher={removeVoucher}
                 />
+              ))}
+            </div>
+          )} */}
+          {vouchers.length > 0 && (
+            <div>
+              {vouchers.map((voucher) => (
+                <AppliedVoucher key={voucher.code} voucher={voucher} />
               ))}
             </div>
           )}

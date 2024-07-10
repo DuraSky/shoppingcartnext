@@ -111,3 +111,26 @@ export const apiLoaderUpdateCartItem = async (action, updatedItem, cartKey) => {
   console.log("getting back this from the API ", data);
   return data;
 };
+
+export const checkDiscountCode = async (code, cartKey) => {
+  const response = await fetch(apiConfig.baseUrl + "/api/v1/cart/voucher", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+      Cart: cartKey,
+      accept: "*/*",
+    },
+    mode: "cors",
+    body: JSON.stringify({ code }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Error response:", response.status, errorText);
+    throw new Error("Request failed with status " + response.status);
+  }
+
+  const data = await response.json();
+  return data;
+};

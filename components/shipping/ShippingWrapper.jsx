@@ -36,8 +36,8 @@ export const ShippingWrapper = () => {
   const [buttonText, setButtonText] = useState("Odeslat objednavku");
 
   const [previewSelectedShipping, setPreviewSelectedShipping] = useState({
-    option: "Select a shipping option",
-    img: null,
+    option: "Prosim zvolte dopravu",
+    img: "/assets/card.png",
     price: null,
   });
   const [previewSelectedPayment, setPreviewSelectedPayment] = useState({
@@ -119,9 +119,10 @@ export const ShippingWrapper = () => {
   }, [selectedPaymentOption, formErrors]);
 
   useEffect(() => {
+    console.log("useeffect", selectedShippingOptionImg);
     setPreviewSelectedShipping({
-      option: selectedShippingOption || "Select a shipping option",
-      img: selectedShippingOptionImg,
+      option: selectedShippingOption || "Prosim zvolte dopravu",
+      img: selectedShippingOptionImg || "failsafe",
       price: selectedShippingPrice,
       price_f: selectedShippingPriceCurrency,
     });
@@ -136,7 +137,7 @@ export const ShippingWrapper = () => {
     if (selectedPaymentOption === null) {
       setPreviewSelectedPayment({
         option: "Prosim zvolte typ platby",
-        img: "/assets/card.png",
+        img: "assets/card.png",
         price: null,
         price_f: null,
       });

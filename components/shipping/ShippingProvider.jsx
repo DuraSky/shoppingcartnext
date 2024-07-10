@@ -36,7 +36,7 @@ export const ShippingProvider = ({ children, initialShipping = [] }) => {
         });
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
-          payload: firstDelivery.imgUrl,
+          payload: firstDelivery.image,
         });
         dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_PRICE,

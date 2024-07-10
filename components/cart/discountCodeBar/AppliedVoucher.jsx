@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledAppliedCode } from "./appliedVoucherStyle";
 
-export const AppliedVoucher = ({ voucher, removeVoucher }) => {
+export const AppliedVoucher = ({ voucher }) => {
   return (
     <StyledAppliedCode>
       <div className="voucherContent">
@@ -9,7 +9,8 @@ export const AppliedVoucher = ({ voucher, removeVoucher }) => {
         <p>-{voucher.value} Kč</p>
       </div>
 
-      <button onClick={() => removeVoucher(voucher.code)}>X</button>
+      {/* <button onClick={() => removeVoucher(voucher.code)}>X</button> */}
+      <button>X</button>
     </StyledAppliedCode>
   );
 };

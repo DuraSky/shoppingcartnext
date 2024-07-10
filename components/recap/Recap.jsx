@@ -16,8 +16,7 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
   const { state: cartState } = useContext(CartContext);
   const { state: shippingState } = useContext(ShippingContext);
 
-  const { cart, cart_total, selectedSurchargeProducts, appliedVouchers } =
-    cartState;
+  const { cart, cart_total, selectedSurchargeProducts, vouchers } = cartState;
   const {
     selectedShippingOption,
     selectedShippingPrice,
@@ -50,9 +49,9 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
         selectedSurchargeProducts={selectedSurchargeProducts}
       />
 
-      {appliedVouchers.length > 0 && (
+      {vouchers.length > 0 && (
         <div className="recapVoucher">
-          <VoucherRecap appliedVouchers={appliedVouchers} />
+          <VoucherRecap vouchers={vouchers} />
         </div>
       )}
 

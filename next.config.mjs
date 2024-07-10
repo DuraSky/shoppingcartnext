@@ -4,7 +4,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["www.zanapo.cz", "placehold.jp"], // Add your external image domains here
+    domains: ["www.zanapo.cz", "placehold.jp", "zanapo.cz"],
   },
 };
 

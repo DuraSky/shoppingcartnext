@@ -20,6 +20,7 @@ export const ShippingPageLayout = styled.div`
     order: 1; /* Always on the left side for non-mobile views */
 
     .collapsible-content {
+      //padding-top: 1rem;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s ease-out;
@@ -112,7 +113,7 @@ export const ShippingPageLayout = styled.div`
 `;
 
 export const StyledPreview = styled.div`
-  padding: 10px;
+  padding: 1rem;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -131,6 +132,6 @@ export const StyledPreview = styled.div`
   }
 
   img {
-    width: 50px;
+    width: 60px;
   }
 `;

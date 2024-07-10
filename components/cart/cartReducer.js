@@ -7,7 +7,7 @@ import {
 const initialState = {
   cart: [],
   //cartTotal: 0, // This can be removed if not used elsewhere
-  appliedVouchers: [],
+  //appliedVouchers: [],
   selectedSurchargeProducts: {}, // { bpId: { groupId: selectedProductId } }
   vouchers: [],
   cart_total: 0,
@@ -135,28 +135,28 @@ const cartReducer = (state, action) => {
         // ),
       };
 
-    case actionTypes.APPLY_VOUCHER:
-      const voucherToApply = state.vouchers.find(
-        (v) => v.code === action.payload
-      );
-      if (
-        !voucherToApply ||
-        voucherToApply.used ||
-        state.appliedVouchers.includes(voucherToApply)
-      )
-        return state;
+    // case actionTypes.APPLY_VOUCHER:
+    //   const voucherToApply = state.vouchers.find(
+    //     (v) => v.code === action.payload
+    //   );
+    //   if (
+    //     !voucherToApply ||
+    //     voucherToApply.used ||
+    //     state.appliedVouchers.includes(voucherToApply)
+    //   )
+    //     return state;
 
-      voucherToApply.used = true;
+    //   voucherToApply.used = true;
 
-      return {
-        ...state,
-        appliedVouchers: [...state.appliedVouchers, voucherToApply],
-        // cartTotal: calculateCartTotal(
-        //   state.cart,
-        //   state.selectedSurchargeProducts,
-        //   [...state.appliedVouchers, voucherToApply]
-        // ),
-      };
+    //   return {
+    //     ...state,
+    //     appliedVouchers: [...state.appliedVouchers, voucherToApply],
+    //     // cartTotal: calculateCartTotal(
+    //     //   state.cart,
+    //     //   state.selectedSurchargeProducts,
+    //     //   [...state.appliedVouchers, voucherToApply]
+    //     // ),
+    //   };
 
     case actionTypes.REMOVE_VOUCHER:
       const updatedAppliedVouchers = state.appliedVouchers.filter(
