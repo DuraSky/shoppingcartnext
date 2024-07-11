@@ -9,10 +9,12 @@ export const CartProvider = ({
     cart_products: [],
     vouchers: [],
     total_price: 0,
+    total_product_price_f: "",
     total_f: "",
   },
   onCartUpdate,
   onDiscountCode,
+  onSurchargeChange, // Add this line
   updateLoading,
 }) => {
   const [state, dispatch] = useReducer(cartReducer, {
@@ -20,7 +22,8 @@ export const CartProvider = ({
     cart: initialCart.cart_products || [],
     vouchers: initialCart.vouchers || [],
     cart_total: initialCart.total_price || 0,
-    cart_total_f: initialCart.total_f || "",
+    cart_total_f: initialCart.total_product_price_f || "",
+    cart_total_with_shipping: initialCart.total_f || "",
   });
 
   useEffect(() => {
@@ -31,6 +34,7 @@ export const CartProvider = ({
           cart_products: initialCart.cart_products,
           vouchers: initialCart.vouchers,
           total_price: initialCart.total_price,
+          total_product_price_f: initialCart.total_product_price_f,
           total_f: initialCart.total_f,
         },
       });
@@ -38,8 +42,15 @@ export const CartProvider = ({
   }, [initialCart]);
 
   const value = useMemo(
-    () => ({ state, dispatch, onCartUpdate, onDiscountCode, updateLoading }),
-    [state, onCartUpdate, onDiscountCode, updateLoading]
+    () => ({
+      state,
+      dispatch,
+      onCartUpdate,
+      onDiscountCode,
+      onSurchargeChange,
+      updateLoading,
+    }),
+    [state, onCartUpdate, onDiscountCode, onSurchargeChange, updateLoading]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

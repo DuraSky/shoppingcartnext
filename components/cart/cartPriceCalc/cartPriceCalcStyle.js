@@ -7,24 +7,48 @@ export const StyledWrapper = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
   //justify-content: space-between;
 
-  @media (max-width: 768px) {
-    margin: 30px auto;
-    padding: 10px;
-  }
-
-  @media (max-width: 921px) {
-    flex-direction: column;
-    gap: 40px;
-    margin: 30px auto;
-    padding: 10px;
-  }
-
   @media (max-width: 370px) {
     //margin: 30px auto;
     padding: 10px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding: 10px 0px;
+  }
+
+  @media (max-width: 395px) {
+    //margin: 30px auto;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    //padding: 10px 0px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 30px auto;
+    padding: 10px;
+  }
+
+  @media (max-width: 925px) {
+    //flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 30px auto;
+    padding: 10px 30px;
+  }
+
+  @media (min-width: 926px) {
+    display: flex;
+    padding: 0 20px;
+    //flex-direction: column;
+    //flex-direction: column;
+    //flex-wrap: wrap;
+    //justify-content: space-between;
+    //gap: 40px;
+    //margin: 30px auto;
+    //padding: 10px 30px;
   }
 `;
 

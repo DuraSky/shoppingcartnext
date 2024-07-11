@@ -1,6 +1,7 @@
 // src/components/ShippingWrapper.js
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ShippingContext } from "./ShippingProvider";
+import { CartContext } from "../cart/CartProvider";
 import { useRouter } from "next/router";
 import PersonalInfo from "../personalInfo/PersonalInfo";
 import { ShippingPageLayout, StyledPreview } from "./shippingWrapperStyle";
@@ -16,7 +17,7 @@ import {
 import { PageControl } from "../pageControl/PageControl";
 
 export const ShippingWrapper = () => {
-  const { state } = useContext(ShippingContext);
+  const { state: shippingState } = useContext(ShippingContext);
   const {
     selectedPaymentOption,
     selectedPaymentOptionImg,
@@ -26,7 +27,11 @@ export const ShippingWrapper = () => {
     selectedShippingOptionImg,
     selectedShippingPrice,
     selectedShippingPriceCurrency,
-  } = state;
+  } = shippingState;
+
+  const { state: cartState } = useContext(CartContext);
+  const { cart_total_with_shipping } = cartState;
+
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
   const [togglePriceOption, setTogglePriceOption] = useState(false);
@@ -235,13 +240,18 @@ export const ShippingWrapper = () => {
       </div>
 
       {isMobile && (
-        <div className="pageControl">
-          <PageControl
-            handleGoBack={handleGoBack}
-            handleSubmit={handleSubmit}
-            buttonText={buttonText}
-          />
-        </div>
+        <>
+          <h3 className="pageControlMobilePrice">
+            Celkova cena: <span>{cart_total_with_shipping}</span>
+          </h3>
+          <div className="pageControl">
+            <PageControl
+              handleGoBack={handleGoBack}
+              handleSubmit={handleSubmit}
+              buttonText={buttonText}
+            />
+          </div>
+        </>
       )}
     </ShippingPageLayout>
   );

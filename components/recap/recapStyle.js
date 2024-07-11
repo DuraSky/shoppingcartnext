@@ -75,16 +75,36 @@ export const StyledRecap = styled.div`
 `;
 
 export const StyledRecapMobile = styled.div`
-  //display: flex;
-
-  h2 {
-    background: ${({ theme }) => theme.backgroundGrey};
-
-    font-size: 14px;
-    font-weight: 400;
+  .mobileRecapHeader {
+    display: flex;
+    align-items: center;
     padding: 1rem;
-    box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
-    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
-    border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
+
+    h3 {
+      font-size: 16px;
+      font-weight: 200;
+      padding: 1rem;
+
+      span {
+        font-weight: 400;
+      }
+    }
+
+    .arrow {
+      border-bottom: 2px solid ${({ theme }) => theme.fontOrange};
+      border-right: 2px solid ${({ theme }) => theme.fontOrange};
+      position: absolute;
+      top: 40px;
+      right: 30px;
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg) translateY(-50%);
+      transform-origin: right;
+      transition: transform 0.3s;
+    }
+
+    .arrow.rotated {
+      transform: rotate(225deg);
+    }
   }
 `;

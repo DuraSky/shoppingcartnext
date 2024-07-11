@@ -6,6 +6,7 @@ import {
   apiLoaderUpdateCartItem,
   dbLoader,
   checkDiscountCode,
+  sendUpdatedSurcharge,
 } from "../utils/loader";
 import { LoadingSpinner } from "./loadingSpinner/LoadingSpinner";
 import { FetchError } from "./errorPages/FetchError";
@@ -58,14 +59,30 @@ const CombinedProvider = ({ children }) => {
     }
   };
 
-  const handleDiscountCode = async (code) => {
+  const handleDiscountCode = async (code, method) => {
     try {
-      const updatedData = await checkDiscountCode(code, cartKey);
+      const updatedData = await checkDiscountCode(code, cartKey, method);
       setCombinedData(updatedData);
       return { success: true, updatedData };
     } catch (error) {
       console.error("Failed to apply discount code:", error);
       return { success: false, error };
+    }
+  };
+
+  const handleSurchargeChange = async (bpId, productId, checked) => {
+    console.log("sending update surchage", bpId, productId, checked);
+    try {
+      const updatedData = await sendUpdatedSurcharge(
+        bpId,
+        productId,
+        checked,
+        cartKey
+      );
+      setCombinedData(updatedData);
+      console.log("Updated data from API:", updatedData);
+    } catch (error) {
+      console.error("Failed to set surcharge item:", error);
     }
   };
 
@@ -81,14 +98,27 @@ const CombinedProvider = ({ children }) => {
     return <YourCartIsEmpty />;
   }
 
-  const { cart_products, vouchers, shipping, total_price, total_f } =
-    combinedData;
+  const {
+    cart_products,
+    vouchers,
+    shipping,
+    total_price,
+    total_product_price_f,
+    total_f,
+  } = combinedData;
 
   return (
     <CartProvider
-      initialCart={{ cart_products, vouchers, total_price, total_f }}
+      initialCart={{
+        cart_products,
+        vouchers,
+        total_price,
+        total_product_price_f,
+        total_f,
+      }}
       onCartUpdate={handleCartUpdate}
       onDiscountCode={handleDiscountCode}
+      onSurchargeChange={handleSurchargeChange}
     >
       <ShippingProvider initialShipping={shipping}>{children}</ShippingProvider>
     </CartProvider>

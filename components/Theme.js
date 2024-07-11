@@ -23,7 +23,7 @@ export const StyledButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  @media (max-width: 768px) {
+  @media (max-width: 922px) {
     //margin: 30px auto;
     padding: 10px;
     justify-content: center;

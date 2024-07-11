@@ -71,6 +71,28 @@ export const ShippingPageLayout = styled.div`
     margin-top: 20px;
     gap: 10px;
     order: 3;
+    padding: 0 0.2rem;
+  }
+
+  .pageControlMobilePrice {
+    order: 2;
+
+    font-size: 18px;
+    font-weight: 200;
+    padding: 1rem;
+
+    span {
+      font-weight: 400;
+    }
+  }
+
+  .finalPriceMobile {
+    order: 4;
+  }
+
+  .finalPriceMobile {
+    display: flex;
+    order: 5;
   }
 
   @media (min-width: 768px) {
@@ -85,6 +107,10 @@ export const ShippingPageLayout = styled.div`
 
     img {
       width: 30px;
+    }
+
+    .pageControl {
+      padding: 0;
     }
   }
 

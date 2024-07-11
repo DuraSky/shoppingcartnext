@@ -8,7 +8,6 @@ export const dbLoader = async () => {
   return data;
 };
 
-// utils/loader.js
 export const shippingLoader = async () => {
   //const response = await fetch("/mockDBs/shipping.json");
   const response = await fetch("/mockDBs/shippingApiCopy.json");
@@ -112,9 +111,10 @@ export const apiLoaderUpdateCartItem = async (action, updatedItem, cartKey) => {
   return data;
 };
 
-export const checkDiscountCode = async (code, cartKey) => {
+export const checkDiscountCode = async (code, cartKey, method) => {
+  console.log("in loader", code, cartKey, method);
   const response = await fetch(apiConfig.baseUrl + "/api/v1/cart/voucher", {
-    method: "POST",
+    method: method,
     headers: {
       "Content-Type": "application/json",
       "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
@@ -124,6 +124,40 @@ export const checkDiscountCode = async (code, cartKey) => {
     mode: "cors",
     body: JSON.stringify({ code }),
   });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Error response:", response.status, errorText);
+    throw new Error("Request failed with status " + response.status);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const sendUpdatedSurcharge = async (
+  bpId,
+  productSurchargeProductId,
+  checked,
+  cartKey
+) => {
+  const body = JSON.stringify({
+    bpId,
+    productSurchargeProductId,
+    checked,
+  });
+  const response = await fetch(apiConfig.baseUrl + "/api/v1/cart/surcharge", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+      Cart: cartKey,
+      accept: "*/*",
+    },
+    mode: "cors",
+    body: body,
+  });
+  console.log("inside body", body);
 
   if (!response.ok) {
     const errorText = await response.text();

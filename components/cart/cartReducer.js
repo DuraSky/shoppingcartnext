@@ -12,6 +12,7 @@ const initialState = {
   vouchers: [],
   cart_total: 0,
   cart_total_f: "",
+  cart_total_with_shipping: "",
 };
 
 const actionTypes = {
@@ -71,7 +72,8 @@ const calculateCartTotal = (
 const cartReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_CART:
-      const { cart_products, vouchers, total_price, total_f } = action.payload;
+      const { cart_products, vouchers, total_price, total_product_price_f } =
+        action.payload;
       return {
         ...state,
         cart: cart_products,
@@ -83,7 +85,7 @@ const cartReducer = (state, action) => {
         //   state.appliedVouchers
         // ),
         cart_total: total_price,
-        cart_total_f: total_f,
+        cart_total_f: total_product_price_f,
       };
 
     case actionTypes.REMOVE_FROM_CART:

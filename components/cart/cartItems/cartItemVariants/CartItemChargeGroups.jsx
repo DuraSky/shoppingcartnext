@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
 import { CartItemChargeProducts } from "./CartItemChargeProducts";
-import { CartContext, actionTypes } from "../../CartProvider";
+import { CartContext } from "../../CartProvider";
 
 export const CartItemChargeGroups = ({ bpId, surcharge_groups }) => {
-  const { state, dispatch } = useContext(CartContext); // Use the context
+  const { state, onSurchargeChange } = useContext(CartContext);
 
-  const handleSelectProduct = (bpId, groupId, productId) => {
-    dispatch({
-      type: actionTypes.SET_SELECTED_SURCHARGE_PRODUCT,
-      payload: { bpId, groupId, productId },
-    });
+  const handleSelectProduct = async (bpId, productId, checked) => {
+    await onSurchargeChange(bpId, productId, checked);
   };
 
   const selectedProducts = state.selectedSurchargeProducts[bpId] || {};
@@ -23,7 +20,6 @@ export const CartItemChargeGroups = ({ bpId, surcharge_groups }) => {
             bpId={bpId}
             groupId={group.id}
             products={group.surcharge_products}
-            selectedProduct={selectedProducts[group.id]}
             onSelectProduct={handleSelectProduct}
           />
         </div>

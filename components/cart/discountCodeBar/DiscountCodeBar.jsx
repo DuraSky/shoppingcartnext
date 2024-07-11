@@ -12,7 +12,7 @@ export const DiscountCodeBar = () => {
   };
 
   const handleApply = async () => {
-    const result = await onDiscountCode(discountCode);
+    const result = await onDiscountCode(discountCode, "POST");
     if (result.success) {
       setDiscountError(false);
     } else {

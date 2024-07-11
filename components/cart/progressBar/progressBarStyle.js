@@ -9,6 +9,11 @@ export const StyledProgressBar = styled.div`
   align-items: center;
   gap: 5px;
 
+  @media (max-width: 922px) {
+    order: 2;
+    min-width: 100%;
+  }
+
   /* h2 {
     font-weight: 600;
     font-size: 18px;
@@ -31,11 +36,24 @@ export const ProgressContainer = styled.div`
   background-color: #ccc;
   border-radius: ${({ theme }) => theme.myBorderRadius};
   position: relative;
-  width: 110%;
   box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
 
-  @media (min-width: 922px) {
-    width: 50%;
+  min-width: 270px;
+
+  @media (min-width: 376px) {
+    min-width: 300px;
+  }
+
+  @media (min-width: 450px) {
+    min-width: 350px;
+  }
+
+  @media (min-width: 550px) {
+    min-width: 450px;
+  }
+
+  @media (min-width: 1000px) {
+    min-width: 550px;
   }
 `;
 
