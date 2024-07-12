@@ -24,6 +24,7 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
 };
 
 export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
+  console.log("inside sfgadfgadgadfg", previewSelectedPayment);
   return (
     <StyledPreview>
       {previewSelectedPayment.img === "assets/card.png" ? (

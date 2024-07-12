@@ -16,6 +16,8 @@ import {
 } from "./shippingComponents/SelectedPreview";
 import { PageControl } from "../pageControl/PageControl";
 
+import { sendOrder } from "../../utils/loader";
+
 export const ShippingWrapper = () => {
   const { state: shippingState } = useContext(ShippingContext);
   const {
@@ -156,11 +158,12 @@ export const ShippingWrapper = () => {
     }
   }, [selectedPaymentOption, selectedPaymentOptionImg]);
 
-  const handleFormSubmitSuccess = () => {
-    router.push({
-      pathname: router.pathname,
-      query: { view: "thankyou" },
-    });
+  const handleFormSubmitSuccess = (personalData, cartKey) => {
+    sendOrder(personalData, cartKey);
+    // router.push({
+    //   pathname: router.pathname,
+    //   query: { view: "thankyou" },
+    // });
   };
 
   const handleGoBack = () => {

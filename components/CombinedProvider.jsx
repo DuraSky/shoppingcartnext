@@ -70,14 +70,30 @@ const CombinedProvider = ({ children }) => {
     }
   };
 
-  const handleSurchargeChange = async (bpId, productId, checked) => {
-    console.log("sending update surchage", bpId, productId, checked);
+  const handleSurchargeChange = async (
+    bpId,
+    groupId,
+    productId,
+    checked,
+    prevProductId = null
+  ) => {
+    console.log(
+      "sending update surchage",
+      bpId,
+      groupId,
+      productId,
+      checked,
+      prevProductId
+    );
     try {
+      const actualPrevProductId =
+        productId === prevProductId ? null : prevProductId;
       const updatedData = await sendUpdatedSurcharge(
         bpId,
         productId,
         checked,
-        cartKey
+        cartKey,
+        actualPrevProductId
       );
       setCombinedData(updatedData);
       console.log("Updated data from API:", updatedData);

@@ -14,14 +14,14 @@ export const CartItemChargeProducts = ({
       {products.map((product) => (
         <div key={product.id} className="productVariant">
           {/* <img src={product.image} alt={product.name} /> */}
-          {/* <Image
+          <Image
             loader={imageLoader}
-            src={product.image}
+            src={product.image || "failsafe"}
             alt={product.name}
             width={100}
             height={100}
             layout="intrinsic"
-          /> */}
+          />
 
           {/* <img src="https://placehold.jp/150x150.png" alt="placeholder" /> */}
           <div className="checkboxAndName">
@@ -30,7 +30,12 @@ export const CartItemChargeProducts = ({
               checked={product.checked}
               //checked={selectedProduct === product.id}
               onChange={() =>
-                onSelectProduct(bpId, product.id, !product.checked)
+                onSelectProduct(
+                  bpId,
+                  groupId,
+                  product.product_surcharge_product_id,
+                  !product.checked
+                )
               }
             />
             <p>{product.name}</p>

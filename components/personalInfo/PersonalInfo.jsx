@@ -38,12 +38,14 @@ const PersonalInfo = React.forwardRef(
     });
 
     const onSubmit = async (data) => {
+      const cartKey = localStorage.getItem("cart_key");
+
       const fieldsToValidate = [
-        "name",
-        "surname",
+        "firstName",
+        "lastName",
         "street",
         "zip",
-        "town",
+        "city",
         "email",
         "phone",
       ];
@@ -69,8 +71,8 @@ const PersonalInfo = React.forwardRef(
           acc[key] = data[key] === "" ? null : data[key];
           return acc;
         }, {});
-        console.log(transformedData);
-        onFormSubmitSuccess(transformedData);
+        //console.log(transformedData);
+        onFormSubmitSuccess(transformedData, cartKey);
       }
     };
 

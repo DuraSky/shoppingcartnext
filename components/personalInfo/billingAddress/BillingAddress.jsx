@@ -7,28 +7,28 @@ export const BillingAddress = ({ register, errors, onChange }) => {
       <FormGroup>
         <Label>Jméno</Label>
         <Input
-          {...register("name", {
+          {...register("firstName", {
             required: "Jméno nesmí být prázdné",
-            onChange: () => onChange("name"),
+            onChange: () => onChange("firstName"),
           })}
           type="text"
           placeholder="Jméno"
-          error={!!errors.name}
+          error={!!errors.firstName}
         />
-        {errors.name && <Error>{errors.name.message}</Error>}
+        {errors.firstName && <Error>{errors.firstName.message}</Error>}
       </FormGroup>
       <FormGroup>
         <Label>Příjmení</Label>
         <Input
-          {...register("surname", {
+          {...register("lastName", {
             required: "Příjmení nesmí být prázdné",
-            onChange: () => onChange("surname"),
+            onChange: () => onChange("lastName"),
           })}
           type="text"
           placeholder="Příjmení"
-          error={!!errors.surname}
+          error={!!errors.lastName}
         />
-        {errors.surname && <Error>{errors.surname.message}</Error>}
+        {errors.lastName && <Error>{errors.lastName.message}</Error>}
       </FormGroup>
       <FormGroup>
         <Label>Ulice a číslo popisné</Label>
@@ -63,15 +63,15 @@ export const BillingAddress = ({ register, errors, onChange }) => {
       <FormGroup>
         <Label>Město</Label>
         <Input
-          {...register("town", {
+          {...register("city", {
             required: "Město nesmí být prázdné",
-            onChange: () => onChange("town"),
+            onChange: () => onChange("city"),
           })}
           type="text"
           placeholder="Město"
-          error={!!errors.town}
+          error={!!errors.city}
         />
-        {errors.town && <Error>{errors.town.message}</Error>}
+        {errors.city && <Error>{errors.city.message}</Error>}
       </FormGroup>
       <FormGroup>
         <Label>Země</Label>
