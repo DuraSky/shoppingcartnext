@@ -22,10 +22,12 @@ export const ShippingWrapper = () => {
   const { state: shippingState } = useContext(ShippingContext);
   const {
     selectedPaymentOption,
+    selectedPaymentOptionDeliveryPaymentId,
     selectedPaymentOptionImg,
     selectedPaymentOptionPrice,
     selectedPaymentOptionPriceCurrency,
     selectedShippingOption,
+    selectedShippingOptionPackageId,
     selectedShippingOptionImg,
     selectedShippingPrice,
     selectedShippingPriceCurrency,
@@ -46,11 +48,13 @@ export const ShippingWrapper = () => {
     option: "Prosim zvolte dopravu",
     img: "/assets/card.png",
     price: null,
+    packageId: null,
   });
   const [previewSelectedPayment, setPreviewSelectedPayment] = useState({
     option: "Prosim zvolte typ platby",
     img: "/assets/card.png",
     price: null,
+    delivery_payment_id: null,
   });
 
   const [formErrors, updateFormErrors] = useFormErrors();
@@ -126,18 +130,20 @@ export const ShippingWrapper = () => {
   }, [selectedPaymentOption, formErrors]);
 
   useEffect(() => {
-    console.log("useeffect", selectedShippingOptionImg);
+    //console.log("useeffect", selectedShippingOptionImg);
     setPreviewSelectedShipping({
       option: selectedShippingOption || "Prosim zvolte dopravu",
       img: selectedShippingOptionImg || "failsafe",
       price: selectedShippingPrice,
       price_f: selectedShippingPriceCurrency,
+      packageId: selectedShippingOptionPackageId,
     });
   }, [
     selectedShippingOption,
     selectedShippingOptionImg,
     selectedShippingPrice,
     selectedShippingPriceCurrency,
+    selectedShippingOptionPackageId,
   ]);
 
   useEffect(() => {
@@ -147,6 +153,7 @@ export const ShippingWrapper = () => {
         img: "assets/card.png",
         price: null,
         price_f: null,
+        delivery_payment_id: null,
       });
     } else {
       setPreviewSelectedPayment({
@@ -154,6 +161,7 @@ export const ShippingWrapper = () => {
         img: selectedPaymentOptionImg,
         price: selectedPaymentOptionPrice,
         price_f: selectedPaymentOptionPriceCurrency,
+        delivery_payment_id: selectedPaymentOptionDeliveryPaymentId,
       });
     }
   }, [selectedPaymentOption, selectedPaymentOptionImg]);

@@ -5,12 +5,29 @@ import Image from "next/image";
 import { StyledPriceOption } from "./shippingPriceOptionStyle";
 import { imageLoader } from "../../imageLoader/imageLoader";
 
+import { updateShippingAndPriceMethods } from "../../../utils/loader";
+
 const ShippingPriceOptions = () => {
   const { state, dispatch } = useContext(ShippingContext);
-  const { selectedShippingOptions, selectedPaymentOption } = state;
+  const {
+    selectedShippingOptions,
+    selectedPaymentOption,
+    selectedShippingOptionPackageId,
+  } = state;
 
-  const handlePriceMethodChange = (name, price, image, price_f) => {
+  const handlePriceMethodChange = (
+    name,
+    price,
+    image,
+    price_f,
+    delivery_payment_id
+  ) => {
     dispatch({ type: actionTypes.SET_SELECTED_PAYMENT_OPTION, payload: name });
+    dispatch({
+      type: actionTypes.SET_SELECTED_PAYMENT_OPTION_DELIVERY_PAYMENT_ID,
+      payload: delivery_payment_id,
+    });
+
     dispatch({
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_IMG,
       payload: image,
@@ -23,6 +40,11 @@ const ShippingPriceOptions = () => {
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION_PRICE_CURRENCY,
       payload: price_f,
     });
+
+    updateShippingAndPriceMethods(
+      selectedShippingOptionPackageId,
+      delivery_payment_id
+    );
   };
 
   return (
@@ -40,7 +62,8 @@ const ShippingPriceOptions = () => {
                     option.name,
                     option.price,
                     option.image,
-                    option.price_f
+                    option.price_f,
+                    option.delivery_payment_id
                   );
                 }}
                 checked={selectedPaymentOption === option.name}

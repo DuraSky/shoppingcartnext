@@ -1,10 +1,11 @@
+// CombinedProvider.jsx
 import React, { useEffect, useState } from "react";
 import { CartProvider } from "./cart/CartProvider";
 import { ShippingProvider } from "./shipping/ShippingProvider";
+import { AlertProvider } from "./alertPopups/AlertProvider";
 import {
   apiLoader,
   apiLoaderUpdateCartItem,
-  dbLoader,
   checkDiscountCode,
   sendUpdatedSurcharge,
 } from "../utils/loader";
@@ -22,12 +23,9 @@ const CombinedProvider = ({ children }) => {
     try {
       const storedCartKey = localStorage.getItem("cart_key");
       if (!storedCartKey) {
-        //console.log("apiLoader waiting");
-
         setLoading(false);
         return;
       }
-      //console.log("apiLoader waiting");
       setCartKey(storedCartKey);
       const data = await apiLoader(storedCartKey);
       console.log("inside combined loader", data);
@@ -40,12 +38,10 @@ const CombinedProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    //console.log("calling fetch");
     fetchData();
   }, []);
 
   const handleCartUpdate = async (method, updatedItem) => {
-    console.log("sending this to the API", method, updatedItem);
     try {
       const updatedData = await apiLoaderUpdateCartItem(
         method,
@@ -53,7 +49,6 @@ const CombinedProvider = ({ children }) => {
         cartKey
       );
       setCombinedData(updatedData);
-      console.log("this is the data to update from API ", updatedData);
     } catch (error) {
       console.error("Failed to update cart item:", error);
     }
@@ -77,14 +72,6 @@ const CombinedProvider = ({ children }) => {
     checked,
     prevProductId = null
   ) => {
-    console.log(
-      "sending update surchage",
-      bpId,
-      groupId,
-      productId,
-      checked,
-      prevProductId
-    );
     try {
       const actualPrevProductId =
         productId === prevProductId ? null : prevProductId;
@@ -96,7 +83,6 @@ const CombinedProvider = ({ children }) => {
         actualPrevProductId
       );
       setCombinedData(updatedData);
-      console.log("Updated data from API:", updatedData);
     } catch (error) {
       console.error("Failed to set surcharge item:", error);
     }
@@ -121,23 +107,28 @@ const CombinedProvider = ({ children }) => {
     total_price,
     total_product_price_f,
     total_f,
+    alerts, // Extract alerts from combinedData
   } = combinedData;
 
   return (
-    <CartProvider
-      initialCart={{
-        cart_products,
-        vouchers,
-        total_price,
-        total_product_price_f,
-        total_f,
-      }}
-      onCartUpdate={handleCartUpdate}
-      onDiscountCode={handleDiscountCode}
-      onSurchargeChange={handleSurchargeChange}
-    >
-      <ShippingProvider initialShipping={shipping}>{children}</ShippingProvider>
-    </CartProvider>
+    <AlertProvider initialAlerts={alerts || []}>
+      <CartProvider
+        initialCart={{
+          cart_products,
+          vouchers,
+          total_price,
+          total_product_price_f,
+          total_f,
+        }}
+        onCartUpdate={handleCartUpdate}
+        onDiscountCode={handleDiscountCode}
+        onSurchargeChange={handleSurchargeChange}
+      >
+        <ShippingProvider initialShipping={shipping}>
+          {children}
+        </ShippingProvider>
+      </CartProvider>
+    </AlertProvider>
   );
 };
 

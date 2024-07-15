@@ -4,6 +4,7 @@ import Image from "next/image";
 import { imageLoader } from "../../../imageLoader/imageLoader";
 
 export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
+  //console.log("sdagadfgadg", cart, selectedSurchargeProducts);
   return (
     <>
       {cart.map((item, index) => {
@@ -40,7 +41,6 @@ export const ItemListing = ({ cart, selectedSurchargeProducts }) => {
                   <p>{item.quantity}x</p>
                   <p>{item.price_f} </p>
                 </div>
-                {/* <p className="listingPrice"> {item.price * item.quantity} Kč</p> */}
                 <p className="listingPrice"> {item.total_price_f}</p>
               </div>
               {selectedSurchargeItems.map((surchargeItem, idx) => (

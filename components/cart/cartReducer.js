@@ -6,8 +6,6 @@ import {
 
 const initialState = {
   cart: [],
-  //cartTotal: 0, // This can be removed if not used elsewhere
-  //appliedVouchers: [],
   selectedSurchargeProducts: {}, // { bpId: { groupId: selectedProductId } }
   vouchers: [],
   cart_total: 0,
@@ -26,66 +24,38 @@ const actionTypes = {
   REMOVE_VOUCHER: "REMOVE_VOUCHER",
 };
 
-const getSurchargeProductPrice = (surchargeProducts, selectedProduct) => {
-  if (!surchargeProducts || !selectedProduct) return 0;
-  const product = surchargeProducts.find((p) => p.id === selectedProduct);
-  return product ? product.price : 0;
-};
-
-const calculateCartTotal = (
-  cart,
-  selectedSurchargeProducts,
-  appliedVouchers = []
-) => {
-  const cartTotal = getCartPrice(cart);
-  const surchargeTotal = Object.entries(selectedSurchargeProducts).reduce(
-    (total, [bpId, groups]) => {
-      cart.forEach((item) => {
-        if (item.bp_id.toString() === bpId) {
-          Object.entries(groups).forEach(([groupId, productId]) => {
-            item.surcharge_groups.forEach((group) => {
-              if (group.id.toString() === groupId) {
-                total += getSurchargeProductPrice(
-                  group.surcharge_products,
-                  productId
-                );
-              }
-            });
-          });
-        }
-      });
-      return total;
-    },
-    0
-  );
-
-  const total = cartTotal + surchargeTotal;
-
-  const totalDiscount = appliedVouchers.reduce(
-    (discount, voucher) => discount + voucher.value,
-    0
-  );
-
-  return total - totalDiscount;
-};
-
 const cartReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_CART:
       const { cart_products, vouchers, total_price, total_product_price_f } =
         action.payload;
+
+      // Extract selected surcharge products from cart data
+      const selectedSurchargeProducts = {};
+      cart_products.forEach((product) => {
+        if (product.surcharge_groups) {
+          product.surcharge_groups.forEach((group) => {
+            const selectedProduct = group.surcharge_products.find(
+              (p) => p.checked
+            );
+            if (selectedProduct) {
+              if (!selectedSurchargeProducts[product.bp_id]) {
+                selectedSurchargeProducts[product.bp_id] = {};
+              }
+              selectedSurchargeProducts[product.bp_id][group.id] =
+                selectedProduct.id;
+            }
+          });
+        }
+      });
+
       return {
         ...state,
         cart: cart_products,
         vouchers: vouchers,
-        // Comment out local calculation and use the provided total price
-        // cartTotal: calculateCartTotal(
-        //   cart_products,
-        //   state.selectedSurchargeProducts,
-        //   state.appliedVouchers
-        // ),
         cart_total: total_price,
         cart_total_f: total_product_price_f,
+        selectedSurchargeProducts, // Update the selected surcharge products
       };
 
     case actionTypes.REMOVE_FROM_CART:
@@ -93,11 +63,6 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: updatedCartRemove,
-        // cartTotal: calculateCartTotal(
-        //   updatedCartRemove,
-        //   state.selectedSurchargeProducts,
-        //   state.appliedVouchers
-        // ),
       };
 
     case actionTypes.CHANGE_QUANTITY:
@@ -109,56 +74,29 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         cart: updatedCartQuantity,
-        // cartTotal: calculateCartTotal(
-        //   updatedCartQuantity,
-        //   state.selectedSurchargeProducts,
-        //   state.appliedVouchers
-        // ),
       };
 
     case actionTypes.SET_SELECTED_SURCHARGE_PRODUCT:
       const { bpId, groupId, productId } = action.payload;
-      const currentSelectedProduct =
-        state.selectedSurchargeProducts[bpId]?.[groupId];
-      const newSelectedSurchargeProducts = {
+      const updatedSelectedSurchargeProducts = {
         ...state.selectedSurchargeProducts,
-        [bpId]: {
-          ...state.selectedSurchargeProducts[bpId],
-          [groupId]: currentSelectedProduct === productId ? null : productId,
-        },
       };
+
+      if (!updatedSelectedSurchargeProducts[bpId]) {
+        updatedSelectedSurchargeProducts[bpId] = {};
+      }
+
+      // If the productId is already selected, we deselect it
+      if (updatedSelectedSurchargeProducts[bpId][groupId] === productId) {
+        delete updatedSelectedSurchargeProducts[bpId][groupId];
+      } else {
+        updatedSelectedSurchargeProducts[bpId][groupId] = productId;
+      }
+
       return {
         ...state,
-        selectedSurchargeProducts: newSelectedSurchargeProducts,
-        // cartTotal: calculateCartTotal(
-        //   state.cart,
-        //   newSelectedSurchargeProducts,
-        //   state.appliedVouchers
-        // ),
+        selectedSurchargeProducts: updatedSelectedSurchargeProducts,
       };
-
-    // case actionTypes.APPLY_VOUCHER:
-    //   const voucherToApply = state.vouchers.find(
-    //     (v) => v.code === action.payload
-    //   );
-    //   if (
-    //     !voucherToApply ||
-    //     voucherToApply.used ||
-    //     state.appliedVouchers.includes(voucherToApply)
-    //   )
-    //     return state;
-
-    //   voucherToApply.used = true;
-
-    //   return {
-    //     ...state,
-    //     appliedVouchers: [...state.appliedVouchers, voucherToApply],
-    //     // cartTotal: calculateCartTotal(
-    //     //   state.cart,
-    //     //   state.selectedSurchargeProducts,
-    //     //   [...state.appliedVouchers, voucherToApply]
-    //     // ),
-    //   };
 
     case actionTypes.REMOVE_VOUCHER:
       const updatedAppliedVouchers = state.appliedVouchers.filter(
@@ -173,11 +111,6 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         appliedVouchers: updatedAppliedVouchers,
-        // cartTotal: calculateCartTotal(
-        //   state.cart,
-        //   state.selectedSurchargeProducts,
-        //   updatedAppliedVouchers
-        // ),
       };
 
     default:

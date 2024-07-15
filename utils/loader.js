@@ -188,6 +188,46 @@ export const sendUpdatedSurcharge = async (
   return data;
 };
 
+export const updateShippingAndPriceMethods = async (
+  package_id,
+  delivery_payment_id
+) => {
+  const branch_key = "666"; //only temp solution
+
+  const body = JSON.stringify({
+    package_id,
+    delivery_payment_id,
+    branch_key,
+  });
+
+  const cartKey = localStorage.getItem("cart_key");
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/cart/delivery-payments`,
+    {
+      method: "PUT",
+      headers: {
+        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        Cart: cartKey,
+        accept: "*/*",
+        Language: "cs",
+        Currency: "CZK",
+      },
+      mode: "cors",
+      body: body,
+    }
+  );
+  console.log("inside body for shipping and price", body);
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Error response:", response.status, errorText);
+    throw new Error("Request failed with status " + response.status);
+  } else {
+    console.log("shipping and payment set succesfully");
+  }
+};
+
 export const sendOrder = async (personalData, cartKey) => {
   let body = JSON.stringify(personalData);
   //console.log("inside loader sending this", personalData, cartKey);

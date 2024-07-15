@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 import { ShippingOptionMethod } from "./ShippingOptionMethod";
 
@@ -12,16 +12,12 @@ const ShippingOption = () => {
       payload: delivery.name,
     });
     dispatch({
+      type: actionTypes.SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID,
+      payload: delivery.package_id,
+    });
+    dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
       payload: delivery.image,
-    });
-    dispatch({
-      type: actionTypes.SET_SELECTED_SHIPPING_PRICE,
-      payload: delivery.price,
-    });
-    dispatch({
-      type: actionTypes.SET_SELECTED_SHIPPING_PRICE_CURRENCY,
-      payload: delivery.price_f,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTIONS,
@@ -31,6 +27,17 @@ const ShippingOption = () => {
       type: actionTypes.SET_SELECTED_PAYMENT_OPTION,
       payload: null,
     });
+
+    // Save selected shipping option to localStorage
+    localStorage.setItem(
+      "selectedShippingOption",
+      JSON.stringify({
+        name: delivery.name,
+        package_id: delivery.package_id,
+        image: delivery.image,
+        payments: delivery.payments,
+      })
+    );
   };
 
   // Ensure shippingOptions is defined to avoid errors

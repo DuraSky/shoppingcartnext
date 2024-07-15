@@ -7,7 +7,6 @@ import { PaymentRecap } from "./components/paymentRecap/PaymentRecap";
 import { CartAndShippingTotal } from "./components/cartAndShippingTotal/CartAndShippingTotal";
 import { StyledRecap } from "./recapStyle";
 import { PageControl } from "../pageControl/PageControl";
-
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
 import { VoucherRecap } from "./voucherRecap/VoucherRecap";

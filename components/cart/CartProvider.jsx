@@ -14,7 +14,7 @@ export const CartProvider = ({
   },
   onCartUpdate,
   onDiscountCode,
-  onSurchargeChange, // Add this line
+  onSurchargeChange,
   updateLoading,
 }) => {
   const [state, dispatch] = useReducer(cartReducer, {

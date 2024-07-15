@@ -4,6 +4,7 @@ import Image from "next/image";
 import { imageLoader } from "../../imageLoader/imageLoader";
 
 export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
+  //console.log("inside shippingpreview adgfadg", previewSelectedShipping);
   return (
     <StyledPreview>
       {/* <img src={previewSelectedShipping.img} alt="Shipping option" /> */}
@@ -24,7 +25,7 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
 };
 
 export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
-  console.log("inside sfgadfgadgadfg", previewSelectedPayment);
+  //console.log("inside sfgadfgadgadfg", previewSelectedPayment);
   return (
     <StyledPreview>
       {previewSelectedPayment.img === "assets/card.png" ? (
