@@ -69,14 +69,12 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
         {delivery.name === "Zásilkovna" && openWidget && <PacketaWidget />}
         {selectedVendor && selectedVendor.vendorName === delivery.name && (
           //temp solution width 100
-          <div className="wrapper" style={{ width: "100%" }}>
-            <StyledSelectedBranch>
-              <p>
-                <span>Zvolená pobočka:</span> {selectedVendor.name}
-              </p>
-              <button onClick={handleBranchChange}>Změnit pobočku</button>
-            </StyledSelectedBranch>
-          </div>
+          <StyledSelectedBranch>
+            <p>
+              <span>Zvolená pobočka:</span> {selectedVendor.name}
+            </p>
+            <button onClick={handleBranchChange}>Změnit pobočku</button>
+          </StyledSelectedBranch>
         )}
       </label>
     </StyledShippingMethod>

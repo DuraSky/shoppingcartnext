@@ -61,7 +61,7 @@ export const StyledShippingMethod = styled.div`
   }
 `;
 export const StyledSelectedBranch = styled.div`
-  width: 60%;
+  width: 100%;
   background-color: #f2f2f2;
   padding: 10px;
   margin-top: 10px;
