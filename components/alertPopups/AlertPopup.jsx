@@ -4,7 +4,7 @@ import { Alert, AlertContent, CloseButton } from "./styledAlerts";
 
 const AlertPopup = ({ alert, onClose }) => {
   useEffect(() => {
-    const timer = setTimeout(onClose, 10000); // 10 seconds
+    const timer = setTimeout(onClose, 10000);
     return () => clearTimeout(timer);
   }, [onClose]);
 

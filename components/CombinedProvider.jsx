@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CartProvider } from "./cart/CartProvider";
 import { ShippingProvider } from "./shipping/ShippingProvider";
 import { AlertProvider } from "./alertPopups/AlertProvider";
+import { DeliveryVendorsProvider } from "./shipping/deliveryVendorsApis/DeliveryVendorsProvider";
 import {
   apiLoader,
   apiLoaderUpdateCartItem,
@@ -107,7 +108,7 @@ const CombinedProvider = ({ children }) => {
     total_price,
     total_product_price_f,
     total_f,
-    alerts, // Extract alerts from combinedData
+    alerts,
   } = combinedData;
 
   return (
@@ -125,7 +126,7 @@ const CombinedProvider = ({ children }) => {
         onSurchargeChange={handleSurchargeChange}
       >
         <ShippingProvider initialShipping={shipping}>
-          {children}
+          <DeliveryVendorsProvider>{children}</DeliveryVendorsProvider>
         </ShippingProvider>
       </CartProvider>
     </AlertProvider>

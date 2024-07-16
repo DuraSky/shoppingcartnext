@@ -18,6 +18,7 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
       />
       <div className="optionAndPrice">
         <p> {previewSelectedShipping.option}</p>
+
         <p className="price">{previewSelectedShipping.price_f}</p>
       </div>
     </StyledPreview>
