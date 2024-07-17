@@ -9,6 +9,9 @@ import {
 import { imageLoader } from "../../imageLoader/imageLoader";
 import { PacketaWidget } from "../deliveryVendorsApis/zasilkovna/PacketaWidget";
 import { BalikovnaWidget } from "../deliveryVendorsApis/balikovna/BalikovnaWidget";
+import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
+
+import Modal from "../deliveryVendorsApis/Modal";
 
 export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
@@ -29,7 +32,9 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
       (delivery.name === "Zásilkovna" &&
         (!savedVendor || savedVendor.vendorName !== "Zásilkovna")) ||
       (delivery.name === "Balíkovna" &&
-        (!savedVendor || savedVendor.vendorName !== "Balíkovna"))
+        (!savedVendor || savedVendor.vendorName !== "Balíkovna")) ||
+      (delivery.name === "PPL ParcelShop" &&
+        (!savedVendor || savedVendor.vendorName !== "PPL ParcelShop"))
     ) {
       setOpenWidget(true);
     } else {
@@ -73,8 +78,15 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
         {delivery.name === "Zásilkovna" && openWidget && (
           <PacketaWidget closeWidget={() => setOpenWidget(false)} />
         )}
-        {delivery.name === "Balíkovna" && openWidget && (
-          <BalikovnaWidget closeWidget={() => setOpenWidget(false)} />
+        {delivery.name !== "Zásilkovna" && openWidget && (
+          <Modal onClose={() => setOpenWidget(false)}>
+            {delivery.name === "Balíkovna" && (
+              <BalikovnaWidget closeWidget={() => setOpenWidget(false)} />
+            )}
+            {delivery.name === "PPL ParcelShop" && (
+              <PPLWidget closeWidget={() => setOpenWidget(false)} />
+            )}
+          </Modal>
         )}
         {selectedVendor && selectedVendor.vendorName === delivery.name && (
           <StyledSelectedBranch>
