@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ShippingContext } from "../ShippingProvider";
 import { useDeliveryVendors } from "../deliveryVendorsApis/DeliveryVendorsProvider";
 import Image from "next/image";
@@ -8,8 +7,8 @@ import {
   StyledSelectedBranch,
 } from "./shippingOptionMethodStyle";
 import { imageLoader } from "../../imageLoader/imageLoader";
-
 import { PacketaWidget } from "../deliveryVendorsApis/zasilkovna/PacketaWidget";
+import { BalikovnaWidget } from "../deliveryVendorsApis/balikovna/BalikovnaWidget";
 
 export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
@@ -18,18 +17,23 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { selectedVendor } = useDeliveryVendors();
 
   useEffect(() => {
-    if (selectedShippingOption === "Zásilkovna" && openWidget) {
+    if (selectedShippingOption !== delivery.name) {
       setOpenWidget(false);
     }
-  }, [selectedShippingOption, openWidget]);
+  }, [selectedShippingOption, delivery.name]);
 
   const handleChange = (delivery) => {
     onSelectMethod(delivery);
-    if (delivery.name === "Zásilkovna") {
-      const savedVendor = JSON.parse(localStorage.getItem("selectedVendor"));
-      if (!savedVendor || savedVendor.vendorName !== "Zásilkovna") {
-        setOpenWidget(true);
-      }
+    const savedVendor = JSON.parse(localStorage.getItem("selectedVendor"));
+    if (
+      (delivery.name === "Zásilkovna" &&
+        (!savedVendor || savedVendor.vendorName !== "Zásilkovna")) ||
+      (delivery.name === "Balíkovna" &&
+        (!savedVendor || savedVendor.vendorName !== "Balíkovna"))
+    ) {
+      setOpenWidget(true);
+    } else {
+      setOpenWidget(false);
     }
   };
 
@@ -66,9 +70,13 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
           </p>
         </div>
         <p className="price">{delivery.price} Kč</p>
-        {delivery.name === "Zásilkovna" && openWidget && <PacketaWidget />}
+        {delivery.name === "Zásilkovna" && openWidget && (
+          <PacketaWidget closeWidget={() => setOpenWidget(false)} />
+        )}
+        {delivery.name === "Balíkovna" && openWidget && (
+          <BalikovnaWidget closeWidget={() => setOpenWidget(false)} />
+        )}
         {selectedVendor && selectedVendor.vendorName === delivery.name && (
-          //temp solution width 100
           <StyledSelectedBranch>
             <p>
               <span>Zvolená pobočka:</span> {selectedVendor.name}

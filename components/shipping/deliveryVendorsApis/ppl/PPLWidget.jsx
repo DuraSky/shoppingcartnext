@@ -1,25 +1,26 @@
 import React, { useEffect } from "react";
 import { useDeliveryVendors } from "../DeliveryVendorsProvider";
 
-export const PacketaWidget = ({ closeWidget }) => {
+export const PPLWidget = ({ closeWidget }) => {
   const { saveVendor } = useDeliveryVendors();
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://widget.packeta.com/v6/www/js/library.js";
+    script.src = "https://www.ppl.cz/js/ppl.widget.pickup.js";
     script.async = true;
     script.onload = () => {
-      if (window.Packeta && window.Packeta.Widget) {
-        window.Packeta.Widget.pick(
-          "744aa96ba9157919",
-          (point) => {
+      if (window.PPLWidget) {
+        window.PPLWidget.init({
+          language: "cs",
+          country: "CZ",
+          callback: (point) => {
             if (point) {
               console.log("Selected pick-up point:", point);
               saveVendor({
-                vendorName: "Zásilkovna",
+                vendorName: "PPL",
                 id: point.id,
                 name: point.name,
-                branchCode: point.branchCode,
+                branchCode: point.zip,
               });
               closeWidget();
             } else {
@@ -27,10 +28,7 @@ export const PacketaWidget = ({ closeWidget }) => {
               closeWidget();
             }
           },
-          {
-            language: "cs",
-          }
-        );
+        });
       }
     };
     document.body.appendChild(script);

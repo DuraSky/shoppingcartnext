@@ -28,7 +28,6 @@ const ShippingOption = () => {
       payload: null,
     });
 
-    // Save selected shipping option to localStorage
     localStorage.setItem(
       "selectedShippingOption",
       JSON.stringify({
@@ -40,7 +39,6 @@ const ShippingOption = () => {
     );
   };
 
-  // Ensure shippingOptions is defined to avoid errors
   const firstCountry = shippingOptions?.countries[0];
   const deliveryOptions = firstCountry ? firstCountry.deliveries : [];
 
