@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PPL Widget</title>
+    <link rel="stylesheet" href="https://www.ppl.cz/sources/map/main.css" />
+    <script src="https://www.ppl.cz/sources/map/main.js" async></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      #ppl-parcelshop-map {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ppl-parcelshop-map"></div>
+    <script>
+      window.addEventListener("load", () => {
+        document.addEventListener("ppl-parcelshop-map", (event) => {
+          console.log("Event fired:", event); // Log the event to see if it fires
+          if (event.detail) {
+            console.log("Selected parcel shop:", event.detail);
+            window.parent.postMessage(
+              {
+                source: "ppl-widget",
+                message: "pickerResult",
+                point: event.detail,
+              },
+              "*"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

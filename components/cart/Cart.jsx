@@ -91,6 +91,7 @@ const ShoppingCart = () => {
   return (
     <>
       <AllCartItems cart={cart} />
+
       <StyledWrapper>
         <div>
           <DiscountCodeBar

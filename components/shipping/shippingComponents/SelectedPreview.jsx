@@ -2,12 +2,18 @@ import React from "react";
 import { StyledPreview } from "../shippingWrapperStyle";
 import Image from "next/image";
 import { imageLoader } from "../../imageLoader/imageLoader";
+// import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
+// import Modal from "../deliveryVendorsApis/Modal";
 
 export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
   //console.log("inside shippingpreview adgfadg", previewSelectedShipping);
   return (
     <StyledPreview>
       {/* <img src={previewSelectedShipping.img} alt="Shipping option" /> */}
+      {/* <Modal>
+        <PPLWidget />
+      </Modal> */}
+
       <Image
         loader={imageLoader}
         src={previewSelectedShipping.img}

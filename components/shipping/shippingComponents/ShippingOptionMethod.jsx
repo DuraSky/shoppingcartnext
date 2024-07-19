@@ -10,14 +10,13 @@ import { imageLoader } from "../../imageLoader/imageLoader";
 import { PacketaWidget } from "../deliveryVendorsApis/zasilkovna/PacketaWidget";
 import { BalikovnaWidget } from "../deliveryVendorsApis/balikovna/BalikovnaWidget";
 import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
-
 import Modal from "../deliveryVendorsApis/Modal";
 
 export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
   const { selectedShippingOption } = state;
   const [openWidget, setOpenWidget] = useState(false);
-  const { selectedVendor } = useDeliveryVendors();
+  const { selectedVendor, setSelectedVendor } = useDeliveryVendors();
 
   useEffect(() => {
     if (selectedShippingOption !== delivery.name) {
@@ -48,6 +47,12 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
 
   const handleBranchChange = () => {
     setOpenWidget(true);
+  };
+
+  const handleSelectBranch = (branchInfo) => {
+    setSelectedVendor(branchInfo);
+    localStorage.setItem("selectedVendor", JSON.stringify(branchInfo));
+    setOpenWidget(false);
   };
 
   return (
@@ -84,7 +89,10 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
               <BalikovnaWidget closeWidget={() => setOpenWidget(false)} />
             )}
             {delivery.name === "PPL ParcelShop" && (
-              <PPLWidget closeWidget={() => setOpenWidget(false)} />
+              <PPLWidget
+                closeWidget={() => setOpenWidget(false)}
+                onSelect={handleSelectBranch}
+              />
             )}
           </Modal>
         )}

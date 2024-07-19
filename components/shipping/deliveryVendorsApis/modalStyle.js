@@ -27,6 +27,8 @@ export const ModalContent = styled.div`
     height: 800px;
     min-width: 350px;
     min-height: 600px;
+ 
+
 
     .smap {
       width: 100% !important;
@@ -37,6 +39,11 @@ export const ModalContent = styled.div`
       width: 100% !important;
       height: 100% !important;
     }
+  } */
+
+  /* #ppl-parcelshop-map {
+    z-index: 4000;
+    display: block;
   } */
 `;
 

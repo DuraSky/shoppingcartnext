@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 import { ShippingOptionMethod } from "./ShippingOptionMethod";
+import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
 
 const ShippingOption = () => {
   const { state, dispatch } = useContext(ShippingContext);
   const { shippingOptions } = state;
 
   const handleMethodSelection = (delivery) => {
+    console.log("Method selected:", delivery); // Debug log
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION,
       payload: delivery.name,

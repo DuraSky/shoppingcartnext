@@ -17,6 +17,8 @@ import {
 import { PageControl } from "../pageControl/PageControl";
 
 import { sendOrder } from "../../utils/loader";
+import { PPLWidget } from "./deliveryVendorsApis/ppl/PPLWidget";
+import Modal from "./deliveryVendorsApis/Modal";
 
 export const ShippingWrapper = () => {
   const { state: shippingState } = useContext(ShippingContext);
@@ -199,10 +201,13 @@ export const ShippingWrapper = () => {
             <SelectedShippingPreview
               previewSelectedShipping={previewSelectedShipping}
             />
+
             <div className={`arrow ${toggleShipping ? "rotated" : ""}`}></div>
           </div>
           <div
-            className={`collapsible-content ${toggleShipping ? "open" : ""}`}
+            className={`collapsible-content ${
+              toggleShipping ? "open" : "open"
+            }`}
           >
             <div onClick={(e) => e.stopPropagation()}>
               <ShippingOption />
@@ -236,6 +241,7 @@ export const ShippingWrapper = () => {
               formErrors={formErrors}
               submitted={submitted}
             />
+
             <div className={`arrow ${toggleInfo ? "rotated" : ""}`}></div>
           </div>
           <div className={`collapsible-content ${toggleInfo ? "open" : ""}`}>
