@@ -11,6 +11,7 @@ import { PacketaWidget } from "../deliveryVendorsApis/zasilkovna/PacketaWidget";
 import { BalikovnaWidget } from "../deliveryVendorsApis/balikovna/BalikovnaWidget";
 import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
 import Modal from "../deliveryVendorsApis/Modal";
+import { PostaWidget } from "../deliveryVendorsApis/posta/PostaWidget";
 
 export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
@@ -33,7 +34,9 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
       (delivery.name === "Balíkovna" &&
         (!savedVendor || savedVendor.vendorName !== "Balíkovna")) ||
       (delivery.name === "PPL ParcelShop" &&
-        (!savedVendor || savedVendor.vendorName !== "PPL ParcelShop"))
+        (!savedVendor || savedVendor.vendorName !== "PPL ParcelShop")) ||
+      (delivery.name === "Balík Na poštu" &&
+        (!savedVendor || savedVendor.vendorName !== "Balík Na poštu"))
     ) {
       setOpenWidget(true);
     } else {
@@ -93,6 +96,9 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
                 closeWidget={() => setOpenWidget(false)}
                 onSelect={handleSelectBranch}
               />
+            )}
+            {delivery.name === "Balík Na poštu" && (
+              <PostaWidget closeWidget={() => setOpenWidget(false)} />
             )}
           </Modal>
         )}
