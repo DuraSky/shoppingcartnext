@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledProductRecap = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
 
   padding: 16px;
@@ -20,6 +20,7 @@ export const StyledProductRecap = styled.div`
 
   .itemDetails {
     flex-grow: 1;
+    margin-top: 20px;
     //min-width: 300px; /* Allows text to wrap inside flex container */
   }
 
@@ -29,7 +30,7 @@ export const StyledProductRecap = styled.div`
     white-space: normal;
     word-wrap: break-word;
     margin: 0;
-    max-width: 200px; /* Adjust this value as needed */
+    max-width: 200px;
   }
 
   .itemListingQuantity {
