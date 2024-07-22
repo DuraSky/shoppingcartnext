@@ -1,11 +1,10 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { ShippingContext, actionTypes } from "../ShippingProvider";
 import Image from "next/image";
 import { StyledPriceOption } from "./shippingPriceOptionStyle";
 import { imageLoader } from "../../imageLoader/imageLoader";
-
 import { updateShippingAndPriceMethods } from "../../../utils/loader";
+import { useDeliveryVendors } from "../deliveryVendorsApis/DeliveryVendorsProvider";
 
 const ShippingPriceOptions = () => {
   const { state, dispatch } = useContext(ShippingContext);
@@ -13,7 +12,9 @@ const ShippingPriceOptions = () => {
     selectedShippingOptions,
     selectedPaymentOption,
     selectedShippingOptionPackageId,
+    selectedShippingOption,
   } = state;
+  const { selectedVendor } = useDeliveryVendors();
 
   const handlePriceMethodChange = (
     name,
@@ -41,9 +42,24 @@ const ShippingPriceOptions = () => {
       payload: price_f,
     });
 
+    let branchKey = null;
+    if (
+      ["Zásilkovna", "Balíkovna", "PPL ParcelShop", "Balík Na poštu"].includes(
+        selectedShippingOption
+      ) &&
+      selectedVendor.vendorName === selectedShippingOption
+    ) {
+      branchKey = selectedVendor.branchCode;
+    }
+
+    console.log("Selected Vendor Name:", selectedVendor.vendorName);
+    console.log("Selected Shipping Option Name:", selectedShippingOption);
+    console.log("Branch Key:", branchKey);
+
     updateShippingAndPriceMethods(
       selectedShippingOptionPackageId,
-      delivery_payment_id
+      delivery_payment_id,
+      branchKey
     );
   };
 

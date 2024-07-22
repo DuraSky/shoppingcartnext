@@ -17,9 +17,9 @@ export const PacketaWidget = ({ closeWidget }) => {
               console.log("Selected pick-up point:", point);
               saveVendor({
                 vendorName: "Zásilkovna",
-                id: point.id,
+                id: point.branchCode,
                 name: point.name,
-                branchCode: point.branchCode,
+                branchCode: point.id,
               });
               closeWidget();
             } else {

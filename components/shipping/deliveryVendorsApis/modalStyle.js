@@ -15,7 +15,7 @@ export const ModalWrapper = styled.div`
 
 export const ModalContent = styled.div`
   background: white;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   max-width: 90%;
   max-height: 90%;

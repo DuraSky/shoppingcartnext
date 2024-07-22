@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const StyledPostaWidget = styled.div`
-  padding: 20px;
+  padding: 10px;
+  width: 700px;
   max-width: 1000px;
-  //margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  //justify-content: center;
 
+  .postaHeader {
+    display: flex;
+    align-items: center;
+  }
   h3 {
     margin-bottom: 10px;
     color: #333;
@@ -16,11 +19,9 @@ export const StyledPostaWidget = styled.div`
 
   .posta-widget-logo {
     all: unset !important;
-    max-width: 100%;
-
-    height: auto;
     display: block;
     margin: 20px auto;
+    width: 50px !important;
   }
 
   p {
@@ -29,20 +30,19 @@ export const StyledPostaWidget = styled.div`
   }
 
   .inputGroup {
-    //display: flex;
-    //align-items: center;
+    display: flex;
+    width: 100%;
     border: none;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
 
     input {
-      width: 350px;
-
-      //flex: 1;
+      flex: 1;
       padding: 10px;
       border: 1px solid #ccc;
       border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
       border-bottom-left-radius: ${({ theme }) => theme.myBorderRadius};
       border-right: none;
+      width: 0; /* Ensure input doesn't shrink */
     }
 
     button {
@@ -54,15 +54,13 @@ export const StyledPostaWidget = styled.div`
       transition: background-color 0.3s;
       border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
       border-bottom-right-radius: ${({ theme }) => theme.myBorderRadius};
-
-      &:hover {
-        background-color: ${({ theme }) => theme.fontOrangeTint};
-      }
     }
   }
 
   .branch {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: ${({ theme }) => theme.backgroundGrey};
     border-radius: ${({ theme }) => theme.myBorderRadius};
     padding: 20px;
@@ -77,6 +75,7 @@ export const StyledPostaWidget = styled.div`
     }
 
     h4 {
+      //text-align: center;
       margin-bottom: 10px;
       color: #333;
     }
@@ -86,11 +85,23 @@ export const StyledPostaWidget = styled.div`
       color: #555;
     }
 
+    .openingHours {
+      //padding: 20px 0;
+      padding-top: 10px;
+      p {
+        font-weight: 200;
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+
     .closed {
       color: red;
     }
 
     button {
+      align-self: flex-end;
       padding: 11px 20px;
       color: #fff;
       background: ${({ theme }) => theme.backgroundBrown};
@@ -107,7 +118,20 @@ export const StyledPostaWidget = styled.div`
 
   .no-results {
     color: #ff0000;
-    text-align: center; /* Center the no results text */
-    margin-top: 20px; /* Add top margin for spacing */
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 800px) {
+    width: 600px;
+  }
+  @media (max-width: 700px) {
+    width: 400px;
+  }
+  @media (max-width: 480px) {
+    width: 350px;
+  }
+  @media (max-width: 400px) {
+    width: 250px;
   }
 `;

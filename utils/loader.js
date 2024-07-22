@@ -190,10 +190,9 @@ export const sendUpdatedSurcharge = async (
 
 export const updateShippingAndPriceMethods = async (
   package_id,
-  delivery_payment_id
+  delivery_payment_id,
+  branch_key
 ) => {
-  const branch_key = "666"; //only temp solution
-
   const body = JSON.stringify({
     package_id,
     delivery_payment_id,

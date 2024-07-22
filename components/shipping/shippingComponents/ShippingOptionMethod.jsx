@@ -59,58 +59,61 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   };
 
   return (
-    <StyledShippingMethod>
-      <label>
-        <input
-          type="radio"
-          name="shippingMethod"
-          value={delivery.name}
-          onChange={() => handleChange(delivery)}
-          checked={selectedShippingOption === delivery.name}
-        />
-        <Image
-          loader={imageLoader}
-          src={delivery.image}
-          alt={delivery.name}
-          layout="intrinsic"
-          width={100}
-          height={100}
-        />
-        <div>
-          <p>{delivery.name}</p>
-          <p>
-            <span>{delivery.delivery_date}</span>
-          </p>
-        </div>
-        <p className="price">{delivery.price} Kč</p>
-        {delivery.name === "Zásilkovna" && openWidget && (
-          <PacketaWidget closeWidget={() => setOpenWidget(false)} />
-        )}
-        {delivery.name !== "Zásilkovna" && openWidget && (
-          <Modal onClose={() => setOpenWidget(false)}>
-            {delivery.name === "Balíkovna" && (
-              <BalikovnaWidget closeWidget={() => setOpenWidget(false)} />
-            )}
-            {delivery.name === "PPL ParcelShop" && (
-              <PPLWidget
-                closeWidget={() => setOpenWidget(false)}
-                onSelect={handleSelectBranch}
-              />
-            )}
-            {delivery.name === "Balík Na poštu" && (
-              <PostaWidget closeWidget={() => setOpenWidget(false)} />
-            )}
-          </Modal>
-        )}
-        {selectedVendor && selectedVendor.vendorName === delivery.name && (
-          <StyledSelectedBranch>
+    <>
+      <StyledShippingMethod>
+        <label>
+          <input
+            type="radio"
+            name="shippingMethod"
+            value={delivery.name}
+            onChange={() => handleChange(delivery)}
+            checked={selectedShippingOption === delivery.name}
+          />
+          <Image
+            loader={imageLoader}
+            src={delivery.image}
+            alt={delivery.name}
+            layout="intrinsic"
+            width={100}
+            height={100}
+          />
+          <div>
+            <p>{delivery.name}</p>
             <p>
-              <span>Zvolená pobočka:</span> {selectedVendor.name}
+              <span>{delivery.delivery_date}</span>
             </p>
-            <button onClick={handleBranchChange}>Změnit pobočku</button>
-          </StyledSelectedBranch>
-        )}
-      </label>
-    </StyledShippingMethod>
+          </div>
+          <p className="price">{delivery.price} Kč</p>
+          {delivery.name === "Zásilkovna" && openWidget && (
+            <PacketaWidget closeWidget={() => setOpenWidget(false)} />
+          )}
+
+          {selectedVendor && selectedVendor.vendorName === delivery.name && (
+            <StyledSelectedBranch>
+              <p>
+                <span>Zvolená pobočka:</span> {selectedVendor.name}
+              </p>
+              <button onClick={handleBranchChange}>Změnit pobočku</button>
+            </StyledSelectedBranch>
+          )}
+        </label>
+      </StyledShippingMethod>
+      {delivery.name !== "Zásilkovna" && openWidget && (
+        <Modal onClose={() => setOpenWidget(false)}>
+          {delivery.name === "Balíkovna" && (
+            <BalikovnaWidget closeWidget={() => setOpenWidget(false)} />
+          )}
+          {delivery.name === "PPL ParcelShop" && (
+            <PPLWidget
+              closeWidget={() => setOpenWidget(false)}
+              onSelect={handleSelectBranch}
+            />
+          )}
+          {delivery.name === "Balík Na poštu" && (
+            <PostaWidget closeWidget={() => setOpenWidget(false)} />
+          )}
+        </Modal>
+      )}
+    </>
   );
 };

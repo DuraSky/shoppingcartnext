@@ -55,7 +55,6 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
       )}
 
       <div className="recapOption">
-        <img src="/assets/truck5.svg" width="30px" alt="" />
         <ShippingRecap
           selectedShippingOption={selectedShippingOption}
           selectedShippingPriceCurrency={selectedShippingPriceCurrency}

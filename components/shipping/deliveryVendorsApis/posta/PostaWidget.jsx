@@ -45,16 +45,18 @@ export const PostaWidget = ({ closeWidget }) => {
 
   return (
     <StyledPostaWidget>
-      <h3>Nejbližší pobočky</h3>
-      <Image
-        loader={imageLoader}
-        src={"/files/upload/cp.png"}
-        alt={"postaLogo"}
-        width={500}
-        height={500}
-        layout="intrinsic"
-        className="posta-widget-logo"
-      />
+      <div className="postaHeader">
+        <Image
+          loader={imageLoader}
+          src={"/files/upload/cp.png"}
+          alt={"postaLogo"}
+          width={150}
+          height={150}
+          //layout="intrinsic"
+          className="posta-widget-logo"
+        />
+        <h3>Nejbližší pobočky</h3>
+      </div>
       <p>
         Zadejte ulici, název či PSČ obce, ve které si přejete zásilku
         vyzvednout.
@@ -73,21 +75,25 @@ export const PostaWidget = ({ closeWidget }) => {
               <h4>{pobocka.NAZ_PROV}</h4>
               <p>{pobocka.ADRESA}</p>
               <p>PSC: {pobocka.PSC}</p>
-              {pobocka.OTV_DOBA.map((day, idx) => (
-                <p key={idx}>
-                  {day.name}:{" "}
-                  {day.od_do.length > 0 ? (
-                    day.od_do.map((time, timeIdx) => (
-                      <span key={timeIdx}>
-                        {time.od} - {time.do}
-                      </span>
-                    ))
-                  ) : (
-                    <span className="closed">zavřeno</span>
-                  )}
+              <div className="openingHours">
+                <p>
+                  <span>Otevírací doba:</span>
                 </p>
-              ))}
-
+                {pobocka.OTV_DOBA.map((day, idx) => (
+                  <p key={idx}>
+                    {day.name}:{" "}
+                    {day.od_do.length > 0 ? (
+                      day.od_do.map((time, timeIdx) => (
+                        <span key={timeIdx}>
+                          {time.od} - {time.do}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="closed">zavřeno</span>
+                    )}
+                  </p>
+                ))}
+              </div>
               <button onClick={() => handleSelectBranch(pobocka)}>
                 Vybrat
               </button>

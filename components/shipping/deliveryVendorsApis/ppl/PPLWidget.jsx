@@ -15,9 +15,9 @@ export const PPLWidget = ({ closeWidget }) => {
           console.log("Selected pick-up point:", point);
           saveVendor({
             vendorName: "PPL ParcelShop",
-            id: point.id,
+            id: point.zip,
             name: point.name,
-            branchCode: point.zip,
+            branchCode: new String(point.id),
           });
           closeWidget();
         } else {

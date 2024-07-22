@@ -34,6 +34,8 @@ export const StyledRecap = styled.div`
   }
   .recapOption {
     display: flex;
+    align-items: center;
+    //align-items: flex-start;
 
     gap: 10px;
     box-shadow: ${({ theme }) => theme.myLightBoxShadow};

@@ -1,4 +1,3 @@
-// src/components/ShippingWrapper.js
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ShippingContext } from "./ShippingProvider";
 import { CartContext } from "../cart/CartProvider";
@@ -19,6 +18,7 @@ import { PageControl } from "../pageControl/PageControl";
 import { sendOrder } from "../../utils/loader";
 import { PPLWidget } from "./deliveryVendorsApis/ppl/PPLWidget";
 import Modal from "./deliveryVendorsApis/Modal";
+import { useDeliveryVendors } from "./deliveryVendorsApis/DeliveryVendorsProvider";
 
 export const ShippingWrapper = () => {
   const { state: shippingState } = useContext(ShippingContext);
@@ -37,6 +37,8 @@ export const ShippingWrapper = () => {
 
   const { state: cartState } = useContext(CartContext);
   const { cart_total_with_shipping } = cartState;
+
+  const { selectedVendor } = useDeliveryVendors();
 
   const [toggleShipping, setToggleShipping] = useState(false);
   const [toggleInfo, setToggleInfo] = useState(false);
@@ -88,6 +90,20 @@ export const ShippingWrapper = () => {
     setSubmitted(true);
     const hasErrors = Object.keys(formErrors).length > 0;
 
+    const requiresBranchSelection =
+      selectedShippingOption === "Zásilkovna" ||
+      selectedShippingOption === "Balíkovna" ||
+      selectedShippingOption === "PPL ParcelShop" ||
+      selectedShippingOption === "Balík Na poštu";
+
+    if (
+      requiresBranchSelection &&
+      selectedVendor.vendorName !== selectedShippingOption
+    ) {
+      //setButtonText("Prosim zvolte pobocku");
+      return;
+    }
+
     if (selectedPaymentOption === null) {
       setTogglePriceOption(true);
       return;
@@ -132,7 +148,6 @@ export const ShippingWrapper = () => {
   }, [selectedPaymentOption, formErrors]);
 
   useEffect(() => {
-    //console.log("useeffect", selectedShippingOptionImg);
     setPreviewSelectedShipping({
       option: selectedShippingOption || "Prosim zvolte dopravu",
       img: selectedShippingOptionImg || "failsafe",
@@ -140,6 +155,8 @@ export const ShippingWrapper = () => {
       price_f: selectedShippingPriceCurrency,
       packageId: selectedShippingOptionPackageId,
     });
+    setToggleShipping(false);
+    setTogglePriceOption(true);
   }, [
     selectedShippingOption,
     selectedShippingOptionImg,
@@ -170,17 +187,11 @@ export const ShippingWrapper = () => {
 
   const handleFormSubmitSuccess = (personalData, cartKey) => {
     sendOrder(personalData, cartKey);
-    // router.push({
-    //   pathname: router.pathname,
-    //   query: { view: "thankyou" },
-    // });
   };
 
   const handleGoBack = () => {
     router.push({
-      // pathname: router.pathname,
       pathname: "/vas-kosik",
-      //query: { view: "cart" },
     });
   };
 
@@ -205,9 +216,7 @@ export const ShippingWrapper = () => {
             <div className={`arrow ${toggleShipping ? "rotated" : ""}`}></div>
           </div>
           <div
-            className={`collapsible-content ${
-              toggleShipping ? "open" : "open"
-            }`}
+            className={`collapsible-content ${toggleShipping ? "open" : ""}`}
           >
             <div onClick={(e) => e.stopPropagation()}>
               <ShippingOption />

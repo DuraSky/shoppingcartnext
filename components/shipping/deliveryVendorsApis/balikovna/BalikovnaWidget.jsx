@@ -18,9 +18,9 @@ export const BalikovnaWidget = ({ closeWidget }) => {
         console.log("Selected pick-up point:", point);
         saveVendor({
           vendorName: "Balíkovna",
-          id: point.id,
+          id: point.zip,
           name: point.name,
-          branchCode: point.zip,
+          branchCode: point.id,
         });
         closeWidget();
       } else {

@@ -2,18 +2,26 @@ import React from "react";
 import { StyledPreview } from "../shippingWrapperStyle";
 import Image from "next/image";
 import { imageLoader } from "../../imageLoader/imageLoader";
-// import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
-// import Modal from "../deliveryVendorsApis/Modal";
+import { useDeliveryVendors } from "../deliveryVendorsApis/DeliveryVendorsProvider";
 
 export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
-  //console.log("inside shippingpreview adgfadg", previewSelectedShipping);
+  const { selectedVendor } = useDeliveryVendors();
+
+  const requiresBranchSelection = [
+    "Zásilkovna",
+    "Balíkovna",
+    "PPL ParcelShop",
+    "Balík Na poštu",
+  ].includes(previewSelectedShipping.option);
+  const showBranchInfo =
+    requiresBranchSelection &&
+    selectedVendor.vendorName === previewSelectedShipping.option;
+  const showWarning =
+    requiresBranchSelection &&
+    selectedVendor.vendorName !== previewSelectedShipping.option;
+
   return (
     <StyledPreview>
-      {/* <img src={previewSelectedShipping.img} alt="Shipping option" /> */}
-      {/* <Modal>
-        <PPLWidget />
-      </Modal> */}
-
       <Image
         loader={imageLoader}
         src={previewSelectedShipping.img}
@@ -23,8 +31,18 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
         layout="intrinsic"
       />
       <div className="optionAndPrice">
-        <p> {previewSelectedShipping.option}</p>
-
+        <p>{previewSelectedShipping.option}</p>
+        {showBranchInfo && (
+          <div className="branchInfo">
+            <h4>Zvolená pobočka:</h4>
+            <p>{selectedVendor.name}</p>
+          </div>
+        )}
+        {showWarning && (
+          <div className="branchWarning">
+            <p style={{ color: "red" }}>Pobočka nezvolena</p>
+          </div>
+        )}
         <p className="price">{previewSelectedShipping.price_f}</p>
       </div>
     </StyledPreview>
@@ -32,7 +50,6 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
 };
 
 export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
-  //console.log("inside sfgadfgadgadfg", previewSelectedPayment);
   return (
     <StyledPreview>
       {previewSelectedPayment.img === "assets/card.png" ? (

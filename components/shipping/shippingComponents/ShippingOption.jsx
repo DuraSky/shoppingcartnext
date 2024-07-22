@@ -8,7 +8,6 @@ const ShippingOption = () => {
   const { shippingOptions } = state;
 
   const handleMethodSelection = (delivery) => {
-    console.log("Method selected:", delivery); // Debug log
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION,
       payload: delivery.name,
@@ -16,6 +15,14 @@ const ShippingOption = () => {
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID,
       payload: delivery.package_id,
+    });
+    dispatch({
+      type: actionTypes.SET_SELECTED_SHIPPING_PRICE,
+      payload: delivery.price,
+    });
+    dispatch({
+      type: actionTypes.SET_SELECTED_SHIPPING_PRICE_CURRENCY,
+      payload: delivery.price_f,
     });
     dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_OPTION_IMG,
@@ -35,6 +42,8 @@ const ShippingOption = () => {
       JSON.stringify({
         name: delivery.name,
         package_id: delivery.package_id,
+        price: delivery.price,
+        price_f: delivery.price_f,
         image: delivery.image,
         payments: delivery.payments,
       })
