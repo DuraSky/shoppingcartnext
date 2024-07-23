@@ -227,6 +227,38 @@ export const updateShippingAndPriceMethods = async (
   }
 };
 
+export const sendSignIn = async (email, password) => {
+  const body = JSON.stringify({
+    email,
+    password,
+  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/customer/login`,
+    {
+      method: "POST",
+      headers: {
+        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        Cart: cartKey,
+        accept: "*/*",
+        Language: "cs",
+        Currency: "CZK",
+      },
+      mode: "cors",
+      body: body,
+    }
+  );
+  console.log("inside body", body);
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Error response:", response.status, errorText);
+    throw new Error("Request failed with status " + response.status);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
 export const sendOrder = async (personalData, cartKey) => {
   let body = JSON.stringify(personalData);
   //console.log("inside loader sending this", personalData, cartKey);

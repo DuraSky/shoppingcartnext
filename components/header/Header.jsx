@@ -3,10 +3,14 @@ import { StyledNav } from "./headerStyle";
 import { WrapperWithTopBar } from "./wrapper/WrapperWithTopBar";
 import { Steps } from "../steps/Steps";
 
-const Header = ({ currentStep }) => {
+const Header = ({ currentStep, handleSignIn, handleSignOut, customer }) => {
   return (
     <StyledNav>
-      <WrapperWithTopBar />
+      <WrapperWithTopBar
+        handleSignIn={handleSignIn}
+        customer={customer}
+        handleSignOut={handleSignOut}
+      />
       <Steps currentStep={currentStep} />
     </StyledNav>
   );

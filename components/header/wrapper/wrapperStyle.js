@@ -3,25 +3,88 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
 
-  .textAndIcon {
+  img {
+    width: 150px;
+  }
+  .menu {
     display: flex;
+    flex-wrap: wrap;
+    //flex-grow: 1;
     align-items: center;
-    gap: 7px;
+    .textAndIcon {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
 
-    p {
-      color: ${({ theme }) => theme.backgroundBrown};
-      //font-weight: bold;
-      //font-weight: 400;
-      font-size: 14px;
-      letter-spacing: 1px;
+      img,
+      svg {
+        width: 18px;
+      }
+      p {
+        color: ${({ theme }) => theme.backgroundBrown};
+        //font-weight: bold;
+        //font-weight: 400;
+        font-size: 12px;
+        letter-spacing: 1px;
+      }
+
+      &:last-child:hover {
+        background-color: ${({ theme }) => theme.backgroundGrey};
+        cursor: pointer;
+        //height: 100%;
+      }
     }
   }
 
+  @media (min-width: 370px) {
+    .menu {
+      display: flex;
+      width: 100%;
+      //padding: 10px;
+      /* flex-wrap: nowrap;
+      gap: 5px; */
+    }
+  }
+
+  @media (min-width: 530px) {
+    .menu {
+      padding: 10px;
+    }
+  }
+
+  @media (min-width: 750px) {
+    max-width: ${({ theme }) => theme.maxWidth};
+    margin: 0 auto;
+
+    img {
+      width: 200px;
+    }
+    .menu {
+      display: flex;
+      //padding: 10px;
+      .textAndIcon {
+        img,
+        svg {
+          width: 24px;
+        }
+      }
+    }
+  }
+
+  /* @media (min-width: 420px) {
+    .menu {
+      flex-grow: 1;
+      flex-wrap: nowrap;
+    }
+  } */
+
   @media (min-width: 1200px) {
     /* max-width: 1200px; */
-    max-width: ${({ theme }) => theme.maxWidth};
+    //max-width: ${({ theme }) => theme.maxWidth};
 
-    margin: 0 auto;
+    //margin: 0 auto;
   }
 `;
 
@@ -29,10 +92,9 @@ export const TopBar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  //padding: 10px;
   position: relative;
   background: white;
-  padding: 25px;
   gap: 10px;
 
   &::before {
@@ -56,4 +118,25 @@ export const TopBar = styled.div`
   }
 `;
 
-export default { Wrapper, TopBar };
+export const SignOutButton = styled.button`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.backgroundBrown};
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  font-size: 11px;
+  text-decoration: underline;
+  //margin-left: 5px;
+
+  &:hover {
+    color: ${({ theme }) => theme.fontOrange};
+  }
+`;
+
+export const SignedIn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export default { Wrapper, TopBar, SignedIn, SignOutButton };
