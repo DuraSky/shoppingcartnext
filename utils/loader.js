@@ -1,5 +1,15 @@
+const getAuthHeaders = () => {
+  const token = localStorage.getItem("token");
+  return {
+    "X-Token": "684s68f4s6e84s6e84fs68e4f8g46", // assuming this is a constant header value
+    accept: "*/*",
+    Language: "cs",
+    Currency: "CZK",
+    customer: token || null,
+  };
+};
+
 export const dbLoader = async () => {
-  //const response = await fetch("/mockDBs/productsApiCopy.json");
   const response = await fetch("/mockDBs/productsApiCopyWithVariants.json");
   console.log("in response", response);
   const data = await response.json();
@@ -7,20 +17,14 @@ export const dbLoader = async () => {
 };
 
 export const shippingLoader = async () => {
-  //const response = await fetch("/mockDBs/shipping.json");
   const response = await fetch("/mockDBs/shippingApiCopy.json");
-
   console.log("in response", response);
   const data = await response.json();
   return data;
 };
 
-//const baseUrl = "https://crappie-enormous-noticeably.ngrok-free.app";
 const endPoint = "/api/v1/cart/products";
-//const endPoint = "/api/v1/cart/products";
 const cartKey = "$2y$10$5DEM8nkRegzpTjjW.sumAOKNLnO3vJlwcFXgmhsEjaMKYD1nz5Ktu";
-//const cartKey = "$2y$10$6Xh/.SPE4jO.bmKlPb5UiOjiRtIkccnSV41V6i3C/NSmz.1xm8U8O";
-//$2y$10$vTE940T2h2r2MmxxEjHuYuNEHF24PDOVs6RcfFiuRbpv.bKrxqcCq
 
 export const apiLoader = async (cartKey) => {
   console.log("before");
@@ -30,11 +34,8 @@ export const apiLoader = async (cartKey) => {
     {
       method: "GET",
       headers: {
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        ...getAuthHeaders(),
         Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
       },
       mode: "cors",
     }
@@ -49,33 +50,6 @@ export const apiLoader = async (cartKey) => {
   const data = await response.json();
   return data;
 };
-// export const apiLoaderShippingUpdate = async ({ cartChanged, cart }) => {
-//   if (cartChanged) {
-//     try {
-//       const response = await fetch(apiConfig.baseUrl + endPoint, {
-//         method: "POST",
-//         headers: {
-//           "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
-//           Cart: cartKey,
-//           accept: "*/*",
-//         },
-//         mode: "cors",
-
-//         body: JSON.stringify(cart),
-//       });
-
-//       if (!response.ok) {
-//         throw new Error("Failed to update shipping options");
-//       }
-
-//       const updatedShipping = await response.json();
-//       return updatedShipping;
-//     } catch (error) {
-//       console.error("Error updating shipping options:", error);
-//       throw error;
-//     }
-//   }
-// };
 
 export const apiLoaderUpdateCartItem = async (action, updatedItem, cartKey) => {
   let method;
@@ -98,11 +72,8 @@ export const apiLoaderUpdateCartItem = async (action, updatedItem, cartKey) => {
     {
       method: method,
       headers: {
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        ...getAuthHeaders(),
         Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
       },
       mode: "cors",
       body: body,
@@ -126,11 +97,8 @@ export const checkDiscountCode = async (code, cartKey, method) => {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        ...getAuthHeaders(),
         Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
       },
       mode: "cors",
       body: JSON.stringify({ code }),
@@ -166,11 +134,8 @@ export const sendUpdatedSurcharge = async (
     {
       method: "POST",
       headers: {
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        ...getAuthHeaders(),
         Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
       },
       mode: "cors",
       body: body,
@@ -206,11 +171,8 @@ export const updateShippingAndPriceMethods = async (
     {
       method: "PUT",
       headers: {
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        ...getAuthHeaders(),
         Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
       },
       mode: "cors",
       body: body,
@@ -237,11 +199,8 @@ export const sendSignIn = async (email, password) => {
     {
       method: "POST",
       headers: {
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
-        Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
+        ...getAuthHeaders(),
+        // Cart key is not needed here
       },
       mode: "cors",
       body: body,
@@ -261,18 +220,14 @@ export const sendSignIn = async (email, password) => {
 
 export const sendOrder = async (personalData, cartKey) => {
   let body = JSON.stringify(personalData);
-  //console.log("inside loader sending this", personalData, cartKey);
 
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/cart/order`,
     {
       method: "POST",
       headers: {
-        "X-Token": "684s68f4s6e84s6e84fs68e4f8g46",
+        ...getAuthHeaders(),
         Cart: cartKey,
-        accept: "*/*",
-        Language: "cs",
-        Currency: "CZK",
       },
       mode: "cors",
       body: body,

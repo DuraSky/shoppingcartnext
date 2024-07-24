@@ -134,7 +134,7 @@ export const SignOutButton = styled.button`
   }
 `;
 
-export const SignedIn = styled.div`
+export const SignedIn = styled.span`
   display: flex;
   flex-direction: column;
 `;

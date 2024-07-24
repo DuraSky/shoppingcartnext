@@ -37,8 +37,7 @@ const CombinedProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cartKey, setCartKey] = useState(null);
-
-  console.log("inside combined loader", combinedData);
+  //const [signedCustomer, setSignedCustomer] = useState({});
 
   const fetchData = async (key = null) => {
     try {
@@ -49,10 +48,13 @@ const CombinedProvider = ({ children }) => {
       }
       setCartKey(storedCartKey);
       const data = await apiLoader(storedCartKey);
+
       setCombinedData(data);
       if (data.customer) {
         saveCustomerDetails(data.customer);
       }
+      console.log("inside combined loader", data);
+
       setLoading(false);
     } catch (error) {
       setError(error);
@@ -111,27 +113,6 @@ const CombinedProvider = ({ children }) => {
     }
   };
 
-  const handleSignIn = async (email, password) => {
-    try {
-      const data = await sendSignIn(email, password);
-      saveCustomerDetails(data.customer);
-
-      console.log("Sign-in successful:", data);
-
-      setCombinedData(data);
-    } catch (error) {
-      console.error("Failed to sign in:", error);
-    }
-  };
-
-  const handleSignOut = () => {
-    setCombinedData((prevData) => ({
-      ...prevData,
-      customer: null,
-    }));
-    localStorage.removeItem("personalInfoForm");
-  };
-
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -161,9 +142,9 @@ const CombinedProvider = ({ children }) => {
         handleCartUpdate,
         handleDiscountCode,
         handleSurchargeChange,
-        handleSignIn,
-        handleSignOut,
-        customer,
+        //handleSignIn,
+        //handleSignOut,
+        //customer,
       }}
     >
       <AlertProvider initialAlerts={alerts || []}>

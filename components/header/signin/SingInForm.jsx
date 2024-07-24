@@ -16,7 +16,7 @@ export const SignInForm = ({ onClose, handleSignIn }) => {
     e.preventDefault();
     console.log("Email:", email, "Password:", password);
     handleSignIn(email, password);
-    //onClose();
+    onClose();
   };
 
   return (

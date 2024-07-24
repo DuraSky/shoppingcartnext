@@ -1,16 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Wrapper, TopBar, SignedIn, SignOutButton } from "./wrapperStyle";
 import Modal from "../../shipping/deliveryVendorsApis/Modal";
 import { SignInForm } from "../signin/SingInForm";
-export const WrapperWithTopBar = ({
-  handleSignIn,
-  handleSignOut,
-  customer,
-}) => {
+import { sendSignIn } from "../../../utils/loader";
+
+const saveCustomerDetails = (customer) => {
+  const customerDetails = {
+    firstName: customer.first_name,
+    lastName: customer.last_name,
+    street: customer.street,
+    zip: customer.zip,
+    city: customer.city,
+    email: customer.email,
+    phone: customer.phone,
+  };
+  localStorage.setItem("personalInfoForm", JSON.stringify(customerDetails));
+};
+
+export const WrapperWithTopBar = () => {
   const [toggleModal, setToggleModal] = useState(false);
+  const [customer, setCustomer] = useState(null);
+
+  useEffect(() => {
+    const storedCustomer = localStorage.getItem("personalInfoForm");
+    if (storedCustomer) {
+      setCustomer(JSON.parse(storedCustomer));
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("CURRENT STATE OF THE CUSTOMER", customer);
+  }, [customer]);
 
   const handleModalToggle = () => {
     setToggleModal((prev) => !prev);
+  };
+
+  const handleSignIn = async (email, password) => {
+    try {
+      const data = await sendSignIn(email, password);
+      setCustomer({
+        firstName: data.customer.first_name,
+        lastName: data.customer.last_name,
+        street: data.customer.street,
+        zip: data.customer.zip,
+        city: data.customer.city,
+        email: data.customer.email,
+        phone: data.customer.phone,
+      });
+      localStorage.setItem("token", data.token);
+      saveCustomerDetails(data.customer);
+      console.log("Sign-in successful:", data);
+    } catch (error) {
+      console.error("Failed to sign in:", error);
+    }
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("personalInfoForm");
+    localStorage.removeItem("token");
+    setCustomer(null);
+    //window.dispatchEvent(new Event("clearFormState")); // Notify other components to clear form state
   };
 
   return (
@@ -30,7 +80,7 @@ export const WrapperWithTopBar = ({
           </div>
           <div
             className="textAndIcon"
-            onClick={customer ? null : handleModalToggle}
+            onClick={!customer ? handleModalToggle : null}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +96,7 @@ export const WrapperWithTopBar = ({
             <p>
               {customer ? (
                 <SignedIn>
-                  {`${customer.first_name} ${customer.last_name} `}
+                  {`${customer.firstName} ${customer.lastName} `}
                   <SignOutButton onClick={handleSignOut}>
                     Odhlásit se
                   </SignOutButton>
@@ -60,7 +110,11 @@ export const WrapperWithTopBar = ({
       </TopBar>
       {toggleModal && (
         <Modal onClose={handleModalToggle}>
-          <SignInForm onClose={handleModalToggle} handleSignIn={handleSignIn} />
+          <SignInForm
+            onClose={handleModalToggle}
+            setCustomer={setCustomer}
+            handleSignIn={handleSignIn}
+          />
         </Modal>
       )}
     </Wrapper>
