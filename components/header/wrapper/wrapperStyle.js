@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
       align-items: center;
       justify-content: center;
       gap: 3px;
+      padding: 5px;
 
       img,
       svg {

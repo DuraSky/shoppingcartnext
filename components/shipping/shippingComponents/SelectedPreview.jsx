@@ -4,6 +4,10 @@ import Image from "next/image";
 import { imageLoader } from "../../imageLoader/imageLoader";
 import { useDeliveryVendors } from "../deliveryVendorsApis/DeliveryVendorsProvider";
 
+import { HiOutlineCreditCard } from "react-icons/hi2";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { IoAlertCircleOutline } from "react-icons/io5";
+
 export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
   const { selectedVendor } = useDeliveryVendors();
 
@@ -34,7 +38,7 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
         <p>{previewSelectedShipping.option}</p>
         {showBranchInfo && (
           <div className="branchInfo">
-            <h4>Zvolená pobočka:</h4>
+            {/* <p>Pobočka:</p> */}
             <p>{selectedVendor.name}</p>
           </div>
         )}
@@ -43,8 +47,8 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
             <p style={{ color: "red" }}>Pobočka nezvolena</p>
           </div>
         )}
-        <p className="price">{previewSelectedShipping.price_f}</p>
       </div>
+      <p className="price">{previewSelectedShipping.price_f}</p>
     </StyledPreview>
   );
 };
@@ -53,13 +57,14 @@ export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
   return (
     <StyledPreview>
       {previewSelectedPayment.img === "assets/card.png" ? (
-        <Image
-          src="/assets/card.png"
-          alt={previewSelectedPayment.option}
-          width={100}
-          height={100}
-          layout="intrinsic"
-        />
+        // <Image
+        //   src="/assets/card.png"
+        //   alt={previewSelectedPayment.option}
+        //   width={100}
+        //   height={100}
+        //   layout="intrinsic"
+        // />
+        <HiOutlineCreditCard style={{ width: "50px", height: "50px" }} />
       ) : (
         previewSelectedPayment.img && (
           <Image
@@ -74,11 +79,11 @@ export const SelectedPaymentPreview = ({ previewSelectedPayment }) => {
       )}
       <div className="optionAndPrice">
         <p>{previewSelectedPayment.option}</p>
-        {previewSelectedPayment.price !== undefined &&
-          previewSelectedPayment.price !== null && (
-            <p className="price">{previewSelectedPayment.price_f}</p>
-          )}
       </div>
+      {previewSelectedPayment.price !== undefined &&
+        previewSelectedPayment.price !== null && (
+          <p className="price">{previewSelectedPayment.price_f}</p>
+        )}
     </StyledPreview>
   );
 };
@@ -89,13 +94,19 @@ export const PersonalInfoPreview = ({ formErrors }) => {
     <StyledPreview>
       {hasErrors ? (
         <>
-          <img src="/assets/alertOrange.svg" alt="alert" width="30px" />
+          {/* <img src="/assets/alertOrange.svg" alt="alert" width="30px" /> */}
+          <IoAlertCircleOutline
+            style={{ width: "50px", height: "50px", color: "orange" }}
+          />
+
           <p>Prosim zkontrolujte si formular</p>
         </>
       ) : (
         <>
-          <img src="/assets/info.svg" alt="info" width="30px" />
-          <p>Vase udaje</p>
+          {/* <img src="/assets/info.svg" alt="info" width="30px" /> */}
+          <IoPersonCircleOutline style={{ width: "50px", height: "50px" }} />
+
+          <p>Vaše údaje</p>
         </>
       )}
     </StyledPreview>

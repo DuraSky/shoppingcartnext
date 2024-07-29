@@ -59,6 +59,10 @@ export const StyledShippingMethod = styled.div`
       font-weight: bold;
     }
   }
+
+  @media (max-width: 767px) {
+    margin: 3px;
+  }
 `;
 export const StyledSelectedBranch = styled.div`
   width: 100%;

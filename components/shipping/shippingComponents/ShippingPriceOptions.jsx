@@ -52,14 +52,26 @@ const ShippingPriceOptions = () => {
       branchKey = selectedVendor.branchCode;
     }
 
+    let branchName = null;
+    if (
+      ["Zásilkovna", "Balíkovna", "PPL ParcelShop", "Balík Na poštu"].includes(
+        selectedShippingOption
+      ) &&
+      selectedVendor.vendorName === selectedShippingOption
+    ) {
+      branchName = selectedVendor.name;
+    }
+
     console.log("Selected Vendor Name:", selectedVendor.vendorName);
     console.log("Selected Shipping Option Name:", selectedShippingOption);
     console.log("Branch Key:", branchKey);
+    console.log("BranchName:", branchName);
 
     updateShippingAndPriceMethods(
       selectedShippingOptionPackageId,
       delivery_payment_id,
-      branchKey
+      branchKey,
+      branchName
     );
   };
 

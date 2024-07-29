@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../CartProvider";
 import {
-  getCartPrice,
   getFreeShippingMessage,
   getProgressShipping,
 } from "../../../utils/cartUtil";
@@ -11,6 +10,8 @@ import {
   ProgressFill,
   ProgressText,
 } from "./progressBarStyle";
+
+import { FaTruckFast } from "react-icons/fa6";
 
 export const ProgressBar = () => {
   const { state } = useContext(CartContext);
@@ -26,7 +27,8 @@ export const ProgressBar = () => {
     <StyledProgressBar>
       <div className="messageWithIcon">
         {getFreeShippingMessage(cart_total)}
-        <img src="/assets/truck5.svg" width="35px" alt="" />
+        {/* <img src="/assets/truck5.svg" width="35px" alt="" /> */}
+        <FaTruckFast style={{ width: "30px", height: "30px" }} />
       </div>
       <ProgressContainer>
         <ProgressFill progress={getProgressShipping(cart_total)} />

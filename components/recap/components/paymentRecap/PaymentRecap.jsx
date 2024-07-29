@@ -10,7 +10,7 @@ export const PaymentRecap = ({
       <p>
         {selectedPaymentOption
           ? selectedPaymentOption
-          : "Platba nebyla vybrana"}
+          : "Platba nebyla vybrána"}
       </p>
       <p>
         {selectedPaymentOptionPriceCurrency !== undefined &&

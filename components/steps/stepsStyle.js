@@ -40,6 +40,10 @@ export const StepContainer = styled.div`
       border-top: 10px solid #ff6a33;
     }
   `}
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 export const StepLabel = styled.span`

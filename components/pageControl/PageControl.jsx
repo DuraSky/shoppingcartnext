@@ -5,7 +5,7 @@ export const PageControl = ({ handleGoBack, handleSubmit, buttonText }) => {
   return (
     <div className="pageControl">
       <StyledBackButton onClick={handleGoBack}>
-        ← Zpet do kosiku
+        ← Zpět do kosiku
       </StyledBackButton>
       <StyledNextButton onClick={handleSubmit}>{buttonText}</StyledNextButton>
     </div>

@@ -62,4 +62,8 @@ export const CloseButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.backgroundBrown};
   }
+
+  @media (max-width: 480px) {
+    padding: 2px 5px;
+  }
 `;

@@ -4,6 +4,8 @@ import Modal from "../../shipping/deliveryVendorsApis/Modal";
 import { SignInForm } from "../signin/SingInForm";
 import { sendSignIn } from "../../../utils/loader";
 
+import { IoPersonCircleOutline } from "react-icons/io5";
+
 const saveCustomerDetails = (customer) => {
   const customerDetails = {
     firstName: customer.first_name,
@@ -51,6 +53,7 @@ export const WrapperWithTopBar = () => {
       localStorage.setItem("token", data.token);
       saveCustomerDetails(data.customer);
       console.log("Sign-in successful:", data);
+      window.dispatchEvent(new Event("signInStateChange"));
     } catch (error) {
       console.error("Failed to sign in:", error);
     }
@@ -60,7 +63,7 @@ export const WrapperWithTopBar = () => {
     localStorage.removeItem("personalInfoForm");
     localStorage.removeItem("token");
     setCustomer(null);
-    //window.dispatchEvent(new Event("clearFormState")); // Notify other components to clear form state
+    window.dispatchEvent(new Event("signInStateChange"));
   };
 
   return (

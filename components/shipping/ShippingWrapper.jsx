@@ -20,6 +20,8 @@ import { PPLWidget } from "./deliveryVendorsApis/ppl/PPLWidget";
 import Modal from "./deliveryVendorsApis/Modal";
 import { useDeliveryVendors } from "./deliveryVendorsApis/DeliveryVendorsProvider";
 
+import { HiOutlineCreditCard } from "react-icons/hi2";
+
 export const ShippingWrapper = () => {
   const { state: shippingState } = useContext(ShippingContext);
   const {
@@ -46,17 +48,17 @@ export const ShippingWrapper = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  const [buttonText, setButtonText] = useState("Odeslat objednavku");
+  const [buttonText, setButtonText] = useState("Odeslat objednávku");
 
   const [previewSelectedShipping, setPreviewSelectedShipping] = useState({
-    option: "Prosim zvolte dopravu",
-    img: "/assets/card.png",
+    option: "Zvolte dopravu",
+    img: HiOutlineCreditCard,
     price: null,
     packageId: null,
   });
   const [previewSelectedPayment, setPreviewSelectedPayment] = useState({
-    option: "Prosim zvolte typ platby",
-    img: "/assets/card.png",
+    option: "Zvolte typ platby",
+    img: HiOutlineCreditCard,
     price: null,
     delivery_payment_id: null,
   });
@@ -64,6 +66,8 @@ export const ShippingWrapper = () => {
   const [formErrors, updateFormErrors] = useFormErrors();
   const formRef = useRef(null);
   const router = useRouter();
+
+  const [personalInfoKey, setPersonalInfoKey] = useState(0); // Add this state
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
@@ -100,7 +104,6 @@ export const ShippingWrapper = () => {
       requiresBranchSelection &&
       selectedVendor.vendorName !== selectedShippingOption
     ) {
-      //setButtonText("Prosim zvolte pobocku");
       return;
     }
 
@@ -134,7 +137,7 @@ export const ShippingWrapper = () => {
 
   useEffect(() => {
     if (selectedPaymentOption === null) {
-      setButtonText("Prosim zvolte typ platby");
+      setButtonText("Zvolte typ platby");
     } else if (Object.keys(formErrors).length > 0) {
       const firstErrorKey = Object.keys(formErrors).find(
         (key) => formErrors[key]
@@ -143,13 +146,13 @@ export const ShippingWrapper = () => {
         setButtonText(formErrors[firstErrorKey].message);
       }
     } else {
-      setButtonText("Odeslat objednavku →");
+      setButtonText("Odeslat objednávku →");
     }
   }, [selectedPaymentOption, formErrors]);
 
   useEffect(() => {
     setPreviewSelectedShipping({
-      option: selectedShippingOption || "Prosim zvolte dopravu",
+      option: selectedShippingOption || "Zvolte dopravu",
       img: selectedShippingOptionImg || "failsafe",
       price: selectedShippingPrice,
       price_f: selectedShippingPriceCurrency,
@@ -168,7 +171,7 @@ export const ShippingWrapper = () => {
   useEffect(() => {
     if (selectedPaymentOption === null) {
       setPreviewSelectedPayment({
-        option: "Prosim zvolte typ platby",
+        option: "Zvolte typ platby",
         img: "assets/card.png",
         price: null,
         price_f: null,
@@ -194,6 +197,16 @@ export const ShippingWrapper = () => {
       pathname: "/vas-kosik",
     });
   };
+
+  useEffect(() => {
+    const handleSignInStateChange = () => {
+      setPersonalInfoKey((prevKey) => prevKey + 1);
+    };
+    window.addEventListener("signInStateChange", handleSignInStateChange);
+    return () => {
+      window.removeEventListener("signInStateChange", handleSignInStateChange);
+    };
+  }, []);
 
   return (
     <ShippingPageLayout>
@@ -256,6 +269,7 @@ export const ShippingWrapper = () => {
           <div className={`collapsible-content ${toggleInfo ? "open" : ""}`}>
             <div onClick={(e) => e.stopPropagation()}>
               <PersonalInfo
+                key={personalInfoKey}
                 ref={formRef}
                 onFormSubmitSuccess={handleFormSubmitSuccess}
                 onError={handleFormError}
@@ -268,7 +282,7 @@ export const ShippingWrapper = () => {
       {isMobile && (
         <>
           <h3 className="pageControlMobilePrice">
-            Celkova cena: <span>{cart_total_with_shipping}</span>
+            Celková cena: <span>{cart_total_with_shipping}</span>
           </h3>
           <div className="pageControl">
             <PageControl

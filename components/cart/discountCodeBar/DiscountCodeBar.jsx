@@ -9,12 +9,14 @@ export const DiscountCodeBar = () => {
 
   const handleChange = (e) => {
     setDiscountCode(e.target.value);
+    setDiscountError(false);
   };
 
   const handleApply = async () => {
     const result = await onDiscountCode(discountCode, "POST");
     if (result.success) {
       setDiscountError(false);
+      setDiscountCode("");
     } else {
       setDiscountError(true);
     }
@@ -32,7 +34,7 @@ export const DiscountCodeBar = () => {
         />
         <button onClick={handleApply}> ⇨</button>
       </div>
-      {discountError && <p style={{ color: "red" }}>Invalid discount code</p>}
+      {discountError && <p style={{ color: "red" }}>Neplatný slevový kód</p>}
     </StyledDiscountBar>
   );
 };

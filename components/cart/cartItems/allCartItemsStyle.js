@@ -132,7 +132,7 @@ export const CartItemRow = styled.div`
     }
 
     .priceCalc::before {
-      content: "Cena Vc. DPH: ";
+      content: "Cena Vč. DPH: ";
       margin-right: 10px;
       display: block;
       color: ${({ theme }) => theme.fontGrey};
@@ -143,6 +143,7 @@ export const CartItemRow = styled.div`
 export const CartVariantRow = styled.div`
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
   display: flex;
+  //flex-direction: column;
   flex-wrap: wrap;
   gap: 10px;
   flex-grow: 1;
@@ -189,8 +190,12 @@ export const CartVariantRow = styled.div`
       //padding: 0 40px;
     }
   }
+  @media (min-width: px) {
+  }
   @media (min-width: 768px) {
-    padding-left: 150px;
+    //padding-left: 150px;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
 
     //flex-direction: column;

@@ -54,4 +54,8 @@ export const StyledPriceOption = styled.div`
       justify-content: flex-end;
     }
   }
+
+  @media (max-width: 767px) {
+    margin: 3px;
+  }
 `;

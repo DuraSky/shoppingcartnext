@@ -10,6 +10,12 @@ export const Form = styled.form`
   margin: 20px;
   border-radius: ${({ theme }) => theme.myBorderRadius};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 480px) {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+  }
 `;
 
 export const Title = styled.h4`
@@ -52,5 +58,8 @@ export const Button = styled.button`
   transition: background-color 0.3s;
   &:hover {
     background-color: ${({ theme }) => theme.fontOrange};
+  }
+  @media (max-width: 480px) {
+    padding: 5px 10px;
   }
 `;

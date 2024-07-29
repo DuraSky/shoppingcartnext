@@ -156,12 +156,14 @@ export const sendUpdatedSurcharge = async (
 export const updateShippingAndPriceMethods = async (
   package_id,
   delivery_payment_id,
-  branch_key
+  branch_key,
+  branch_name
 ) => {
   const body = JSON.stringify({
     package_id,
     delivery_payment_id,
     branch_key,
+    branch_name,
   });
 
   const cartKey = localStorage.getItem("cart_key");

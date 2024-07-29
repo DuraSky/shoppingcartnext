@@ -131,7 +131,7 @@ const ShoppingCart = () => {
       </StyledWrapper>
       <StyledButtonWrapper>
         <StyledNextButton onClick={handleNextButtonClick}>
-          Přejít na dopravu a platbu →
+          Doprava a platba →
         </StyledNextButton>
       </StyledButtonWrapper>
     </>

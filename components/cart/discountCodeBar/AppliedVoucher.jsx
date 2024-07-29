@@ -8,6 +8,7 @@ export const AppliedVoucher = ({ voucher }) => {
 
   const handleRemove = async (voucher) => {
     const result = await onDiscountCode(voucher, "DELETE");
+    //console.log(result);
     // if (result.success) {
     //   setDiscountError(false);
     // } else {

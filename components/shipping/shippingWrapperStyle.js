@@ -69,6 +69,7 @@ export const ShippingPageLayout = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    margin-bottom: 1px;
     gap: 10px;
     order: 3;
     padding: 0 0.2rem;
@@ -146,15 +147,19 @@ export const StyledPreview = styled.div`
 
   .optionAndPrice {
     display: flex;
-    flex-grow: 0.8;
-    justify-content: space-between;
+    flex-direction: column;
+    flex-grow: 1;
+    //justify-content: space-between;
     p {
       font-weight: 300;
     }
+  }
+  .price {
+    /* display: flex;
+      flex-grow: 1; */
+    margin-right: 50px;
 
-    .price {
-      color: ${({ theme }) => theme.backgroundBrown};
-    }
+    color: ${({ theme }) => theme.backgroundBrown};
   }
 
   img {

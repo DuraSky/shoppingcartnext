@@ -22,8 +22,17 @@ export const StyledShippingRecap = styled.div`
   }
 
   .branchInfo {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+
+    //justify-content: space-between;
+    align-items: center;
+  }
+
+  /* .branchInfo {
     width: 100%;
     text-align: left;
     margin-top: 10px;
-  }
+  } */
 `;

@@ -10,7 +10,7 @@ export const removeFromCart = (cart, itemIndex) => {
 };
 
 export const changeQuantity = (cart, value, itemIndex) => {
-  console.log("in changequantity", cart);
+  //console.log("in changequantity", cart);
   const updatedValue = Number(value);
   if (updatedValue < 1) {
     return cart;
@@ -28,10 +28,10 @@ export const getFreeShippingMessage = (cart_total) => {
   const remainingForFreeShipping = freeShipping - cart_total;
 
   if (remainingForFreeShipping <= 0) {
-    return "Dopravu mate zdarma";
+    return "Dopravu máte zdarma";
   } else {
-    console.log(remainingForFreeShipping);
-    return `Do dopravy zdarma vam zbyva ${remainingForFreeShipping} Kč`;
+    //console.log(remainingForFreeShipping);
+    return `Do dopravy zdarma vám zbývá ${remainingForFreeShipping} Kč`;
   }
 };
 
