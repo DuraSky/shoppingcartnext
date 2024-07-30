@@ -35,6 +35,7 @@ export const StyledNextButton = styled.button`
   width: 250px;
   height: 50px;
   border-radius: ${({ theme }) => theme.myBorderRadius};
+  font-size: 14px;
   //border: 1px solid #03045e;
   border: none;
   position: relative;

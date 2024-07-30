@@ -4,8 +4,6 @@ import Modal from "../../shipping/deliveryVendorsApis/Modal";
 import { SignInForm } from "../signin/SingInForm";
 import { sendSignIn } from "../../../utils/loader";
 
-import { IoPersonCircleOutline } from "react-icons/io5";
-
 const saveCustomerDetails = (customer) => {
   const customerDetails = {
     firstName: customer.first_name,
