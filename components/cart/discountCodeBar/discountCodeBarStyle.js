@@ -34,9 +34,12 @@ export const StyledDiscountBar = styled.div`
     //padding: 1px;
   }
 
-  button {
-    padding: 10px;
+  .inputAndButton {
+    display: flex;
+  }
 
+  button {
+    padding: 0px 5px;
     background-color: ${({ theme }) => theme.backgroundBrown};
     color: white;
     font-size: 13px;

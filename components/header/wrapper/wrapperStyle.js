@@ -11,13 +11,14 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     //flex-grow: 1;
     align-items: center;
+    padding: 5px;
+
     .textAndIcon {
       display: flex;
       flex-grow: 1;
       align-items: center;
       justify-content: center;
-      gap: 3px;
-      padding: 5px;
+      gap: 5px;
 
       img,
       svg {
@@ -66,7 +67,6 @@ export const Wrapper = styled.div`
       display: flex;
       //padding: 10px;
       .textAndIcon {
-        img,
         svg {
           width: 24px;
         }

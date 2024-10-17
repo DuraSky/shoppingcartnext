@@ -47,6 +47,7 @@ export const StyledShippingMethod = styled.div`
     img {
       width: 60px;
       max-height: 40px;
+      object-fit: contain;
       //max-width: 60px;
 
       //height: auto;

@@ -31,7 +31,10 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledNextButton = styled.button`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   width: 250px;
   height: 50px;
   border-radius: ${({ theme }) => theme.myBorderRadius};
@@ -72,7 +75,10 @@ export const StyledNextButton = styled.button`
 `;
 
 export const StyledBackButton = styled.button`
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   width: 150px;
   height: 50px;
   border-radius: ${({ theme }) => theme.myBorderRadius};

@@ -38,7 +38,8 @@ export const StyledProductRecap = styled.div`
     gap: 10px;
     font-size: 14px;
 
-    color: ${({ theme }) => theme.fontGrey};
+    /* color: ${({ theme }) => theme.fontGrey}; */
+    color: grey;
   }
 
   .listingPrice {
