@@ -13,6 +13,27 @@ import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
 import Modal from "../deliveryVendorsApis/Modal";
 import { PostaWidget } from "../deliveryVendorsApis/posta/PostaWidget";
 
+const formatDeliveryDate = (deliveryDate) => {
+  const date = new Date(deliveryDate);
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  if (
+    date.getDate() === tomorrow.getDate() &&
+    date.getMonth() === tomorrow.getMonth() &&
+    date.getFullYear() === tomorrow.getFullYear()
+  ) {
+    return "Zítra u Vás";
+  }
+
+  return date.toLocaleDateString("cs-CZ", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+};
+
 export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
   const { state } = useContext(ShippingContext);
   const { selectedShippingOption } = state;
@@ -80,7 +101,7 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
           <div>
             <p>{delivery.name}</p>
             <p>
-              <span>{delivery.delivery_date}</span>
+              <span>{formatDeliveryDate(delivery.delivery_date)}</span>
             </p>
           </div>
           <p className="price">{delivery.price} Kč</p>

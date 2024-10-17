@@ -118,7 +118,8 @@ const CombinedProvider = ({ children }) => {
   }
 
   if (error) {
-    return <FetchError error={error.message} />;
+    //return <FetchError error={error.message} />
+    return <YourCartIsEmpty />;
   }
 
   if (!combinedData) {

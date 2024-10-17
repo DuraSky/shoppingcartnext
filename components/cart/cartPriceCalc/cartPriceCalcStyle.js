@@ -68,7 +68,7 @@ export const StyledPriceCalc = styled.div`
 
   h3 {
     //color: ${({ theme }) => theme.fontGrey};
-    font-weight: lighter;
+    font-weight: 300;
     font-size: 16px;
   }
 

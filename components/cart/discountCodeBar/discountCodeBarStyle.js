@@ -28,7 +28,7 @@ export const StyledDiscountBar = styled.div`
 
   p {
     //color: ${({ theme }) => theme.fontGrey};
-    font-weight: lighter;
+    font-weight: 300;
     //font-size: 14px;
     //margin-left: 2px;
     //padding: 1px;

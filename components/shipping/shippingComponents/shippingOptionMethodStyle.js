@@ -7,12 +7,13 @@ export const StyledShippingMethod = styled.div`
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px 20px;
-    font-weight: 200;
+    font-weight: 300;
     border: 1px solid #ccc;
     border-radius: ${({ theme }) => theme.myBorderRadius};
     margin-bottom: 10px;
     cursor: pointer;
     transition: border-color 0.3s;
+    min-height: 60px;
 
     &:hover {
       border-color: #999;
@@ -57,7 +58,7 @@ export const StyledShippingMethod = styled.div`
       display: flex;
       flex-grow: 1;
       justify-content: flex-end;
-      font-weight: bold;
+      //font-weight: bold;
     }
   }
 

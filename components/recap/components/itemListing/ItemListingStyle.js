@@ -7,7 +7,7 @@ export const StyledProductRecap = styled.div`
 
   padding: 16px;
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-  font-weight: 200;
+  font-weight: 300;
 
   //padding: 15px;
 

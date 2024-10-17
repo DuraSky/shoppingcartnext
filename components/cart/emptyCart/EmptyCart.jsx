@@ -12,7 +12,7 @@ export const YourCartIsEmpty = () => {
       <WrapperWithTopBar />
       <StyledEmptyCart>
         <p>Váš košík je prázdný</p>
-        <a href="#">Zpět do eshopu</a>
+        <a href="https://www.zanapo.cz/">Zpět do eshopu</a>
       </StyledEmptyCart>
     </ThemeProvider>
   );

@@ -50,7 +50,7 @@ export const CartItemRow = styled.div`
   box-shadow: ${({ theme, $hasVariants }) =>
     $hasVariants ? "none" : theme.myLightBoxShadow};
   margin-bottom: 20px;
-  font-weight: 200;
+  font-weight: 300;
 
   .produktName {
     flex: 3;

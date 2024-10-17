@@ -67,7 +67,7 @@ export const ShippingWrapper = () => {
   const formRef = useRef(null);
   const router = useRouter();
 
-  const [personalInfoKey, setPersonalInfoKey] = useState(0); // Add this state
+  const [personalInfoKey, setPersonalInfoKey] = useState(0);
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);

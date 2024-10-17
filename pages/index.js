@@ -24,7 +24,7 @@ const App = () => {
   } else if (asPath === "/dekujeme") {
     view = "thankyou";
   } else {
-    view = "cart"; // Default view
+    view = "cart";
   }
 
   return (

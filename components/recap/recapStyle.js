@@ -39,7 +39,7 @@ export const StyledRecap = styled.div`
 
     gap: 10px;
     box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-    font-weight: 200;
+    font-weight: 300;
     padding: 10px;
 
     p {
