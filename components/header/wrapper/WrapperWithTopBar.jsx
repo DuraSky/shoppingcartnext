@@ -69,7 +69,12 @@ export const WrapperWithTopBar = () => {
   return (
     <Wrapper>
       <TopBar>
-        <img src="/assets/logoZanapo.svg" width="200px" alt="" />
+        {/* <img src="/assets/logoZanapo.svg" width="200px" alt="" /> */}
+        <Image
+          src={"https://www.zanapo.cz/files/upload/logo-zanapo-cz-index.svg"}
+          width={200}
+          height={40}
+        />
         <div className="menu">
           <div className="textAndIcon">
             {/* <svg
