@@ -8,12 +8,15 @@ export const theme = {
   fontGrey: "#b8b4b4",
   fontOrange: "#ff4500",
   fontOrangeTint: "#ff6a33",
-  myBorderRadius: "4px",
+  myBorderRadius: "0px",
+  myButtonBorderRadius: "2px",
   myLightBoxShadow: "rgba(17, 17, 26, 0.1) 0px 1px 0px",
   myMediumBoxShadow:
     "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",
   myHeavyBoxShadow:
     "rgba(50, 50, 93, 0.25) 0px 2px 4px -1px,rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+  myBorderBoxShadow:
+    "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
 };
 
 export const StyledButtonWrapper = styled.div`
@@ -37,7 +40,7 @@ export const StyledNextButton = styled.button`
   gap: 5px;
   width: 250px;
   height: 50px;
-  border-radius: ${({ theme }) => theme.myBorderRadius};
+  border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   font-size: 14px;
   //border: 1px solid #03045e;
   border: none;
@@ -81,7 +84,7 @@ export const StyledBackButton = styled.button`
   gap: 5px;
   width: 150px;
   height: 50px;
-  border-radius: ${({ theme }) => theme.myBorderRadius};
+  border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   /* box-shadow: ${({ theme }) => theme.myHeavyBoxShadow}; */
 
   border: 2px solid #cb9540;

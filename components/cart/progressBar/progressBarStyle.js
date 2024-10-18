@@ -34,7 +34,7 @@ export const StyledProgressBar = styled.div`
 export const ProgressContainer = styled.div`
   height: 15px;
   background-color: #ccc;
-  border-radius: ${({ theme }) => theme.myBorderRadius};
+  border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   position: relative;
   box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
 
@@ -64,7 +64,7 @@ export const ProgressFill = styled.div`
   text-align: center;
   line-height: 30px;
   color: white;
-  border-radius: ${({ theme }) => theme.myBorderRadius};
+  border-radius: ${({ theme }) => theme.myButtonBorderRadius};
 `;
 
 export const ProgressText = styled.p`

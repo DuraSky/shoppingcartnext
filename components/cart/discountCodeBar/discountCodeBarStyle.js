@@ -45,8 +45,8 @@ export const StyledDiscountBar = styled.div`
     font-size: 13px;
     cursor: pointer;
     outline: none;
-    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
-    border-bottom-right-radius: ${({ theme }) => theme.myBorderRadius};
+    border-top-right-radius: ${({ theme }) => theme.myButtonBorderRadius};
+    border-bottom-right-radius: ${({ theme }) => theme.myButtonBorderRadius};
     border: none;
   }
 

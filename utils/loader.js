@@ -235,6 +235,7 @@ export const sendOrder = async (personalData, cartKey) => {
       body: body,
     }
   );
+
   console.log("inside body", body);
 
   if (!response.ok) {
@@ -244,4 +245,7 @@ export const sendOrder = async (personalData, cartKey) => {
   } else {
     console.log("Order sent succesfully");
   }
+
+  const data = await response.json();
+  return data;
 };

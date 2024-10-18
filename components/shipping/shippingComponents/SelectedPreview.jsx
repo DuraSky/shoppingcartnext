@@ -99,7 +99,7 @@ export const PersonalInfoPreview = ({ formErrors }) => {
             style={{ width: "50px", height: "50px", color: "orange" }}
           />
 
-          <p>Prosim zkontrolujte si formular</p>
+          <p>Zkontrolujte si své údaje</p>
         </>
       ) : (
         <>

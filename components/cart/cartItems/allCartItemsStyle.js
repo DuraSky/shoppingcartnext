@@ -5,14 +5,16 @@ export const CartContainer = styled.div`
   overflow-x: auto;
   margin: 0 auto;
   max-width: ${({ theme }) => theme.maxWidth};
-  border-radius: ${({ theme }) => theme.myBorderRadius};
+  //border-radius: ${({ theme }) => theme.myBorderRadius};
 `;
 
 export const CartHeaders = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.backgroundGrey};
   padding: 1rem;
-  box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+  //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+  box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
+
   color: ${({ theme }) => theme.backgroundGreyTint};
 
   h2 {

@@ -4,6 +4,8 @@ import Modal from "../../shipping/deliveryVendorsApis/Modal";
 import { SignInForm } from "../signin/SingInForm";
 import { sendSignIn } from "../../../utils/loader";
 
+import Image from "next/image";
+
 const saveCustomerDetails = (customer) => {
   const customerDetails = {
     firstName: customer.first_name,
@@ -70,7 +72,7 @@ export const WrapperWithTopBar = () => {
         <img src="/assets/logoZanapo.svg" width="200px" alt="" />
         <div className="menu">
           <div className="textAndIcon">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
               height="32"
@@ -80,21 +82,36 @@ export const WrapperWithTopBar = () => {
                 fill="currentColor"
                 d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48m-16.39 307.37l-15 65A15 15 0 0 1 354 416C194 416 64 286.29 64 126a15.7 15.7 0 0 1 11.63-14.61l65-15A18 18 0 0 1 144 96a16.27 16.27 0 0 1 13.79 9.09l30 70A17.9 17.9 0 0 1 189 181a17 17 0 0 1-5.5 11.61l-37.89 31a231.9 231.9 0 0 0 110.78 110.78l31-37.89A17 17 0 0 1 299 291a17.9 17.9 0 0 1 5.91 1.21l70 30A16.25 16.25 0 0 1 384 336a17.4 17.4 0 0 1-.39 3.37"
               />
-            </svg>
+            </svg> */}
+            <Image
+              src={
+                "https://files.smartsuppcdn.com/files/agents/avatars/393225-CDDq6rAv4L.jpg?size=80"
+              }
+              width={40}
+              height={40}
+              className="supportIcon"
+            />
             <div>
-              <p>+420 703 694 133</p>
+              <p>
+                <span>+420 706 694 133</span>
+              </p>
+              <p>(po - pá: 8:00 - 16:00)</p>
             </div>
           </div>
           <div className="textAndIcon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 512 512"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
             >
               <path
-                fill="currentColor"
-                d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48m0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49c-16.841 13.247-50.201 45.072-73.413 44.701c-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646c21.857 17.205 60.134 55.186 103.062 54.955c42.717.231 80.509-37.199 103.053-54.947c49.528-38.783 82.032-64.401 104.947-82.653V400z"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 16v-5.5A3.5 3.5 0 0 0 7.5 7m3.5 9H4v-5.5A3.5 3.5 0 0 1 7.5 7m3.5 9v4M7.5 7H14m0 0V4h2.5M14 7v3m-3.5 6H20v-6a3 3 0 0 0-3-3m-2 9v4m-8-6.5h1"
               />
             </svg>
             <p>info@zanapo.cz</p>

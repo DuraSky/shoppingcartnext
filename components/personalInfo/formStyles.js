@@ -8,17 +8,18 @@ export const FormGroup = styled.div`
 
 export const Label = styled.label`
   font-size: 14px;
-  font-weight: lighter;
+  //font-weight: lighter;
   margin-bottom: 5px;
-  color: ${({ theme }) => theme.fontGrey};
+  font-weight: 300;
+  //color: ${({ theme }) => theme.fontGrey};
 `;
 
 export const Input = styled.input`
   padding: 10px;
   border: 1px solid #b8b4b4;
-  border-radius: 4px;
+  //border-radius: 4px;
   font-size: 14px;
-  color: #333;
+  //color: ${({ theme }) => theme.fontGrey};
   ${(props) =>
     props.error &&
     css`
@@ -46,12 +47,23 @@ export const FormContainer = styled.div`
   flex-direction: column;
 
   padding: 10px;
+
+  .oneLiner {
+    @media (min-width: 1000px) {
+      display: flex;
+      //flex-grow: 1;
+      gap: 5px;
+      div {
+        flex-grow: 1;
+      }
+    }
+  }
 `;
 
 export const TextArea = styled.textarea`
   padding: 10px;
   border: 1px solid #b8b4b4;
-  border-radius: 4px;
+  //border-radius: 4px;
   font-size: 14px;
   color: #333;
   resize: vertical;

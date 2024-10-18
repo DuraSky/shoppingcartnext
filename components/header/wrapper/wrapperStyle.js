@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
     //flex-grow: 1;
     align-items: center;
     padding: 5px;
+    min-height: 80px;
 
     .textAndIcon {
       display: flex;
@@ -19,17 +20,31 @@ export const Wrapper = styled.div`
       align-items: center;
       justify-content: center;
       gap: 5px;
+      //height: 100%;
+
+      .supportIcon {
+        object-fit: contain;
+        width: 40px;
+        border-radius: 50%;
+        //height: auto;
+      }
 
       img,
       svg {
         width: 18px;
       }
       p {
-        color: ${({ theme }) => theme.backgroundBrown};
+        //color: ${({ theme }) => theme.backgroundBrown};
+        //color: ${({ theme }) => theme.fontGrey};
         //font-weight: bold;
         //font-weight: 400;
-        font-size: 12px;
-        letter-spacing: 1px;
+        font-weight: 300;
+        font-size: 14px;
+        //letter-spacing: 1px;
+
+        span {
+          font-weight: 400;
+        }
       }
 
       &:last-child:hover {
@@ -68,7 +83,7 @@ export const Wrapper = styled.div`
       //padding: 10px;
       .textAndIcon {
         svg {
-          width: 24px;
+          width: 30px;
         }
       }
     }
@@ -126,7 +141,7 @@ export const SignOutButton = styled.button`
   cursor: pointer;
   padding: 0;
   font: inherit;
-  font-size: 11px;
+  //font-size: 11px;
   text-decoration: underline;
   //margin-left: 5px;
 

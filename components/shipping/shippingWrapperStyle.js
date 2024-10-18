@@ -34,25 +34,71 @@ export const ShippingPageLayout = styled.div`
       font-size: 14px;
       font-weight: 400;
       padding: 1rem;
-      box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+      //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+      box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
+
+      //box-shadow: ${({ theme }) => theme.myLightBoxShadow};
       border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
       border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
     }
 
-    .header .arrow {
+    /* .header .arrow {
       border-bottom: 2px solid ${({ theme }) => theme.fontOrange};
       border-right: 2px solid ${({ theme }) => theme.fontOrange};
       position: absolute;
-      top: 30px;
-      right: 30px;
+      top: 10px;
+      right: -10px;
       width: 10px;
       height: 10px;
       transform: rotate(45deg) translateY(-50%);
       transform-origin: right;
       transition: transform 0.3s;
-    }
-    .header .arrow.rotated {
+    } */
+    /* .header .arrow.rotated {
       transform: rotate(225deg);
+    } */
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .rotated {
+      transform: rotate(180deg);
+    }
+
+    .shippingContent,
+    .priceContent,
+    .formContent {
+      .header {
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+      }
+    }
+
+    .changeButton {
+      display: flex;
+      position: relative;
+      //flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+      margin-right: 5px;
+      font-weight: 300;
+      font-size: 14px;
+      svg {
+        color: ${({ theme }) => theme.fontOrange};
+      }
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      //flex-grow: 1;
+      //background-color: red;
+      //max-width: 40px;
     }
 
     .shippingContent,
@@ -60,7 +106,7 @@ export const ShippingPageLayout = styled.div`
     .formContent {
       position: relative;
       cursor: pointer;
-      margin-bottom: 20px;
+      //margin-bottom: 20px;
     }
   }
 
@@ -130,11 +176,11 @@ export const ShippingPageLayout = styled.div`
     flex-direction: column;
 
     .recapWrapper {
-      order: 1; /* Recap on top for mobile views */
+      order: 1;
     }
 
     .allContent {
-      order: 2; /* All content below Recap on mobile views */
+      order: 2;
     }
   }
 `;
@@ -144,6 +190,7 @@ export const StyledPreview = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  min-height: 90px;
 
   .optionAndPrice {
     display: flex;
@@ -153,13 +200,17 @@ export const StyledPreview = styled.div`
     p {
       font-weight: 300;
     }
+
+    @media (min-width: 1000px) {
+      min-width: 550px;
+    }
   }
   .price {
     /* display: flex;
       flex-grow: 1; */
     margin-right: 50px;
 
-    color: ${({ theme }) => theme.backgroundBrown};
+    color: ${({ theme }) => theme.fontOrange};
   }
 
   img {

@@ -11,7 +11,8 @@ export const StyledRecap = styled.div`
     background-color: ${({ theme }) => theme.backgroundGrey};
     padding: 1rem;
     /* border-bottom: 1px solid #ddd; */
-    box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+    //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+    box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
     border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
     border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
 

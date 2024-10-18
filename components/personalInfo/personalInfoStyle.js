@@ -9,7 +9,7 @@ export const Form = styled.form`
 
 export const FormGroup = styled.div`
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   gap: 10px;
 `;
 

@@ -35,6 +35,12 @@ const App = () => {
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet"
           />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="https://www.zanapo.cz/files/thumbs/5b964973dfc4e113b50ff4a98cf7bda4/favicon-57x.png"
+          />
         </Head>
         <GlobalStyle />
         <Header currentStep={view} />
