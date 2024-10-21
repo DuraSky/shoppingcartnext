@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 10px auto;
+
+  margin: 0px auto;
+  margin-top: 50px;
   max-width: ${({ theme }) => theme.maxWidth};
+  background-color: white;
   //justify-content: space-between;
 
   @media (max-width: 370px) {
@@ -36,12 +39,15 @@ export const StyledWrapper = styled.div`
     justify-content: space-between;
     gap: 40px;
     margin: 30px auto;
-    padding: 10px 30px;
+    padding: 20px 30px;
   }
 
   @media (min-width: 926px) {
     display: flex;
-    padding: 0 20px;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
     //flex-direction: column;
     //flex-direction: column;
     //flex-wrap: wrap;

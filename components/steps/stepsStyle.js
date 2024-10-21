@@ -5,20 +5,21 @@ export const CartSteps = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto;
+  margin: 0px auto;
   max-width: ${({ theme }) => theme.maxWidth};
   border-radius: ${({ theme }) => theme.myBorderRadius};
 `;
 
 export const StepContainer = styled.div`
+  //margin-top: 50px;
   flex-grow: 1;
   text-align: center;
   position: relative;
-  background-color: ${({ $isActive }) => ($isActive ? "#ffdacc" : "white")};
+  background-color: ${({ $isActive }) => ($isActive ? "#00b28f" : "white")};
   padding: 10px;
   font-size: 14px;
   border-radius: ${({ theme }) => theme.myBorderRadius};
-  border: ${({ $isActive }) => ($isActive ? "2px solid #ff6a33" : "none")};
+  border: ${({ $isActive }) => ($isActive ? "2px solid #ccc" : "none")};
   box-shadow: ${({ $isActive }) =>
     $isActive
       ? "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
@@ -37,7 +38,7 @@ export const StepContainer = styled.div`
       height: 0;
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-top: 10px solid #ff6a33;
+      border-top: 10px solid #00b28f;
     }
   `}
 

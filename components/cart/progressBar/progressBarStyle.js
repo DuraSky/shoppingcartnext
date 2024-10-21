@@ -28,6 +28,11 @@ export const StyledProgressBar = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+    .text {
+      color: black;
+      font-weight: 300;
+      font-size: 16px;
+    }
   }
 `;
 
@@ -70,4 +75,5 @@ export const ProgressFill = styled.div`
 export const ProgressText = styled.p`
   text-align: center;
   margin-top: 3px;
+  font-weight: 300;
 `;

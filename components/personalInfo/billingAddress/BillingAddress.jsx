@@ -76,17 +76,18 @@ export const BillingAddress = ({ register, errors, onChange }) => {
           />
           {errors.city && <Error>{errors.city.message}</Error>}
         </FormGroup>
+
+        <FormGroup>
+          <Label>Země</Label>
+          <Input
+            {...register("country")}
+            type="text"
+            placeholder="Země"
+            value="Česká republika"
+            readOnly
+          />
+        </FormGroup>
       </div>
-      <FormGroup>
-        <Label>Země</Label>
-        <Input
-          {...register("country")}
-          type="text"
-          placeholder="Země"
-          value="Česká republika"
-          readOnly
-        />
-      </FormGroup>
       <div className="oneLiner">
         <FormGroup>
           <Label>Email</Label>

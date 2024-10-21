@@ -6,8 +6,9 @@ export const theme = {
   backgroundGreyTint: "#919191",
   backgroundBrown: "#cb9540",
   fontGrey: "#b8b4b4",
-  fontOrange: "#ff4500",
-  fontOrangeTint: "#ff6a33",
+  primaryColor: "#00b28f",
+  fontOrangeTint: "#00b28f",
+  secondaryColor: "#f0f7f6",
   myBorderRadius: "0px",
   myButtonBorderRadius: "2px",
   myLightBoxShadow: "rgba(17, 17, 26, 0.1) 0px 1px 0px",
@@ -20,7 +21,10 @@ export const theme = {
 };
 
 export const StyledButtonWrapper = styled.div`
-  margin: 20px auto;
+  margin: 0px auto;
+  //background-color: white;
+  padding-top: 10px;
+  //height: 400px;
   max-width: ${({ theme }) => theme.maxWidth};
 
   display: flex;
@@ -48,9 +52,10 @@ export const StyledNextButton = styled.button`
   overflow: hidden;
   transition: all 0.5s ease-in;
   z-index: 1;
-  background-color: #ff4500;
+  background-color: #00b28f;
   color: white;
   box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
+  cursor: pointer;
 
   &::before,
   &::after {
@@ -85,6 +90,7 @@ export const StyledBackButton = styled.button`
   width: 150px;
   height: 50px;
   border-radius: ${({ theme }) => theme.myButtonBorderRadius};
+  cursor: pointer;
   /* box-shadow: ${({ theme }) => theme.myHeavyBoxShadow}; */
 
   border: 2px solid #cb9540;
@@ -117,4 +123,8 @@ export const StyledBackButton = styled.button`
   &:hover::after {
     width: 58%;
   }
+`;
+
+export const BgColor = styled.div`
+  background-color: #ccc;
 `;

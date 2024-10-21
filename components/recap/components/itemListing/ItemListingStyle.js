@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledProductRecap = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 15px;
 
   padding: 10px;
@@ -15,12 +15,15 @@ export const StyledProductRecap = styled.div`
     flex-shrink: 0;
     img {
       width: 100px;
+      //max-width: 100px;
+      max-height: 60px;
+      object-fit: contain;
     }
   }
 
   .itemDetails {
     flex-grow: 1;
-    margin-top: 20px;
+    //margin-top: 20px;
     //min-width: 300px; /* Allows text to wrap inside flex container */
   }
 

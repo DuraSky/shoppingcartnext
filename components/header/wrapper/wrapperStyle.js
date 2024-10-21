@@ -5,6 +5,10 @@ export const Wrapper = styled.div`
 
   img {
     width: 150px;
+    filter: hue-rotate(98deg);
+  }
+  .supportIcon {
+    filter: none;
   }
   .menu {
     display: flex;
@@ -38,7 +42,7 @@ export const Wrapper = styled.div`
         //color: ${({ theme }) => theme.fontGrey};
         //font-weight: bold;
         //font-weight: 400;
-        font-weight: 300;
+        //font-weight: 300;
         font-size: 14px;
         //letter-spacing: 1px;
 
@@ -84,6 +88,7 @@ export const Wrapper = styled.div`
       .textAndIcon {
         svg {
           width: 30px;
+          color: ${({ theme }) => theme.primaryColor};
         }
       }
     }
@@ -137,7 +142,7 @@ export const TopBar = styled.div`
 export const SignOutButton = styled.button`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.backgroundBrown};
+  //color: ${({ theme }) => theme.backgroundBrown};
   cursor: pointer;
   padding: 0;
   font: inherit;

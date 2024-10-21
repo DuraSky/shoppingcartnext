@@ -7,9 +7,9 @@ export const FormGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 14px;
+  font-size: 12px;
   //font-weight: lighter;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   font-weight: 300;
   //color: ${({ theme }) => theme.fontGrey};
 `;
@@ -53,6 +53,7 @@ export const FormContainer = styled.div`
       display: flex;
       //flex-grow: 1;
       gap: 5px;
+      margin-bottom: 15px;
       div {
         flex-grow: 1;
       }

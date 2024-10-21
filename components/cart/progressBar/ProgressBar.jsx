@@ -26,7 +26,7 @@ export const ProgressBar = () => {
   return (
     <StyledProgressBar>
       <div className="messageWithIcon">
-        {getFreeShippingMessage(cart_total)}
+        <p className="text">{getFreeShippingMessage(cart_total)}</p>
         {/* <img src="/assets/truck5.svg" width="35px" alt="" /> */}
         <FaTruckFast style={{ width: "30px", height: "30px" }} />
       </div>

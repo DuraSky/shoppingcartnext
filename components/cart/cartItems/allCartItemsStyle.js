@@ -5,12 +5,14 @@ export const CartContainer = styled.div`
   overflow-x: auto;
   margin: 0 auto;
   max-width: ${({ theme }) => theme.maxWidth};
+  background-color: white;
   //border-radius: ${({ theme }) => theme.myBorderRadius};
 `;
 
 export const CartHeaders = styled.div`
   display: flex;
-  background-color: ${({ theme }) => theme.backgroundGrey};
+  background-color: ${({ theme }) => theme.secondaryColor};
+
   padding: 1rem;
   //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
   box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
@@ -64,6 +66,8 @@ export const CartItemRow = styled.div`
 
     img {
       max-width: 130px;
+      max-height: 100px;
+      object-fit: contain;
       //margin-bottom: 0.5rem;
     }
   }

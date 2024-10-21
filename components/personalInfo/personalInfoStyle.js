@@ -4,7 +4,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 20px;
+  //padding: 20px;
+  max-width: 550px;
 `;
 
 export const FormGroup = styled.div`

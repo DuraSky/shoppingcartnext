@@ -24,6 +24,14 @@ export const StyledDiscountBar = styled.div`
     outline: none;
     font-size: 14px;
     //margin-right: 10px;
+
+    &::placeholder {
+      color: #ccc;
+      //font-style: italic;
+      font-weight: lighter;
+      opacity: 1;
+      font-size: 14px;
+    }
   }
 
   p {
@@ -40,7 +48,7 @@ export const StyledDiscountBar = styled.div`
 
   button {
     padding: 0px 5px;
-    background-color: ${({ theme }) => theme.backgroundBrown};
+    background-color: ${({ theme }) => theme.primaryColor};
     color: white;
     font-size: 13px;
     cursor: pointer;

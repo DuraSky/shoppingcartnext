@@ -9,9 +9,9 @@ import {
 
 export const Steps = ({ currentStep }) => {
   const steps = [
-    { label: "Nákupní košík", view: "cart" },
-    { label: "Doprava a platba", view: "shipping" },
-    { label: "Objednávka odeslána", view: "thankyou" },
+    { label: "1 kosik", view: "cart" },
+    { label: "2 doprava a udaje", view: "shipping" },
+    { label: "3 odeslano", view: "thankyou" },
   ];
 
   const stepIndex = steps.findIndex((step) => step.view === currentStep);

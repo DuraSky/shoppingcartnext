@@ -7,7 +7,7 @@ import Header from "../components/header/Header";
 import { ShippingWrapper } from "../components/shipping/ShippingWrapper";
 import GlobalStyle from "../components/GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../components/Theme";
+import { BgColor, theme } from "../components/Theme";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { ThankYou } from "../components/thankyouPage/ThankYou";
@@ -69,7 +69,9 @@ const App = () => {
         ) : view === "thankyou" ? (
           <ThankYou />
         ) : (
+          // <BgColor>
           <ShoppingCart />
+          // {/* </BgColor> */}
         )}
       </ThemeProvider>
     </CombinedProvider>
