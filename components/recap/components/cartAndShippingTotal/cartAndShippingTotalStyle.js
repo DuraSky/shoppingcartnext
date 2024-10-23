@@ -6,4 +6,6 @@ export const StyledCartAndShippingTotal = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 50px;
+  padding: 5px;
+  padding-right: 0%;
 `;

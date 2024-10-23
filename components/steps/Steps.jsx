@@ -5,13 +5,16 @@ import {
   StepContainer,
   StyledLink,
   NonClickableStep,
+  Line,
+  NumberCircle,
+  LabelText,
 } from "./stepsStyle";
 
 export const Steps = ({ currentStep }) => {
   const steps = [
-    { label: "1 kosik", view: "cart" },
-    { label: "2 doprava a udaje", view: "shipping" },
-    { label: "3 odeslano", view: "thankyou" },
+    { label: "Košík", number: 1, view: "cart" },
+    { label: "Doprava a Údaje", number: 2, view: "shipping" },
+    { label: "Odesláno", number: 3, view: "thankyou" },
   ];
 
   const stepIndex = steps.findIndex((step) => step.view === currentStep);
@@ -20,6 +23,8 @@ export const Steps = ({ currentStep }) => {
     <CartSteps>
       {steps.map((step, index) => {
         const isActive = stepIndex === index;
+        const isCompleted = index < stepIndex;
+
         let url = null;
         switch (step.view) {
           case "cart":
@@ -35,21 +40,28 @@ export const Steps = ({ currentStep }) => {
             url = "vas-kosik";
             break;
         }
+
         return (
-          <StepContainer key={index} $isActive={isActive}>
-            {step.view !== "thankyou" ? (
-              // <StyledLink href={`/?view=${step.view}`} isActive={isActive}>
-              //   {step.label}
-              // </StyledLink>
-              <StyledLink href={`/${url}`} $isActive={isActive}>
-                {step.label}
-              </StyledLink>
-            ) : (
-              <NonClickableStep $isActive={isActive}>
-                {step.label}
-              </NonClickableStep>
-            )}
-          </StepContainer>
+          <React.Fragment key={index}>
+            <StepContainer $isActive={isActive}>
+              {step.view !== "thankyou" ? (
+                <StyledLink href={`/${url}`} $isActive={isActive}>
+                  <NumberCircle $isActive={isActive}>
+                    {step.number}
+                  </NumberCircle>
+                  <LabelText>{step.label}</LabelText>
+                </StyledLink>
+              ) : (
+                <NonClickableStep $isActive={isActive}>
+                  <NumberCircle $isActive={isActive}>
+                    {step.number}
+                  </NumberCircle>
+                  <LabelText>{step.label}</LabelText>
+                </NonClickableStep>
+              )}
+            </StepContainer>
+            {index < steps.length - 1 && <Line $isCompleted={isCompleted} />}
+          </React.Fragment>
         );
       })}
     </CartSteps>

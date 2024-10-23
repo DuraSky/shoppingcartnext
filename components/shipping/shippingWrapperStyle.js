@@ -29,17 +29,26 @@ export const ShippingPageLayout = styled.div`
       max-height: 2000px; /* Adjust based on content */
     }
 
-    h2 {
-      background: ${({ theme }) => theme.backgroundGrey};
+    .headerWithButton {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      background: ${({ theme }) => theme.secondaryColor};
+      letter-spacing: 1px;
+      line-height: 1.2;
       font-size: 14px;
-      font-weight: 400;
       padding: 1rem;
-      //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
       box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
+      //font-weight: 400;
+      h2 {
+        font-size: 16px;
+        font-weight: 400;
+      }
 
-      //box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-      border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
-      border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
+      svg {
+        color: ${({ theme }) => theme.primaryColor};
+      }
     }
 
     /* .header .arrow {
@@ -215,5 +224,7 @@ export const StyledPreview = styled.div`
 
   img {
     width: 60px;
+    max-height: 40px;
+    object-fit: contain;
   }
 `;

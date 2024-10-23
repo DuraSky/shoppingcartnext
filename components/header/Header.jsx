@@ -10,9 +10,9 @@ const Header = ({ currentStep }) => {
   return (
     <StyledNav>
       <WrapperWithTopBar />
-      {/* <BgColor> */}
-      <Steps currentStep={currentStep} />
-      {/* </BgColor> */}
+      <BgColor>
+        <Steps currentStep={currentStep} />
+      </BgColor>
     </StyledNav>
   );
 };

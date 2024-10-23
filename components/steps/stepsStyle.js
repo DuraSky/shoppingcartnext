@@ -5,40 +5,36 @@ export const CartSteps = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0px auto;
-  max-width: ${({ theme }) => theme.maxWidth};
-  border-radius: ${({ theme }) => theme.myBorderRadius};
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 5px 0;
 `;
 
 export const StepContainer = styled.div`
-  //margin-top: 50px;
   flex-grow: 1;
   text-align: center;
   position: relative;
-  background-color: ${({ $isActive }) => ($isActive ? "#00b28f" : "white")};
-  padding: 10px;
   font-size: 14px;
-  border-radius: ${({ theme }) => theme.myBorderRadius};
-  border: ${({ $isActive }) => ($isActive ? "2px solid #ccc" : "none")};
-  box-shadow: ${({ $isActive }) =>
-    $isActive
-      ? "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
-      : "none"};
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
 
   ${({ $isActive }) =>
     $isActive &&
     `
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 10px solid #00b28f;
+    font-weight: bold;
+    color: #00b28f;
+  `}
+
+  ${({ $isActive }) =>
+    !$isActive &&
+    `
+    transition: color 0.3s ease;
+    &:hover {
+      color: #00b28f;
+      cursor: pointer;
     }
   `}
 
@@ -47,19 +43,54 @@ export const StepContainer = styled.div`
   }
 `;
 
-export const StepLabel = styled.span`
-  display: block;
-  padding: 15px;
-  font-weight: ${({ $isActive }) => ($isActive ? "bold" : "normal")};
+export const NumberCircle = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: ${({ $isActive }) => ($isActive ? "#00b28f" : "#d3d3d3")};
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  ${({ $isActive }) =>
+    $isActive &&
+    `
+    transform: scale(1.1);
+  `}
+`;
+
+export const LabelText = styled.div`
+  font-size: 14px;
+  color: ${({ $isActive }) => ($isActive ? "#00b28f" : "#000")};
+  transition: color 0.3s ease;
+`;
+
+export const Line = styled.div`
+  width: 200px;
+  height: 4px;
+  background: ${({ $isCompleted }) =>
+    $isCompleted ? "linear-gradient(90deg, #00b28f, #00e0a7)" : "#d3d3d3"};
+  transition: background-color 0.3s ease;
 `;
 
 export const StyledLink = styled(({ $isActive, ...props }) => (
   <Link {...props} />
 ))`
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: inherit;
 `;
 
 export const NonClickableStep = styled.div`
   color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

@@ -2,12 +2,38 @@ import styled from "styled-components";
 
 export const StyledWrapper = styled.div`
   display: flex;
+  /* flex-grow: 1;
   align-items: center;
+  justify-content: space-between; */
+  align-items: center;
+  justify-content: flex-start;
 
   margin: 0px auto;
-  margin-top: 50px;
+  margin-top: 10px;
   max-width: ${({ theme }) => theme.maxWidth};
   background-color: white;
+
+  .discountAndProgress {
+    display: flex;
+    //flex-direction: column;
+    flex-grow: 1;
+    /* justify-content: space-between;
+    align-items: center; */
+    gap: 5px;
+    //flex-direction: column;
+
+    /* background-color: ${({ theme }) => theme.secondaryColor};
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: ${({ theme }) => theme.myInsetBoxShadow}; */
+
+    .discountOnly {
+      background-color: ${({ theme }) => theme.secondaryColor};
+      border-radius: 5px;
+      box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+      padding: 30px;
+    }
+  }
   //justify-content: space-between;
 
   @media (max-width: 370px) {
@@ -62,24 +88,17 @@ export const StyledPriceCalc = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-
-  @media (max-width: 370px) {
-    align-items: center;
-    align-self: center;
-  }
-
-  /* @media (max-width: 921px) {
-    align-self: flex-end;
-  } */
+  gap: 10px;
 
   h3 {
-    //color: ${({ theme }) => theme.fontGrey};
-    font-weight: 300;
-    font-size: 16px;
+    font-size: 18px;
+    color: ${({ theme }) => theme.primaryColor};
+    font-weight: bold;
   }
 
   p {
+    font-size: 24px;
+    color: ${({ theme }) => theme.fontColor};
     font-weight: bold;
-    font-size: 18px;
   }
 `;

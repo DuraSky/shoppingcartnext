@@ -11,13 +11,16 @@ export const CartContainer = styled.div`
 
 export const CartHeaders = styled.div`
   display: flex;
-  background-color: ${({ theme }) => theme.secondaryColor};
+  background-color: ${({ theme }) => theme.backgroundGrey};
 
   padding: 1rem;
   //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
   box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
-
-  color: ${({ theme }) => theme.backgroundGreyTint};
+  /* color: ${({ theme }) => theme.backgroundGreyTint}; */
+  margin-top: 1px;
+  margin-bottom: 1px;
+  letter-spacing: 1px;
+  line-height: 1.2;
 
   h2 {
     text-align: center;
@@ -55,6 +58,7 @@ export const CartItemRow = styled.div`
     $hasVariants ? "none" : theme.myLightBoxShadow};
   margin-bottom: 20px;
   font-weight: 300;
+  //background-color: #f1f1f1;
 
   .produktName {
     flex: 3;
@@ -98,11 +102,11 @@ export const CartItemRow = styled.div`
       padding: 2px;
       cursor: pointer;
       background: none;
-      color: ${({ theme }) => theme.fontGrey};
+      color: ${({ theme }) => theme.primaryColor};
     }
 
     button:hover {
-      color: ${({ theme }) => theme.fontOrange};
+      color: black;
     }
   }
 

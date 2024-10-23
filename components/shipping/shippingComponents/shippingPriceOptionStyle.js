@@ -34,7 +34,7 @@ export const StyledPriceOption = styled.div`
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: ${({ theme }) => theme.fontOrange};
+        background: ${({ theme }) => theme.primaryColor};
         transition: 0.5s ease-in;
       }
     }

@@ -11,8 +11,6 @@ import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
 import { VoucherRecap } from "./voucherRecap/VoucherRecap";
 
-import { HiOutlineCreditCard } from "react-icons/hi2";
-
 const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
   const { state: cartState } = useContext(CartContext);
   const { state: shippingState } = useContext(ShippingContext);
@@ -65,7 +63,6 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
 
       <div className="recapOption">
         {/* <img src="/assets/card.png" width="30px" alt="" /> */}
-        <HiOutlineCreditCard style={{ width: "30px", height: "30px" }} />
         <PaymentRecap
           selectedPaymentOption={selectedPaymentOption}
           selectedPaymentOptionPriceCurrency={

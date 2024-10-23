@@ -8,19 +8,16 @@ export const StyledRecap = styled.div`
   //max-width: 600px;
 
   h2 {
-    background-color: ${({ theme }) => theme.backgroundGrey};
-    padding: 1rem;
-    /* border-bottom: 1px solid #ddd; */
-    //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
-    box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
-    border-top-right-radius: ${({ theme }) => theme.myBorderRadius};
-    border-top-left-radius: ${({ theme }) => theme.myBorderRadius};
-
-    text-align: center;
+    letter-spacing: 1px;
+    line-height: 1.2;
     font-size: 14px;
-    margin: 0;
-    //color: ${({ theme }) => theme.fontGrey};
+    padding: 1rem;
+    box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
+    //font-weight: 400;
+
+    font-size: 16px;
     font-weight: 400;
+    background: ${({ theme }) => theme.secondaryColor};
   }
 
   h3 {
@@ -42,6 +39,10 @@ export const StyledRecap = styled.div`
     box-shadow: ${({ theme }) => theme.myLightBoxShadow};
     font-weight: 300;
     padding: 10px;
+
+    svg {
+      width: 30px;
+    }
 
     p {
       &:last-child {

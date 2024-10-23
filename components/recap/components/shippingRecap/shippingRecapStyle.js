@@ -5,7 +5,9 @@ export const StyledShippingRecap = styled.div`
   flex-direction: column;
   flex-grow: 1;
   align-items: flex-start;
-
+  padding: 10px;
+  padding-right: 0;
+  gap: 10px;
   .mainInfo {
     display: flex;
     width: 100%;

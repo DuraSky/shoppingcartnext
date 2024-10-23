@@ -5,7 +5,7 @@ export const StyledProductRecap = styled.div`
   align-items: center;
   gap: 15px;
 
-  padding: 10px;
+  padding: 20px 10px;
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
   font-weight: 300;
 

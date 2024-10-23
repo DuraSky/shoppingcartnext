@@ -2,10 +2,16 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
+  font-weight: 300;
+  line-height: 1.2;
 
   img {
     width: 150px;
     filter: hue-rotate(98deg);
+  }
+
+  .bold {
+    font-weight: 400;
   }
   .supportIcon {
     filter: none;
@@ -15,8 +21,8 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     //flex-grow: 1;
     align-items: center;
-    padding: 5px;
-    min-height: 80px;
+    //padding: 5px;
+    //min-height: 80px;
 
     .textAndIcon {
       display: flex;
@@ -24,12 +30,14 @@ export const Wrapper = styled.div`
       align-items: center;
       justify-content: center;
       gap: 5px;
+
       //height: 100%;
 
       .supportIcon {
         object-fit: contain;
         width: 40px;
         border-radius: 50%;
+
         //height: auto;
       }
 
@@ -45,10 +53,6 @@ export const Wrapper = styled.div`
         //font-weight: 300;
         font-size: 14px;
         //letter-spacing: 1px;
-
-        span {
-          font-weight: 400;
-        }
       }
 
       &:last-child:hover {
@@ -71,7 +75,7 @@ export const Wrapper = styled.div`
 
   @media (min-width: 530px) {
     .menu {
-      padding: 10px;
+      padding: 5px;
     }
   }
 

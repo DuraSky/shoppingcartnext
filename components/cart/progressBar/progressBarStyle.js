@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledProgressBar = styled.div`
-  margin: 10px auto;
+  //margin: 0px auto;
   max-width: ${({ theme }) => theme.maxWidth};
   display: flex;
   flex-grow: 1;
+
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 5px;
 
   @media (max-width: 922px) {
@@ -58,7 +60,8 @@ export const ProgressContainer = styled.div`
   }
 
   @media (min-width: 1000px) {
-    min-width: 550px;
+    /* min-width: 770px; */
+    max-width: 700px;
   }
 `;
 
