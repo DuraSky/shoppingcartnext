@@ -26,15 +26,18 @@ export const StyledButtonWrapper = styled.div`
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.secondaryColor};
-  padding: 30px;
-  //border-radius: 8px;
-  box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-  justify-content: flex-end;
-  gap: 20px;
 
-  @media (max-width: 922px) {
+  //border-radius: 8px;
+  justify-content: flex-end;
+  gap: 10px;
+  align-self: flex-start;
+
+  @media (min-width: 922px) {
+    // padding: 20px;
+    background-color: ${({ theme }) => theme.secondaryColor};
     padding: 20px;
+    box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+    min-width: 250px;
   }
 `;
 
@@ -43,8 +46,8 @@ export const StyledNextButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 260px;
-  height: 55px;
+  width: 190px;
+  height: 40px;
   border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   font-size: 16px;
   font-weight: 600;
@@ -92,6 +95,11 @@ export const StyledNextButton = styled.button`
   &:hover svg {
     transform: translateX(5px);
   }
+
+  @media (min-width: 1000px) {
+    width: 260px;
+    height: 55px;
+  }
 `;
 
 export const StyledBackButton = styled.button`
@@ -134,6 +142,15 @@ export const StyledBackButton = styled.button`
   &:hover::before,
   &:hover::after {
     width: 58%;
+  }
+
+  svg {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(-5px);
   }
 `;
 

@@ -7,19 +7,34 @@ export const StyledWrapper = styled.div`
   justify-content: space-between; */
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
+  flex-grow: 1;
 
   margin: 0px auto;
   margin-top: 10px;
   max-width: ${({ theme }) => theme.maxWidth};
   background-color: white;
+  padding: 0 5px;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1000px) {
+    padding: 0;
+  }
+
+  /* @media (min-width: 800px) {
+  } */
 
   .discountAndProgress {
     display: flex;
-    //flex-direction: column;
+    flex-direction: column;
     flex-grow: 1;
     /* justify-content: space-between;
     align-items: center; */
     gap: 5px;
+    margin-bottom: 40px;
     //flex-direction: column;
 
     /* background-color: ${({ theme }) => theme.secondaryColor};
@@ -27,16 +42,33 @@ export const StyledWrapper = styled.div`
     border-radius: 10px;
     box-shadow: ${({ theme }) => theme.myInsetBoxShadow}; */
 
+    @media (min-width: 650px) {
+      flex-direction: row;
+    }
+
     .discountOnly {
-      background-color: ${({ theme }) => theme.secondaryColor};
       //border-radius: 5px;
-      box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      //order: 2;
+      @media (min-width: 800px) {
+        //align-self: flex-start;
+        //order: 1;
+      }
+      @media (min-width: 900px) {
+        background-color: ${({ theme }) => theme.secondaryColor};
+        box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+        padding: 30px;
+        max-width: 250px;
+
+        max-width: 400px;
+      }
     }
   }
   //justify-content: space-between;
 
-  @media (max-width: 370px) {
+  /* @media (max-width: 370px) {
     //margin: 30px auto;
     padding: 10px;
     flex-direction: column;
@@ -66,7 +98,7 @@ export const StyledWrapper = styled.div`
     gap: 40px;
     margin: 30px auto;
     padding: 20px 30px;
-  }
+  } */
 
   @media (min-width: 926px) {
     display: flex;

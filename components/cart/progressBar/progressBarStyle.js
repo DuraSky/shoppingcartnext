@@ -7,19 +7,10 @@ export const StyledProgressBar = styled.div`
   flex-grow: 1;
 
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 5px;
-
-  @media (max-width: 922px) {
-    order: 2;
-    min-width: 100%;
-  }
-
-  /* h2 {
-    font-weight: 600;
-    font-size: 18px;
-  } */
+  margin-top: 0px;
+  margin-top: 20px;
 
   p {
     font-size: 14px;
@@ -33,7 +24,14 @@ export const StyledProgressBar = styled.div`
     .text {
       color: black;
       font-weight: 300;
-      font-size: 16px;
+      font-size: 14px;
+
+      @media (min-width: 500px) {
+        font-size: 16px;
+      }
+    }
+    @media (min-width: 600px) {
+      justify-content: center;
     }
   }
 `;
@@ -44,10 +42,15 @@ export const ProgressContainer = styled.div`
   border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   position: relative;
   box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
+  align-self: center;
+  max-width: 250px;
+  min-width: 250px;
 
-  min-width: 270px;
+  @media (min-width: 900px) {
+    min-width: 400px;
+  }
 
-  @media (min-width: 376px) {
+  /* @media (min-width: 376px) {
     min-width: 300px;
   }
 
@@ -60,9 +63,8 @@ export const ProgressContainer = styled.div`
   }
 
   @media (min-width: 1000px) {
-    /* min-width: 770px; */
-    max-width: 700px;
-  }
+    max-width: 600px;
+  } */
 `;
 
 export const ProgressFill = styled.div`

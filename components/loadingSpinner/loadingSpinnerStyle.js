@@ -14,7 +14,7 @@ const dots = keyframes`
 
 export const Spinner = styled.div`
   border: 8px solid #f1f1f1;
-  border-top: 8px solid #ff4500;
+  border-top: 8px solid #00b28f;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -35,7 +35,7 @@ export const LoadingText = styled.p`
   margin-top: 20px;
   font-weight: 200;
   font-size: 14px;
-  color: #ff4500;
+  color: #00b28f;
 
   .dots::after {
     content: "";

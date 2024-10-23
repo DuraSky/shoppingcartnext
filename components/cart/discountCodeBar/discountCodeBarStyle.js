@@ -41,7 +41,12 @@ export const StyledDiscountBar = styled.div`
 
   .inputAndButton {
     display: flex;
+    flex-direction: column;
     width: 100%;
+
+    @media (min-width: 1000px) {
+      flex-direction: row;
+    }
 
     input {
       flex-grow: 1;
