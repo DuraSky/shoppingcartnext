@@ -3,73 +3,59 @@ import styled, { css } from "styled-components";
 export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  max-width: 410px;
 `;
 
 export const Label = styled.label`
-  font-size: 12px;
-  //font-weight: lighter;
-  margin-bottom: 2px;
-  font-weight: 300;
-  //color: ${({ theme }) => theme.fontGrey};
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #555;
 `;
 
 export const Input = styled.input`
-  padding: 10px;
-  border: 1px solid #b8b4b4;
-  //border-radius: 4px;
-  font-size: 14px;
-  //color: ${({ theme }) => theme.fontGrey};
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  //border-radius: 6px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+
   ${(props) =>
     props.error &&
     css`
-      border-color: red;
+      border-color: #d9534f;
     `}
+
   &:focus {
-    outline: none !important;
-    border: 2px solid #b8b4b4;
-    ${(props) =>
-      props.error &&
-      css`
-        border-color: red;
-      `}
+    outline: none;
+    border-color: #00b28f;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    background-color: #fff;
   }
 `;
 
 export const Error = styled.div`
   font-size: 12px;
   color: #d9534f;
-  margin-top: 1px;
+  margin-top: 4px;
 `;
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  padding: 10px;
+  padding: 20px;
+  //background-color: #fff;
 
   .oneLiner {
-    @media (min-width: 1000px) {
-      display: flex;
-      //flex-grow: 1;
-      gap: 5px;
-      margin-bottom: 15px;
-      div {
-        flex-grow: 1;
-      }
-    }
-  }
-`;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
 
-export const TextArea = styled.textarea`
-  padding: 10px;
-  border: 1px solid #b8b4b4;
-  //border-radius: 4px;
-  font-size: 14px;
-  color: #333;
-  resize: vertical;
-  &:focus {
-    border: 2px solid #b8b4b4;
-    outline: none;
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 `;

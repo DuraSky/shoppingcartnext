@@ -41,7 +41,7 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
 
   return (
     <StyledRecap>
-      <h2>Rekaputilace objednávky</h2>
+      <h2>Rekaputilace</h2>
 
       <ItemListing
         cart={cart}

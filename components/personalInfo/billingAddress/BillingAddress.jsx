@@ -6,6 +6,42 @@ export const BillingAddress = ({ register, errors, onChange }) => {
     <FormContainer>
       <div className="oneLiner">
         <FormGroup>
+          <Label>Email</Label>
+          <Input
+            {...register("email", {
+              required: "Email nesmí být prázdný",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Email musí být platná emailová adresa",
+              },
+              onChange: () => onChange("email"),
+            })}
+            type="email"
+            // placeholder="Email"
+            error={!!errors.email}
+          />
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </FormGroup>
+        <FormGroup>
+          <Label>Telefon</Label>
+          <Input
+            {...register("phone", {
+              required: "Telefon nesmí být prázdný",
+              pattern: {
+                value: /^[0-9]{9}$/,
+                message: "Telefon musí obsahovat pouze devítimístné číslo",
+              },
+              onChange: () => onChange("phone"),
+            })}
+            type="text"
+            // placeholder="Telefon"
+            error={!!errors.phone}
+          />
+          {errors.phone && <Error>{errors.phone.message}</Error>}
+        </FormGroup>
+      </div>
+      <div className="oneLiner">
+        <FormGroup>
           <Label>Jméno</Label>
           <Input
             {...register("firstName", {
@@ -13,7 +49,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
               onChange: () => onChange("firstName"),
             })}
             type="text"
-            placeholder="Jméno"
+            // placeholder="Jméno"
             error={!!errors.firstName}
           />
           {errors.firstName && <Error>{errors.firstName.message}</Error>}
@@ -26,7 +62,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
               onChange: () => onChange("lastName"),
             })}
             type="text"
-            placeholder="Příjmení"
+            // placeholder="Příjmení"
             error={!!errors.lastName}
           />
           {errors.lastName && <Error>{errors.lastName.message}</Error>}
@@ -40,7 +76,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
             onChange: () => onChange("street"),
           })}
           type="text"
-          placeholder="Ulice a číslo popisné"
+          // placeholder="Ulice a číslo popisné"
           error={!!errors.street}
         />
         {errors.street && <Error>{errors.street.message}</Error>}
@@ -58,7 +94,7 @@ export const BillingAddress = ({ register, errors, onChange }) => {
               onChange: () => onChange("zip"),
             })}
             type="text"
-            placeholder="PSČ"
+            // placeholder="PSČ"
             error={!!errors.psc}
           />
           {errors.psc && <Error>{errors.psc.message}</Error>}
@@ -71,59 +107,22 @@ export const BillingAddress = ({ register, errors, onChange }) => {
               onChange: () => onChange("city"),
             })}
             type="text"
-            placeholder="Město"
+            // placeholder="Město"
             error={!!errors.city}
           />
           {errors.city && <Error>{errors.city.message}</Error>}
         </FormGroup>
-
-        <FormGroup>
-          <Label>Země</Label>
-          <Input
-            {...register("country")}
-            type="text"
-            placeholder="Země"
-            value="Česká republika"
-            readOnly
-          />
-        </FormGroup>
       </div>
-      <div className="oneLiner">
-        <FormGroup>
-          <Label>Email</Label>
-          <Input
-            {...register("email", {
-              required: "Email nesmí být prázdný",
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Email musí být platná emailová adresa",
-              },
-              onChange: () => onChange("email"),
-            })}
-            type="email"
-            placeholder="Email"
-            error={!!errors.email}
-          />
-          {errors.email && <Error>{errors.email.message}</Error>}
-        </FormGroup>
-        <FormGroup>
-          <Label>Telefon</Label>
-          <Input
-            {...register("phone", {
-              required: "Telefon nesmí být prázdný",
-              pattern: {
-                value: /^[0-9]{9}$/,
-                message: "Telefon musí obsahovat pouze devítimístné číslo",
-              },
-              onChange: () => onChange("phone"),
-            })}
-            type="text"
-            placeholder="Telefon"
-            error={!!errors.phone}
-          />
-          {errors.phone && <Error>{errors.phone.message}</Error>}
-        </FormGroup>
-      </div>
+      <FormGroup>
+        <Label>Země</Label>
+        <Input
+          {...register("country")}
+          type="text"
+          placeholder="Země"
+          value="Česká republika"
+          readOnly
+        />
+      </FormGroup>
     </FormContainer>
   );
 };

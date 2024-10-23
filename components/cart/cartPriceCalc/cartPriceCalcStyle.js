@@ -29,7 +29,7 @@ export const StyledWrapper = styled.div`
 
     .discountOnly {
       background-color: ${({ theme }) => theme.secondaryColor};
-      border-radius: 5px;
+      //border-radius: 5px;
       box-shadow: ${({ theme }) => theme.myLightBoxShadow};
       padding: 30px;
     }

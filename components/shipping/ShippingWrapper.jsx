@@ -146,7 +146,7 @@ export const ShippingWrapper = () => {
         setButtonText(formErrors[firstErrorKey].message);
       }
     } else {
-      setButtonText("Odeslat objednávku →");
+      setButtonText("Odeslat objednávku");
     }
   }, [selectedPaymentOption, formErrors]);
 
@@ -231,7 +231,7 @@ export const ShippingWrapper = () => {
         <div className="headerWithButton">
           <h2>Doprava</h2>
           <div className="changeButton" onClick={handleToggleShipping}>
-            Změnit typ dopravy
+            Změnit typ dopravy/pobočku
             <svg
               className={`arrow ${toggleShipping ? "rotated" : ""}`}
               xmlns="http://www.w3.org/2000/svg"

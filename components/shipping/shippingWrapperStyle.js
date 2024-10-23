@@ -10,14 +10,14 @@ export const ShippingPageLayout = styled.div`
   .recapWrapper {
     width: 100%;
     //max-width: 600px;
-    order: 2; /* Always on the right side for non-mobile views */
+    order: 2;
   }
 
   .allContent {
     width: 100%;
     display: flex;
     flex-direction: column;
-    order: 1; /* Always on the left side for non-mobile views */
+    order: 1;
 
     .collapsible-content {
       //padding-top: 1rem;
@@ -26,46 +26,30 @@ export const ShippingPageLayout = styled.div`
       transition: max-height 0.5s ease-out;
     }
     .collapsible-content.open {
-      max-height: 2000px; /* Adjust based on content */
+      max-height: 2000px;
     }
 
     .headerWithButton {
       display: flex;
-      flex-grow: 1;
       justify-content: space-between;
       align-items: center;
-      background: ${({ theme }) => theme.secondaryColor};
-      letter-spacing: 1px;
-      line-height: 1.2;
-      font-size: 14px;
-      padding: 1rem;
-      box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
-      //font-weight: 400;
+      background-color: #f0f7f6;
+      padding: 12px 20px;
+      border-bottom: 2px solid #ddd;
+
       h2 {
-        font-size: 16px;
-        font-weight: 400;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       svg {
         color: ${({ theme }) => theme.primaryColor};
       }
     }
-
-    /* .header .arrow {
-      border-bottom: 2px solid ${({ theme }) => theme.fontOrange};
-      border-right: 2px solid ${({ theme }) => theme.fontOrange};
-      position: absolute;
-      top: 10px;
-      right: -10px;
-      width: 10px;
-      height: 10px;
-      transform: rotate(45deg) translateY(-50%);
-      transform-origin: right;
-      transition: transform 0.3s;
-    } */
-    /* .header .arrow.rotated {
-      transform: rotate(225deg);
-    } */
 
     .arrow {
       transition: transform 0.3s ease;
@@ -217,9 +201,14 @@ export const StyledPreview = styled.div`
   .price {
     /* display: flex;
       flex-grow: 1; */
-    margin-right: 50px;
+    //margin-right: 50px;
 
-    color: ${({ theme }) => theme.fontOrange};
+    /* color: ${({ theme }) => theme.primaryColor}; */
+  }
+
+  .branchInfo {
+    display: flex;
+    gap: 5px;
   }
 
   img {

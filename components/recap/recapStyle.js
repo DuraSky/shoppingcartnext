@@ -4,20 +4,21 @@ export const StyledRecap = styled.div`
   //background: gray;
   display: flex;
   flex-direction: column;
+  //background-color: ${({ theme }) => theme.secondaryColor};
+
   //padding: 0px 30px;
   //max-width: 600px;
 
   h2 {
-    letter-spacing: 1px;
-    line-height: 1.2;
-    font-size: 14px;
-    padding: 1rem;
-    box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
-    //font-weight: 400;
-
-    font-size: 16px;
-    font-weight: 400;
-    background: ${({ theme }) => theme.secondaryColor};
+    background-color: ${({ theme }) => theme.secondaryColor};
+    padding: 12px 20px;
+    border-bottom: 2px solid #ddd;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   h3 {

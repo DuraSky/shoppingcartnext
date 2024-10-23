@@ -28,7 +28,7 @@ export const StyledButtonWrapper = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.secondaryColor};
   padding: 30px;
-  border-radius: 8px;
+  //border-radius: 8px;
   box-shadow: ${({ theme }) => theme.myLightBoxShadow};
   justify-content: flex-end;
   gap: 20px;

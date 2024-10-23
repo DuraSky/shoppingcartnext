@@ -38,7 +38,7 @@ export const SelectedShippingPreview = ({ previewSelectedShipping }) => {
         <p>{previewSelectedShipping.option}</p>
         {showBranchInfo && (
           <div className="branchInfo">
-            {/* <p>Pobočka:</p> */}
+            <p>Pobočka:</p>
             <p>{selectedVendor.name}</p>
           </div>
         )}

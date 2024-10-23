@@ -91,7 +91,7 @@ export const StyledSelectedBranch = styled.div`
   }
 
   button {
-    background-color: ${({ theme }) => theme.fontOrange};
+    background-color: ${({ theme }) => theme.primaryColor};
     color: white;
     border: none;
     padding: 5px 10px;
