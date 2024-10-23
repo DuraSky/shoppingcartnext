@@ -59,3 +59,33 @@ export const FormContainer = styled.div`
     }
   }
 `;
+
+export const TextArea = styled.textarea`
+  //padding: 12px 15px;
+  margin-left: 20px;
+  border: 1px solid #ccc;
+  //border-radius: 6px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+  resize: vertical;
+  min-height: 120px;
+  color: #333;
+
+  ${(props) =>
+    props.error &&
+    css`
+      border-color: #d9534f;
+    `}
+
+  &::placeholder {
+    color: #aaa;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #00b28f;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    background-color: #fff;
+  }
+`;

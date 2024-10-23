@@ -4,6 +4,7 @@ import Recap from "../recap/Recap";
 import { BillingAddress } from "./billingAddress/BillingAddress";
 import { CompanyAddress } from "./companyAddress/CompanyAddress";
 import { DeliveryAddress } from "./deliveryAddress/DeliveryAddress";
+
 import { Comment } from "./comment/Comment";
 import { Form, CheckboxGroup, Input, Label } from "./personalInfoStyle";
 
