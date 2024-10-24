@@ -1,15 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import { StyledCustomerSupport } from "./customerSupportStyle";
+import { imageLoader } from "../../../imageLoader/imageLoader";
 
 export const CustomerSupport = () => {
   return (
     <StyledCustomerSupport>
       <div className="supportContent">
         <Image
-          src={"https://www.zanapo.cz/files/upload/393225-CDDq6rAv4L.jpg"}
+          loader={imageLoader}
+          src={"/files/upload/393225-CDDq6rAv4L.jpg"}
           width={80}
           height={80}
+          alt="podpora"
         />
         <div>
           <p>Potřebujete poradit s objednávkou? </p>

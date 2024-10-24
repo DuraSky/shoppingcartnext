@@ -5,6 +5,7 @@ import { SignInForm } from "../signin/SingInForm";
 import { sendSignIn } from "../../../utils/loader";
 
 import Image from "next/image";
+import { imageLoader } from "../../imageLoader/imageLoader";
 
 const saveCustomerDetails = (customer) => {
   const customerDetails = {
@@ -89,7 +90,8 @@ export const WrapperWithTopBar = () => {
               />
             </svg> */}
             <Image
-              src={"https://www.zanapo.cz/files/upload/393225-CDDq6rAv4L.jpg"}
+              loader={imageLoader}
+              src={"/files/upload/393225-CDDq6rAv4L.jpg"}
               width={40}
               height={40}
               className="supportIcon"
