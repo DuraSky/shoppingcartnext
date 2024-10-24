@@ -17,8 +17,9 @@ export const StyledDiscountBar = styled.div`
     display: flex;
     flex-direction: column;
     //align-items: center;
-    gap: 15px;
+    gap: 25px;
     width: 100%;
+    min-height: 104px;
   }
 
   .discountText {
@@ -43,7 +44,6 @@ export const StyledDiscountBar = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-
     @media (min-width: 1000px) {
       flex-direction: row;
     }
@@ -75,7 +75,8 @@ export const StyledDiscountBar = styled.div`
 
     button {
       padding: 12px 20px;
-      background-color: ${({ theme }) => theme.primaryColor};
+      //background-color: ${({ theme }) => theme.primaryColor};
+      background-color: #ccc;
       color: white;
       font-size: 14px;
       font-weight: 500;

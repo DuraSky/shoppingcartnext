@@ -136,6 +136,12 @@ export const TopBar = styled.div`
     z-index: -1;
   }
 
+  @media (min-width: 900px) {
+    img {
+      margin-left: 30px;
+    }
+  }
+
   @media (min-width: 530px) {
     flex-direction: row;
     justify-content: space-between;

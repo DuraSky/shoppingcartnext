@@ -13,7 +13,7 @@ export const AllCartItems = ({ cart }) => {
   return (
     <CartContainer>
       <CartHeaders>
-        <h2 className="produktName" aria-hidden="true"></h2>
+        <h2 className="produktName">Produkt</h2>
         <h2 className="dostupnost">Dostupnost</h2>
         <h2 className="quantityControlWrapper">Množství</h2>
         <h2 className="itemPrice">Cena za kus</h2>

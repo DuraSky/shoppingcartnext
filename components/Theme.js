@@ -10,6 +10,8 @@ export const theme = {
   primaryColorTint: "#33c1a5",
   fontOrangeTint: "#00b28f",
   secondaryColor: "#f0f7f6",
+  tertiaryColor: "#f5f6f8",
+  borderColor: "#cfe5e2",
   myBorderRadius: "0px",
   myButtonBorderRadius: "2px",
   myLightBoxShadow: "rgba(17, 17, 26, 0.1) 0px 1px 0px",
@@ -113,7 +115,7 @@ export const StyledBackButton = styled.button`
   cursor: pointer;
   /* box-shadow: ${({ theme }) => theme.myHeavyBoxShadow}; */
 
-  border: 2px solid ${({ theme }) => theme.primaryColor};
+  border: none;
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease-in;
@@ -132,6 +134,10 @@ export const StyledBackButton = styled.button`
     transition: all 0.5s;
     overflow: hidden;
     z-index: -1;
+  }
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.primaryColor};
   }
 
   &::after {
@@ -158,6 +164,11 @@ export const BgColor = styled.div`
   //background-color: #ccc;
   /* background-color: ${({ theme }) => theme.secondaryColor}; */
   //background-color: #f1f1f1;
-  box-shadow: ${({ theme }) => theme.myInsetBoxShadow};
-  padding: 5px;
+  /* box-shadow: ${({ theme }) => theme.myInsetBoxShadow};
+  padding: 5px; */
+  background-color: white;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+  //box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+  margin-top: 1px;
 `;

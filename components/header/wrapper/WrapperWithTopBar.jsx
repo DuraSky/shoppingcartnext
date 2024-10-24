@@ -89,9 +89,7 @@ export const WrapperWithTopBar = () => {
               />
             </svg> */}
             <Image
-              src={
-                "https://files.smartsuppcdn.com/files/agents/avatars/393225-CDDq6rAv4L.jpg?size=80"
-              }
+              src={"https://www.zanapo.cz/files/upload/393225-CDDq6rAv4L.jpg"}
               width={40}
               height={40}
               className="supportIcon"

@@ -7,15 +7,20 @@ export const StyledPriceOption = styled.div`
     gap: 10px;
     padding: 10px 20px;
     font-weight: 300;
-    border: 1px solid #ccc;
+    //border: 1px solid #ccc;
+    //border: 1px solid #cfe5e2;
+    border-top: 1px solid ${({ theme }) => theme.borderColor};
+
+    margin: 0 10px;
+
     border-radius: ${({ theme }) => theme.myBorderRadius};
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
     transition: border-color 0.3s;
     min-height: 60px;
 
     &:hover {
-      border-color: #999;
+      color: ${({ theme }) => theme.primaryColor};
     }
 
     input[type="radio"] {

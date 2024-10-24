@@ -4,15 +4,26 @@ export const StyledRecap = styled.div`
   //background: gray;
   display: flex;
   flex-direction: column;
+
+  .wrapper {
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    //background-color: ${({ theme }) => theme.secondaryColor};
+  }
+
+  /* & > :not(:last-child) {
+    border: 1px solid #cfe5e2;
+  } */
+  //border: 1px solid #cfe5e2;
+
   //background-color: ${({ theme }) => theme.secondaryColor};
 
   //padding: 0px 30px;
   //max-width: 600px;
 
   h2 {
-    background-color: ${({ theme }) => theme.secondaryColor};
+    //background-color: ${({ theme }) => theme.secondaryColor};
     padding: 12px 20px;
-    border-bottom: 2px solid #ddd;
+    //border-bottom: 2px solid #ddd;
     font-size: 18px;
     font-weight: 500;
     color: #333;
@@ -37,7 +48,8 @@ export const StyledRecap = styled.div`
     //align-items: flex-start;
 
     gap: 10px;
-    box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+    //box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+    border-top: 1px solid ${({ theme }) => theme.borderColor};
     font-weight: 300;
     padding: 10px;
 
@@ -52,7 +64,8 @@ export const StyledRecap = styled.div`
     }
   }
 
-  .voucher {
+  // .voucher {
+  /* padding: 10px;
     justify-content: space-between;
     align-items: center;
 
@@ -60,13 +73,13 @@ export const StyledRecap = styled.div`
       display: flex;
       align-items: center;
 
-      font-weight: 200;
+      //font-weight: 200;
       p {
         color: black;
       }
       gap: 10px;
-    }
-  }
+    } */
+  //}
 
   .final {
     font-weight: 600;
@@ -95,7 +108,7 @@ export const StyledRecapMobile = styled.div`
       }
     }
 
-    .arrow {
+    /* .arrow {
       border-bottom: 2px solid ${({ theme }) => theme.fontOrange};
       border-right: 2px solid ${({ theme }) => theme.fontOrange};
       position: absolute;
@@ -106,10 +119,10 @@ export const StyledRecapMobile = styled.div`
       transform: rotate(45deg) translateY(-50%);
       transform-origin: right;
       transition: transform 0.3s;
-    }
+    } */
 
-    .arrow.rotated {
+    /* .arrow.rotated {
       transform: rotate(225deg);
-    }
+    } */
   }
 `;

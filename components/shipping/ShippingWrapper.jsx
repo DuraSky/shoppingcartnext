@@ -228,96 +228,107 @@ export const ShippingWrapper = () => {
       </div>
 
       <div className="allContent">
-        <div className="headerWithButton">
-          <h2>Doprava</h2>
-          <div className="changeButton" onClick={handleToggleShipping}>
-            Změnit typ dopravy/pobočku
-            <svg
-              className={`arrow ${toggleShipping ? "rotated" : ""}`}
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="16"
-              viewBox="0 0 448 512"
-            >
-              <path
-                fill="currentColor"
-                d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0"
-              />
-            </svg>
+        <div className="wrapper">
+          <div className="headerWithButton">
+            <h2>Doprava</h2>
+            <div className="changeButton" onClick={handleToggleShipping}>
+              Změnit typ dopravy/pobočku
+              <svg
+                className={`arrow ${toggleShipping ? "rotated" : ""}`}
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="16"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div className="shippingContent">
-          <SelectedShippingPreview
-            previewSelectedShipping={previewSelectedShipping}
-          />
-          <div
-            className={`collapsible-content ${toggleShipping ? "open" : ""}`}
-          >
-            <div onClick={(e) => e.stopPropagation()}>
-              <ShippingOption />
+          <div className="shippingContent">
+            <SelectedShippingPreview
+              previewSelectedShipping={previewSelectedShipping}
+            />
+            <div
+              className={`collapsible-content ${toggleShipping ? "open" : ""}`}
+            >
+              <div onClick={(e) => e.stopPropagation()}>
+                <ShippingOption />
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="headerWithButton">
-          <h2>Platba</h2>
-          <div className="changeButton" onClick={handleTogglePriceOption}>
-            Změnit typ platby
-            <svg
-              className={`arrow ${togglePriceOption ? "rotated" : ""}`}
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="16"
-              viewBox="0 0 448 512"
-            >
-              <path
-                fill="currentColor"
-                d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0"
-              />
-            </svg>
+        <div className="wrapper">
+          <div className="headerWithButton">
+            <h2>Platba</h2>
+            <div className="changeButton" onClick={handleTogglePriceOption}>
+              Změnit typ platby
+              <svg
+                className={`arrow ${togglePriceOption ? "rotated" : ""}`}
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="16"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div className="priceContent">
-          <SelectedPaymentPreview
-            previewSelectedPayment={previewSelectedPayment}
-          />
-          <div
-            className={`collapsible-content ${togglePriceOption ? "open" : ""}`}
-          >
-            <div onClick={(e) => e.stopPropagation()}>
-              <ShippingPriceOptions />
+          <div className="priceContent">
+            <SelectedPaymentPreview
+              previewSelectedPayment={previewSelectedPayment}
+            />
+            <div
+              className={`collapsible-content ${
+                togglePriceOption ? "open" : ""
+              }`}
+            >
+              <div onClick={(e) => e.stopPropagation()}>
+                <ShippingPriceOptions />
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="headerWithButton">
-          <h2>Fakturační a dodací adresa</h2>
-          <div className="changeButton" onClick={handleToggleInfo}>
-            Změnit osobní údaje
-            <svg
-              className={`arrow ${toggleInfo ? "rotated" : ""}`}
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="16"
-              viewBox="0 0 448 512"
-            >
-              <path
-                fill="currentColor"
-                d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0"
-              />
-            </svg>
+        <div className="wrapper">
+          <div className="headerWithButton">
+            <h2>Fakturační a dodací adresa</h2>
+            <div className="changeButton" onClick={handleToggleInfo}>
+              Změnit osobní údaje
+              <svg
+                className={`arrow ${toggleInfo ? "rotated" : ""}`}
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="16"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
-        <div className="formContent">
-          <PersonalInfoPreview formErrors={formErrors} submitted={submitted} />
-          <div className={`collapsible-content ${toggleInfo ? "open" : ""}`}>
-            <div onClick={(e) => e.stopPropagation()}>
-              <PersonalInfo
-                key={personalInfoKey}
-                ref={formRef}
-                onFormSubmitSuccess={handleFormSubmitSuccess}
-                onError={handleFormError}
-              />
+          <div className="formContent">
+            <PersonalInfoPreview
+              formErrors={formErrors}
+              submitted={submitted}
+            />
+            <div className={`collapsible-content ${toggleInfo ? "open" : ""}`}>
+              <div onClick={(e) => e.stopPropagation()}>
+                <PersonalInfo
+                  key={personalInfoKey}
+                  ref={formRef}
+                  onFormSubmitSuccess={handleFormSubmitSuccess}
+                  onError={handleFormError}
+                />
+              </div>
             </div>
           </div>
         </div>

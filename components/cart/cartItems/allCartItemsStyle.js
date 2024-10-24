@@ -11,7 +11,8 @@ export const CartContainer = styled.div`
 
 export const CartHeaders = styled.div`
   display: flex;
-  background-color: ${({ theme }) => theme.secondaryColor};
+  //background-color: ${({ theme }) => theme.secondaryColor};
+  background-color: #f5f6f8;
 
   padding: 1rem;
   //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};

@@ -11,7 +11,7 @@ export const StyledWrapper = styled.div`
   flex-grow: 1;
 
   margin: 0px auto;
-  margin-top: 10px;
+  //margin-top: 10px;
   max-width: ${({ theme }) => theme.maxWidth};
   background-color: white;
   padding: 0 5px;

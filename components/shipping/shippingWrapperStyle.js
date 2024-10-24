@@ -6,6 +6,7 @@ export const ShippingPageLayout = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  background-color: white;
 
   .recapWrapper {
     width: 100%;
@@ -18,6 +19,10 @@ export const ShippingPageLayout = styled.div`
     display: flex;
     flex-direction: column;
     order: 1;
+
+    .wrapper {
+      border: 1px solid ${({ theme }) => theme.borderColor};
+    }
 
     .collapsible-content {
       //padding-top: 1rem;
@@ -35,7 +40,7 @@ export const ShippingPageLayout = styled.div`
       align-items: center;
       background-color: #f0f7f6;
       padding: 12px 20px;
-      border-bottom: 2px solid #ddd;
+      //border-bottom: 2px solid #ddd;
 
       h2 {
         font-size: 18px;
@@ -184,6 +189,7 @@ export const StyledPreview = styled.div`
   align-items: center;
   gap: 20px;
   min-height: 90px;
+  //border: solid 1px;
 
   .optionAndPrice {
     display: flex;

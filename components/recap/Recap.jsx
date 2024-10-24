@@ -10,6 +10,7 @@ import { PageControl } from "../pageControl/PageControl";
 import { StyledNextButton, StyledButtonWrapper } from "../Theme";
 import Link from "next/link";
 import { VoucherRecap } from "./voucherRecap/VoucherRecap";
+import { CustomerSupport } from "./components/customerSupport/CustomerSupport";
 
 const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
   const { state: cartState } = useContext(CartContext);
@@ -41,39 +42,38 @@ const Recap = ({ handleGoBack, handleSubmit, buttonText }) => {
 
   return (
     <StyledRecap>
-      <h2>Rekaputilace</h2>
+      <div className="wrapper">
+        <CustomerSupport />
 
-      <ItemListing
-        cart={cart}
-        selectedSurchargeProducts={selectedSurchargeProducts}
-      />
-
-      {vouchers.length > 0 && (
-        <div className="recapVoucher">
-          <VoucherRecap vouchers={vouchers} />
+        <h2>Rekaputilace</h2>
+        <ItemListing
+          cart={cart}
+          selectedSurchargeProducts={selectedSurchargeProducts}
+        />
+        {vouchers.length > 0 && (
+          <div className="recapOption">
+            <VoucherRecap vouchers={vouchers} />
+          </div>
+        )}
+        <div className="recapOption">
+          <ShippingRecap
+            selectedShippingOption={selectedShippingOption}
+            selectedShippingPriceCurrency={selectedShippingPriceCurrency}
+          />
         </div>
-      )}
-
-      <div className="recapOption">
-        <ShippingRecap
-          selectedShippingOption={selectedShippingOption}
-          selectedShippingPriceCurrency={selectedShippingPriceCurrency}
-        />
-      </div>
-
-      <div className="recapOption">
-        {/* <img src="/assets/card.png" width="30px" alt="" /> */}
-        <PaymentRecap
-          selectedPaymentOption={selectedPaymentOption}
-          selectedPaymentOptionPriceCurrency={
-            selectedPaymentOptionPriceCurrency
-          }
-        />
-      </div>
-
-      <div className="recapOption final">
-        <h3>Celkem</h3>
-        <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
+        <div className="recapOption">
+          {/* <img src="/assets/card.png" width="30px" alt="" /> */}
+          <PaymentRecap
+            selectedPaymentOption={selectedPaymentOption}
+            selectedPaymentOptionPriceCurrency={
+              selectedPaymentOptionPriceCurrency
+            }
+          />
+        </div>
+        <div className="recapOption final">
+          <h3>Celkem</h3>
+          <CartAndShippingTotal cartTotalCalc={cartTotalCalc} />
+        </div>
       </div>
 
       <PageControl

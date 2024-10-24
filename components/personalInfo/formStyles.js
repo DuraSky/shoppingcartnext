@@ -3,22 +3,23 @@ import styled, { css } from "styled-components";
 export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
-  max-width: 410px;
+  margin-bottom: 5px;
+  width: 100%;
+  //max-width: 410px;
 `;
 
 export const Label = styled.label`
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   margin-bottom: 5px;
-  color: #555;
+  //color: #555;
 `;
 
 export const Input = styled.input`
   padding: 12px 15px;
   border: 1px solid #ccc;
   //border-radius: 6px;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #f9f9f9;
   transition: all 0.2s ease;
 
@@ -52,7 +53,7 @@ export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     @media (min-width: 768px) {
       flex-direction: row;
