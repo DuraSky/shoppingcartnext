@@ -10,7 +10,8 @@ export const StyledCustomerSupport = styled.div`
     background-color: white;
     justify-content: center;
     background-color: ${({ theme }) => theme.secondaryColor};
-    border-bottom: solid 1px ${({ theme }) => theme.borderColor};
+    //border-bottom: solid 1px ${({ theme }) => theme.borderColor};
+    box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
 
     img {
       width: 80px;
@@ -31,7 +32,7 @@ export const StyledCustomerSupport = styled.div`
       p {
       }
       svg {
-        width: 20px;
+        width: 16px;
         color: ${({ theme }) => theme.primaryColor};
       }
     }

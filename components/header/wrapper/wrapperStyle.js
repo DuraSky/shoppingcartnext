@@ -20,15 +20,26 @@ export const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     //flex-grow: 1;
-    align-items: center;
+    //align-items: center;
+    //justify-content: flex-end;
+    justify-content: space-around;
+    //justify-content: space-between;
+
     //padding: 5px;
     //min-height: 80px;
 
-    .textAndIcon {
+    .iconGroup {
       display: flex;
       flex-grow: 1;
+    }
+
+    .textAndIcon {
+      display: flex;
+      //flex-grow: 1;
       align-items: center;
       justify-content: center;
+      padding: 10px;
+
       gap: 5px;
 
       //height: 100%;
@@ -144,7 +155,7 @@ export const TopBar = styled.div`
 
   @media (min-width: 530px) {
     flex-direction: row;
-    justify-content: space-between;
+    //justify-content: space-between;
     gap: 0px;
   }
 `;

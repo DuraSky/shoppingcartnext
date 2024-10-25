@@ -25,20 +25,22 @@ export const theme = {
 };
 
 export const StyledButtonWrapper = styled.div`
-  margin: 0px auto;
+  //margin: 0px auto;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 
   //border-radius: 8px;
-  justify-content: flex-end;
+  //justify-content: flex-end;
   gap: 10px;
-  align-self: flex-start;
+  align-self: flex-end;
+  margin-top: 40px;
 
   @media (min-width: 922px) {
     // padding: 20px;
-    background-color: ${({ theme }) => theme.secondaryColor};
+    // background-color: ${({ theme }) => theme.secondaryColor};
     padding: 20px;
-    box-shadow: ${({ theme }) => theme.myLightBoxShadow};
+    //box-shadow: ${({ theme }) => theme.myLightBoxShadow};
     min-width: 250px;
   }
 `;
@@ -114,13 +116,13 @@ export const StyledBackButton = styled.button`
   border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   cursor: pointer;
   /* box-shadow: ${({ theme }) => theme.myHeavyBoxShadow}; */
-
+  color: #ccc;
   border: none;
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease-in;
   z-index: 1;
-  color: ${({ theme }) => theme.primaryColor};
+  //color: ${({ theme }) => theme.primaryColor};
   background-color: white;
 
   &::before,
@@ -138,6 +140,7 @@ export const StyledBackButton = styled.button`
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.primaryColor};
   }
 
   &::after {

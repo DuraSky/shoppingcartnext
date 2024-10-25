@@ -4,13 +4,15 @@ export const StyledProgressBar = styled.div`
   //margin: 0px auto;
   max-width: ${({ theme }) => theme.maxWidth};
   display: flex;
-  flex-grow: 1;
+  padding: 20px;
+  //flex-grow: 1;
 
   flex-direction: column;
   justify-content: center;
+
   gap: 5px;
   margin-top: 0px;
-  margin-top: 20px;
+  //margin-top: 20px;
 
   p {
     font-size: 14px;
@@ -20,6 +22,7 @@ export const StyledProgressBar = styled.div`
   .messageWithIcon {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     .text {
       color: black;
@@ -30,18 +33,18 @@ export const StyledProgressBar = styled.div`
         font-size: 16px;
       }
     }
-    @media (min-width: 600px) {
-      justify-content: center;
+    @media (min-width: 650px) {
+      justify-content: flex-end;
     }
   }
 `;
 
 export const ProgressContainer = styled.div`
-  height: 15px;
+  height: 5px;
   background-color: #ccc;
-  border-radius: ${({ theme }) => theme.myButtonBorderRadius};
+  //border-radius: ${({ theme }) => theme.myButtonBorderRadius};
   position: relative;
-  box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
+  //box-shadow: ${({ theme }) => theme.myHeavyBoxShadow};
   align-self: center;
   max-width: 250px;
   min-width: 250px;
@@ -70,7 +73,8 @@ export const ProgressContainer = styled.div`
 export const ProgressFill = styled.div`
   width: ${({ progress }) => `${progress}%`};
   height: 100%;
-  background-color: ${({ theme }) => theme.fontOrangeTint};
+  background-color: ${({ theme }) => theme.primaryColor};
+  opacity: 0.6;
   text-align: center;
   line-height: 30px;
   color: white;
@@ -78,7 +82,7 @@ export const ProgressFill = styled.div`
 `;
 
 export const ProgressText = styled.p`
-  text-align: center;
+  text-align: end;
   margin-top: 3px;
   font-weight: 300;
 `;

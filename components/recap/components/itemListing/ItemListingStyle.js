@@ -16,7 +16,7 @@ export const StyledProductRecap = styled.div`
     img {
       width: 100px;
       //max-width: 100px;
-      max-height: 60px;
+      max-height: 80px;
       object-fit: contain;
     }
   }

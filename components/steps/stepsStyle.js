@@ -71,11 +71,20 @@ export const LabelText = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 200px;
-  height: 4px;
-  background: ${({ $isCompleted }) =>
-    $isCompleted ? "linear-gradient(90deg, #00b28f, #00e0a7)" : "#d3d3d3"};
-  transition: background-color 0.3s ease;
+  display: none;
+
+  @media (min-width: 320px) {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: ${({ $isCompleted }) =>
+      $isCompleted ? "linear-gradient(90deg, #00b28f, #00e0a7)" : "#d3d3d3"};
+    transition: background-color 0.3s ease;
+  }
+
+  @media (min-width: 500px) {
+    width: 100px;
+  }
 `;
 
 export const StyledLink = styled(({ $isActive, ...props }) => (

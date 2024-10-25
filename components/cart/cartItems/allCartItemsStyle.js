@@ -11,12 +11,12 @@ export const CartContainer = styled.div`
 
 export const CartHeaders = styled.div`
   display: flex;
-  //background-color: ${({ theme }) => theme.secondaryColor};
-  background-color: #f5f6f8;
+  background-color: ${({ theme }) => theme.secondaryColor};
+  //background-color: #f5f6f8;
 
   padding: 1rem;
-  //box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
-  box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
+  box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+  //box-shadow: ${({ theme }) => theme.myBorderBoxShadow};
   /* color: ${({ theme }) => theme.backgroundGreyTint}; */
   margin-top: 1px;
   margin-bottom: 1px;

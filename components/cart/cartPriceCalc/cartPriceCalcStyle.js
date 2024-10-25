@@ -5,7 +5,7 @@ export const StyledWrapper = styled.div`
   /* flex-grow: 1;
   align-items: center;
   justify-content: space-between; */
-  align-items: center;
+  //align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   flex-grow: 1;
@@ -17,7 +17,7 @@ export const StyledWrapper = styled.div`
   padding: 0 5px;
 
   @media (min-width: 700px) {
-    flex-direction: row;
+    //flex-direction: row;
   }
 
   @media (min-width: 1000px) {
@@ -30,11 +30,16 @@ export const StyledWrapper = styled.div`
   .discountAndProgress {
     display: flex;
     flex-direction: column;
+    //align-self: center;
+    justify-content: space-between;
+    gap: 30px;
+    /* justify-content: center; */
+    //justify-content: space-between;
     flex-grow: 1;
     /* justify-content: space-between;
     align-items: center; */
-    gap: 5px;
-    margin-bottom: 40px;
+    /* gap: 5px; */
+    //margin-bottom: 40px;
     //flex-direction: column;
 
     /* background-color: ${({ theme }) => theme.secondaryColor};
@@ -48,8 +53,8 @@ export const StyledWrapper = styled.div`
 
     .discountOnly {
       //border-radius: 5px;
-      display: flex;
-      flex-direction: column;
+      //display: flex;
+      //flex-direction: column;
       align-self: center;
       //order: 2;
       @media (min-width: 800px) {
@@ -57,12 +62,13 @@ export const StyledWrapper = styled.div`
         //order: 1;
       }
       @media (min-width: 900px) {
-        background-color: ${({ theme }) => theme.secondaryColor};
-        box-shadow: ${({ theme }) => theme.myLightBoxShadow};
-        padding: 30px;
+        /* background-color: ${({ theme }) => theme.secondaryColor};
+        box-shadow: ${({ theme }) => theme.myLightBoxShadow}; */
+        /* padding: 20px;
         max-width: 250px;
 
-        max-width: 400px;
+        max-width: 400px; */
+        padding: 20px;
       }
     }
   }

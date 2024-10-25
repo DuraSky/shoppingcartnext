@@ -40,6 +40,8 @@ export const ShippingPageLayout = styled.div`
       align-items: center;
       background-color: #f0f7f6;
       padding: 12px 20px;
+      box-shadow: ${({ theme }) => theme.myMediumBoxShadow};
+
       //border-bottom: 2px solid #ddd;
 
       h2 {
@@ -86,7 +88,7 @@ export const ShippingPageLayout = styled.div`
       font-weight: 300;
       font-size: 14px;
       svg {
-        color: ${({ theme }) => theme.fontOrange};
+        color: ${({ theme }) => theme.primaryColor};
       }
 
       &:hover {

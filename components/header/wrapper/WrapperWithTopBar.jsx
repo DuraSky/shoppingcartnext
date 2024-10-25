@@ -77,18 +77,8 @@ export const WrapperWithTopBar = () => {
           height={40}
         />
         <div className="menu">
+          {/* <div className="iconGroup"> */}
           <div className="textAndIcon">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="32"
-              viewBox="0 0 448 512"
-            >
-              <path
-                fill="currentColor"
-                d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48m-16.39 307.37l-15 65A15 15 0 0 1 354 416C194 416 64 286.29 64 126a15.7 15.7 0 0 1 11.63-14.61l65-15A18 18 0 0 1 144 96a16.27 16.27 0 0 1 13.79 9.09l30 70A17.9 17.9 0 0 1 189 181a17 17 0 0 1-5.5 11.61l-37.89 31a231.9 231.9 0 0 0 110.78 110.78l31-37.89A17 17 0 0 1 299 291a17.9 17.9 0 0 1 5.91 1.21l70 30A16.25 16.25 0 0 1 384 336a17.4 17.4 0 0 1-.39 3.37"
-              />
-            </svg> */}
             <Image
               loader={imageLoader}
               src={"/files/upload/393225-CDDq6rAv4L.jpg"}
@@ -96,38 +86,12 @@ export const WrapperWithTopBar = () => {
               height={40}
               className="supportIcon"
             />
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M12 21q-.425 0-.712-.288T11 20t.288-.712T12 19h7v-7.1q0-2.925-2.037-4.962T12 4.9T7.038 6.938T5 11.9V17q0 .425-.288.713T4 18q-.825 0-1.412-.587T2 16v-2q0-.525.263-.987T3 12.275l.075-1.325q.2-1.7.988-3.15t1.975-2.525T8.762 3.6T12 3t3.225.6t2.725 1.663t1.975 2.512t1 3.15l.075 1.3q.475.225.738.675t.262.95v2.3q0 .5-.262.95t-.738.675V19q0 .825-.587 1.413T19 21zm-3-7q-.425 0-.712-.288T8 13t.288-.712T9 12t.713.288T10 13t-.288.713T9 14m6 0q-.425 0-.712-.288T14 13t.288-.712T15 12t.713.288T16 13t-.288.713T15 14m-8.975-1.55Q5.85 9.8 7.625 7.9T12.05 6q2.225 0 3.913 1.412T18 11.026Q15.725 11 13.813 9.8t-2.938-3.25q-.4 2-1.687 3.563T6.025 12.45"
-              />
-            </svg> */}
             <div>
               <p className="bold">+420 706 694 133</p>
               <p>(po - pá: 8:00 - 16:00)</p>
             </div>
           </div>
           <div className="textAndIcon">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M11 16v-5.5A3.5 3.5 0 0 0 7.5 7m3.5 9H4v-5.5A3.5 3.5 0 0 1 7.5 7m3.5 9v4M7.5 7H14m0 0V4h2.5M14 7v3m-3.5 6H20v-6a3 3 0 0 0-3-3m-2 9v4m-8-6.5h1"
-              />
-            </svg> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="48"

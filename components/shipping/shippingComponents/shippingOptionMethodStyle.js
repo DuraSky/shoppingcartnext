@@ -101,7 +101,7 @@ export const StyledSelectedBranch = styled.div`
     font-size: 14px;
 
     &:hover {
-      background-color: ${({ theme }) => theme.backgroundBrown};
+      color: black;
     }
   }
 `;
