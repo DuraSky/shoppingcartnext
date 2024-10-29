@@ -31,6 +31,10 @@ export const ShippingProvider = ({ children, initialShipping = [] }) => {
           payload: savedShippingOption.name,
         });
         dispatch({
+          type: actionTypes.SET_SELECTED_SHIPPING_DESCRIPTION,
+          payload: savedShippingOption.description,
+        });
+        dispatch({
           type: actionTypes.SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID,
           payload: savedShippingOption.package_id,
         });
@@ -64,6 +68,10 @@ export const ShippingProvider = ({ children, initialShipping = [] }) => {
             payload: firstDelivery.name,
           });
           dispatch({
+            type: actionTypes.SET_SELECTED_SHIPPING_DESCRIPTION,
+            payload: firstDelivery.description,
+          });
+          dispatch({
             type: actionTypes.SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID,
             payload: firstDelivery.package_id,
           });
@@ -89,6 +97,7 @@ export const ShippingProvider = ({ children, initialShipping = [] }) => {
             "selectedShippingOption",
             JSON.stringify({
               name: firstDelivery.name,
+              description: firstDelivery.description,
               price: firstDelivery.price,
               price_f: firstDelivery.price_f,
               package_id: firstDelivery.package_id,

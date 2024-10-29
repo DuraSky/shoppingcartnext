@@ -13,6 +13,8 @@ import { PPLWidget } from "../deliveryVendorsApis/ppl/PPLWidget";
 import Modal from "../deliveryVendorsApis/Modal";
 import { PostaWidget } from "../deliveryVendorsApis/posta/PostaWidget";
 
+import { StyledChangeBranchButton } from "../../Theme";
+
 const formatDeliveryDate = (deliveryDate) => {
   const date = new Date(deliveryDate);
   const today = new Date();
@@ -112,9 +114,11 @@ export const ShippingOptionMethod = ({ delivery, onSelectMethod }) => {
           {selectedVendor && selectedVendor.vendorName === delivery.name && (
             <StyledSelectedBranch>
               <p>
-                <span>Zvolená pobočka:</span> {selectedVendor.name}
+                <span>Pobočka:</span> {selectedVendor.name}
               </p>
-              <button onClick={handleBranchChange}>Změnit pobočku</button>
+              <StyledChangeBranchButton onClick={handleBranchChange}>
+                Změnit pobočku
+              </StyledChangeBranchButton>
             </StyledSelectedBranch>
           )}
         </label>

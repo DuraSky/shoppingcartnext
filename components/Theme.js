@@ -7,7 +7,7 @@ export const theme = {
   backgroundBrown: "#cb9540",
   fontGrey: "#b8b4b4",
   primaryColor: "#00b28f",
-  primaryColorTint: "#33c1a5",
+  primaryColorTint: "#66d1bc",
   fontOrangeTint: "#00b28f",
   secondaryColor: "#f0f7f6",
   tertiaryColor: "#f5f6f8",
@@ -160,6 +160,20 @@ export const StyledBackButton = styled.button`
 
   &:hover svg {
     transform: translateX(-5px);
+  }
+`;
+
+export const StyledChangeBranchButton = styled.button`
+  background-color: ${({ theme }) => theme.primaryColor};
+  opacity: 0.5;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  border-radius: ${({ theme }) => theme.myButtonBorderRadius};
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
   }
 `;
 

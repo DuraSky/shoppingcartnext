@@ -16,8 +16,7 @@ import {
 import { PageControl } from "../pageControl/PageControl";
 
 import { sendOrder } from "../../utils/loader";
-import { PPLWidget } from "./deliveryVendorsApis/ppl/PPLWidget";
-import Modal from "./deliveryVendorsApis/Modal";
+
 import { useDeliveryVendors } from "./deliveryVendorsApis/DeliveryVendorsProvider";
 
 import { HiOutlineCreditCard } from "react-icons/hi2";
@@ -31,6 +30,7 @@ export const ShippingWrapper = () => {
     selectedPaymentOptionPrice,
     selectedPaymentOptionPriceCurrency,
     selectedShippingOption,
+    selectedShippingDescription,
     selectedShippingOptionPackageId,
     selectedShippingOptionImg,
     selectedShippingPrice,
@@ -57,8 +57,8 @@ export const ShippingWrapper = () => {
     packageId: null,
   });
   const [previewSelectedPayment, setPreviewSelectedPayment] = useState({
-    option: "Zvolte typ platby",
-    img: HiOutlineCreditCard,
+    option: null,
+    img: null,
     price: null,
     delivery_payment_id: null,
   });
@@ -137,7 +137,7 @@ export const ShippingWrapper = () => {
 
   useEffect(() => {
     if (selectedPaymentOption === null) {
-      setButtonText("Zvolte typ platby");
+      setButtonText("Zvolte platbu");
     } else if (Object.keys(formErrors).length > 0) {
       const firstErrorKey = Object.keys(formErrors).find(
         (key) => formErrors[key]
@@ -153,6 +153,7 @@ export const ShippingWrapper = () => {
   useEffect(() => {
     setPreviewSelectedShipping({
       option: selectedShippingOption || "Zvolte dopravu",
+      description: selectedShippingDescription,
       img: selectedShippingOptionImg || "failsafe",
       price: selectedShippingPrice,
       price_f: selectedShippingPriceCurrency,
@@ -171,8 +172,8 @@ export const ShippingWrapper = () => {
   useEffect(() => {
     if (selectedPaymentOption === null) {
       setPreviewSelectedPayment({
-        option: "Zvolte typ platby",
-        img: "assets/card.png",
+        option: null,
+        img: null,
         price: null,
         price_f: null,
         delivery_payment_id: null,

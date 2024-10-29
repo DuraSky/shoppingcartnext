@@ -91,7 +91,7 @@ export const StyledSelectedBranch = styled.div`
     }
   }
 
-  button {
+  /* button {
     background-color: ${({ theme }) => theme.primaryColor};
     color: white;
     border: none;
@@ -103,5 +103,5 @@ export const StyledSelectedBranch = styled.div`
     &:hover {
       color: black;
     }
-  }
+  } */
 `;

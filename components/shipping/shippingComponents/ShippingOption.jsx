@@ -17,6 +17,10 @@ const ShippingOption = () => {
       payload: delivery.package_id,
     });
     dispatch({
+      type: actionTypes.SET_SELECTED_SHIPPING_DESCRIPTION,
+      payload: delivery.description,
+    });
+    dispatch({
       type: actionTypes.SET_SELECTED_SHIPPING_PRICE,
       payload: delivery.price,
     });
@@ -41,6 +45,7 @@ const ShippingOption = () => {
       "selectedShippingOption",
       JSON.stringify({
         name: delivery.name,
+        description: delivery.description,
         package_id: delivery.package_id,
         price: delivery.price,
         price_f: delivery.price_f,

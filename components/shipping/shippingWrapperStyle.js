@@ -197,13 +197,15 @@ export const StyledPreview = styled.div`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    gap: 3px;
     //justify-content: space-between;
     p {
-      font-weight: 300;
+      font-weight: 400;
     }
 
-    @media (min-width: 1000px) {
-      min-width: 550px;
+    .description {
+      //font-size: 14px;
+      font-weight: 300;
     }
   }
   .price {
@@ -216,11 +218,21 @@ export const StyledPreview = styled.div`
 
   .branchInfo {
     display: flex;
-    gap: 5px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+    gap: 3px;
+    border: dashed 1px #ccc;
+    padding: 10px;
+
+    .branch {
+      font-weight: 300;
+    }
   }
 
   img {
-    width: 60px;
+    width: 80px;
     max-height: 40px;
     object-fit: contain;
   }

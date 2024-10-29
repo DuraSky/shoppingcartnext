@@ -1,6 +1,7 @@
 const initialState = {
   shippingOptions: { countries: [] },
   selectedShippingOption: null,
+  selectedShippingDescription: null,
   selectedShippingOptionPackageId: null,
   selectedShippingOptionImg: null,
   selectedShippingPrice: null,
@@ -15,6 +16,7 @@ const initialState = {
 
 const actionTypes = {
   SET_SHIPPING_OPTIONS: "SET_SHIPPING_OPTIONS",
+  SET_SELECTED_SHIPPING_DESCRIPTION: "SET_SELECTED_SHIPPING_DESCRIPTION",
   SET_SELECTED_SHIPPING_OPTION: "SET_SELECTED_SHIPPING_OPTION",
   SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID:
     "SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID",
@@ -35,6 +37,8 @@ const shippingReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_SHIPPING_OPTIONS:
       return { ...state, shippingOptions: action.payload };
+    case actionTypes.SET_SELECTED_SHIPPING_DESCRIPTION:
+      return { ...state, selectedShippingDescription: action.payload };
     case actionTypes.SET_SELECTED_SHIPPING_OPTION:
       return { ...state, selectedShippingOption: action.payload };
     case actionTypes.SET_SELECTED_SHIPPING_OPTION_PACKAGE_ID:
